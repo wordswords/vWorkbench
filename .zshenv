@@ -47,6 +47,8 @@ source ~/.zsh_aliases
 ## [-- SOURCE REMOTE CONNECTION ALIASES --]
 
 ## [++ FOR RUST ++]
-ls "$HOME/.cargo" &>/dev/null && . "$HOME/.cargo/env"
+set +e
+( ls "$HOME/.cargo" &>/dev/null ) && . "$HOME/.cargo/env"
+set -e
 ## [-- FOR RUST --
 
