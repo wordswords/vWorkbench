@@ -214,10 +214,9 @@ report_done
 
 report_progress 'Customising Fortune random quoter'
 set -o extendedglob
-( sudo rm -rf "/usr/share/games/fortunes/riddles*" 2>/dev/null || echo '' )
-( sudo rm -rf "/usr/share/games/fortunes/fortune*" 2>/dev/null || echo '' )
-( sudo rm -rf "/usr/share/games/fortunes/literature*" 2>/dev/null || echo '' )
+( sudo rm -rf "/usr/share/games/fortunes/*" 2>/dev/null || echo '' )
 set +o extendedglob
+sudo tar xzf ~/.dotfiles/gaiman-fortunes.tgz /usr/share/games/fortunes/
 report_done
 
 echo

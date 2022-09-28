@@ -32,8 +32,6 @@ sudo apt install exuberant-ctags
 sudo apt install net-tools
 # Install fortune cookie for shell login
 sudo apt install fortune-mod
-# Ubuntu CLI command fortunes
-sudo apt install fortunes-ubuntu-server
 # Ripgrep used for :CocSearch
 sudo apt install ripgrep
 # tree is very useful for showing directory structures'
