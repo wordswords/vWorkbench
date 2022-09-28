@@ -28,7 +28,7 @@ autoload -Uz notes
 
 updatedotfiles() {
     cd ~/.dotfiles
-    git pull origin master
+    git pull origin master | echo ''
     cd -
 }
 autoload -Uz updatedotfiles
