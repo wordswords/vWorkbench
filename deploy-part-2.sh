@@ -74,8 +74,8 @@ ln --force -s ~/.dotfiles/coc-settings.json ~/.vim/coc-settings.json
 report_done
 
 report_progress 'Installing Powerlevel10k prompt'
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-ln --force -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k || echo ''
+ln --force -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh || echo ''
 report_done
 
 report_progress 'Creating vim backup file directory structure'
