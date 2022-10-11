@@ -51,7 +51,7 @@ They correspond to the git status of the file in the repo.
 
 ![Alt text](https://i.imgur.com/yBs7bKu.png "My zsh setup")
 
-ZSH uses oh-my-zsh in Powerlevel10k mode, which provides fast and responsive 
+ZSH uses oh-my-zsh in Powerlevel10k mode, which provides fast and responsive
 auto-complete options. Just hit `<TAB>` to autocomplete. It will also show the status
 of the current Git repo.
 
@@ -95,9 +95,9 @@ via the snap installation process.
 navigating JIRA boards less painful.
 * Setup 'fortune' with some Ubuntu server tips displayed on login.
 
-You may well have to customise, mix and match, and edit these individual 
-settings because  you won't have the authentication required for this whole 
-process to work. If you are serious about reusing what I've done, I would 
+You may well have to customise, mix and match, and edit these individual
+settings because  you won't have the authentication required for this whole
+process to work. If you are serious about reusing what I've done, I would
 advise running this setup in a docker container or virtual machine.
 
 ## Install Steps
@@ -125,7 +125,7 @@ that directory, no need to type cd.
 3. Type `l` for a long-style ls.
 4. `vimdiff <file1> <file2>` for a nice 2 way diff style interface where you can
 analyse and easily copy changes between files.
-5. `cat <file> | pbcopy` to cat a file into the local OS clipboard, very useful 
+5. `cat <file> | pbcopy` to cat a file into the local OS clipboard, very useful
 for then using on a website form.
 6. Use `<tab>` to activate oh-my-zsh's autocomplete plugins. For example `git
 <tab>`
@@ -219,7 +219,7 @@ replaced word in the current window
 Coc.vim is meant to provide an approximate mapping for Visual Studio Code's
 plugins and IntelliSense features onto VIM8 and Neovim. It does this with various
 degrees of compatability. Often these features are not currently documented and require
-prior knowledge of how the Code editor does things. This URL is the documentation 
+prior knowledge of how the Code editor does things. This URL is the documentation
 for the Code editor: https://docs.microsoft.com/en-us/visualstudio/ide/navigating-code?view=vs-2022
 
 This is an excellent introduction to Coc.vim's objectives: https://samroeca.com/coc-plugin.html
@@ -297,6 +297,9 @@ find the right hash and then, `git checkout <hash> <filepath>`, then use
 commit to `<filepath.bak>`, and then `rm <filepath>` and then
 `mv <filepath.bak> <filepath>`.
 
+Git Book:
+https://git-scm.com/book/en/v2
+
 Check out my simpleton Git workflow here:
 https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md
 
@@ -353,7 +356,7 @@ This is like the 'tree' command, it will descend downwards into the current
 directory and show which branches the Git repositories under the current
 directory are on.
 
-It is useful for getting a general overview of a complex codebase and its 
+It is useful for getting a general overview of a complex codebase and its
 current checkout state.
 
 ### `blameline`
@@ -361,7 +364,7 @@ current checkout state.
 ![Alt text](https://i.imgur.com/7kfUGNQ.png "blameline")
 
 This shows a line-by-line git blame on a particular file, e.g. `blameline README.md`
-showing the origin commit and a snippet of the commit message. Very useful 
+showing the origin commit and a snippet of the commit message. Very useful
 for figuring out how a file was put together.
 
 ### `git logline`
