@@ -2,12 +2,13 @@
 # vim: spell set nowrap
 
 ## To be run after installation of oh-my-zsh
-set -e
 
 # Load in status message printing functions
 source ./deploy-common.sh
 # Load in functions
 source ./.zshenv
+
+set -e
 
 report_heading 'Deploy Dotfiles: Part 2'
 
