@@ -121,8 +121,8 @@ set +o extendedglob
 ## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
 
 ## [++ ALIASES ++]
-( which jira >/dev/null && alias board="jira sprint list -s~Done" )
-( which jira >/dev/null && alias issues="jira issue list -a$(jira me) -s~Done" )
+which jira | grep -q jira && alias board="jira sprint list -s~Done"
+which jira | grep -q jira && alias issues="jira issue list -a$(jira me) -s~Done" 
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias grep="grep --color"
 alias l='ls -CF'
