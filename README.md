@@ -107,7 +107,7 @@ advise running this setup in a docker container or virtual machine.
 3. `./deploy-part-0.sh` to attempt to install preqs
 4. `./deploy-part-1.sh` to install and setup oh-my-zsh
 5. Press `control-D` to drop out of oh-my-zsh
-6. `./deploy-part-2.sh` to install the vast majority of the customisations
+6. `./deploy-part-2.zsh` to install the vast majority of the customisations
 7. By default it sets your git email address to be my address.
 You probably want to change this if you're not me!
 8. It will also attempt by default to log in to my Joplin account, which will
