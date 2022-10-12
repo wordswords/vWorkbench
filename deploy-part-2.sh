@@ -95,40 +95,37 @@ rm -rf ~/.dotfiles/.vim/pack/plugins/start/*
 mkdir -p ~/.dotfiles/.vim/pack/plugins/start/
 cd ~/.dotfiles/.vim/pack/plugins/start/ || exit 1
 
-set -x
-git submodule init
-set +x
+git clone git@github.com:Shougo/denite.nvim.git
+git clone git@github.com:Xuyuanp/nerdtree-git-plugin.git
+git clone git@github.com:ciaranm/securemodelines.git
+git clone git@github.com:dpelle/vim-LanguageTool
+git clone git@github.com:jelera/vim-javascript-syntax.git
+git clone git@github.com:junegunn/goyo.vim
+git clone git@github.com:junegunn/limelight.vim
+git clone git@github.com:kana/vim-textobj-user
+git clone git@github.com:reedes/vim-lexical
+git clone git@github.com:reedes/vim-litecorrect
+git clone git@github.com:reedes/vim-pencil
+git clone git@github.com:reedes/vim-textobj-quote
+git clone git@github.com:reedes/vim-textobj-sentence
+git clone git@github.com:reedes/vim-wordy.git
+git clone git@github.com:roxma/nvim-yarp.git
+git clone git@github.com:roxma/vim-hug-neovim-rpc
+git clone git@github.com:ryanoasis/vim-devicons.git
+git clone git@github.com:scrooloose/nerdtree.git
+git clone git@github.com:tomasr/molokai.git
+git clone git@github.com:tpope/vim-bundler.git
+git clone git@github.com:tpope/vim-fugitive.git
+git clone git@github.com:tpope/vim-git
+git clone git@github.com:vim-airline/vim-airline
 
-set +e # turn exit on error return off
-git submodule add git@github.com:Shougo/denite.nvim.git
-git submodule add git@github.com:Xuyuanp/nerdtree-git-plugin.git
-git submodule add git@github.com:ciaranm/securemodelines.git
-git submodule add git@github.com:dpelle/vim-LanguageTool
-git submodule add git@github.com:jelera/vim-javascript-syntax.git
-git submodule add git@github.com:junegunn/goyo.vim
-git submodule add git@github.com:junegunn/limelight.vim
-git submodule add git@github.com:kana/vim-textobj-user
-git submodule add git@github.com:reedes/vim-lexical
-git submodule add git@github.com:reedes/vim-litecorrect
-git submodule add git@github.com:reedes/vim-pencil
-git submodule add git@github.com:reedes/vim-textobj-quote
-git submodule add git@github.com:reedes/vim-textobj-sentence
-git submodule add git@github.com:reedes/vim-wordy.git
-git submodule add git@github.com:roxma/nvim-yarp.git
-git submodule add git@github.com:roxma/vim-hug-neovim-rpc
-git submodule add git@github.com:ryanoasis/vim-devicons.git
-git submodule add git@github.com:scrooloose/nerdtree.git
-git submodule add git@github.com:tomasr/molokai.git
-git submodule add git@github.com:tpope/vim-bundler.git
-git submodule add git@github.com:tpope/vim-fugitive.git
-git submodule add git@github.com:tpope/vim-git
-git submodule add git@github.com:vim-airline/vim-airline
-set -e # turn exit on error return back on
+set +e
+find ~/.dotfiles/.vim/pack/plugins/start/ -name '.git' -type d -exec rm -rf {} \;
+set -e
 
-set -x
-git submodule update --recursive --remote --merge
-git submodule update --init
-set +x
+# stop changes dirtying up the commit
+git restore --staged ~/.vim
+
 report_done
 
 report_progress 'Installing air-line molokai theme'
@@ -141,6 +138,13 @@ cp ~/.dotfiles/nerdtree_plugin_fix.diff ~/.vim/pack/plugins/start/nerdtree-git-p
 cd ~/.vim/pack/plugins/start/nerdtree-git-plugin/nerdtree_plugin
 git apply nerdtree_plugin_fix.diff
 cd -
+report_done
+
+report_progress 'Installing vim colorscheme'
+git clone git@github.com:shannonmoeller/vim-monokai256.git ./colorscheme
+mkdir -p ~/.vim/colors/
+mv ./colorscheme/colors/* ~/.vim/colors/
+rm -rf ./colorscheme
 report_done
 
 report_progress 'Installing vim9/coc'
@@ -161,11 +165,6 @@ vim -c 'CocInstall coc-vimlsp|q'
 vim -c 'CocUpdateSync|q'
 report_done
 
-report_progress 'Installing vim colorscheme'
-git clone https://github.com/shannonmoeller/vim-monokai256 ./colorscheme
-mv ./colorscheme/colors/* ~/.vim/colors/
-rm -rf ./colorscheme
-report_done
 
 report_progress 'Installing pynvim for python integration with vim'
 pip3 install --user pynvim

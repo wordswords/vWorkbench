@@ -1,0 +1,69 @@
+[submodule ".vim/pack/plugins/start/denite.nvim"]
+	path = .vim/pack/plugins/start/denite.nvim
+	url = git@github.com:Shougo/denite.nvim.git
+[submodule ".vim/pack/plugins/start/nerdtree-git-plugin"]
+	path = .vim/pack/plugins/start/nerdtree-git-plugin
+	url = git@github.com:Xuyuanp/nerdtree-git-plugin.git
+[submodule ".vim/pack/plugins/start/securemodelines"]
+	path = .vim/pack/plugins/start/securemodelines
+	url = git@github.com:ciaranm/securemodelines.git
+[submodule ".vim/pack/plugins/start/vim-LanguageTool"]
+	path = .vim/pack/plugins/start/vim-LanguageTool
+	url = git@github.com:dpelle/vim-LanguageTool
+[submodule ".vim/pack/plugins/start/vim-javascript-syntax"]
+	path = .vim/pack/plugins/start/vim-javascript-syntax
+	url = git@github.com:jelera/vim-javascript-syntax.git
+[submodule ".vim/pack/plugins/start/goyo.vim"]
+	path = .vim/pack/plugins/start/goyo.vim
+	url = git@github.com:junegunn/goyo.vim
+[submodule ".vim/pack/plugins/start/limelight.vim"]
+	path = .vim/pack/plugins/start/limelight.vim
+	url = git@github.com:junegunn/limelight.vim
+[submodule ".vim/pack/plugins/start/vim-textobj-user"]
+	path = .vim/pack/plugins/start/vim-textobj-user
+	url = git@github.com:kana/vim-textobj-user
+[submodule ".vim/pack/plugins/start/vim-lexical"]
+	path = .vim/pack/plugins/start/vim-lexical
+	url = git@github.com:reedes/vim-lexical
+[submodule ".vim/pack/plugins/start/vim-litecorrect"]
+	path = .vim/pack/plugins/start/vim-litecorrect
+	url = git@github.com:reedes/vim-litecorrect
+[submodule ".vim/pack/plugins/start/vim-pencil"]
+	path = .vim/pack/plugins/start/vim-pencil
+	url = git@github.com:reedes/vim-pencil
+[submodule ".vim/pack/plugins/start/vim-textobj-quote"]
+	path = .vim/pack/plugins/start/vim-textobj-quote
+	url = git@github.com:reedes/vim-textobj-quote
+[submodule ".vim/pack/plugins/start/vim-textobj-sentence"]
+	path = .vim/pack/plugins/start/vim-textobj-sentence
+	url = git@github.com:reedes/vim-textobj-sentence
+[submodule ".vim/pack/plugins/start/vim-wordy"]
+	path = .vim/pack/plugins/start/vim-wordy
+	url = git@github.com:reedes/vim-wordy.git
+[submodule ".vim/pack/plugins/start/nvim-yarp"]
+	path = .vim/pack/plugins/start/nvim-yarp
+	url = git@github.com:roxma/nvim-yarp.git
+[submodule ".vim/pack/plugins/start/vim-hug-neovim-rpc"]
+	path = .vim/pack/plugins/start/vim-hug-neovim-rpc
+	url = git@github.com:roxma/vim-hug-neovim-rpc
+[submodule ".vim/pack/plugins/start/vim-devicons"]
+	path = .vim/pack/plugins/start/vim-devicons
+	url = git@github.com:ryanoasis/vim-devicons.git
+[submodule ".vim/pack/plugins/start/nerdtree"]
+	path = .vim/pack/plugins/start/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git
+[submodule ".vim/pack/plugins/start/molokai"]
+	path = .vim/pack/plugins/start/molokai
+	url = git@github.com:tomasr/molokai.git
+[submodule ".vim/pack/plugins/start/vim-bundler"]
+	path = .vim/pack/plugins/start/vim-bundler
+	url = git@github.com:tpope/vim-bundler.git
+[submodule ".vim/pack/plugins/start/vim-fugitive"]
+	path = .vim/pack/plugins/start/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule ".vim/pack/plugins/start/vim-git"]
+	path = .vim/pack/plugins/start/vim-git
+	url = git@github.com:tpope/vim-git
+[submodule ".vim/pack/plugins/start/vim-airline"]
+	path = .vim/pack/plugins/start/vim-airline
+	url = git@github.com:vim-airline/vim-airline
