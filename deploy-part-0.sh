@@ -27,7 +27,7 @@ sudo apt install default-jdk -y
 sudo apt install zsh -y
 # Used for encrypted .secure dir
 sudo apt install ecryptfs-utils -y
-# Ctags used for fugative 
+# Ctags used for fugative
 sudo apt install exuberant-ctags -y
 # net-tools used for?
 sudo apt install net-tools -y
@@ -43,7 +43,3 @@ report_progress 'We will now attempt to enable automated unattended-upgrades'
 sudo apt install unattended-upgrades
 sudo dpkg-reconfigure unattended-upgrades
 report_done
-
-
-
-

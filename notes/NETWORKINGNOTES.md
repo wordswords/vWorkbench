@@ -15,7 +15,7 @@ another interface on the router. And visa versa. So:
 [LAN 1] <------------> [Router] <------------> [LAN 2] <----> [INTERNET]
             10.1.100.1/24   192.168.1.1/24
 ```
-The router has two IP addresses as it has two interfaces. They are each on 
+The router has two IP addresses as it has two interfaces. They are each on
 different networks. When it receives a packet from LAN 1 that is not destined
 for LAN 1's network, it converts it to LAN 2, and sends it to its gateway on the
 internet.
@@ -38,10 +38,10 @@ also use public DNS servers, such as Google's DNS 8.8.8.8 or CloudFlare's DNS
 
 Public DNS servers won't have any records of your internal network hostnames, so
 if you want "davids-computer.davids-network.local" hostnames, then you're going
-to have to have a DNS server on your internal network. 
+to have to have a DNS server on your internal network.
 
-DNS servers are easy to setup, a good choice is Pi-Hole which runs on a Raspberry Pi, 
-and includes a constantly updated list of 'bad' domain names from spammers, malware 
+DNS servers are easy to setup, a good choice is Pi-Hole which runs on a Raspberry Pi,
+and includes a constantly updated list of 'bad' domain names from spammers, malware
 etc, so provides some measure of protection.
 
 A local DNS server will forward internet domain names to a public DNS server
@@ -63,20 +63,20 @@ to IP addresses in that network range will be managed by this routing rule.
 for that network, e.g. 192.168.1.5
 * Interface is the network interface and local IP address for that interface.
 * Metric is the 'weighting' traffic is given to favour this routing rule. When
-there is more than one option to choose from for routing traffic, then the 
+there is more than one option to choose from for routing traffic, then the
 smaller number wins. So if you have an IP address accessible via two routes,
 and one has a metric of 1 and the other 2, then 1 will be chosen first, unless
 metric 1's interface is down.
 
 It also specifies a 'default route' which is identifiable as a Network of a
 subnet mask of '0.0.0.0' on the interface. It will have the lowest metric.
-This is the route which is used for any traffic not destined for any of the networks 
-in the routing table. There will be a gateway specified which is typically another 
-router with its own routing table. That other router will have a default route.. 
-and so on. 
+This is the route which is used for any traffic not destined for any of the networks
+in the routing table. There will be a gateway specified which is typically another
+router with its own routing table. That other router will have a default route..
+and so on.
 
-This is how traffic is handled on the internet, through routers passing on the 
-traffic to their default route until there is a relevant entry in the routing table, 
+This is how traffic is handled on the internet, through routers passing on the
+traffic to their default route until there is a relevant entry in the routing table,
 or the maximum number of hops is reached.
 
 ## Traceroute
@@ -85,7 +85,7 @@ To trace the life of a connection, you can use the network tool traceroute to
 connect to a particular IP address. It will map out the routers and routing tables
 that your connection goes through before it arrives at its destination.
 
-You can use this tool on different IP addresses to make sure your routing table 
+You can use this tool on different IP addresses to make sure your routing table
 is setup properly.
 
 ## Ports
@@ -99,8 +99,8 @@ with the 'TCP handshake', a sequence of packets to setup a connection and to mak
 the two hosts are ready to send/recieve data. TCP ports are bidirectional so data
 can be sent/recieved by both parties.
 
-Ports up to 1024 are priviledged ports and they are already predefined for existing 
-services. Non-root users on a NIX machine are not allowed to bind to them to setup a 
+Ports up to 1024 are priviledged ports and they are already predefined for existing
+services. Non-root users on a NIX machine are not allowed to bind to them to setup a
 listening service.
 
 Say Machine 2 connects to Machine 1:
@@ -181,7 +181,7 @@ So you can see the open ports listed, and the service they are normally associat
 ### Connecting to ports with Netcat
 
 You can use the handy utility 'Netcat' `nc` to setup traffic to and from ports. Here I mimic
-a very basic browser by connecting to port 80 (http) of www.google.com and issuing a 'GET /' 
+a very basic browser by connecting to port 80 (http) of www.google.com and issuing a 'GET /'
 HTTP command, which means get the default index page.
 
 `sudo apt install netcat`
@@ -191,7 +191,7 @@ david@W10-STUDIO-PC ~> nc google.com 80                                         
 GET /
 ```
 
-Google.com replies first with a HTTP header, and then the HTML body, eg the web page source 
+Google.com replies first with a HTTP header, and then the HTML body, eg the web page source
 in HTML (not shown because it's huge):
 
 ```
@@ -238,10 +238,5 @@ with `Control-D`.
 
 ## Firewalls
 
-Firewalls can be configured to restrict access of data traffic by port to a host. For 
+Firewalls can be configured to restrict access of data traffic by port to a host. For
 example with `ufw` on Ubuntu:
-
-
-
-
-

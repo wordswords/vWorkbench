@@ -27,5 +27,3 @@ git blame --line-porcelain "$@" | {
         printf "%-${abbrev}.${abbrev}s (%-40.40s) %s\\n" "$sha" "${kv[summary]:-}" "${line#$'\t'}"
     done
 } | eval "${GIT_PAGER:-cat}"
-
-

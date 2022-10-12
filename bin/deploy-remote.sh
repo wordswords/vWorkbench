@@ -2,7 +2,7 @@
 
 ##
 ### Script to copy local public ssh key to a given host
-### and setup an alias in ~/.zsh_aliases and ~/.bash_aliases 
+### and setup an alias in ~/.zsh_aliases and ~/.bash_aliases
 ### for quick keyed login
 ##
 
@@ -63,5 +63,3 @@ read -r answer
 
 # shellcheck source=/dev/null
 source ~/.zsh_aliases
-
-

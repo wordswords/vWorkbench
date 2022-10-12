@@ -43,4 +43,3 @@ get_os () {
   fi
   echo $baseos
 }
-

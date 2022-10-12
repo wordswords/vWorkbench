@@ -122,7 +122,7 @@ set +o extendedglob
 
 ## [++ ALIASES ++]
 which jira | grep -q jira && alias board="jira sprint list -s~Done"
-which jira | grep -q jira && alias issues="jira issue list -a$(jira me) -s~Done" 
+which jira | grep -q jira && alias issues="jira issue list -a$(jira me) -s~Done"
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias grep="grep --color"
 alias l='ls -CF'
@@ -148,4 +148,3 @@ fortuneprint
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-

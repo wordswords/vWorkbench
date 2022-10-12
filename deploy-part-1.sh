@@ -32,4 +32,3 @@ report_progress 'Installing oh-my-zsh'
 cd ~ || exit 1
 sh -c "$(wget --no-check-certificate https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 report_done
-

@@ -49,4 +49,3 @@ source ~/.zsh_aliases
 ## [++ FOR RUST ++]
 ls ~ | grep -q config >/dev/null 2>/dev/null && source "~/.cargo/env"
 ## [-- FOR RUST --
-

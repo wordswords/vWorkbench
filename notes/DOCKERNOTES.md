@@ -123,5 +123,3 @@ The current state of the app.
 ### docker-compose top
 
 The status of the processes running inside of each service (docker container).
-
-

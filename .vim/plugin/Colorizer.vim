@@ -1,1 +1,0 @@
-Colorizer/autoload/Colorizer.vim

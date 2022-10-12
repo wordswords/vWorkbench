@@ -28,5 +28,3 @@ The social media platforms display these better.
 * If you ARE going to repeat a word, do it on purpose to make a point.
 * If you are passionate/interested in the subject you're writing about, readers
 are more likely to find your work interesting.
-
-

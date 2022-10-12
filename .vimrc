@@ -32,7 +32,7 @@ set number                         " Show line numbers
 set relativenumber                 " Set numbering from current line
 set ruler                          " Show the cursor position all the time
 set scrolloff=3                    " Keep 3 lines when scrolling
-set shiftwidth=4                   " With indentation shifts, use 4 space tabs 
+set shiftwidth=4                   " With indentation shifts, use 4 space tabs
 set showcmd                        " Display incomplete commands
 set softtabstop=4                  " With tab key, use 4 space tabs
 set spelllang=en_gb                " Set dictionary to be UK spelling
@@ -216,7 +216,7 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 ""
 
 " GUI config
-autocmd GUIEnter * set visualbell t_vb= " Turn off visual and audio bell for GUI 
+autocmd GUIEnter * set visualbell t_vb= " Turn off visual and audio bell for GUI
 let g:prettier#autoformat = 1 " Prettier code formatter automatically files
 let g:rehash256 = 1 " Ensure 256 colour mode
 
@@ -276,7 +276,7 @@ autocmd VimEnter * wincmd p
 autocmd FileType nerdtree noremap <buffer> <c-h> <nop>
 autocmd FileType nerdtree noremap <buffer> <c-l> <nop>
 
-" if NERDTree is the last window present, i.e: when you've closed all other 
+" if NERDTree is the last window present, i.e: when you've closed all other
 " windows, then close vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")) | q | endif
 
@@ -339,7 +339,7 @@ endfunction
 
 function SetGitCommitFileOptions()
   setlocal colorcolumn+=51 " set additional marker for line wrap
-  setlocal wrap " Enable word wrap 
+  setlocal wrap " Enable word wrap
   setlocal textwidth=70
   setlocal spell " highlight spelling mistakes
 endfunction
@@ -390,9 +390,9 @@ let g:wordy#ring = [
 ""
 
 
-"" 
+""
 "" nerdtree-git-plugin CONFIG
-"" 
+""
 let g:NERDTreeGitStatusUseNerdFonts = 1 "default: 0
 let g:NERDTreeGitStatusShowClean = 1 "default: 0
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all' "heavy feature default:normal

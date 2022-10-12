@@ -110,4 +110,3 @@ First set the textwidth in vimrc using `set textwidth=80`. Then do:
 
 * `gt` - next tab
 * `gT` - prev tab
-

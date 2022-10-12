@@ -13,5 +13,3 @@ else
     echo -n $(git branch --show-current)
     printf "]\033[0m \n"
 fi
-
-

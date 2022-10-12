@@ -36,7 +36,7 @@ report_done
 
 report_progress 'Install LanguageTool grammar checker'
 cd ~/.dotfiles
-ls ./LanguageTool-5.2.zip || $( wget https://languagetool.org/download/LanguageTool-5.2.zip && unzip LanguageTool-5.2.zip ) 
+ls ./LanguageTool-5.2.zip || $( wget https://languagetool.org/download/LanguageTool-5.2.zip && unzip LanguageTool-5.2.zip )
 cd -
 report_done
 
@@ -190,7 +190,7 @@ set +x
 report_done
 
 report_progress 'Installing and configuring Joplin CLI notetaking app'
-( which joplin-cli 2>/dev/null && sudo npm update -g joplin ) || ( NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli ) 
+( which joplin-cli 2>/dev/null && sudo npm update -g joplin ) || ( NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli )
 report_done
 
 report_progress 'Import Joplin config'
@@ -215,7 +215,7 @@ report_done
 
 report_progress 'Customising Fortune random quoter'
 set -o extendedglob
-sudo rm -rf "/usr/share/games/fortunes/*" || echo '' 
+sudo rm -rf "/usr/share/games/fortunes/*" || echo ''
 set +o extendedglob
 sudo tar xzf ~/.dotfiles/gaiman-fortunes.tgz -C /usr/share/games/fortunes/
 report_done
@@ -254,4 +254,3 @@ you will have to set your terminal emulator to use said font.'''
 
 report_progress 'Deployment process finished'
 report_done
-
