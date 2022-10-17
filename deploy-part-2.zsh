@@ -124,7 +124,7 @@ find ~/.dotfiles/.vim/pack/plugins/start/ -name '.git' -type d -exec rm -rf {} \
 set -e
 
 # stop changes dirtying up the commit
-git restore --staged ~/.vim
+git restore --staged ~/.vim || echo ''
 
 report_done
 
@@ -159,7 +159,7 @@ cd ~/.config/coc/extensions
 echo '{"dependencies":{}}'> package.json
 
 # Change extension names to the extensions you need
-npm install coc-sh coc-tsserver coc-vimlsp coc-json coc-prettier coc-html coc-css coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+npm install coc-sh coc-tsserver coc-vimlsp coc-json coc-prettier coc-html coc-phpls coc-css coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 sudo npm install -g vim-language-server
 vim -c 'CocInstall coc-vimlsp|q'
 vim -c 'CocUpdateSync|q'
