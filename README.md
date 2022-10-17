@@ -323,6 +323,17 @@ the local directory.
 Also checkout the notes I took from the Docker Deep Dive book here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md](https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md)
 
+## Ubuntu Package Stuff
+
+1. `sudo apt install <package>` - install package
+2. `sudo apt remove <package>` - remove package
+3. `sudo apt-cache search <package>` - search for package description
+4. `dpkg -i <deb package>` - install deb file
+5. `dpkg -L | grep <package>` - list all installed packages, search for
+<package>
+6. `dpkg-query -L <package>` - show what files are installed by package
+7. `sudo update-alternatives --config php` - change binary used for php
+
 ## Joplin commandline
 
 1. Use the alias `notes` to open Joplin.
