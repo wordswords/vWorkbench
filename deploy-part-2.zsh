@@ -10,6 +10,8 @@ source ./.zshenv
 
 set -e
 
+SECURE_DIR="${HOME}"/.secure
+
 report_heading 'Deploy Dotfiles: Part 2'
 
 report_progress 'Running ctags'
