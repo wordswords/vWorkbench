@@ -334,6 +334,21 @@ Also checkout the notes I took from the Docker Deep Dive book here:
 6. `dpkg-query -L <package>` - show what files are installed by package
 7. `sudo update-alternatives --config php` - change binary used for php
 
+## Profiling VIM to find plugin speed problems
+
+[https://thoughtbot.com/blog/profiling-vim](https://thoughtbot.com/blog/profiling-vim)
+
+Do all of:
+1. `:profile start vim-profile.log` - starts profiling with log file name
+2. `:profile file *` - mask for which vim-script files to profile, in this case
+all of them
+3. `:profile func *` - mask for which vim-script functions to profile, in this
+case all of them
+4. `:e problemfile.php` - edit the problem file to start the profiling process
+5. `:qa` - when done quit vim and look at the log file`
+6. Open up vim-profile.log and search for 'Total time' to see the biggest
+culprits
+
 ## Joplin commandline
 
 1. Use the alias `notes` to open Joplin.
