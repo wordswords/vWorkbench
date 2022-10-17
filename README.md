@@ -10,7 +10,7 @@ I test this on my two main Linux computers, and my work Linux laptop.
 
 ### How to Decode the vim-airline Buffer Statusline
 
-Full docs: https://github.com/vim-airline/vim-airline
+Full docs: [https://github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
 
 1. The problems in the file are noted in the far right. If there are no problems
 there will be no red or orange expanded sections.
@@ -70,7 +70,7 @@ uptodate.
 1. You have to use a ‘Nerd font’ - this is a specially patched font with extra
 symbol characters for use in vim. This is not a prerequisite, it will show you
 how to install it at the end of the dotfile deployment.
-2. vim8 must be installed.
+2. VIM9 must be installed.
 3. git must be installed and setup with ssh for github.
 4. python3 and pip3 must be installed.
 5. For grammar checking Java 8 should be installed.
@@ -81,10 +81,10 @@ by executing `./deploy-part-0.sh`.
 
 ## What It Will Install
 
-It will install my VIM8 development environment and anything else I use
+It will install my VIM9 development environment and anything else I use
 regularly in my work. Currently it will:
 
-* Install my heavily customised version of VIM8 with coc.vim and other plugins
+* Install my heavily customised version of VIM9 with coc.vim and other plugins
 * Install latest version of Oh-my-ZSH and set your default shell to ZSH
 * Install Joplin the command-line open source Evernote replacement, and secure
 it with encryption, and download all my notes (presuming you are me).
@@ -149,8 +149,8 @@ directory.
 ## VIM Key bindings
 
 1. `<TAB>` to activate autocomplete plug ins.
-2. `,` is set to be the `<Leader>` key in VIM8, use it to trigger shortcuts.
-3. `<LEFT>` and `<RIGHT>` cursor arrows to move through the syntaxic errors.
+2. `,` is set to be the `<Leader>` key in VIM9, use it to trigger shortcuts.
+3. `<LEFT>` and `<RIGHT>` cursor arrows to move through the syntax errors.
 4. `<UP>` to toggle the file browser/NERDTree buffer.
 5. `>>` and `<<` to adjust indentation.
 6. `set mouse=a` is on, if you have any problems with copying and pasting just
@@ -187,12 +187,12 @@ use `gd` to jump to the original definition of the function in any file.
 21. If in some modes the backtick character does not insert, try typing it twice
 that should insert it properly.
 22. To open the URL under the cursor in the default browser use `gx` <- handy!
-23. To remove all trailing whitesapce from a file, use `:%s/\s\+$//e` <- handy!
+23. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
 24. To run Prettier on language servers that support this VS Code prettier,
 use `:Prettier`
 
 Check out this handy VIM cheatsheet I found here:
-https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md
+[https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)
 
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
 
@@ -217,12 +217,13 @@ replaced word in the current window
 ## Coc.vim Shortcuts on large software projects
 
 Coc.vim is meant to provide an approximate mapping for Visual Studio Code's
-plugins and IntelliSense features onto VIM8 and Neovim. It does this with various
-degrees of compatability. Often these features are not currently documented and require
+plugins and IntelliSense features onto VIM9 and Neovim. It does this with various
+degrees of compatibility. Often these features are not currently documented and require
 prior knowledge of how the Code editor does things. This URL is the documentation
-for the Code editor: https://docs.microsoft.com/en-us/visualstudio/ide/navigating-code?view=vs-2022
+for the Code editor:
+[https://docs.microsoft.com/en-us/visualstudio/ide/navigating-code?view=vs-2022](https://docs.microsoft.com/en-us/visualstudio/ide/navigating-code?view=vs-2022)
 
-This is an excellent introduction to Coc.vim's objectives: https://samroeca.com/coc-plugin.html
+This is an excellent introduction to Coc.vim's objectives: [https://samroeca.com/coc-plugin.html](https://samroeca.com/coc-plugin.html)
 
 1. `:CocDiagnostics` to show the errors in the current language server.
 2. `<LEFT>` for the prev diagnostic error, this should be on any programming
@@ -254,7 +255,7 @@ choose that version.
 5. When done, use `:Gwrite!`
 
 More info:
-http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
+[http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/](http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff)
 
 # Additional Notes
 
@@ -298,10 +299,10 @@ commit to `<filepath.bak>`, and then `rm <filepath>` and then
 `mv <filepath.bak> <filepath>`.
 
 Git Book:
-https://git-scm.com/book/en/v2
+[https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2)
 
 Check out my simpleton Git workflow here:
-https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md
+[https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md](https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md)
 
 ## Docker/Docker Compose stuff I forget
 
@@ -361,7 +362,7 @@ culprits
 8. Type `mn` to create a new note.
 9. Type `tm` to toggle metadata - user created time and lots of other metadata.
 10. Write all notes using Markdown so they display optimally across all clients.
-11. Press `<DEL>` to delete a selected note.
+11. Press ```<DEL>``` to delete a selected note.
 
 ## JIRA Go Client
 
