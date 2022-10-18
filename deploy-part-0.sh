@@ -9,13 +9,13 @@ report_heading 'Deploy Prerequisites: Part 0'
 report_progress 'We will now attempt to install the preqs under Ubuntu-compatible systems.'
 # fresh start
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
-# vim9
+# Vim 9
 sudo add-apt-repository ppa:jonathonf/vim -y
 sudo apt update -y && sudo apt upgrade -y
 sudo apt upgrade vim -y
-# speedtest-cli
+# speedtest from Ookla for testing internet connection speed
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
-sudo apt-get install speedtest
+sudo apt-get install speedtest -y
 # git
 sudo apt install git -y
 # Python 3 used for vim plugins
@@ -27,7 +27,7 @@ sudo apt install default-jdk -y
 sudo apt install zsh -y
 # Used for encrypted .secure dir
 sudo apt install ecryptfs-utils -y
-# Ctags used for fugative
+# Ctags used for fugitive
 sudo apt install exuberant-ctags -y
 # net-tools used for?
 sudo apt install net-tools -y
