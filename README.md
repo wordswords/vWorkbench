@@ -93,7 +93,7 @@ calendar app that I use with Google Calendar and Spotify. These are delivered
 via the snap installation process.
 * Ask if you want to install the excellent Golang JIRA CLI client which makes
 navigating JIRA boards less painful.
-* Setup 'fortune' with some Ubuntu server tips displayed on login.
+* Setup 'fortune' with random Neil Gaiman quotes displayed on login.
 
 You may well have to customise, mix and match, and edit these individual
 settings because  you won't have the authentication required for this whole
