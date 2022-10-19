@@ -430,14 +430,17 @@ endif
 """
 """ START of wikipedia2text lookup CONFIG
 """
-def LookupPopup(lookupcmd: string)
-    system(lookupcmd .. expand("<cword>"))
-        ->split("\n")
-        ->popup_atcursor({ "padding": [1, 1, 1, 1] })
+def s:LookupPopup()
+    set mouse=a
+    printf("wp2t -s %s", expand('<cword>'))
+         ->system()
+         ->split("\n")
+         ->popup_atcursor({ "padding": [1, 1, 1, 1] })
 enddef
 
 " See: https://github.com/chrisbra/wikipedia2text
-nnoremap <silent><leader>w :call <SID>LookupPopup("wp2t -s ")<CR>
+nnoremap <silent><leader>w :call <SID>LookupPopup()<CR>
+
 """
 """ END of wikipedia2text lookup CONFIG
 """
