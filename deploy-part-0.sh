@@ -39,6 +39,8 @@ sudo apt install ripgrep -y
 sudo apt install tree -y
 # w3m is used for wikipedia2text
 sudo apt install w3m -y
+# speedtest is really handy for testing your internet connection
+sudo apt install speedtest -y
 
 report_done
 
