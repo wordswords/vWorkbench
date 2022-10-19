@@ -246,7 +246,7 @@ First move the cursor over a word or line and then:
 
 1. `<leader> w` to lookup the current single word on wikipedia
 2. `<leader> b` to lookup the current line with git blame
-3. `<leader> j` to lookup the current number under cursor with jira-cli
+3. `<leader> j` to lookup the current issue number under cursor with jira-cli
 
 ## Git Fugitive Plugin in Vim
 
