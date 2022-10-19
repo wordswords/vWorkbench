@@ -448,10 +448,11 @@ nnoremap <silent><leader>w :call <SID>LookupPopup()<CR>
 
 def s:JiraIssueLookupPopup()
     set mouse=a
-    printf("jira view issue --plain %s", expand('<cword>'))
+    var popup_win = printf("jira view issue --plain %s", expand('<cword>'))
          ->system()
          ->split("\n")
          ->popup_atcursor({ "padding": [1, 1, 1, 1] })
+    call setbufvar(winbufnr(popup_win), '&filetype', 'git')
 enddef
 
 nnoremap <silent><leader>j :call <SID>JiraIssueLookupPopup()<CR>
