@@ -147,7 +147,7 @@ you have checked out.
 directory.
 15. Use `ref <jira issue number, no prefix>` to open firefox with the details
 of that issue.
-16. Use `lookup <jira issue number, with prefix>` to print the jira-cli ticket
+16. Use `lookup <jira issue number, no prefix>` to print the jira-cli ticket
 summary of that issue on the command line.
 
 ## VIM Key bindings
