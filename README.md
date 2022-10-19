@@ -240,6 +240,13 @@ e.g. method, variable etc.
 documentation for that feature.
 10. `:help coc-nvim` for the reference documentation for Coc.vim
 
+## VIM9 Lookup Functions
+
+First move the cursor over a word or line and then:
+
+1. `<leader> w` to lookup the current single word on wikipedia
+2. `<leader> b` to lookup the current line with git blame
+
 ## Git Fugitive Plugin in Vim
 
 1. ``:Git blame`` for line-by-line git blame on current file, select a commit
