@@ -123,6 +123,9 @@ set +o extendedglob
 ## [++ ALIASES ++]
 which jira | grep -q jira && alias board="jira sprint list -s~Done"
 which jira | grep -q jira && alias issues="jira issue list -a$(jira me) -s~Done"
+lookup() {
+    jira issue view --plain MB-$1
+}
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias grep="grep --color"
 alias l='ls -CF'
