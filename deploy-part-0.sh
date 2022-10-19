@@ -35,8 +35,11 @@ sudo apt install net-tools -y
 sudo apt install fortune-mod -y
 # Ripgrep used for :CocSearch
 sudo apt install ripgrep -y
-# tree is very useful for showing directory structures'
+# tree is very useful for showing directory structures
 sudo apt install tree -y
+# w3m is used for wikipedia2text
+sudo apt install w3m -y
+
 report_done
 
 report_progress 'We will now attempt to enable automated unattended-upgrades'
