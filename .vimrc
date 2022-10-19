@@ -442,6 +442,23 @@ nnoremap <silent><leader>w :call <SID>LookupPopup()<CR>
 """
 """ END of wikipedia2text lookup CONFIG
 """
+"""
+""" START of JiraIssueLookupPopup lookup CONFIG
+"""
+
+def s:JiraIssueLookupPopup()
+    set mouse=a
+    printf("jira view issue --plain %s", expand('<cword>'))
+         ->system()
+         ->split("\n")
+         ->popup_atcursor({ "padding": [1, 1, 1, 1] })
+enddef
+
+nnoremap <silent><leader>j :call <SID>JiraIssueLookupPopup()<CR>
+"""
+""" END of JiraIssueLookupPopup lookup CONFIG
+"""
+
 
 """
 """ START of GitBlaneLine lookup CONFIG
