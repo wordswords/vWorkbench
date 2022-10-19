@@ -424,12 +424,12 @@ if executable('bash-language-server')
         \ })
 endif
 """
-""" END of bash-language-server CONFIG
-"""
-
-"""
 """ START of wikipedia2text lookup CONFIG
 """
+" See: https://github.com/chrisbra/wikipedia2text
+" Assumes you have installed the wikipedia2text script to your path
+" with the filename 'wp2t'
+
 def s:LookupPopup()
     set mouse=a
     printf("wp2t -s %s", expand('<cword>'))
@@ -438,11 +438,27 @@ def s:LookupPopup()
          ->popup_atcursor({ "padding": [1, 1, 1, 1] })
 enddef
 
-" See: https://github.com/chrisbra/wikipedia2text
 nnoremap <silent><leader>w :call <SID>LookupPopup()<CR>
-
 """
 """ END of wikipedia2text lookup CONFIG
+"""
+
+"""
+""" START of GitBlaneLine lookup CONFIG
+"""
+def s:GitBlameLine()
+    var popup_win = printf("git -C %s blame -s -L %s,%s -- %s | head -c 8", expand('%:h'), line('.'), line('.'), expand('%:p'))
+        ->system()
+        ->printf("git -C " .. expand('%:h') .. " log --stat -1 %s")
+        ->system()
+        ->split("\n")
+        ->popup_atcursor({ "padding": [0, 1, 1, 1] })
+    call setbufvar(winbufnr(popup_win), '&filetype', 'git')
+enddef
+
+nnoremap <silent><leader>b :call <SID>GitBlameLine()<CR>
+"""
+""" END of GitBlaneLine lookup CONFIG
 """
 
 """
