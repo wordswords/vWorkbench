@@ -42,6 +42,13 @@ ls ./LanguageTool-5.2.zip || $( wget https://languagetool.org/download/LanguageT
 cd -
 report_done
 
+report_progress 'Install wikipedia2text'
+cd ~/.dotfiles
+( cd ./wikipedia2text/ && git pull ) || cd ~/.dotfiles && git clone git@github.com:chrisbra/wikipedia2text.git
+ln -s ~/.dotfiles/wikipedia2text/wikipedia2text ~/.dotfiles/bin/wp2t
+cd -
+report_done
+
 report_progress 'Removing existing dotfiles'
 rm -rf ~/.vim
 rm -f ~/.vimrc

@@ -427,15 +427,29 @@ endif
 """ END of bash-language-server CONFIG
 """
 
-""""
-"""" START of LanguageTool grammar checker plugin CONFIG
-""""
+"""
+""" START of wikipedia2text lookup CONFIG
+"""
+def LookupPopup(lookupcmd: string)
+    system(lookupcmd .. expand("<cword>"))
+        ->split("\n")
+        ->popup_atcursor({ "padding": [1, 1, 1, 1] })
+enddef
+
+" See: https://github.com/chrisbra/wikipedia2text
+nnoremap <silent><leader>w :call <SID>LookupPopup("wp2t -s ")<CR>
+"""
+""" END of wikipedia2text lookup CONFIG
+"""
+
+"""
+""" START of LanguageTool grammar checker plugin CONFIG
+"""
 let g:languagetool_jar="~/.dotfiles/LanguageTool-5.2/languagetool-commandline.jar"
 let g:languagetool_lang="en-GB"
 hi LanguageToolGrammarError  guisp=blue gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=blue term=underline cterm=none
 hi LanguageToolSpellingError guisp=red  gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
-""""
-"""" END of LanguageTool grammar checker plugin CONFIG
-""""
-autocmd BufWritePost Jenkinsfile !ssh jenkins.dev.kaboodle.co.uk -p9669 declarative-linter < %
+"""
+""" END of LanguageTool grammar checker plugin CONFIG
+"""
 autocmd BufWritePost Jenkinsfile !ssh jenkins.dev.kaboodle.co.uk -p9669 declarative-linter < %

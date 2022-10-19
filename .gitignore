@@ -4,6 +4,9 @@
 .bash_aliases
 .jira-cli/**
 .vim/**
+wikipedia2text/
+wikipedia2text/**
+bin/wp2t
 LanguageTool-5.2.zip
 LanguageTool-5.2/**
 iterm2/com.googlecode.iterm2.plist*
