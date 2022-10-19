@@ -145,6 +145,10 @@ you have checked out.
 13. Use `ports` to list the open ports on the system in a readable way.
 14. Use `tree` for a handy diagram of the full directory tree under the current
 directory.
+15. Use `ref <jira issue number, no prefix>` to open firefox with the details
+of that issue.
+16. Use `lookup <jira issue number, with prefix>` to print the jira-cli ticket
+summary of that issue on the command line.
 
 ## VIM Key bindings
 
