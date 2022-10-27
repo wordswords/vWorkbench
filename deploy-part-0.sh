@@ -41,6 +41,8 @@ sudo apt install tree -y
 sudo apt install w3m -y
 # speedtest is really handy for testing your internet connection
 sudo apt install speedtest -y
+# reminder to take screen breaks
+sudo apt install workrave -y
 
 report_done
 
