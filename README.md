@@ -196,6 +196,8 @@ that should insert it properly.
 use `:Prettier`
 25. ``<Control> - C`` - select text in visual mode and then copy to system
 clipboard.
+26. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
+word-wrap)
 
 Check out this handy VIM cheatsheet I found here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)
