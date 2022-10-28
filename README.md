@@ -194,6 +194,8 @@ that should insert it properly.
 23. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
 24. To run Prettier on language servers that support this VS Code prettier,
 use `:Prettier`
+25. ``<Control> - C`` - select text in visual mode and then copy to system
+clipboard.
 
 Check out this handy VIM cheatsheet I found here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)

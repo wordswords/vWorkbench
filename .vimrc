@@ -240,6 +240,9 @@ noremap q <Nop>
 noremap <F1> :echo<CR>
 inoremap <F1> <c-o>:echo<CR>
 
+" Copy from visual mode to system keyboard
+vnoremap <C-c> "+y
+
 " Vim fonts for gVIM
 set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Nerd\ Font\ Complete:h18
 
