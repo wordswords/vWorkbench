@@ -156,48 +156,49 @@ summary of that issue on the command line.
 2. `,` is set to be the `<Leader>` key in VIM9, use it to trigger shortcuts.
 3. `<LEFT>` and `<RIGHT>` cursor arrows to move through the syntax errors.
 4. `<UP>` to toggle the file browser/NERDTree buffer.
-5. `>>` and `<<` to adjust indentation.
-6. `set mouse=a` is on, if you have any problems with copying and pasting just
+5. `<DOWN>` to run LanguageToolCheck.
+6. `>>` and `<<` to adjust indentation.
+7. `set mouse=a` is on, if you have any problems with copying and pasting just
 `:set mouse=` beforehand.
-7. `K` to bring up documentation on the current term and use the mouse wheel to
+8. `K` to bring up documentation on the current term and use the mouse wheel to
 scroll the info.
-8. `gd` to go to the definition of function or class.
-9. `:G <git command>` to run a git command via vim-fugative, for example
+9. `gd` to go to the definition of function or class.
+10. `:G <git command>` to run a git command via vim-fugative, for example
 `git diff`, `git add`.
-10. Use `/` and start typing to quickly jump to a certain term across all open
+11. Use `/` and start typing to quickly jump to a certain term across all open
 buffers.
-11. Use `u` to go up a root directory on nerdtree.
-12. Use `<F12>` to toggle distraction-free writing mode.
+12. Use `u` to go up a root directory on nerdtree.
+13. Use `<F12>` to toggle distraction-free writing mode.
 13. Use `:Format` to format a buffer by the coc language server's prettifier,
 where it exists.
-14. Type `:Wordy<space><tab>` to use the Wordy proofreading tool to check for
+15. Type `:Wordy<space><tab>` to use the Wordy proofreading tool to check for
 poor words while writing.
-15. Type `:LanguageToolCheck` to use the command-line grammar and spelling
+16. Type `:LanguageToolCheck` to use the command-line grammar and spelling
 checker (requires Java 8).
-16. Vim has a weird non-greedy regex match `.\{-}` which means `.+?`. So to
+17. Vim has a weird non-greedy regex match `.\{-}` which means `.+?`. So to
 strip a document of all its html tags use this: `:%s/<.\{-}>/ /g`.
-17. To search all instances of `git clone` and replace them with `git submodule
+18. To search all instances of `git clone` and replace them with `git submodule
 add` on a visual block, use `:<','>s/git clone/git submodule add/`.
-18. To feed a visual block through an external command, for example, the NIX
+19. To feed a visual block through an external command, for example, the NIX
 external sort command, `:'<,'>!sort` - this will sort the visual block lines
 alphabetically.
-19. To execute a command on all lines in a visual block, use the norm
+20. To execute a command on all lines in a visual block, use the norm
 command, for example: `:'<,'> norm i##` after selecting in visual mode to comment
 all lines out with a `##`. For the reverse, to uncomment and delete the first
 character, use `:'<,'> norm x` after selecting in visual mode.
-20. To generate a ctags index for all functions/methods in all languages, run
+21. To generate a ctags index for all functions/methods in all languages, run
 this command at the root of the source control repo `!ctags -R *`. Then you can
 use `gd` to jump to the original definition of the function in any file.
-21. If in some modes the backtick character does not insert, try typing it twice
+22. If in some modes the backtick character does not insert, try typing it twice
 that should insert it properly.
-22. To open the URL under the cursor in the default browser use `gx` <- handy!
-23. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
-24. To run Prettier on language servers that support this VS Code prettier,
+23. To open the URL under the cursor in the default browser use `gx` <- handy!
+24. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
+25. To run Prettier on language servers that support this VS Code prettier,
 use `:Prettier`
-25. ``<Control> - C`` - select text in visual mode and then copy to system
+26. ``<Control> - C`` - select text in visual mode and then copy to system
 clipboard.
-25. ``<Control> - <Shift> - V`` paste into VIM from system clipboard
-27. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
+27. ``<Control> - <Shift> - V`` paste into VIM from system clipboard
+28. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
 word-wrap)
 
 Check out this handy VIM cheatsheet I found here:

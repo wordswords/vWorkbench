@@ -317,8 +317,8 @@ function SetTextAndMarkdownOptions()
   "" scroll through spelling/grammar errors
   noremap <LEFT> [s " last spelling/grammar error
   noremap <RIGHT> ]s " next spelling/grammar error
-  noremap <UP> :LanguageToolCheck<CR>
-  noremap <DOWN> :NERDTreeToggle<CR>
+  noremap <UP> :NERDTreeToggle<CR>
+  noremap <DOWN> :LanguageToolCheck<CR>
 endfunction
 
 function SetMakefileOptions()
