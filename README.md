@@ -348,7 +348,7 @@ Also checkout the notes I took from the Docker Deep Dive book here:
 3. `sudo apt-cache search <package>` - search for package description
 4. `dpkg -i <deb package>` - install deb file
 5. `dpkg -L | grep <package>` - list all installed packages, search for
-<package>
+`<package>`
 6. `dpkg-query -L <package>` - show what files are installed by package
 7. `sudo update-alternatives --config php` - change binary used for php
 
