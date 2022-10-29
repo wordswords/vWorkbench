@@ -44,8 +44,11 @@ report_done
 
 report_progress 'Install wikipedia2text'
 cd ~/.dotfiles
-( cd ./wikipedia2text/ && git pull ) || cd ~/.dotfiles && git clone git@github.com:chrisbra/wikipedia2text.git
-ln -s ~/.dotfiles/wikipedia2text/wikipedia2text ~/.dotfiles/bin/wp2t
+
+if [ ! -d ./wikipedia2text ]; then
+    cd ~/.dotfiles && git clone git@github.com:chrisbra/wikipedia2text.git
+fi
+ln -fs ~/.dotfiles/wikipedia2text/wikipedia2text ~/.dotfiles/bin/wp2t
 cd -
 report_done
 
@@ -138,7 +141,7 @@ git restore --staged ~/.vim || echo ''
 report_done
 
 report_progress 'Installing air-line molokai theme'
-mkdir -p ~/.vim/autoload/airline/themes                                                                                                         master!
+mkdir -p ~/.vim/autoload/airline/themes
 cp ~/.dotfiles/molokai.vim ~/.vim/autoload/airline/themes
 report_done
 
