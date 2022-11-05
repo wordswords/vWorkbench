@@ -266,14 +266,15 @@ and press 'o' to open the commit diff with the commit message in a new window.
 ## Git Fugitive Mergetool
 
 1. Whenever you have a merge conflict, use `git mergetool` to open this.
-2. Buffers are setup so [local branch | resulting mergefile | merge in branch]
-3. Use `[c` and `]c` to navigate through the conflicts
-4. Go to local branch OR merge in branch, select the conflict, and use `dp` to
-choose that version.
-5. When done, use `:Gwrite!`
+2. If you want to just use one entire side, move your cursor to that side with <Ctrl-w> h, for example. Then do :Gwrite!.
+3. Buffers are setup so [YOUR local branch (2) | resulting mergefile (1) | THEIR merge in branch (3) ]
+4. Use `]c` and `[c` to navigate through the conflicts
+5. Use the center pane to navigate. use `d2o` to obtain from YOUR local branch, use `d3o` to obtain from THEIR branch.
+6. Go to local branch OR merge in branch, select the conflict, and use `dp` to choose that version.
+7. When done, use `:wq`
 
 More info:
-[http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/](http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff)
+[https://www.youtube.com/watch?v=iPk4nOLj8w4](https://www.youtube.com/watch?v=iPk4nOLj8w4)
 
 # Additional Notes
 
