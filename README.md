@@ -270,7 +270,7 @@ and press 'o' to open the commit diff with the commit message in a new window.
 3. Buffers are setup so [YOUR local branch (2) | resulting mergefile (1) | THEIR merge in branch (3) ]
 4. Use `]c` and `[c` to navigate through the conflicts
 5. Use the center pane to navigate. use `d2o` to obtain from YOUR local branch, use `d3o` to obtain from THEIR branch.
-6. Go to local branch OR merge in branch, select the conflict, and use `dp` to choose that version.
+6. OR go to local branch OR merge in branch, select the conflict, and use `dp` to choose that version.
 7. When done, use `:wq`
 
 More info:
