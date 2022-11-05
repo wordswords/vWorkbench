@@ -136,7 +136,7 @@ you have checked out.
 8. Use `lockup` to encypt the secure directory. Remember to lock up after yourself!
 9. Use `unlock` to un-encypt the secure directory. Remember to lock up after
    yourself!
-10. Use `vi` instead of `vim` to load a seperate minimal vim config, useful if
+10. Use `vi` instead of `vim` to load a separate minimal vim config, useful if
     there are problems with the vim config.
 11. Use `notes` to un-encrypt the secure directory, launch Joplin, and then on
     exit, re-enrypt the directory.
@@ -301,10 +301,10 @@ master/main into your current local branch
 13. When all goes horribly wrong, backup your changed files by manually
 `mv`-ing them out of the repo directory, delete your entire local copy, checkout
 again from master, and rebuild your commit by copying the backed up files in.
-14. Use github PR's 'changed files' tab for exactly what has changed, but don't
+14. Use Github PR's 'changed files' tab for exactly what has changed, but don't
 forget the commits tab, there should only usually be one commit per PR. And
 remember the revert button on Github PRs.
-15. `git logline` for my custom oneline per commit log alias which includes
+15. `git logline` for my custom one line per commit log alias which includes
 useful extra information, see: https://ma.ttias.be/pretty-git-log-in-one-line/
 16. `git checkout -- <filepath>` - this will overwrite your local changes to
 the file at <filepath> and restore the version in the latest commit on your
