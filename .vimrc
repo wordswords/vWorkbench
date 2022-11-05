@@ -51,6 +51,9 @@ set wildmode=list:longest,full
 "" map the <Leader> character to comma
 let mapleader=","
 
+"" Remove whitespace on file save
+autocmd BufWritePre * :%s/\s\+$//e
+
 "" remap control-backspace to delete the last word in insert mode
 inoremap <C-H> <C-W>
 
