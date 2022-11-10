@@ -175,30 +175,28 @@ where it exists.
 poor words while writing.
 16. Type `:LanguageToolCheck` to use the command-line grammar and spelling
 checker (requires Java 8).
-17. Vim has a weird non-greedy regex match `.\{-}` which means `.+?`. So to
-strip a document of all its html tags use this: `:%s/<.\{-}>/ /g`.
-18. To search all instances of `git clone` and replace them with `git submodule
+17. To search all instances of `git clone` and replace them with `git submodule
 add` on a visual block, use `:<','>s/git clone/git submodule add/`.
-19. To feed a visual block through an external command, for example, the NIX
+18. To feed a visual block through an external command, for example, the NIX
 external sort command, `:'<,'>!sort` - this will sort the visual block lines
 alphabetically.
-20. To execute a command on all lines in a visual block, use the norm
+19. To execute a command on all lines in a visual block, use the norm
 command, for example: `:'<,'> norm i##` after selecting in visual mode to comment
 all lines out with a `##`. For the reverse, to uncomment and delete the first
 character, use `:'<,'> norm x` after selecting in visual mode.
-21. To generate a ctags index for all functions/methods in all languages, run
+20. To generate a ctags index for all functions/methods in all languages, run
 this command at the root of the source control repo `!ctags -R *`. Then you can
 use `gd` to jump to the original definition of the function in any file.
-22. If in some modes the backtick character does not insert, try typing it twice
+21. If in some modes the backtick character does not insert, try typing it twice
 that should insert it properly.
-23. To open the URL under the cursor in the default browser use `gx` <- handy!
-24. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
-25. To run Prettier on language servers that support this VS Code prettier,
+22. To open the URL under the cursor in the default browser use `gx` <- handy!
+23. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
+24. To run Prettier on language servers that support this VS Code prettier,
 use `:Prettier`
-26. ``<Control> - C`` - select text in visual mode and then copy to system
+25. ``<Control> - C`` - select text in visual mode and then copy to system
 clipboard.
-27. ``<Control> - <Shift> - V`` paste into VIM from system clipboard
-28. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
+26. ``<Control> - <Shift> - V`` paste into VIM from system clipboard
+27. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
 word-wrap)
 
 Check out this handy VIM cheatsheet I found here:
@@ -265,7 +263,7 @@ and press 'o' to open the commit diff with the commit message in a new window.
 2. `Enter` to open a diff of the chosen commit in current window
 3. `C` `A` and `D` resize the blame window up until the commit, author and date
 respectively.
-4. `g?` displays helpw ith more commands.
+4. `g?` displays help with more commands.
 
 ## Git Fugitive Status Window
 
@@ -277,10 +275,9 @@ interactive.
 5. `g?` displays help with more commands
 6. `:GLog` displays a log message for the current selected file in a quickfix
 window
-6a. `:copen` to open the Quickfix window
-7a. `:cnext` and `:cprevious` navigate the quickfix window by displaying
+7. `:copen` to open the Quickfix window
+8. `:cnext` and `:cprevious` navigate the quickfix window by displaying
 different file versions
-
 
 ## Git Fugitive Mergetool
 
@@ -294,6 +291,52 @@ different file versions
 
 More info:
 [https://www.youtube.com/watch?v=iPk4nOLj8w4](https://www.youtube.com/watch?v=iPk4nOLj8w4)
+
+## VIM's inbuilt terminal
+
+1. You can run arbitary commands such as ``:term ls -al`` and see the results in
+an updating terminal.
+2. `<CTRL>-W "` will paste the contents of the clipboard into the terminal.
+3. `:terminal` just to open an empty terminal
+
+## VIM Regex
+
+1. Turn on "Very magic mode" for VIM when you have to enter a regex that
+includes a lot of special characters. `:s/\(cat \) hunting \(mice\)/\2 hunting
+\1` then becomes `:s/\v(cat) hunting (mice)/\2 hunting \1`. Trigger 'very magic
+mode' by prefixing the regex with `\v`.
+2. Find a full table of VIM regex syntax with `:help ordinary-atom`
+3. Use group marks `\1` `\2` etc to identify characters captured by a capture
+group, e.g. surrounded by `(` and `)`. For example, `:s/v(cat) hunting (mice)/\2
+hunting \1` replaces 'cat' hunting 'mice' with 'mice' hunting 'cat.
+4. Vim has a weird non-greedy regex match `.\{-}` which means `.+?`. So to
+strip a document of all its html tags use this: `:%s/<.\{-}>/ /g`.
+
+## Vimgrep
+
+1. You can search across a bunch of files with the following syntax:
+`:vimgrep /cat/ **/*.py` will search for all insances of 'cat' in all the
+python files down from the current path.
+
+## Processing lots of files with `:argdo`
+
+You can process a number of files using arglist in VIM.
+
+1. `:arg` defines the arglist
+2. `:argdo` allows you to execute a command on all the files in the arglist
+3. `:args` describes the list of files in the arglist
+
+For example if we wanted to replace all instances of 'animal' in every Python
+file recursively from the current path, we would do the following:
+
+`:arg **/*.py`
+`:argdo **/\<animal\>/creature/qa | update
+
+``**/*.py`` selects all python files down from the current dir recurisvely
+`:argo` executes a command on all files from current dir recurisvely.
+`%s/\<animal\>/creature/qa` replaces every occurance of 'animal' with 'creature'
+in every file - `a`, without raising errors if the matches are not found - `q`
+`update` saves the file only if it has been modified
 
 # Additional Notes
 
