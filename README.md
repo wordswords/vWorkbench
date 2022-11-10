@@ -198,6 +198,13 @@ clipboard.
 26. ``<Control> - <Shift> - V`` paste into VIM from system clipboard
 27. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
 word-wrap)
+28. `%` when positioned over a code bracket to skip to the next code bracket
+29. `>i{` when positioned over a code bracket to ident the code up to the next
+code bracket
+30. `:map` to show the keymappings made by your plugins and .vimrc. Note this is
+somewhat difficult to follow.
+31. `*` and `#` will search forward and backward through the file with the exact
+same word that is under the cursor in normal mode.
 
 Check out this handy VIM cheatsheet I found here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)
@@ -294,7 +301,7 @@ More info:
 
 ## VIM's inbuilt terminal
 
-1. You can run arbitary commands such as ``:term ls -al`` and see the results in
+1. You can run arbitrary commands such as ``:term ls -al`` and see the results in
 an updating terminal.
 2. `<CTRL>-W "` will paste the contents of the clipboard into the terminal.
 3. `:terminal` just to open an empty terminal
@@ -312,11 +319,21 @@ hunting \1` replaces 'cat' hunting 'mice' with 'mice' hunting 'cat.
 4. Vim has a weird non-greedy regex match `.\{-}` which means `.+?`. So to
 strip a document of all its html tags use this: `:%s/<.\{-}>/ /g`.
 
-## Vimgrep
+## Wildcards for searching and editing files and directories
 
 1. You can search across a bunch of files with the following syntax:
-`:vimgrep /cat/ **/*.py` will search for all insances of 'cat' in all the
+`:vimgrep /cat/ **/*.py` will search for all instances of 'cat' in all the
 python files down from the current path.
+2. You can open a file without knowing the directory it is in, as long as it is
+below the current directory, by `:e **/bla.py`. This will search for a file
+'bla.py' recursively from the current directory.  If there is more than one file
+found, it will error.
+3. `help file-search` for more wildcard options
+4. If you want to edit a number of files called bla.py, use `:args **/bla.py`.
+This will open all the files one by one, use `:next` to edit the next file in
+the list. Use `:prev` to reopen a file previously edited. `:last` and `:first`
+also work, and `:args` displays the whole list.
+
 
 ## Processing lots of files with `:argdo`
 
