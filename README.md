@@ -258,10 +258,29 @@ First move the cursor over a word or line and then:
 2. `<leader> b` to lookup the current line with git blame
 3. `<leader> j` to lookup the current issue number under cursor with jira-cli
 
-## Git Fugitive Plugin in Vim
+## Git Fugitive Blame Window
 
-1. ``:Git blame`` for line-by-line git blame on current file, select a commit
+1. `:Gblame` for line-by-line git blame on current file, select a commit
 and press 'o' to open the commit diff with the commit message in a new window.
+2. `Enter` to open a diff of the chosen commit in current window
+3. `C` `A` and `D` resize the blame window up until the commit, author and date
+respectively.
+4. `g?` displays helpw ith more commands.
+
+## Git Fugitive Status Window
+
+1. `:Gstatus` to bring up the git status message, but this time it's
+interactive.
+2. `-` to stage or unstage a file
+3. `cc` or `:Gitcommit` will commit the staged files
+4. `D` or `:GDiff` will open a diff
+5. `g?` displays help with more commands
+6. `:GLog` displays a log message for the current selected file in a quickfix
+window
+6a. `:copen` to open the Quickfix window
+7a. `:cnext` and `:cprevious` navigate the quickfix window by displaying
+different file versions
+
 
 ## Git Fugitive Mergetool
 
