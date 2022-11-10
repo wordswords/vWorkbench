@@ -347,7 +347,7 @@ For example if we wanted to replace all instances of 'animal' in every Python
 file recursively from the current path, we would do the following:
 
 `:arg **/*.py`
-`:argdo **/\<animal\>/creature/qa | update
+`:argdo **/\<animal\>/creature/qa | update`
 
 ``**/*.py`` selects all python files down from the current dir recurisvely
 `:argo` executes a command on all files from current dir recurisvely.
