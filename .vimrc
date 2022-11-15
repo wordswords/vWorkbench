@@ -51,6 +51,9 @@ set wildmode=list:longest,full
 "" map the <Leader> character to comma
 let mapleader=","
 
+"" Remove whitespace on file save
+autocmd BufWritePre * :%s/\s\+$//e
+
 "" remap control-backspace to delete the last word in insert mode
 inoremap <C-H> <C-W>
 
@@ -240,6 +243,9 @@ noremap q <Nop>
 noremap <F1> :echo<CR>
 inoremap <F1> <c-o>:echo<CR>
 
+" Copy from visual mode to system keyboard
+vnoremap <C-c> "+y
+
 " Vim fonts for gVIM
 set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Nerd\ Font\ Complete:h18
 
@@ -314,8 +320,8 @@ function SetTextAndMarkdownOptions()
   "" scroll through spelling/grammar errors
   noremap <LEFT> [s " last spelling/grammar error
   noremap <RIGHT> ]s " next spelling/grammar error
-  noremap <UP> :LanguageToolCheck<CR>
-  noremap <DOWN> :NERDTreeToggle<CR>
+  noremap <UP> :NERDTreeToggle<CR>
+  noremap <DOWN> :LanguageToolCheck<CR>
 endfunction
 
 function SetMakefileOptions()

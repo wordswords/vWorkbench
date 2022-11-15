@@ -121,8 +121,10 @@ set +o extendedglob
 ## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
 
 ## [++ ALIASES ++]
-which jira | grep -q jira && alias board="jira sprint list -s~Done"
-which jira | grep -q jira && alias issues="jira issue list -a$(jira me) -s~Done"
+if [[ $(which jira) == 0 ]]; then
+    alias board="jira sprint list -s~Done"
+    alias issues="jira issue list -a$(jira me) -s~Done"
+fi
 lookup() {
     jira issue view --plain MB-$1
 }

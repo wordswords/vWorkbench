@@ -136,7 +136,7 @@ you have checked out.
 8. Use `lockup` to encypt the secure directory. Remember to lock up after yourself!
 9. Use `unlock` to un-encypt the secure directory. Remember to lock up after
    yourself!
-10. Use `vi` instead of `vim` to load a seperate minimal vim config, useful if
+10. Use `vi` instead of `vim` to load a separate minimal vim config, useful if
     there are problems with the vim config.
 11. Use `notes` to un-encrypt the secure directory, launch Joplin, and then on
     exit, re-enrypt the directory.
@@ -156,26 +156,25 @@ summary of that issue on the command line.
 2. `,` is set to be the `<Leader>` key in VIM9, use it to trigger shortcuts.
 3. `<LEFT>` and `<RIGHT>` cursor arrows to move through the syntax errors.
 4. `<UP>` to toggle the file browser/NERDTree buffer.
-5. `>>` and `<<` to adjust indentation.
-6. `set mouse=a` is on, if you have any problems with copying and pasting just
+5. `<DOWN>` to run LanguageToolCheck.
+6. `>>` and `<<` to adjust indentation.
+7. `set mouse=a` is on, if you have any problems with copying and pasting just
 `:set mouse=` beforehand.
-7. `K` to bring up documentation on the current term and use the mouse wheel to
+8. `K` to bring up documentation on the current term and use the mouse wheel to
 scroll the info.
-8. `gd` to go to the definition of function or class.
-9. `:G <git command>` to run a git command via vim-fugative, for example
+9. `gd` to go to the definition of function or class.
+10. `:G <git command>` to run a git command via vim-fugative, for example
 `git diff`, `git add`.
-10. Use `/` and start typing to quickly jump to a certain term across all open
+11. Use `/` and start typing to quickly jump to a certain term across all open
 buffers.
-11. Use `u` to go up a root directory on nerdtree.
-12. Use `<F12>` to toggle distraction-free writing mode.
+12. Use `u` to go up a root directory on nerdtree.
+13. Use `<F12>` to toggle distraction-free writing mode.
 13. Use `:Format` to format a buffer by the coc language server's prettifier,
 where it exists.
-14. Type `:Wordy<space><tab>` to use the Wordy proofreading tool to check for
+15. Type `:Wordy<space><tab>` to use the Wordy proofreading tool to check for
 poor words while writing.
-15. Type `:LanguageToolCheck` to use the command-line grammar and spelling
+16. Type `:LanguageToolCheck` to use the command-line grammar and spelling
 checker (requires Java 8).
-16. Vim has a weird non-greedy regex match `.\{-}` which means `.+?`. So to
-strip a document of all its html tags use this: `:%s/<.\{-}>/ /g`.
 17. To search all instances of `git clone` and replace them with `git submodule
 add` on a visual block, use `:<','>s/git clone/git submodule add/`.
 18. To feed a visual block through an external command, for example, the NIX
@@ -194,6 +193,18 @@ that should insert it properly.
 23. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
 24. To run Prettier on language servers that support this VS Code prettier,
 use `:Prettier`
+25. ``<Control> - C`` - select text in visual mode and then copy to system
+clipboard.
+26. ``<Control> - <Shift> - V`` paste into VIM from system clipboard
+27. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
+word-wrap)
+28. `%` when positioned over a code bracket to skip to the next code bracket
+29. `>i{` when positioned over a code bracket to ident the code up to the next
+code bracket
+30. `:map` to show the keymappings made by your plugins and .vimrc. Note this is
+somewhat difficult to follow.
+31. `*` and `#` will search forward and backward through the file with the exact
+same word that is under the cursor in normal mode.
 
 Check out this handy VIM cheatsheet I found here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)
@@ -252,22 +263,97 @@ First move the cursor over a word or line and then:
 2. `<leader> b` to lookup the current line with git blame
 3. `<leader> j` to lookup the current issue number under cursor with jira-cli
 
-## Git Fugitive Plugin in Vim
+## Git Fugitive Blame Window
 
-1. ``:Git blame`` for line-by-line git blame on current file, select a commit
+1. `:Gblame` for line-by-line git blame on current file, select a commit
 and press 'o' to open the commit diff with the commit message in a new window.
+2. `Enter` to open a diff of the chosen commit in current window
+3. `C` `A` and `D` resize the blame window up until the commit, author and date
+respectively.
+4. `g?` displays help with more commands.
+
+## Git Fugitive Status Window
+
+1. `:Gstatus` to bring up the git status message, but this time it's
+interactive.
+2. `-` to stage or unstage a file
+3. `cc` or `:Gitcommit` will commit the staged files
+4. `D` or `:GDiff` will open a diff
+5. `g?` displays help with more commands
+6. `:GLog` displays a log message for the current selected file in a quickfix
+window
+7. `:copen` to open the Quickfix window
+8. `:cnext` and `:cprevious` navigate the quickfix window by displaying
+different file versions
 
 ## Git Fugitive Mergetool
 
 1. Whenever you have a merge conflict, use `git mergetool` to open this.
-2. Buffers are setup so [local branch | resulting mergefile | merge in branch]
-3. Use `[c` and `]c` to navigate through the conflicts
-4. Go to local branch OR merge in branch, select the conflict, and use `dp` to
-choose that version.
-5. When done, use `:Gwrite!`
+2. If you want to just use one entire side, move your cursor to that side with <Ctrl-w> h, for example. Then do :Gwrite!.
+3. Buffers are setup so [YOUR local branch (2) | resulting mergefile (1) | THEIR merge in branch (3) ]
+4. Use `]c` and `[c` to navigate through the conflicts
+5. Use the center pane to navigate. use `d2o` to obtain from YOUR local branch, use `d3o` to obtain from THEIR branch.
+6. OR go to local branch OR merge in branch, select the conflict, and use `dp` to choose that version.
+7. When done, use `:wq`
 
 More info:
-[http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/](http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff)
+[https://www.youtube.com/watch?v=iPk4nOLj8w4](https://www.youtube.com/watch?v=iPk4nOLj8w4)
+
+## VIM's inbuilt terminal
+
+1. You can run arbitrary commands such as ``:term ls -al`` and see the results in
+an updating terminal.
+2. `<CTRL>-W "` will paste the contents of the clipboard into the terminal.
+3. `:terminal` just to open an empty terminal
+
+## VIM Regex
+
+1. Turn on "Very magic mode" for VIM when you have to enter a regex that
+includes a lot of special characters. `:s/\(cat \) hunting \(mice\)/\2 hunting
+\1` then becomes `:s/\v(cat) hunting (mice)/\2 hunting \1`. Trigger 'very magic
+mode' by prefixing the regex with `\v`.
+2. Find a full table of VIM regex syntax with `:help ordinary-atom`
+3. Use group marks `\1` `\2` etc to identify characters captured by a capture
+group, e.g. surrounded by `(` and `)`. For example, `:s/v(cat) hunting (mice)/\2
+hunting \1` replaces 'cat' hunting 'mice' with 'mice' hunting 'cat.
+4. Vim has a weird non-greedy regex match `.\{-}` which means `.+?`. So to
+strip a document of all its html tags use this: `:%s/<.\{-}>/ /g`.
+
+## Wildcards for searching and editing files and directories
+
+1. You can search across a bunch of files with the following syntax:
+`:vimgrep /cat/ **/*.py` will search for all instances of 'cat' in all the
+python files down from the current path.
+2. You can open a file without knowing the directory it is in, as long as it is
+below the current directory, by `:e **/bla.py`. This will search for a file
+'bla.py' recursively from the current directory.  If there is more than one file
+found, it will error.
+3. `help file-search` for more wildcard options
+4. If you want to edit a number of files called bla.py, use `:args **/bla.py`.
+This will open all the files one by one, use `:next` to edit the next file in
+the list. Use `:prev` to reopen a file previously edited. `:last` and `:first`
+also work, and `:args` displays the whole list.
+
+
+## Processing lots of files with `:argdo`
+
+You can process a number of files using arglist in VIM.
+
+1. `:arg` defines the arglist
+2. `:argdo` allows you to execute a command on all the files in the arglist
+3. `:args` describes the list of files in the arglist
+
+For example if we wanted to replace all instances of 'animal' in every Python
+file recursively from the current path, we would do the following:
+
+`:arg **/*.py`
+`:argdo **/\<animal\>/creature/qa | update`
+
+``**/*.py`` selects all python files down from the current dir recurisvely
+`:argo` executes a command on all files from current dir recurisvely.
+`%s/\<animal\>/creature/qa` replaces every occurance of 'animal' with 'creature'
+in every file - `a`, without raising errors if the matches are not found - `q`
+`update` saves the file only if it has been modified
 
 # Additional Notes
 
@@ -294,10 +380,10 @@ master/main into your current local branch
 13. When all goes horribly wrong, backup your changed files by manually
 `mv`-ing them out of the repo directory, delete your entire local copy, checkout
 again from master, and rebuild your commit by copying the backed up files in.
-14. Use github PR's 'changed files' tab for exactly what has changed, but don't
+14. Use Github PR's 'changed files' tab for exactly what has changed, but don't
 forget the commits tab, there should only usually be one commit per PR. And
 remember the revert button on Github PRs.
-15. `git logline` for my custom oneline per commit log alias which includes
+15. `git logline` for my custom one line per commit log alias which includes
 useful extra information, see: https://ma.ttias.be/pretty-git-log-in-one-line/
 16. `git checkout -- <filepath>` - this will overwrite your local changes to
 the file at <filepath> and restore the version in the latest commit on your
@@ -343,7 +429,7 @@ Also checkout the notes I took from the Docker Deep Dive book here:
 3. `sudo apt-cache search <package>` - search for package description
 4. `dpkg -i <deb package>` - install deb file
 5. `dpkg -L | grep <package>` - list all installed packages, search for
-<package>
+`<package>`
 6. `dpkg-query -L <package>` - show what files are installed by package
 7. `sudo update-alternatives --config php` - change binary used for php
 
@@ -358,7 +444,7 @@ all of them
 3. `:profile func *` - mask for which vim-script functions to profile, in this
 case all of them
 4. `:e problemfile.php` - edit the problem file to start the profiling process
-5. `:qa` - when done quit vim and look at the log file`
+5. `:qa` - when done quit vim and look at the log file
 6. Open up vim-profile.log and search for 'Total time' to see the biggest
 culprits
 
