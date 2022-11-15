@@ -355,6 +355,16 @@ file recursively from the current path, we would do the following:
 in every file - `a`, without raising errors if the matches are not found - `q`
 `update` saves the file only if it has been modified
 
+## Vista Plugin
+
+Vista is used for coc.vim or ctags specific function lists for quickly jumping 
+around large projects.
+   
+1. `:Vista` to load up the right sidebar
+2. `:Vista coc` to use coc.vim to provide the tags list
+3. `:Vista ctags`to use ctags to provide the tags list
+4. `:help vista-commands` and `:help vista-options` for help
+   
 # Additional Notes
 
 ## Git stuff I keep forgetting
