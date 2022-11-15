@@ -6,7 +6,7 @@ I test this on my two main Linux computers, and my work Linux laptop.
 
 ## VIM:
 
-![Alt text](https://i.imgur.com/1VeViF2.png "VIM setup")
+![Alt text](https://i.imgur.com/K6fBzSH.png "VIM setup")
 
 ### How to Decode the vim-airline Buffer Statusline
 
