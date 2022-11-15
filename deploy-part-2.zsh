@@ -103,10 +103,12 @@ rm /tmp/githubaccesscheck.txt
 report_done
 
 report_progress 'Installing/updating vim plugins to latest version'
-rm -rf ~/.dotfiles/.vim/pack/plugins/start/*
+rm -rf ~/.dotfiles/.vim/pack/plugins/start/* || echo ""
 mkdir -p ~/.dotfiles/.vim/pack/plugins/start/
 cd ~/.dotfiles/.vim/pack/plugins/start/ || exit 1
 
+
+git clone git@github.com:liuchengxu/vista.vim.git --depth=1
 git clone git@github.com:Shougo/denite.nvim.git
 git clone git@github.com:Xuyuanp/nerdtree-git-plugin.git
 git clone git@github.com:ciaranm/securemodelines.git
