@@ -28,7 +28,7 @@ sudo apt install zsh -y
 # Used for encrypted .secure dir
 sudo apt install ecryptfs-utils -y
 # Ctags used for fugitive
-sudo apt install exuberant-ctags -y
+sudo apt install universal-ctags -y
 # net-tools used for?
 sudo apt install net-tools -y
 # Install fortune cookie for shell login
