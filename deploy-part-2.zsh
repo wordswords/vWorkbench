@@ -44,8 +44,9 @@ report_done
 
 report_progress 'Install wikipedia2text'
 cd ~/.dotfiles
-( cd ./wikipedia2text/ && git pull ) || cd ~/.dotfiles && git clone git@github.com:chrisbra/wikipedia2text.git
-ln -s ~/.dotfiles/wikipedia2text/wikipedia2text ~/.dotfiles/bin/wp2t
+rm -rf ./wikipedia2text || echo ''
+cd ~/.dotfiles && git clone git@github.com:chrisbra/wikipedia2text.git
+ln -sf ~/.dotfiles/wikipedia2text/wikipedia2text ~/.dotfiles/bin/wp2t
 cd -
 report_done
 
@@ -168,7 +169,7 @@ cd ~/.config/coc/extensions
 echo '{"dependencies":{}}'> package.json
 
 # Change extension names to the extensions you need
-npm install coc-sh coc-tsserver coc-vimlsp coc-json coc-prettier coc-html coc-phpls coc-css coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+sudo npm install coc-sh coc-tsserver coc-vimlsp coc-json coc-prettier coc-html coc-phpls coc-css coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 sudo npm install -g vim-language-server
 vim -c 'CocInstall coc-vimlsp|q'
 vim -c 'CocUpdateSync|q'
