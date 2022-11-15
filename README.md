@@ -329,7 +329,7 @@ below the current directory, by `:e **/bla.py`. This will search for a file
 'bla.py' recursively from the current directory.  If there is more than one file
 found, it will error.
 3. `help file-search` for more wildcard options
-4. If you want to edit a number of files called bla.py, use `:args **/bla.py`.
+4. If you want to edit a number of files called bla.py, use `:arg **/bla.py`.
 This will open all the files one by one, use `:next` to edit the next file in
 the list. Use `:prev` to reopen a file previously edited. `:last` and `:first`
 also work, and `:args` displays the whole list.
