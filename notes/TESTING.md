@@ -24,7 +24,7 @@ good engineers and retain them.
 ## Psychological barriers in learning to test properly
 
 One of the biggest myths in the software industry is that testing is not a
-skilled career. Anyone CAN test, sure, but testing well takes knowledge
+skilled activity. Anyone CAN test, sure, but testing well takes knowledge
 and practice, and that is not learned through normal software development.
 
 This is actually a huge problem for the industry, as software managers will
