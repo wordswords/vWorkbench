@@ -81,7 +81,7 @@ to destroy it.
 
 This shows how testing should be applied, ideally, in a project:
 
-`
+```
           / ET \
          ---------
        / UI tests \
@@ -90,7 +90,7 @@ This shows how testing should be applied, ideally, in a project:
  -------------------------
 /       Unit tests         \
 ----------------------------
-`
+```
 
 On the top level we have exploratory testing. This should be a tiny fraction of
 the amount of testing that should be done in a project. The reasons for this is
