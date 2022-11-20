@@ -63,7 +63,7 @@ developers testing other developers work, not their own. Testing skills that you
 will learn will, as a side-effect, increase the quality of your own test on your
 own work, but it is always important to have a second pair of eyes.
 
-# The testing 'mindset'
+## The testing 'mindset'
 
 When you are testing something properly, then you need to get into the testing 'mindset'.
 You need to look at something very critically, and highlight all the potential problems in
