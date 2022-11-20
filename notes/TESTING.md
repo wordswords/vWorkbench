@@ -79,7 +79,18 @@ to destroy it.
 
 ## The testing pyramid
 
-This shows how testing should be applied, ideally, in a project.
+This shows how testing should be applied, ideally, in a project:
+
+`
+          / ET \
+         ---------
+       / UI tests \
+     -----------------
+   / Integration tests \
+ -------------------------
+/       Unit tests         \
+----------------------------
+`
 
 On the top level we have exploratory testing. This should be a tiny fraction of
 the amount of testing that should be done in a project. The reasons for this is
