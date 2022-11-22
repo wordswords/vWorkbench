@@ -172,4 +172,4 @@ This shows how testing should be applied, ideally, in a project:
 * If there are problems detected by alerts or logs, you can automatically turn off the new feature and serve the old build of the application to the customer.
 * This has the risk of losing a small portion of your customers because of errors, but is also a good way to comprehensively test a new complex feature using potentially thousands of unwitting customers as testers.
 
-(also to add later, security testing, load testing, infrastructure testing, accessibility testing)
+(also to add later, security testing, load testing, infrastructure testing, accessibility testing, process testing)
