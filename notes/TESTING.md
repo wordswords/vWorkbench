@@ -151,6 +151,7 @@ This shows how testing should be applied, ideally, in a project:
 * Unit tests should cover an individual 'atom' of work. Often this correlates with a particular function or method. So you should write one unit test for each function or method.
 * A lot of unit testing done in the real world simply isn't done properly or comprehensively enough. There should be code coverage metrics enabled on check-in and on your IDE so you can see how much of your code is actually tested by your unit tests. You should always submit code with tests, with a high code coverage.
 * There are unit test frameworks for all code. Part of the skill of unit testing is knowing what to mock out and what not to. Traditionally it was tricky on the frontend but modern frameworks such as React abstract away a lot of the trickiness and allow for much more testable frontend code.
+* Test-Driven Development (TDD) ensures good unit test coverage for code, but is rarely deployed becuase it is an advanced skill that requires a psychological shift in the whole process of writing code. As long as you end up with unit tests, and good test coverage, I don't think it is essential.
 
 ### Testing by Monitoring
 
