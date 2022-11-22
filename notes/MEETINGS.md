@@ -27,3 +27,6 @@ Here is how I do meetings.
 * Not everyone has to agree with the final solution, including you. That is normal. But don't plunge ahead and gloss over major problems with the solution that you might not have previously considered.
 * Let everyone contribute, valid points can come from anywhere and anyone, regardless of seniority, whether you agree with them, your personal feelings, your experience with the person, or your presumptions about them.
 * Avoid going round and round in circles. If two people are having a disagreement and are simply restating points at each other, again and again, ask what other people think about their points, to reach a decision.
+* People should be allowed to get on with other work while listening in to the meeting. They should keep listening so they have an overview of what is happening and that if their opinion is requested, they can give it.
+* If lots of people are tuning out and getting on with other work, it is a sign that the meeting shouldn't have taken place in the first place, or at least those people tuning out shouldn't have been on the invite.
+
