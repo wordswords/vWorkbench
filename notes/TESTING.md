@@ -111,13 +111,13 @@ This shows how testing should be applied, ideally, in a project:
 
 ### Regression Testing
 
-* Regression testing is checking that there are no 'regressions' e.g. problemsthat occurred before, reappearing. It also checks that the previous functionality of a system is maintained.
+* Regression testing is checking that there are no 'regressions' e.g. problems that occurred before, reappearing. It also checks that the previous functionality of a system is maintained.
 * It is a key area for automated testing using UI and integration tests, because there are simply too many features in a typical product to manually test them all whenever a new feature is implemented, and it can slow down the entire release process, especially for features that touch a lot of different areas of the system.
 * When manually regression testing, it helps to know what areas a new feature might touch in terms of what areas to concentrate your manual regression testingtime on, but really with several features in a release, you will have no idea what combinations of interactions will cause which bugs, so it is much better than, instead of presuming, to have a comprehensive set of regressions that checkeverything possible.
 
 ### Exploratory Testing
 
-* Separate from acceptance testing, this is actively exploring to find bugs outsidethe acceptance requirements. This is usually done as black box testing, e.g. on the UI level.
+* Separate from acceptance testing, this is actively exploring to find bugs outside the acceptance requirements. This is usually done as black box testing, e.g. on the UI level.
 * Exploratory testing is not just 'randomly clicking' - it is spending a set amount of time to creatively explore the features of a product, and test different scenarios which are designed to flush out the maximum amount of bugs in that time.
 * Usually you have a 'test charter' - a rough idea of which areas you are going to focus your exploratory testing on, and you creatively explore around that test charter in areas you feel will flush out the most bugs. Exploratory testing is also usually time-boxed as in theory the amount you could test is infinite.
 * Exploratory testing requires thorough knowledge of the whole product and how different areas fit together to do effectively.
