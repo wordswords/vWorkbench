@@ -19,6 +19,10 @@ Here is how I do meetings.
 * Repeat the action points and who is going to do what before ending the meeting. Often this involves taking notes on what the action points are, and/or creating items that will be project-managed, such as JIRA tickets.
 * End the meeting positively by expressing happiness that the problem is on the way to be resolved, and by thanking everyone there.
 
-Don't feel shy about taking the lead in meetings where there is no obvious
-other leader.
+## Discussion in the meeting
+* Don't feel shy about taking the lead in meetings where there is no obvious other leader.
+* Keep the conversation positive and respectful while not shying away from directly stating your point, even if it is a difficult point.
+* When disagreements come up, try and be as objective as possible and debate the facts, independently from the person that you are disagreeing with.
+* Not everyone has to agree with the final solution. That is normal. But don't plunge ahead and gloss over major problems with the solution that you might not have previously considered.
+* Let everyone contribute, valid points can come from anywhere and anyone, regardless of seniority, whether you agree with them, your personal feelings, your experience with the person, or your presumptions about them.
 
