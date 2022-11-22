@@ -24,6 +24,6 @@ Here is how I do meetings.
 * The responsibility of whoever is leading the meeting is to guide the discussion to ultimately a solution of the problem, with action points. If you end a meeting without a solution and action points, you need another meeting. You want to really avoid this.
 * Keep the conversation positive and respectful while not shying away from directly stating your point, even if it is a difficult point.
 * When disagreements come up, try and be as objective as possible and debate the facts, independently from the person that you are disagreeing with.
-* Not everyone has to agree with the final solution. That is normal. But don't plunge ahead and gloss over major problems with the solution that you might not have previously considered.
+* Not everyone has to agree with the final solution, including you. That is normal. But don't plunge ahead and gloss over major problems with the solution that you might not have previously considered.
 * Let everyone contribute, valid points can come from anywhere and anyone, regardless of seniority, whether you agree with them, your personal feelings, your experience with the person, or your presumptions about them.
 * Avoid going round and round in circles. If two people are having a disagreement and are simply restating points at each other, again and again, ask what other people think about their points, to reach a decision.
