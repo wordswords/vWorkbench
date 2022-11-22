@@ -61,7 +61,7 @@ This shows how testing should be applied, ideally, in a project:
 ----------------------------
 ```
 
-1. On the top level we have exploratory testing. This should be a tiny fraction ofthe amount of testing that should be done in a project. The reasons for this is because exploratory testing is very expensive and takes a lot of time.
+1. On the top level we have exploratory testing. This should be a tiny fraction of the amount of testing that should be done in a project. The reasons for this is because exploratory testing is very expensive and takes a lot of time.
 2. On the second level we have UI tests. These are scripted, automated, UI tests checking the features of the application. They should constitute a small amount of the amount of testing that should be done in a project. The reasons for this is that UI tests are expensive to write and maintain, and also to run. Tools for this include Cypress and Rainforest.
 3. On the third level we have API or integration tests. These explore the integrations between the different components of the system, such as the front end and back end, usually using HTTP requests. These should constitute a medium amount of the testing that should be done in a project. They are quick to write, and quick to run. Tools for API testing include Postman.
 4. On the fourth level, we have unit tests. These test 'atoms' of development code.These should constitute the MAJORITY of the testing that should be done in a project. They are written by developers and use unit tests frameworks. There are unit test frameworks written for every language and stack out there.
