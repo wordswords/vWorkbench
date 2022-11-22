@@ -16,7 +16,7 @@ Testing improves quality. But why do we care about quality?
 3. Improves the time estimates of new features because there are fewer problems to navigate around and bugs to discover and have to fix.
 4. Reduces the number of bugs that need to be fixed down the line, freeing up more time to work on new features.
 5. Makes it less likely for the company to be sued by preventable catastrophic problems.
-6. Reduces the amount of 'hot fixing' or 'fixing on live' necessary, which is usually not tested in itself, and can cause a lot of headache and out of hourswork.
+6. Reduces the amount of 'hot fixing' or 'fixing on live' necessary, which is usually not tested in itself, and can cause a lot of headache and out of hours work.
 7. Makes for a more happy software development team, good engineers don't want to work on a buggy system with lots of problems. This makes it easier to recruit good engineers and retain them.
 
 ## Initial challenges
