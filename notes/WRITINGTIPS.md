@@ -28,3 +28,6 @@ The social media platforms display these better.
 * If you ARE going to repeat a word, do it on purpose to make a point.
 * If you are passionate/interested in the subject you're writing about, readers
 are more likely to find your work interesting.
+* If you are writing on a controversial subject, you need to outline both sides!
+And try and put yourself in the position not to offend people.
+
