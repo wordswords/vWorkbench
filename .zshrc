@@ -121,7 +121,7 @@ set +o extendedglob
 ## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
 
 ## [++ ALIASES ++]
-if [[ $(which jira) == 0 ]]; then
+if [[ $(which jira) ]]; then
     alias board="jira sprint list -s~Done"
     alias issues="jira issue list -a$(jira me) -s~Done"
 fi
@@ -146,10 +146,10 @@ export GO111MODULE=on
 ## [-- Required for Golang install syntax --]
 
 ## [++ COMMANDS RUN ON EVERY INTERACTIVE SHELL ++]
-updatedotfiles
-fortuneprint
+#updatedotfiles
+#fortuneprint
 ## [-- COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+#typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
