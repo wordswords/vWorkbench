@@ -9,7 +9,7 @@
 
 ## The Rationale Behind Testing
 
-Testing improves quality. But why do we care about quality?
+Testing is essential in improving quality. But why do we care about quality?
 
 1. Reduces the number of complaints by users and clients and improves satisfaction with the product.
 2. Improves the maintainability of the system, meaning that new features are implemented faster.
