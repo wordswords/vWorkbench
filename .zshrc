@@ -101,7 +101,6 @@ export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-
 bindkey '≠' autosuggest-accept
 
 # zsh-z
@@ -122,7 +121,6 @@ set +o extendedglob
 
 ## [++ ALIASES ++]
 ( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
-
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias grep="grep --color"
 alias l='ls -CF'
@@ -141,8 +139,8 @@ export GO111MODULE=on
 ## [-- Required for Golang install syntax --]
 
 ## [++ COMMANDS RUN ON EVERY INTERACTIVE SHELL ++]
-#updatedotfiles
-#fortuneprint
+updatedotfiles
+fortuneprint
 ## [-- COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
