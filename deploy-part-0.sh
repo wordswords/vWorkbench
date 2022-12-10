@@ -5,7 +5,6 @@ set -e
 source ./deploy-common.sh
 
 report_heading 'Deploy Prerequisites: Part 0'
-
 report_progress 'We will now attempt to install the preqs under Ubuntu-compatible systems.'
 # fresh start
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
@@ -39,8 +38,6 @@ sudo apt install ripgrep -y
 sudo apt install tree -y
 # w3m is used for wikipedia2text
 sudo apt install w3m -y
-# speedtest is really handy for testing your internet connection
-sudo apt install speedtest -y
 # reminder to take screen breaks
 sudo apt install workrave -y
 
