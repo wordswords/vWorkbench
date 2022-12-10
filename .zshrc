@@ -121,13 +121,8 @@ set +o extendedglob
 ## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
 
 ## [++ ALIASES ++]
-which jira 1>/dev/null 2>/dev/null && (
-    alias board="jira sprint list -s~Done"
-    alias issues="jira issue list -a$(jira me) -s~Done"
-)
-lookup() {
-    jira issue view --plain MB-$1
-}
+( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
+
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias grep="grep --color"
 alias l='ls -CF'
@@ -152,4 +147,3 @@ export GO111MODULE=on
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
-#typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
