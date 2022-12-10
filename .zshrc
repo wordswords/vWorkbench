@@ -121,10 +121,10 @@ set +o extendedglob
 ## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
 
 ## [++ ALIASES ++]
-if [[ $(which jira) ]]; then
+which jira 1>/dev/null 2>/dev/null && (
     alias board="jira sprint list -s~Done"
     alias issues="jira issue list -a$(jira me) -s~Done"
-fi
+)
 lookup() {
     jira issue view --plain MB-$1
 }
