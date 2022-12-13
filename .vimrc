@@ -1,5 +1,3 @@
-" /- - - - - - - - - - - - - - - - - - - - - -\
-" |     David Craddock's VIM Config           |
 " |                                           |
 " |  https://github.com/wordswords/dotfiles   |
 " \- - - - - - - - - - - - - - - - - - - - - -/
@@ -40,7 +38,6 @@ set splitbelow                     " Opens new windows below, not above
 set splitright                     " Open new vertical split windows to the right
 set t_Co=256                       " Force 256 colour mode
 set t_vb=                          " Visual bell off
-"#set textwidth=80                    Force line wrapping after the 80th char
 set ts=4                           " Each tab is four spaces
 set ttyfast                        " Smoother changes
 set undodir=~/.backup/vim/undos    " Directory to drop undo files
@@ -48,14 +45,16 @@ set undofile                       " Drop undo files
 set wildmenu                       " Allow for menu based file navigation
 set wildmode=list:longest,full
 
-"" map the <Leader> character to comma
+"" map the <leader> character to comma
 let mapleader=","
-
-"" Remove whitespace on file save
-autocmd BufWritePre * :%s/\s\+$//e
 
 "" remap control-backspace to delete the last word in insert mode
 inoremap <C-H> <C-W>
+
+def s:BringUpDotfilesReadme()
+    call feedkeys(":sp ~/.dotfiles/README.md\<CR>:Vista!!\<CR>")
+enddef
+nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 
 ""
 "" START OF COC.vim CONFIG
@@ -240,8 +239,8 @@ let g:cb_no_default_brackets = 1
 noremap q <Nop>
 
 " Disable F1 help launcher
-noremap <F1> :echo<CR>
-inoremap <F1> <c-o>:echo<CR>
+nmap <F1> :echo<CR>
+nmap <F1> <c-o>:echo<CR>
 
 " Copy from visual mode to system keyboard
 vnoremap <C-c> "+y
@@ -316,7 +315,7 @@ function SetTextAndMarkdownOptions()
   let g:pencil#cursorwrap = 1     " 0=disable, 1=enable (def)
   setlocal spell
   setlocal nowrap " this is required for special text wrapping
-  nmap <Leader>l <Plug>Ysurroundiw]%a(<C-R>*)<Esc>
+  nmap <leader>l <Plug>Ysurroundiw]%a(<C-R>*)<Esc>
   "" scroll through spelling/grammar errors
   nmap <LEFT> [s " last spelling/grammar error
   nmap <RIGHT> ]s " next spelling/grammar error
@@ -451,6 +450,7 @@ def s:LookupPopup()
          ->split("\n")
          ->popup_atcursor({ "padding": [1, 1, 1, 1] })
 enddef
+
 
 nnoremap <silent><leader>w :call <SID>LookupPopup()<CR>
 """
