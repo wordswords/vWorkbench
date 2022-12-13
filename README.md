@@ -156,7 +156,7 @@ summary of that issue on the command line.
 2. `,` is set to be the `<Leader>` key in VIM9, use it to trigger shortcuts.
 3. `<LEFT>` and `<RIGHT>` cursor arrows to move through the syntax errors.
 4. `<UP>` to toggle the file browser/NERDTree buffer.
-5. `<DOWN>` to run LanguageToolCheck.
+5. `<DOWN>` to open the Vista file navigation.
 6. `>>` and `<<` to adjust indentation.
 7. `set mouse=a` is on, if you have any problems with copying and pasting just
 `:set mouse=` beforehand.
@@ -213,19 +213,20 @@ Check out this handy VIM cheatsheet I found here:
 
 1. `<LEFT>`       - prev text error
 2. `<RIGHT>`      - next text error
-3. `<UP>`         - run LanguageToolCheck (requires Java) this checks grammar
+3. `<UP>`         - toggle Vista (the file outline browser)
 4. `<DOWN>`       - toggle NerdTree (the directory index browser)
-5. `zg`           - Mark as a good word
-6. `zw`           - Like `zg` but mark the word as a wrong (bad) word
-7. `zug`          - Unmark as good word
-8. `zuw`          - Unmark as wrong (bad) word
-9. `z=`           - For the word under/after the cursor suggest correctly spelled
+5. `<F1>`         - Run `:LanguageToolCheck`, a Java-based spelling and grammar checker
+6. `zg`           - Mark as a good word
+7. `zw`           - Like `zg` but mark the word as a wrong (bad) word
+8. `zug`          - Unmark as good word
+9. `zuw`          - Unmark as wrong (bad) word
+10. `z=`           - For the word under/after the cursor suggest correctly spelled
 words
-10. `1z=`         - Use the first suggestion, without prompting
-11. `.`           - Redo - repeat last word replacement
-12. `:spellr`     - Repeat the replacement done by `z=` for all matches with the
+11. `1z=`         - Use the first suggestion, without prompting
+12. `.`           - Redo - repeat last word replacement
+13. `:spellr`     - Repeat the replacement done by `z=` for all matches with the
 replaced word in the current window
-13. `<F12>`       - Toggle 'Goyo' distraction-free mode.
+14. `<F12>`       - Toggle 'Goyo' distraction-free mode.
 
 [![asciicast](https://asciinema.org/a/518234.svg)](https://asciinema.org/a/518234)
 
@@ -357,14 +358,14 @@ in every file - `a`, without raising errors if the matches are not found - `q`
 
 ## Vista Plugin
 
-Vista is used for coc.vim or ctags specific function lists for quickly jumping 
+Vista is used for coc.vim or ctags specific function lists for quickly jumping
 around large projects.
-   
+
 1. `:Vista` to load up the right sidebar
 2. `:Vista coc` to use coc.vim to provide the tags list
 3. `:Vista ctags`to use ctags to provide the tags list
 4. `:help vista-commands` and `:help vista-options` for help
-   
+
 # Additional Notes
 
 ## Git stuff I keep forgetting
