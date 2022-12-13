@@ -5,7 +5,7 @@
 * Testing is misunderstood as an unskilled activity. It requires more skill than you think.
 * Testing can be used to increase quality which has a number of benefits, including increasing delivery speed.
 * Everyone is a tester in modern teams, there is no strict separation, and a lot of activities that you might not think of as testing, are in fact, testing activities.
-* Reading this document will increase your skill in testing and allow the whole team to deliver quicker and more accurately. 
+* Reading this document will increase your skill in testing and allow the whole team to deliver quicker and more accurately.
 
 ## The Rationale Behind Testing
 
@@ -35,12 +35,12 @@ In this document I am going to try and teach the basics of what I have learned a
 * One of the main problems is that it is YOUR work that YOU have written, and you have certain preconceived notions about how it works and how it should work. You may have spent days on some particularly annoying code, and you don't want to have to rewrite it.
 * You may also be particularly emotionally invested in the implementation or design choices which might cloud your judgement looking at them objectively.
 * Even the most experienced, skilled, ego-less, professional and ethical developer will be more protective about their own implementation than other peoples, and can never be fully objective, even if they think they are being so.
-* So when we are talking about 'developers testing' - we are really talking about developers testing other developers work, not their own. Testing skills that you will learn will, as a side-effect, increase the quality of your own testing on your own work, but it is always important to have a second pair of eyes.
+* So when we are talking about 'developers testing' - we are really talking about developers testing other developers work, not their own. Testing skills that you will learn will, as a side effect, increase the quality of your own testing on your own work, but it is always important to have a second pair of eyes.
 
 ### The Testing 'Mindset'
 
-* When you are testing something properly, then you need to get into the testing 'mindset'. You need to look at something very critically, and highlight all the potential problems in it. 
-* When you are building software you are thinking 'creatively' and positively about how to build something, to progress something. 
+* When you are testing something properly, then you need to get into the testing 'mindset'. You need to look at something very critically, and highlight all the potential problems in it.
+* When you are building software you are thinking 'creatively' and positively about how to build something, to progress something.
 * When you are in the testing mindset, you want to find the weaknesses, the mistakes, all the little cracks. And you need to tease and pry apart those cracks to find the bugs.
 * When developing something, you are trying to build it, when testing, you're trying to destroy it.
 
@@ -64,7 +64,7 @@ This shows how testing should be applied, ideally, in a project:
 1. On the top level we have exploratory testing. This should be a tiny fraction of the amount of testing that should be done in a project. The reasons for this is because exploratory testing is very expensive and takes a lot of time.
 2. On the second level we have UI tests. These are scripted, automated, UI tests checking the features of the application. They should constitute a small amount of the amount of testing that should be done in a project. The reasons for this is that UI tests are expensive to write and maintain, and also to run. Tools for this include Cypress and Rainforest.
 3. On the third level we have API or integration tests. These explore the integrations between the different components of the system, such as the front end and back end, usually using HTTP requests. These should constitute a medium amount of the testing that should be done in a project. They are quick to write, and quick to run. Tools for API testing include Postman.
-4. On the fourth level, we have unit tests. These test 'atoms' of development code.These should constitute the MAJORITY of the testing that should be done in a project. They are written by developers and use unit tests frameworks. There are unit test frameworks written for every language and stack out there.
+4. On the fourth level, we have unit tests. These test 'atoms' of development code. These should constitute the MAJORITY of the testing that should be done in a project. They are written by developers and use unit tests frameworks. There are unit test frameworks written for every language and stack out there.
 
 ### Shift-Left Testing
 
@@ -74,7 +74,7 @@ This shows how testing should be applied, ideally, in a project:
 
 ### Risk-Based Testing
 
-* All testing should be risk-based. What does that mean? Well, given the limited budget for testing in all products, and the potentially almost infinite ways to test a product, the areas which are tested should be prioritised according to risk.
+* All testing should be risk-based. What does that mean? Well, given the limited budget for testing in all products, and the potentially almost infinite ways to test a product, the areas which are tested should be prioritized according to risk.
 * E.g. if you have 20 minutes to test a feature, and it includes a change to the payment provider, and also some UI changes, which do you test first? Well if anything went wrong with the payment provider, then that is a big problem for this business. So you concentrate on the payment provider.
 * That was a trivial example. Most of the risk based analysis you will be doing is not as cut-and-dry as this but nevertheless you have to be always conscious of risk to the business from bugs in particular areas to know where to concentrate your limited testing resources.
 
@@ -82,7 +82,7 @@ This shows how testing should be applied, ideally, in a project:
 
 * It is impossible for a test or QA team to catch every bug before release, just as it is impossible for developers to not create bugs.
 * There should never be the expectation that just because testing has not found a bug, it is problem with the tester. Testers are not scapegoats.
-* It is a problem for the whole team, and for the whole team to solve holistically, whether the solution involves better communication between product and the developers, better coding standards for the developers, better automated tests etc etc.
+* It is a problem for the whole team, and for the whole team to solve holistically, whether the solution involves better communication between product and the developers, better coding standards for the developers, better automated tests, etc.
 * Root-cause analysis could and should be used to pinpoint the exact issue, but it should never be done with the intention of assigning blame, but rather to improve the effectiveness the whole team works.
 * Creating a ‘blame culture’ diminishes 'psychological safety' which is an important concept in ensuring a healthy, productive team.
 
@@ -102,7 +102,7 @@ This shows how testing should be applied, ideally, in a project:
 
 ### Acceptance Testing
 
-* This is when you test that a developed feature works according to expectations. To do this properly you need a good understanding of what the feature should actually do. 
+* This is when you test that a developed feature works according to expectations. To do this properly you need a good understanding of what the feature should actually do.
 * This should be captured by product in user stories in JIRA, detailing exactly what the acceptance requirements are, so there is no ambiguity in meeting them by the development team, and testing them, by the tester.
 * Ideally this information should be captured in Gherkin language, which is a way of expressing requirements exactly and succinctly so that every member of the software team can clearly understand them, including test and product.
 * Another advantage of Gherkin language is that it is very straightforward to turn this language into automated tests. In fact, Cucumber, which is an automated test tool, can parse the Gherkin language, and you can use it to rapidly assert whether a feature meets the requirements.
@@ -113,7 +113,7 @@ This shows how testing should be applied, ideally, in a project:
 
 * Regression testing is checking that there are no 'regressions' e.g. problems that occurred before, reappearing. It also checks that the previous functionality of a system is maintained.
 * It is a key area for automated testing using UI and integration tests, because there are simply too many features in a typical product to manually test them all whenever a new feature is implemented, and it can slow down the entire release process, especially for features that touch a lot of different areas of the system.
-* When manually regression testing, it helps to know what areas a new feature might touch in terms of what areas to concentrate your manual regression testingtime on, but really with several features in a release, you will have no idea what combinations of interactions will cause which bugs, so it is much better than, instead of presuming, to have a comprehensive set of regressions that checkeverything possible.
+* When manually regression testing, it helps to know what areas a new feature might touch in terms of what areas to concentrate your manual regression testing time on, but really with several features in a release, you will have no idea what combinations of interactions will cause which bugs, so it is much better than, instead of presuming, to have a comprehensive set of regressions that check everything possible.
 
 ### Exploratory Testing
 
@@ -121,8 +121,8 @@ This shows how testing should be applied, ideally, in a project:
 * Exploratory testing is not just 'randomly clicking' - it is spending a set amount of time to creatively explore the features of a product, and test different scenarios which are designed to flush out the maximum amount of bugs in that time.
 * Usually you have a 'test charter' - a rough idea of which areas you are going to focus your exploratory testing on, and you creatively explore around that test charter in areas you feel will flush out the most bugs. Exploratory testing is also usually time-boxed as in theory the amount you could test is infinite.
 * Exploratory testing requires thorough knowledge of the whole product and how different areas fit together to do effectively.
-* There are a bunch of areas where application UIs often cause problems, such as negative numbers in input boxes, or unicode characters in inputs boxes.
-* Boundaries between different technical systems are also areas to focus your effort e.g. if a new UI feature has been deployed, has the back end system beenupdated to match ALL the new possibilities it offers?
+* There are a bunch of areas where application UIs often cause problems, such as negative numbers in input boxes, or Unicode characters in inputs boxes.
+* Boundaries between different technical systems are also areas to focus your effort e.g. if a new UI feature has been deployed, has the back end system been updated to match ALL the new possibilities it offers?
 * There are a lot of different things to be aware of, too many to list here, but there is a good exploratory testing cheat sheet here and a browser plugin which will help test common problems.
 
 ### Smoke Testing
@@ -133,7 +133,7 @@ This shows how testing should be applied, ideally, in a project:
 
 ### Automated UI Testing
 
-* These are the tests written in Cypress, Selenium or many other frontend UI testtools.
+* These are the tests written in Cypress, Selenium or many other frontend UI test tools.
 * Typically, they are overused in products, even those with extensive UIs.
 * Why? Because a large UI test suite results in a lot of maintenance as they can be brittle because they are linked to UI components that often change.
 * Also, it is not possible to write UI tests for every new feature in the sprint, as writing UI tests takes time.
@@ -141,17 +141,17 @@ This shows how testing should be applied, ideally, in a project:
 ### Automated Integration Testing
 
 * In integration testing we are testing the interaction or messages between the different components of a distributed system. Often this is HTTP requests, but it can be any kind of data transfer.
-* You can even test that the application generates particular SQL queries from theresults of a particular scenario.
+* You can even test that the application generates particular SQL queries from the results of a particular scenario.
 * Assertions can be made around the validation of these messages to make sure they are properly formed.
 * You can also supply test fixtures which show expected behaviour, so you can send them to a system and assert on the responses, or the expected resultant behaviour on the UI.
 
 ### Unit Testing
 
-* Developers may be familiar with this, and not realise that they are actually testing while writing unit tests. They are. In fact, the majority of the testing of an application should be done with unit tests.
+* Developers may be familiar with this, and not realize that they are actually testing while writing unit tests. They are. In fact, the majority of the testing of an application should be done with unit tests.
 * Unit tests should cover an individual 'atom' of work. Often this correlates with a particular function or method. So you should write one unit test for each function or method.
-* A lot of unit testing done in the real world simply isn't done properly or comprehensively enough. There should be code coverage metrics enabled on check-in and on your IDE so you can see how much of your code is actually tested by your unit tests. You should always submit code with tests, with a high code coverage.
-* There are unit test frameworks for all code. Part of the skill of unit testing is knowing what to mock out and what not to. Traditionally it was tricky on the frontend but modern frameworks such as React abstract away a lot of the trickiness and allow for much more testable frontend code.
-* Test-Driven Development (TDD) ensures good unit test coverage for code, but is rarely deployed becuase it is an advanced skill that requires a psychological shift in the whole process of writing code. As long as you end up with unit tests, and good test coverage, I don't think it is essential.
+* A lot of unit testing done in the real world simply isn't done properly or comprehensively enough. There should be code coverage metrics enabled on check-in and on your IDE, so you can see how much of your code is actually tested by your unit tests. You should always submit code with tests, with a high code coverage.
+* There are unit test frameworks for all code. Part of the skill of unit testing is to know what to mock out and what not to. Traditionally it was tricky on the frontend but modern frameworks such as React abstract away a lot of the trickiness and allow for much more testable frontend code.
+* Test-Driven Development (TDD) ensures good unit test coverage for code, but is rarely deployed because it is an advanced skill that requires a psychological shift in the whole process of writing code. As long as you end up with unit tests, and good test coverage, I don't think it is essential.
 
 ### Testing by Monitoring
 
