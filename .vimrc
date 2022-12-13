@@ -377,11 +377,16 @@ noremap <F12> :Goyo<CR> " this toggles distraction-free mode
 "" Vista CONFIG
 ""
 let g:vista_default_executive = "coc"
-map <DOWN> :Vista!!<ENTER>
+map <DOWN> :Vista!!<ENTER> 
+autocmd bufenter * if (winnr("$") == 1 && bufwinnr("__vista__") > 0) | q | endif
 ""
 "" END of Vista CONFIG
 ""
 ""
+
+"" If only NerdTree and Vista buffers are left, close VIM
+autocmd bufenter * if (winnr("$") == 2 && bufwinnr("__vista__") > 0 && exists("b:NERDTree")) | qa | endif
+
 "" Wordy CONFIG
 ""
 " Wordy is only activated when editing text files
