@@ -318,9 +318,9 @@ function SetTextAndMarkdownOptions()
   setlocal nowrap " this is required for special text wrapping
   nmap <Leader>l <Plug>Ysurroundiw]%a(<C-R>*)<Esc>
   "" scroll through spelling/grammar errors
-  noremap <LEFT> [s " last spelling/grammar error
-  noremap <RIGHT> ]s " next spelling/grammar error
-  map <DOWN> :LanguageToolCheck<CR>
+  nmap <LEFT> [s " last spelling/grammar error
+  nmap <RIGHT> ]s " next spelling/grammar error
+  nmap <F1> :LanguageToolCheck<CR>
 endfunction
 
 function SetMakefileOptions()
@@ -503,5 +503,3 @@ hi LanguageToolSpellingError guisp=red  gui=undercurl guifg=NONE guibg=NONE cter
 """
 """ END of LanguageTool grammar checker plugin CONFIG
 """
-autocmd BufWritePost Jenkinsfile !ssh jenkins.dev.kaboodle.co.uk -p9669 declarative-linter < %
-autocmd BufWritePost Jenkinsfile !ssh jenkins.dev.kaboodle.co.uk -p9669 declarative-linter < %
