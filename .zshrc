@@ -130,7 +130,7 @@ alias ls="ls --color"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias please='sudo $(fc -ln -1)'
-alias ports='netstat -tlpn | sort -t: -k2 -n'
+alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
 alias vi="vim -u NONE"
 ## [-- ALIASES --]
 
