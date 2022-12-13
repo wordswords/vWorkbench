@@ -377,7 +377,7 @@ noremap <F12> :Goyo<CR> " this toggles distraction-free mode
 "" Vista CONFIG
 ""
 let g:vista_default_executive = "coc"
-map <DOWN> :Vista!!<ENTER> 
+nmap <silent><DOWN> :Vista!!<ENTER>
 autocmd bufenter * if (winnr("$") == 1 && bufwinnr("__vista__") > 0) | q | endif
 ""
 "" END of Vista CONFIG
