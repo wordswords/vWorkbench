@@ -71,17 +71,11 @@ uptodate.
 
 ## Installation Requirements for .dotfiles
 
-1. You have to use a ‘Nerd font’ - this is a specially patched font with extra
+* You have to use a ‘Nerd font’ - this is a specially patched font with extra
 symbol characters for use in vim. This is not a prerequisite, it will show you
 how to install it at the end of the dotfile deployment.
-2. VIM9 must be installed.
-3. git must be installed and setup with ssh for github.
-4. python3 and pip3 must be installed.
-5. For grammar checking Java 8 should be installed.
-6. zsh must be installed.
-
-You can run a script that will attempt to install the prerequisites under Ubuntu
-by executing `./deploy-part-0.sh`.
+* There are many others. You can run a script that will attempt to install
+the prerequisites under Ubuntu by executing `./deploy-part-0.sh`.
 
 ## What It Will Install
 
@@ -154,8 +148,11 @@ summary of that issue on the command line.
 
 ## VIM Key bindings
 
+The most important VIM shortcut is `<leader> h` which is currently mapped to `, h`.
+This will open up this document, which is kept up to date.
+
 1. `<TAB>` to activate autocomplete plug ins.
-2. `,` is set to be the `<Leader>` key in VIM9, use it to trigger shortcuts.
+2. `,` is set to be the `<leader>` key in VIM9, use it to trigger shortcuts.
 3. `<LEFT>` and `<RIGHT>` cursor arrows to move through the syntax errors.
 4. `<UP>` to toggle the file browser/NERDTree buffer.
 5. `<DOWN>` to open the Vista file navigation.
