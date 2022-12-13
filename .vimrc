@@ -40,7 +40,7 @@ set splitbelow                     " Opens new windows below, not above
 set splitright                     " Open new vertical split windows to the right
 set t_Co=256                       " Force 256 colour mode
 set t_vb=                          " Visual bell off
-set textwidth=80                   " Force line wrapping after the 80th char
+"#set textwidth=80                    Force line wrapping after the 80th char
 set ts=4                           " Each tab is four spaces
 set ttyfast                        " Smoother changes
 set undodir=~/.backup/vim/undos    " Directory to drop undo files
@@ -320,8 +320,7 @@ function SetTextAndMarkdownOptions()
   "" scroll through spelling/grammar errors
   noremap <LEFT> [s " last spelling/grammar error
   noremap <RIGHT> ]s " next spelling/grammar error
-  noremap <UP> :NERDTreeToggle<CR>
-  noremap <DOWN> :LanguageToolCheck<CR>
+  map <DOWN> :LanguageToolCheck<CR>
 endfunction
 
 function SetMakefileOptions()
@@ -373,7 +372,16 @@ noremap <F12> :Goyo<CR> " this toggles distraction-free mode
 ""
 "" END of Goyo CONFIG
 ""
+""
 
+""
+"" Vista CONFIG
+""
+let g:vista_default_executive = "coc"
+map <DOWN> :Vista!!<ENTER>
+""
+"" END of Vista CONFIG
+""
 ""
 "" Wordy CONFIG
 ""
