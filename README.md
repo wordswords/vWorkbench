@@ -4,6 +4,10 @@ My setup with custom settings for bash, zsh and vim, with some extra ~/bin
 helper scripts for good measure. Tested on Ubuntu 22.04 and the latest Lubuntu.
 I test this on my two main Linux computers, and my work Linux laptop.
 
+## Demo Video
+
+[![asciicast](https://asciinema.org/a/545212.svg)](https://asciinema.org/a/545212)
+
 ## VIM:
 
 ![Alt text](https://i.imgur.com/K6fBzSH.png "VIM setup")
@@ -112,8 +116,6 @@ advise running this setup in a docker container or virtual machine.
 You probably want to change this if you're not me!
 8. It will also attempt by default to log in to my Joplin account, which will
 not succeed without my credentials. So you probably want to change that.
-
-[![asciicast](https://asciinema.org/a/EhIutOkIqGSBwoaZwHQUUJ2wh.svg)](https://asciinema.org/a/EhIutOkIqGSBwoaZwHQUUJ2wh)
 
 # Using the Dotfiles Environment
 
