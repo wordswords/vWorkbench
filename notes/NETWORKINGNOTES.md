@@ -1,3 +1,5 @@
+![alt text](networkinglinux.jpg "Linux Networking Diagram")
+
 ## What is a Network?
 
 A network is defined by an interface, an IP address, a gateway and a subnet mask.
