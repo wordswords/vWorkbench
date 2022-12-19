@@ -170,7 +170,6 @@ sudo npm install coc-sh coc-tsserver coc-vimlsp coc-json coc-prettier coc-html c
 sudo npm install -g vim-language-server
 report_done
 
-
 report_progress 'Installing pynvim for python integration with vim'
 pip3 install --user pynvim
 pip3 install jedi
@@ -192,27 +191,20 @@ git config --global user.email "$( cat ~/.dotfiles/secretseadd | tr 'N-ZA-Mn-za-
 git config --global user.name "David Craddock"
 set +x
 report_done
-#
-#report_progress 'Installing and configuring Joplin CLI notetaking app'
-#( which joplin-cli 2>/dev/null && sudo npm update -g joplin ) || ( NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli )
-#report_done
-#
-#report_progress 'Import Joplin config'
-#( ls ~/.config | grep -q joplin >/dev/null ) || /usr/bin/joplin-cli config --import < ~/.dotfiles/joplin.config )
-#report_done
-#
-#report_progress 'Creating SECURE_DIR if it doesnt already exist'
-#ls $SECURE_DIR || ( mkdir -p $SECURE_DIR )
-#report_done
-#
-#report_progress 'Encrypting Joplin notes'
-#unlock && mkdir -p $SECURE_DIR/.config || echo '' && ( mv ~/.config/joplin $SECURE_DIR/.config/ 2>/dev/null || echo '' ) && ( ln -sf $SECURE_DIR/.config/joplin ~/.config/joplin )
-#report_done
-#
-#report_progress 'Syncing Joplin notes, you will now be asked to log into dropbox'
-#syncnotes
-#report_done
-#
+
+report_progress 'Installing and configuring Joplin CLI notetaking app'
+( which joplin-cli 2>/dev/null && sudo npm update -g joplin ) || ( NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli )
+report_done
+
+report_progress 'Import Joplin config'
+/usr/bin/joplin-cli config --import < ~/.dotfiles/joplin.config
+report_done
+
+report_progress 'Syncing Joplin notes, you will now be asked to log into dropbox'
+joplin-cli e2ee enable
+syncnotes
+report_done
+
 report_progress 'Changing shell to /bin/zsh.'
 sudo chsh -s $(which zsh 2>/dev/null) $(whoami)
 report_done
@@ -228,7 +220,6 @@ report_progress 'Stop unwanted changes dirtying up the dotfiles commit tracking'
 set +e
 find ~/.dotfiles/.vim/pack/plugins/start/ -name '.git' -type d -exec rm -rf {} \;
 set -e
-# stop changes dirtying up the commit
 git restore --staged ~/.vim || echo ''
 report_done
 
