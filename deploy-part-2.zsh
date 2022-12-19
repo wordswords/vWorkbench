@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 # vim: spell set nowrap
-
 ## To be run after installation of oh-my-zsh
 
 # Load in status message printing functions
@@ -129,18 +128,15 @@ git clone git@github.com:tpope/vim-bundler.git
 git clone git@github.com:tpope/vim-fugitive.git
 git clone git@github.com:tpope/vim-git
 git clone git@github.com:vim-airline/vim-airline
+report_done
 
-set +e
-find ~/.dotfiles/.vim/pack/plugins/start/ -name '.git' -type d -exec rm -rf {} \;
-set -e
-
-# stop changes dirtying up the commit
-git restore --staged ~/.vim || echo ''
-
+report_progress 'Installing Github Copilot VIM9 plugin'
+rm -rf ~/.vim/pack/github/start/copilot.vim
+git clone git@github.com:github/copilot.vim.git ~/.vim/pack/github/start/copilot.vim
 report_done
 
 report_progress 'Installing air-line molokai theme'
-mkdir -p ~/.vim/autoload/airline/themes                                                                                                         master!
+mkdir -p ~/.vim/autoload/airline/themes
 cp ~/.dotfiles/molokai.vim ~/.vim/autoload/airline/themes
 report_done
 
@@ -172,9 +168,6 @@ echo '{"dependencies":{}}'> package.json
 # Change extension names to the extensions you need
 sudo npm install coc-sh coc-tsserver coc-vimlsp coc-json coc-prettier coc-html coc-phpls coc-css coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 sudo npm install -g vim-language-server
-vim -c 'CocInstall coc-vimlsp|q'
-vim -c 'CocUpdateSync|q'
-vim -c ':helptags ALL'
 report_done
 
 
@@ -199,27 +192,27 @@ git config --global user.email "$( cat ~/.dotfiles/secretseadd | tr 'N-ZA-Mn-za-
 git config --global user.name "David Craddock"
 set +x
 report_done
-
-report_progress 'Installing and configuring Joplin CLI notetaking app'
-( which joplin-cli 2>/dev/null && sudo npm update -g joplin ) || ( NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli )
-report_done
-
-report_progress 'Import Joplin config'
-( ls ~/.config | grep -q joplin >/dev/null || /usr/bin/joplin-cli config --import < ~/.dotfiles/joplin.config )
-report_done
-
-report_progress 'Creating SECURE_DIR if it doesnt already exist'
-ls $SECURE_DIR || ( mkdir -p $SECURE_DIR )
-report_done
-
-report_progress 'Encrypting Joplin notes'
-unlock && mkdir -p $SECURE_DIR/.config || echo '' && ( mv ~/.config/joplin $SECURE_DIR/.config/ 2>/dev/null || echo '' ) && ( ln -sf $SECURE_DIR/.config/joplin ~/.config/joplin )
-report_done
-
-report_progress 'Syncing Joplin notes, you will now be asked to log into dropbox'
-syncnotes
-report_done
-
+#
+#report_progress 'Installing and configuring Joplin CLI notetaking app'
+#( which joplin-cli 2>/dev/null && sudo npm update -g joplin ) || ( NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli )
+#report_done
+#
+#report_progress 'Import Joplin config'
+#( ls ~/.config | grep -q joplin >/dev/null ) || /usr/bin/joplin-cli config --import < ~/.dotfiles/joplin.config )
+#report_done
+#
+#report_progress 'Creating SECURE_DIR if it doesnt already exist'
+#ls $SECURE_DIR || ( mkdir -p $SECURE_DIR )
+#report_done
+#
+#report_progress 'Encrypting Joplin notes'
+#unlock && mkdir -p $SECURE_DIR/.config || echo '' && ( mv ~/.config/joplin $SECURE_DIR/.config/ 2>/dev/null || echo '' ) && ( ln -sf $SECURE_DIR/.config/joplin ~/.config/joplin )
+#report_done
+#
+#report_progress 'Syncing Joplin notes, you will now be asked to log into dropbox'
+#syncnotes
+#report_done
+#
 report_progress 'Changing shell to /bin/zsh.'
 sudo chsh -s $(which zsh 2>/dev/null) $(whoami)
 report_done
@@ -230,6 +223,26 @@ sudo rm -rf "/usr/share/games/fortunes/*" || echo ''
 set +o extendedglob
 sudo tar xzf ~/.dotfiles/gaiman-fortunes.tgz -C /usr/share/games/fortunes/
 report_done
+
+report_progress 'Stop unwanted changes dirtying up the dotfiles commit tracking'
+set +e
+find ~/.dotfiles/.vim/pack/plugins/start/ -name '.git' -type d -exec rm -rf {} \;
+set -e
+# stop changes dirtying up the commit
+git restore --staged ~/.vim || echo ''
+report_done
+
+report_progress 'Running vim local commands for plugins'
+echo '''
+:CocInstall coc-vimlsp
+:CocUpdateSync
+:Copilot setup
+:helptags ALL
+:qa!
+
+''' > ~/.dotfiles/vimscript.vs
+vim -s ~/.dotfiles/vimscript.vs
+rm ~/.dotfiles/vimscript.vs
 
 echo
 echo "-- OPTIONAL EXTRAS -- "
