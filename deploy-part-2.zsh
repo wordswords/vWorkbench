@@ -238,7 +238,7 @@ echo '''
 :CocUpdateSync
 :Copilot setup
 :helptags ALL
-:qa!
+:qa
 
 ''' > ~/.dotfiles/vimscript.vs
 vim -s ~/.dotfiles/vimscript.vs
