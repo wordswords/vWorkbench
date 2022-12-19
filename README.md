@@ -355,6 +355,14 @@ file recursively from the current path, we would do the following:
 in every file - `a`, without raising errors if the matches are not found - `q`
 `update` saves the file only if it has been modified
 
+## Github Copilot
+
+The Github copilot plugin is installed. It assumes you have a subscription.
+
+1. `:Copilot enable` to enable autocompletes for the current buffer.
+2. `:Copilot disable` to disable autocompletes for the current buffer.
+3. `<TAB>` to accept current autocomplete.
+
 ## Vista Plugin
 
 Vista is used for coc.vim or ctags specific function lists for quickly jumping
