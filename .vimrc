@@ -45,10 +45,10 @@ set undofile                       " Drop undo files
 set wildmenu                       " Allow for menu based file navigation
 set wildmode=list:longest,full
 
-"" map the <leader> character to comma
+" map the <leader> character to comma
 let mapleader=","
 
-"" remap control-backspace to delete the last word in insert mode
+" remap control-backspace to delete the last word in insert mode
 inoremap <C-H> <C-W>
 
 def s:BringUpDotfilesReadme()
@@ -56,9 +56,9 @@ def s:BringUpDotfilesReadme()
 enddef
 nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 
-""
-"" START OF COC.vim CONFIG
-""
+"""
+""" START OF COC.vim CONFIG
+"""
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
 set encoding=utf-8
@@ -219,9 +219,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-""
-"" END OF COC.vim CONFIG
-""
+"""
+""" END OF COC.vim CONFIG
+"""
 
 " GUI config
 autocmd GUIEnter * set visualbell t_vb= " Turn off visual and audio bell for GUI
@@ -300,13 +300,13 @@ let NERDTreeShowHidden = 1
 "
 " Pressing <UP> cursor toggles NerdTree
 noremap <UP> :NERDTreeToggle<CR>
-""
-"" END OF Nerdtree CONFIG
-""
+"""
+""" END OF Nerdtree CONFIG
+"""
 
-""
-"" Filetype formats/autocmd CONFIG
-""
+"""
+""" Filetype formats/autocmd CONFIG
+"""
 function SetRestructuredTextOptions()
   au BufRead,BufNewFile *.rst setlocal textwidth=80
   setlocal spell
@@ -322,7 +322,7 @@ function SetTextAndMarkdownOptions()
   setlocal spell
   setlocal nowrap " this is required for special text wrapping
   nmap <leader>l <Plug>Ysurroundiw]%a(<C-R>*)<Esc>
-  "" scroll through spelling/grammar errors
+  " scroll through spelling/grammar errors
   nmap <LEFT> [s " last spelling/grammar error
   nmap <RIGHT> ]s " next spelling/grammar error
   nmap <F1> :LanguageToolCheck<CR>
@@ -354,7 +354,7 @@ function SetGitCommitFileOptions()
   setlocal spell " highlight spelling mistakes
 endfunction
 
-"" remove trailing whitespace on these filetypes only:
+" remove trailing whitespace on these filetypes only:
 autocmd FileType text,markdown,Makefile,Jenkinsfile,Python autocmd BufWritePre <buffer> %s/\s\+$//e
 
 autocmd BufRead,BufNewFile *.f90 set filetype=Fortran
@@ -366,35 +366,33 @@ autocmd BufRead,BufNewFile Makefile call SetMakeFileOptions()
 autocmd BufRead,BufNewFile *.py call SetPythonFileOptions()
 autocmd FileType gitcommit call SetGitCommitFileOptions()
 autocmd FileType plugin indent on " for writing plugins
-""
-"" END of Filetype formats/autocmd CONFIG
-""
+"""
+""" END of Filetype formats/autocmd CONFIG
+"""
 
-""
-"" Goyo CONFIG
-""
+"""
+""" Goyo CONFIG
+"""
 noremap <F12> :Goyo<CR> " this toggles distraction-free mode
-""
-"" END of Goyo CONFIG
-""
-""
+"""
+""" END of Goyo CONFIG
+"""
 
-""
-"" Vista CONFIG
-""
+"""
+""" Vista CONFIG
+"""
 let g:vista_default_executive = "coc"
 nmap <silent><DOWN> :Vista!!<ENTER>
 autocmd bufenter * if (winnr("$") == 1 && bufwinnr("__vista__") > 0) | q | endif
-""
-"" END of Vista CONFIG
-""
-""
+"""
+""" END of Vista CONFIG
+"""
 
-"" If only NerdTree and Vista buffers are left, close VIM
+" If only NerdTree and Vista buffers are left, close VIM
 autocmd bufenter * if (winnr("$") == 2 && bufwinnr("__vista__") > 0 && exists("b:NERDTree")) | qa | endif
 
-"" Wordy CONFIG
-""
+""" Wordy CONFIG
+"""
 " Wordy is only activated when editing text files
 let g:wordy#ring = [
   \ 'weak',
@@ -409,14 +407,14 @@ let g:wordy#ring = [
   \ 'adjectives',
   \ 'adverbs',
   \ ]
-""
-"" END of Wordy CONFIG
-""
+"""
+""" END of Wordy CONFIG
+"""
 
 
-""
-"" nerdtree-git-plugin CONFIG
-""
+"""
+""" nerdtree-git-plugin CONFIG
+"""
 let g:NERDTreeGitStatusUseNerdFonts = 1 "default: 0
 let g:NERDTreeGitStatusShowClean = 1 "default: 0
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all' "heavy feature default:normal
