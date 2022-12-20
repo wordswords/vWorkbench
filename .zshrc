@@ -139,15 +139,25 @@ alias vi="vim -u NONE"
 export GO111MODULE=on
 ## [-- Required for Golang install syntax --]
 
-## [++ COMMANDS RUN ON EVERY INTERACTIVE SHELL ++]
-updatedotfiles
-fortuneprint
-## [-- COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
-
 ## [++ McFly Initialization ++]
 export MCFLY_KEY_SCHEME=vim
 eval "$(mcfly init zsh)"
 ## [-- McFly Initialization --]
 
+## [++ cht.sh Initialization ++]
+mkdir -p ~/.zsh.d/
+curl https://cheat.sh/:zsh > ~/.zsh.d/_cht
+echo 'fpath=(~/.zsh.d/ $fpath)' >> ~/.zshrc
+alias cht='cht.sh'
+## [-- cht.sh Initialization --]
+
+## [++ COMMANDS RUN ON EVERY INTERACTIVE SHELL ++]
+updatedotfiles
+fortuneprint
+## [-- COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
+fpath=(~/.zsh.d/ $fpath)
+fpath=(~/.zsh.d/ $fpath)
+fpath=(~/.zsh.d/ $fpath)

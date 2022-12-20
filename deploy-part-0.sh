@@ -42,6 +42,10 @@ sudo apt install w3m -y
 sudo apt install workrave -y
 # bat, a cat clone with syntax highlighting and Git integration
 sudo apt install bat -y
+# curl for downloading from the web
+sudo apt install curl -y
+# xclip and xsel for clipboard access
+sudo apt install xclip xsel -y
 report_done
 
 report_progress 'Installing McFly, a zsh Control-R replacement'
@@ -52,6 +56,13 @@ report_progress 'Installing Delta, a git diff viewer'
 wget https://github.com/dandavison/delta/releases/download/0.15.1/git-delta_0.15.1_amd64.deb
 sudo dpkg -i git-delta_0.15.1_amd64.deb
 rm git-delta_0.15.1_amd64.deb
+report_done
+
+report_progress 'Installing cht.sh a command line help client'
+PATH_DIR="$HOME/bin"  # or another directory on your $PATH
+mkdir -p "$PATH_DIR"
+curl https://cht.sh/:cht.sh > "$PATH_DIR/cht.sh"
+chmod +x "$PATH_DIR/cht.sh"
 report_done
 
 report_progress 'We will now attempt to enable automated unattended-upgrades'

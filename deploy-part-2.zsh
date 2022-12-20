@@ -17,14 +17,6 @@ report_progress 'Running ctags'
 ctags -R *
 report_done
 
-report_progress 'Installing curl'
-sudo apt install curl -y
-report_done
-
-report_progress 'Setting up pbcopy and pbpaste aliases'
-sudo apt install xclip xsel
-report_done
-
 report_progress 'Installing latest nodejs and bash-language-server'
 
 # Install latest nodejs
