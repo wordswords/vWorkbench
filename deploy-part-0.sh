@@ -48,6 +48,12 @@ report_progress 'Installing McFly, a zsh Control-R replacement'
 curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --force --git cantino/mcfly
 report_done
 
+report_progress 'Installing Delta, a git diff viewer'
+wget https://github.com/dandavison/delta/releases/download/0.15.1/git-delta_0.15.1_amd64.deb
+sudo dpkg -i git-delta_0.15.1_amd64.deb
+rm git-delta_0.15.1_amd64.deb
+report_done
+
 report_progress 'We will now attempt to enable automated unattended-upgrades'
 sudo apt install unattended-upgrades
 sudo dpkg-reconfigure unattended-upgrades

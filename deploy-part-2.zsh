@@ -177,18 +177,9 @@ report_done
 
 report_progress 'Setting default git config.. change this if you are not David Craddock!'
 rm ~/.gitconfig
+cp ~/.dotfiles/.gitconfig ~/.gitconfig
 set -x
-git config --global alias.logline "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-git config --global commit.template ~/.dotfiles/.git-commit-template
-git config --global core.editor vim
-git config --global diff.tool vimdiff
-git config --global merge.conflictstyle diff3
-git config --global merge.tool fugitive
-git config --global mergetool.fugitive.cmd 'vim -f -c "Gvdiffsplit!" "$MERGED"'
-git config --global mergetool.keepBackup false
-git config --global mergetool.prompt false
 git config --global user.email "$( cat ~/.dotfiles/secretseadd | tr 'N-ZA-Mn-za-m' 'A-Za-z' )"
-git config --global user.name "David Craddock"
 set +x
 report_done
 

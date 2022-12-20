@@ -274,13 +274,16 @@ let g:powerline_symbols = 'fancy'
 """
 """ NERDTree CONFIG
 """
-" Startup NerdTree when vim is started
-if (expand("%"))
-  autocmd VimEnter * silent NERDTree %
+" Startup NerdTree when vim is started, except in vimdiff mode
+if &diff
+    " Do nothing
 else
-  autocmd VimEnter * silent NERDTree
+    if (expand("%"))
+      autocmd VimEnter * silent NERDTree %
+    else
+      autocmd VimEnter * silent NERDTree
+    endif
 endif
-
 autocmd VimEnter * wincmd p
 
 " stop NERDTree buffers being lost by disabling buffer next and buffer previous
@@ -482,7 +485,6 @@ nnoremap <silent><leader>j :call <SID>JiraIssueLookupPopup()<CR>
 """
 """ END of JiraIssueLookupPopup lookup CONFIG
 """
-
 
 """
 """ START of GitBlaneLine lookup CONFIG

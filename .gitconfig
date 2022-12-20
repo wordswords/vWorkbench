@@ -1,0 +1,41 @@
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+[delta]
+    features = decorations
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+[delta "interactive"]
+    keep-plus-minus-markers = false
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+[alias]
+    logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[commit]
+    template = /home/david/.dotfiles/.git-commit-template
+[core]
+    pager = delta
+    editor = vim
+[difftool]
+    prompt = false
+[diff]
+    conflictstyle = diff3
+    tool = vimdiff
+[merge]
+    tool = fugitive
+    conflictstyle = diff3
+[mergetool "fugitive"]
+    cmd = vim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+[mergetool]
+    keepBackup = false
+    prompt = false
+[user]
+    name = David Craddock
+    email = contact@davidcraddock.net
+[http]
+    sslVerify = false
