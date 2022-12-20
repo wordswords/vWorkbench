@@ -121,6 +121,7 @@ set +o extendedglob
 
 ## [++ ALIASES ++]
 ( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
+alias bat="batcat"
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias grep="grep --color"
 alias l='ls -CF'

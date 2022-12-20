@@ -40,6 +40,8 @@ sudo apt install tree -y
 sudo apt install w3m -y
 # reminder to take screen breaks
 sudo apt install workrave -y
+# bat, a cat clone with syntax highlighting and Git integration
+sudo apt install bat -y
 
 report_done
 
