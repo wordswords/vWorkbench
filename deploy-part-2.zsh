@@ -234,6 +234,7 @@ echo '''
 ''' > ~/.dotfiles/vimscript.vs
 vim -s ~/.dotfiles/vimscript.vs
 rm ~/.dotfiles/vimscript.vs
+report_done
 
 echo
 echo "-- OPTIONAL EXTRAS -- "
