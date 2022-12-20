@@ -145,6 +145,7 @@ directory.
 of that issue.
 16. Use `lookup <jira issue number, no prefix>` to print the jira-cli ticket
 summary of that issue on the command line.
+17. Use `bat <file>` for a syntax-highlighting quick cat.
 
 ## VIM Key bindings
 
