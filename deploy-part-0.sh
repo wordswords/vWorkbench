@@ -42,7 +42,10 @@ sudo apt install w3m -y
 sudo apt install workrave -y
 # bat, a cat clone with syntax highlighting and Git integration
 sudo apt install bat -y
+report_done
 
+report_progress 'Installing McFly, a zsh Control-R replacement'
+curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --force --git cantino/mcfly
 report_done
 
 report_progress 'We will now attempt to enable automated unattended-upgrades'

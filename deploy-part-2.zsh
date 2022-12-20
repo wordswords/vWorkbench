@@ -196,13 +196,8 @@ report_progress 'Installing and configuring Joplin CLI notetaking app'
 ( which joplin-cli 2>/dev/null && sudo npm update -g joplin ) || ( NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli )
 report_done
 
-report_progress 'Import Joplin config'
-/usr/bin/joplin-cli config --import < ~/.dotfiles/joplin.config
-report_done
-
-report_progress 'Syncing Joplin notes, you will now be asked to log into dropbox'
-joplin-cli e2ee enable
-syncnotes
+report_progress 'Import Joplin config, enable encryption and syncnotes'
+( which jopli-cli 2>/dev/null) && ( /usr/bin/joplin-cli config --import < ~/.dotfiles/joplin.config ) && joplin-cli e2ee enable && syncnotes
 report_done
 
 report_progress 'Changing shell to /bin/zsh.'

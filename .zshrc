@@ -144,5 +144,9 @@ updatedotfiles
 fortuneprint
 ## [-- COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 
+## [++ McFly Initialization ++]
+eval "$(mcfly init zsh)"
+## [-- McFly Initialization --]
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
