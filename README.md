@@ -80,7 +80,7 @@ the prerequisites under Ubuntu by executing `./deploy-part-0.sh`.
 ## What It Will Install
 
 It will install my VIM9 development environment and anything else I use
-regularly in my work. Currently it will:
+regularly in my work. Currently it includes:
 
 * Install my heavily customised version of VIM9 with coc.vim and other plugins
 * Install latest version of Oh-my-ZSH and set your default shell to ZSH
@@ -119,7 +119,7 @@ not succeed without my credentials. So you probably want to change that.
 2. Type `z` and a directory name accessible from your current directory to cd to
 that directory, no need to type cd.
 3. Type `l` for a long-style ls.
-4. `vimdiff <file1> <file2>` for a nice 2 way diff style interface where you can
+4. `delta <file1> <file2>` for a nice 2 way diff style interface where you can
 analyse and easily copy changes between files.
 5. `cat <file> | pbcopy` to cat a file into the local OS clipboard, very useful
 for then using on a website form.
@@ -129,23 +129,20 @@ for then using on a website form.
 current directory. Very useful when you have a number of different projects
 that interact with each other and you want to quickly see which repos branches
 you have checked out.
-8. Use `lockup` to encypt the secure directory. Remember to lock up after yourself!
-9. Use `unlock` to un-encypt the secure directory. Remember to lock up after
-   yourself!
-10. Use `vi` instead of `vim` to load a separate minimal vim config, useful if
+8. Use `vi` instead of `vim` to load a separate minimal vim config, useful if
     there are problems with the vim config.
-11. Use `notes` to un-encrypt the secure directory, launch Joplin, and then on
+9. Use `notes` to un-encrypt the secure directory, launch Joplin, and then on
     exit, re-enrypt the directory.
-12. Use `please` after realising that you needed sudo with the last command, to
+10. Use `please` after realising that you needed sudo with the last command, to
     repeat the last command with sudo
-13. Use `ports` to list the open ports on the system in a readable way.
-14. Use `tree` for a handy diagram of the full directory tree under the current
+11. Use `ports` to list the open ports on the system in a readable way.
+12. Use `tree` for a handy diagram of the full directory tree under the current
 directory.
-15. Use `ref <jira issue number, no prefix>` to open firefox with the details
+13. Use `ref <jira issue number, no prefix>` to open firefox with the details
 of that issue.
-16. Use `lookup <jira issue number, no prefix>` to print the jira-cli ticket
+14. Use `lookup <jira issue number, no prefix>` to print the jira-cli ticket
 summary of that issue on the command line.
-17. Use `bat <file>` for a syntax-highlighting quick cat.
+15. Use `bat <file>` for a syntax-highlighting quick cat.
 
 ## VIM Key bindings
 
@@ -213,8 +210,8 @@ Check out this handy VIM cheatsheet I found here:
 
 1. `<LEFT>`       - prev text error
 2. `<RIGHT>`      - next text error
-3. `<UP>`         - toggle Vista (the file outline browser)
-4. `<DOWN>`       - toggle NerdTree (the directory index browser)
+3. `<UP>`         - toggle Nerdtree
+3. `<DOWN>`       - toggle Vista
 5. `<F1>`         - Run `:LanguageToolCheck`, a Java-based spelling and grammar checker
 6. `zg`           - Mark as a good word
 7. `zw`           - Like `zg` but mark the word as a wrong (bad) word
