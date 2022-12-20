@@ -245,8 +245,7 @@ then
     sudo snap install go --classic 2>/dev/null || sudo snap refresh go
     go install golang.org/dl/go1.19@latest
     go install github.com/ankitpokhrel/jira-cli/cmd/jira@latest
-    report_progress '''JIRA-CLI go client installed. You will now have to setup
-    it with your local JIRA_API token, see: https://github.com/ankitpokhrel/jira-cli/'''
+    report_progress '''JIRA-CLI go client installed. You will now have to set it up with your local JIRA_API token, see: https://github.com/ankitpokhrel/jira-cli/'''
     report_done
 fi
 echo
