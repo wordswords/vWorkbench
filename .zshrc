@@ -145,6 +145,7 @@ fortuneprint
 ## [-- COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 
 ## [++ McFly Initialization ++]
+export MCFLY_KEY_SCHEME=vim
 eval "$(mcfly init zsh)"
 ## [-- McFly Initialization --]
 
