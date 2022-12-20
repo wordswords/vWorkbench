@@ -115,6 +115,9 @@ not succeed without my credentials. So you probably want to change that.
 
 ## Shell shortcuts
 
+The most important command is `cht <language/tech/cmd> <query>` which will answer a
+lot of questions with examples on common use. It requires internet access.
+
 1. `<CTRL>-<R>` for an intelligent search through previous commands using McFly.
 2. Type `z` and a directory name accessible from your current directory to cd to
 that directory, no need to type cd.
