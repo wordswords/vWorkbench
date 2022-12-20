@@ -147,7 +147,6 @@ eval "$(mcfly init zsh)"
 ## [++ cht.sh Initialization ++]
 mkdir -p ~/.zsh.d/
 curl https://cheat.sh/:zsh > ~/.zsh.d/_cht
-echo 'fpath=(~/.zsh.d/ $fpath)' >> ~/.zshrc
 alias cht='cht.sh'
 ## [-- cht.sh Initialization --]
 
@@ -158,6 +157,4 @@ fortuneprint
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
-fpath=(~/.zsh.d/ $fpath)
-fpath=(~/.zsh.d/ $fpath)
 fpath=(~/.zsh.d/ $fpath)
