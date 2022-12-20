@@ -133,6 +133,7 @@ alias pbpaste='xclip -selection clipboard -o'
 alias please='sudo $(fc -ln -1)'
 alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
 alias vi="vim -u NONE"
+alias hnn="curl hkkr.in/h"
 ## [-- ALIASES --]
 
 ## [++ Required for Golang install syntax ++]
