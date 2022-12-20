@@ -214,6 +214,15 @@ vim -s ~/.dotfiles/vimscript.vs
 rm ~/.dotfiles/vimscript.vs
 report_done
 
+report_progress 'Configuring workrave'
+gsettings set org.workrave.timers.daily-limit limit 14400
+gsettings set org.workrave.timers.rest-break limit 2700
+gsettings set org.workrave.breaks.daily-limit enabled true
+gsettings set org.workrave.breaks.rest-break enabled true
+gsettings set org.workrave.breaks.micro-pause enabled false
+report_done
+
+
 echo
 echo "-- OPTIONAL EXTRAS -- "
 echo
