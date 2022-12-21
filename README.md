@@ -134,8 +134,7 @@ that interact with each other and you want to quickly see which repos branches
 you have checked out.
 8. Use `vi` instead of `vim` to load a separate minimal vim config, useful if
     there are problems with the vim config.
-9. Use `notes` to un-encrypt the secure directory, launch Joplin, and then on
-    exit, re-enrypt the directory.
+9. Use `notes` to launch Joplin, my note-taking app.
 10. Use `please` after realising that you needed sudo with the last command, to
     repeat the last command with sudo
 11. Use `ports` to list the open ports on the system in a readable way.
