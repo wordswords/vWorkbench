@@ -146,6 +146,9 @@ of that issue.
 14. Use `lookup <jira issue number, no prefix>` to print the jira-cli ticket
 summary of that issue on the command line.
 15. Use `bat <file>` for a syntax-highlighting quick cat.
+16. Use `hnn` to get the top 10 Hacker News Network headlines for the hour.
+17. Use `hnn100` to get the top 100 Hacker News Network headlines for the hour.
+18. Use `z dot` to quickly jump to a frequently used directory (in this case ~/.dotfiles)
 
 ## VIM Key bindings
 
