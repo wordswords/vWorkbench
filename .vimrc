@@ -48,6 +48,10 @@ set wildmode=list:longest,full
 " map the <leader> character to comma
 let mapleader=","
 
+" Foot pedal
+nnoremap b i
+imap b <Esc>
+
 " remap control-backspace to delete the last word in insert mode
 inoremap <C-H> <C-W>
 
