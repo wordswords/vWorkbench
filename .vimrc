@@ -1,16 +1,14 @@
-" /- - - - - - - - - - - - - - - - - - - - - -\                                           |
+" /- - - - - - - - - - - - - - - - - - - - - -\
 " |  https://github.com/wordswords/dotfiles   |
 " \- - - - - - - - - - - - - - - - - - - - - -/
 "
 " vim: spell indent nowrap
 "
 syntax enable
-
 set autoindent                     " Automatically indent code
 set background=dark                " Dark background, light foreground
 set backspace=2                    " Backspace back up a line
 set backupdir=~/.backup/vim        " Directory to drop backup files
-set bk                             " Drop backup files
 set colorcolumn=+1                 " Enable coloured column after textwidth line
 set cursorline                     " Highlight current line
 set dir=~/.backup/vim/swap         " Directory to drop swap files
@@ -49,8 +47,8 @@ set wildmode=list:longest,full
 let mapleader=","
 
 " Foot pedal
-nnoremap b i
-imap b <Esc>
+nnoremap <F6> i
+imap <F6> <Esc>
 
 " remap control-backspace to delete the last word in insert mode
 inoremap <C-H> <C-W>
@@ -292,7 +290,6 @@ autocmd VimEnter * wincmd p
 
 " stop NERDTree buffers being lost by disabling buffer next and buffer previous
 autocmd FileType nerdtree noremap <buffer> <c-h> <nop>
-autocmd FileType nerdtree noremap <buffer> <c-l> <nop>
 
 " if NERDTree is the last window present, i.e: when you've closed all other
 " windows, then close vim
