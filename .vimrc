@@ -24,7 +24,6 @@ set laststatus=2                   " Show non-printable characters e.g. tab, \n
 set list                           " Use the following list characters:
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set ls=2                           " Always show status line
-set noerrorbells                   " Turn off all bells
 set number                         " Show line numbers
 set relativenumber                 " Set numbering from current line
 set ruler                          " Show the cursor position all the time
@@ -36,13 +35,16 @@ set spelllang=en_gb                " Set dictionary to be UK spelling
 set splitbelow                     " Opens new windows below, not above
 set splitright                     " Open new vertical split windows to the right
 set t_Co=256                       " Force 256 colour mode
-set t_vb=                          " Visual bell off
 set ts=4                           " Each tab is four spaces
 set ttyfast                        " Smoother changes
 set undodir=~/.backup/vim/undos    " Directory to drop undo files
 set undofile                       " Drop undo files
 set wildmenu                       " Allow for menu based file navigation
 set wildmode=list:longest,full
+
+""" no bells, ever
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 " map the <leader> character to comma
 let mapleader=","
