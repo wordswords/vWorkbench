@@ -258,7 +258,9 @@ e.g. method, variable etc.
 documentation for that feature.
 10. `:help coc-nvim` for the reference documentation for Coc.vim
 
-## VIM9 Lookup Functions
+## VIM9 Popup Functions
+
+For any of these, use `<CTRL>-f` and `<CTRL>-b` to scroll the popups.
 
 First move the cursor over a word or line and then:
 

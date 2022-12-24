@@ -64,6 +64,7 @@ nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 """
 """ START OF COC.vim CONFIG
 """
+
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
 set encoding=utf-8
@@ -229,7 +230,6 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 """
 
 " GUI config
-autocmd GUIEnter * set visualbell t_vb= " Turn off visual and audio bell for GUI
 let g:prettier#autoformat = 1 " Prettier code formatter automatically files
 let g:rehash256 = 1 " Ensure 256 colour mode
 
@@ -305,8 +305,10 @@ let NERDTreeDirArrows = 1
 
 " make sure NERDTree shows hidden files/dirs
 let NERDTreeShowHidden = 1
+
 "
 " Pressing <UP> cursor toggles NerdTree
+"
 noremap <UP> :NERDTreeToggle<CR>
 """
 """ END OF Nerdtree CONFIG
@@ -362,8 +364,9 @@ function SetGitCommitFileOptions()
   setlocal spell " highlight spelling mistakes
 endfunction
 
-" remove trailing whitespace on these filetypes only:
+""" remove trailing whitespace on these filetypes only:
 autocmd FileType text,markdown,Makefile,Jenkinsfile,Python autocmd BufWritePre <buffer> %s/\s\+$//e
+""" file-type-specific stuff
 autocmd BufRead,BufNewFile *.f90 set filetype=Fortran
 autocmd BufRead,BufNewFile *.robot setlocal noexpandtab
 autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
@@ -390,13 +393,14 @@ noremap <F12> :Goyo<CR> " this toggles distraction-free mode
 """
 let g:vista_default_executive = "coc"
 nmap <silent><DOWN> :Vista!!<ENTER>
+
+""" Automatically close vim if vista is the only buffer left
 autocmd bufenter * if (winnr("$") == 1 && bufwinnr("__vista__") > 0) | q | endif
+""" If only NerdTree and Vista buffers are left, automatically close VIM
+autocmd bufenter * if (winnr("$") == 2 && bufwinnr("__vista__") > 0 && exists("b:NERDTree")) | qa | endif
 """
 """ END of Vista CONFIG
 """
-
-" If only NerdTree and Vista buffers are left, close VIM
-autocmd bufenter * if (winnr("$") == 2 && bufwinnr("__vista__") > 0 && exists("b:NERDTree")) | qa | endif
 
 """
 """ Wordy CONFIG
@@ -453,6 +457,7 @@ if executable('bash-language-server')
         \ 'allowlist': ['sh'],
         \ })
 endif
+
 """
 """ START of wikipedia2text lookup CONFIG
 """
@@ -473,10 +478,10 @@ nnoremap <silent><leader>w :call <SID>LookupPopup()<CR>
 """
 """ END of wikipedia2text lookup CONFIG
 """
+
 """
 """ START of JiraIssueLookupPopup lookup CONFIG
 """
-
 def s:JiraIssueLookupPopup()
     set mouse=a
     var popup_win = printf("jira view issue --plain %s", expand('<cword>'))
