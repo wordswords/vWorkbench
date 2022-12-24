@@ -9,6 +9,7 @@ set autoindent                     " Automatically indent code
 set background=dark                " Dark background, light foreground
 set backspace=2                    " Backspace back up a line
 set backupdir=~/.backup/vim        " Directory to drop backup files
+set bk                             " Backup files
 set colorcolumn=+1                 " Enable coloured column after textwidth line
 set cursorline                     " Highlight current line
 set dir=~/.backup/vim/swap         " Directory to drop swap files
@@ -290,6 +291,7 @@ autocmd VimEnter * wincmd p
 
 " stop NERDTree buffers being lost by disabling buffer next and buffer previous
 autocmd FileType nerdtree noremap <buffer> <c-h> <nop>
+autocmd FileType nerdtree noremap <buffer> <c-l> <nop>
 
 " if NERDTree is the last window present, i.e: when you've closed all other
 " windows, then close vim
