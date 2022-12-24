@@ -360,7 +360,6 @@ endfunction
 
 " remove trailing whitespace on these filetypes only:
 autocmd FileType text,markdown,Makefile,Jenkinsfile,Python autocmd BufWritePre <buffer> %s/\s\+$//e
-
 autocmd BufRead,BufNewFile *.f90 set filetype=Fortran
 autocmd BufRead,BufNewFile *.robot setlocal noexpandtab
 autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
@@ -395,6 +394,7 @@ autocmd bufenter * if (winnr("$") == 1 && bufwinnr("__vista__") > 0) | q | endif
 " If only NerdTree and Vista buffers are left, close VIM
 autocmd bufenter * if (winnr("$") == 2 && bufwinnr("__vista__") > 0 && exists("b:NERDTree")) | qa | endif
 
+"""
 """ Wordy CONFIG
 """
 " Wordy is only activated when editing text files
