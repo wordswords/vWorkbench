@@ -46,6 +46,8 @@ sudo apt install bat -y
 sudo apt install curl -y
 # xclip and xsel for clipboard access
 sudo apt install xclip xsel -y
+# cool-retro-term for a cool terminal
+sudo apt install cool-retro-term -y
 report_done
 
 report_progress 'Installing McFly, a zsh Control-R replacement'
