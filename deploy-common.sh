@@ -10,6 +10,12 @@ report_heading () {
     echo -e "\e[0;31m[✭] ${message} [✭]\e[0m"
 }
 
+report_finished () {
+    message="$1"
+    echo
+    echo -e "\e[0;32m[✭] ${message} [✭]\e[0m"
+}
+
 write_message () {
     message="$1"
     mkdir -p /tmp/report_progress_message
@@ -68,7 +74,12 @@ get_os () {
   then
     baseos='osx'
   else
-    baseos='linux'
+        if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+            baseos='windows'
+        else
+            baseos='linux'
+        fi
   fi
   echo $baseos
 }
+
