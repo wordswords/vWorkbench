@@ -50,6 +50,10 @@ sudo apt install xclip xsel -y
 sudo apt install cool-retro-term -y
 report_done
 
+report_progress 'Installing vim-anywhere for allowing text to be edited on any text input'
+curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
+report_done
+
 report_progress 'Installing McFly, a zsh Control-R replacement'
 curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --force --git cantino/mcfly
 report_done

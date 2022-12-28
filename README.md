@@ -149,7 +149,14 @@ summary of that issue on the command line.
 17. Use `hnn100` to get the top 100 Hacker News Network headlines for the hour.
 18. Use `z dot` to quickly jump to a frequently used directory (in this case ~/.dotfiles)
 
-## VIM Key bindings
+## GUI Shortcuts under Ubuntu for when you don't want to use a mouse
+
+1. `<CTRL>-<ALT>-v` - open gVIM whenever you have a text input on the GUI or
+a browser or whatever. When you save the file, it will copy it to the clipboard.
+So just `<CTRL>-v` afterwards to paste it into the text input.
+2. `<CTRL>-s` - search for application and run it.
+
+## VIM9 shortcuts
 
 The most important VIM shortcut is `<leader> h` which is currently mapped to `, h`.
 This will open up this document, which is kept up to date.

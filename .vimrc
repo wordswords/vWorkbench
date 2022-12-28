@@ -57,6 +57,10 @@ def s:BringUpDotfilesReadme()
 enddef
 nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 
+" Set gVIM settings to be the same as the terminal
+set t_Co=256
+
+
 """
 """ START OF COC.vim CONFIG
 """
@@ -230,7 +234,7 @@ let g:prettier#autoformat = 1 " Prettier code formatter automatically files
 let g:rehash256 = 1 " Ensure 256 colour mode
 
 " Default colourscheme
-colorscheme monokai256
+colorscheme molokai
 hi SpecialKey ctermfg=grey guifg=grey70
 hi NonText ctermfg=grey guifg=grey70
 
@@ -253,7 +257,7 @@ nmap <F1> <c-o>:echo<CR>
 vnoremap <C-c> "+y
 
 " Vim fonts for gVIM
-set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Nerd\ Font\ Complete:h18
+set guifont=DroidSansMono\ Nerd\ Font\ 18 
 
 " Highlighted ruler for extra focus
 highlight CursorLine term=bold cterm=bold guibg=Grey40
