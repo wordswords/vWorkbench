@@ -11,4 +11,5 @@ LanguageTool-5.2.zip
 LanguageTool-5.2/**
 iterm2/com.googlecode.iterm2.plist*
 secrets/**
+SECRETS/**
 tags
