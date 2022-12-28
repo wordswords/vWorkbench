@@ -15,7 +15,6 @@ set cursorline                     " Highlight current line
 set dir=~/.backup/vim/swap         " Directory to drop swap files
 set encoding=utf8                  " Enforce UTF8 encoding
 set expandtab                      " Always expand tabs
-set expandtab                      " Convert all tabs to spaces
 set history=1000                   " 1000 previous commands remembered
 set hlsearch                       " Highlight searches
 set ignorecase                     " Ignore case when searching
@@ -52,9 +51,6 @@ let mapleader=","
 " Foot pedal
 nnoremap <F6> i
 imap <F6> <Esc>
-
-" remap control-backspace to delete the last word in insert mode
-inoremap <C-H> <C-W>
 
 def s:BringUpDotfilesReadme()
     call feedkeys(":sp ~/.dotfiles/README.md\<CR>:Vista!!\<CR>")
@@ -336,6 +332,8 @@ function SetTextAndMarkdownOptions()
   nmap <LEFT> [s " last spelling/grammar error
   nmap <RIGHT> ]s " next spelling/grammar error
   nmap <F1> :LanguageToolCheck<CR>
+  " don't want copilot when writing text
+  call feedkeys(":Copilot disable\<CR>")
 endfunction
 
 function SetMakefileOptions()
