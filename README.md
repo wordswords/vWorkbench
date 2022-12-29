@@ -387,12 +387,13 @@ around large projects.
 
 # Additional Notes
 
-# Tmux
+## Tmux
 
 Tmux is installed by the environment.
 
 1. Config file is at `~/.tmux.conf`
 2. For quick help, `cht tmux`
+3. For a great tutorial (https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)[https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/]
 
 ## Git stuff I keep forgetting
 
