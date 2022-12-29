@@ -68,6 +68,7 @@ report_progress 'Setting up symbolic links'
     ln --force -s ~/.dotfiles/.bash_profile ~/.bash_profile
     ln --force -s ~/.dotfiles/.bash_profile_remote ~/.bash_profile_remote
     ln --force -s -n ~/.dotfiles/.vim ~/.vim
+    ln --force -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
     ln --force -s ~/.dotfiles/.vimrc ~/.vimrc
     ln --force -s ~/.dotfiles/.zshrc ~/.zshrc
     ln --force -s ~/.dotfiles/.zshenv ~/.zshenv
@@ -97,6 +98,7 @@ report_progress 'Installing/updating vim plugins to latest version'
 
     git clone git@github.com:Shougo/denite.nvim.git
     git clone git@github.com:Xuyuanp/nerdtree-git-plugin.git
+    git clone git@github.com:christoomey/vim-tmux-navigator.git
     git clone git@github.com:ciaranm/securemodelines.git
     git clone git@github.com:dpelle/vim-LanguageTool
     git clone git@github.com:jelera/vim-javascript-syntax.git

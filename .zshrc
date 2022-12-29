@@ -155,6 +155,7 @@ alias cht='cht.sh'
 ## [++ COMMANDS RUN ON EVERY INTERACTIVE SHELL ++]
 updatedotfiles
 fortuneprint
+echo "tmux sessions:" && tmux list-sessions
 ## [-- COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
