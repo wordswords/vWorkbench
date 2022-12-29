@@ -237,6 +237,7 @@ then
     report_progress 'Configuring tmuxinator'
         mkdir -p ~/.config/tmuxinator
         ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
+        sudo wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O /usr/local/share/zsh/site-functions/_tmuxinator
     report_done
 
     echo
