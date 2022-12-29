@@ -133,8 +133,10 @@ alias pbpaste='xclip -selection clipboard -o'
 alias please='sudo $(fc -ln -1)'
 alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
 alias vi="vim -u NONE"
-alias hnn="curl 'hkkr.in/h-n10-f2'"
-alias hnn100="curl 'hkkr.in/h-n100-f2'"
+alias hn="curl 'hkkr.in/h-n10-f2'"
+alias hn100="curl 'hkkr.in/h-n100-f2'"
+alias tmux="TERM=screen-256color-bce tmux"
+
 ## [-- ALIASES --]
 
 ## [++ Required for Golang install syntax ++]
@@ -155,7 +157,7 @@ alias cht='cht.sh'
 ## [++ COMMANDS RUN ON EVERY INTERACTIVE SHELL ++]
 updatedotfiles
 fortuneprint
-echo "tmux sessions:" && tmux list-sessions
+echo "tmux sessions:" && tmux ls 
 ## [-- COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
