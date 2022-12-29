@@ -1,0 +1,4 @@
+#!/bin/bash
+TERM=xterm-256color tmux-non-dead.tmux $@
+
+
