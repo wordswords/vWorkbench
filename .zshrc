@@ -135,8 +135,7 @@ alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
 alias vi="vim -u NONE"
 alias hn="curl 'hkkr.in/h-n10-f2'"
 alias hn100="curl 'hkkr.in/h-n100-f2'"
-alias tmux="TERM=screen-256color-bce tmux"
-
+alias tmux="TERM=xterm-256color tmux-non-dead.tmux" 
 ## [-- ALIASES --]
 
 ## [++ Required for Golang install syntax ++]
@@ -163,3 +162,4 @@ echo "tmux sessions:" && tmux ls
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
+

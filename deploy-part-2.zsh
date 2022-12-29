@@ -98,7 +98,6 @@ report_progress 'Installing/updating vim plugins to latest version'
 
     git clone git@github.com:Shougo/denite.nvim.git
     git clone git@github.com:Xuyuanp/nerdtree-git-plugin.git
-    git clone git@github.com:christoomey/vim-tmux-navigator.git
     git clone git@github.com:ciaranm/securemodelines.git
     git clone git@github.com:dpelle/vim-LanguageTool
     git clone git@github.com:jelera/vim-javascript-syntax.git
@@ -227,6 +226,10 @@ then
         gsettings set org.workrave.breaks.micro-pause enabled false
     report_done
 
+    report_progress 'Installing tmux snap'
+        sudo snap install tmux-non-dead --classic 2>/dev/null || sudo snap refresh tmux-non-dead
+    report_done
+
     echo
     echo "-- OPTIONAL EXTRAS -- "
     echo
@@ -251,6 +254,8 @@ then
         sudo snap install spotify 2>/dev/null || sudo snap refresh spotify
         report_done
     fi
+
+
 fi
 
 echo

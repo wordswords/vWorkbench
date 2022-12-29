@@ -389,11 +389,11 @@ around large projects.
 
 ## Tmux
 
-Tmux is installed by the environment.
-
 1. Config file is at `~/.tmux.conf`
-2. For quick help, `cht tmux`
-3. For a great tutorial (https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)[https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/]
+2. For a great tutorial (https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)[https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/]
+3. For a vertical split `<CTRL>-B SHIFT |`
+4. For a horizontal split `<CTRL>-B SHIFT -`
+5. For all other keybindings,`cht tmux`
 
 ## Git stuff I keep forgetting
 
