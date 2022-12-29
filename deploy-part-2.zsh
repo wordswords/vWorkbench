@@ -230,6 +230,10 @@ then
         sudo snap install tmux-non-dead --classic 2>/dev/null || sudo snap refresh tmux-non-dead
     report_done
 
+    report_progress 'Installing tmuxinator'
+        gem install tmuxinator
+    report_done
+
     echo
     echo "-- OPTIONAL EXTRAS -- "
     echo

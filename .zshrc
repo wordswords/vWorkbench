@@ -163,3 +163,5 @@ echo "tmux sessions:" && tmux ls
 source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
 
+# Required for tmuxinator
+export EDITOR=vim
