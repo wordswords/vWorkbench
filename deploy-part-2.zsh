@@ -234,6 +234,11 @@ then
         gem install tmuxinator
     report_done
 
+    report_progress 'Configuring tmuxinator'
+        mkdir -p ~/.config/tmuxinator
+        ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
+    report_done
+
     echo
     echo "-- OPTIONAL EXTRAS -- "
     echo
