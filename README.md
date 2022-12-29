@@ -387,6 +387,13 @@ around large projects.
 
 # Additional Notes
 
+# Tmux
+
+Tmux is installed by the environment.
+
+1. Config file is at `~/.tmux.conf`
+2. For quick help, `cht tmux`
+
 ## Git stuff I keep forgetting
 
 1. `git status` - will tell you what branch you're on and what files have

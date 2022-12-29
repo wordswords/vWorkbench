@@ -60,6 +60,9 @@ report_done
 report_progress 'Install xclip and xsel for clipboard access'
     sudo apt install xclip xsel -y
 report_done
+report_progress 'Install tmux terminal multiplexer'
+    sudo apt install tmux -y
+report_done
 
 # custom installation lines
 report_progress 'Installing McFly, a zsh Control-R replacement'
