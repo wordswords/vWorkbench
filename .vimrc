@@ -48,6 +48,12 @@ autocmd GUIEnter * set visualbell t_vb=
 " map the <leader> character to comma
 let mapleader=","
 
+" Paste from system clipboard
+def s:PasteFromSystemClipboard()
+    call feedkeys(":set paste\<CR>:r! xclip -selection clipboard -o\<CR>:set nopaste\<CR>")
+enddef
+nnoremap <leader>P :call <SID>PasteFromSystemClipboard()<CR>
+
 " Foot pedal
 nnoremap <F6> i
 imap <F6> <Esc>

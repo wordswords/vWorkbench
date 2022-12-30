@@ -214,8 +214,8 @@ code bracket
 somewhat difficult to follow.
 31. `*` and `#` will search forward and backward through the file with the exact
 same word that is under the cursor in normal mode.
+32. `<leader>P` to paste the contents of the SYSTEM clipboard into the current file.
 
-Check out this handy VIM cheatsheet I found here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)
 
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
@@ -390,10 +390,14 @@ around large projects.
 ## Tmux
 
 1. Config file is at `~/.tmux.conf`
-2. For a great tutorial (https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)[https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/]
-3. For a vertical split `<CTRL>-B SHIFT |`
-4. For a horizontal split `<CTRL>-B SHIFT -`
-5. For all other keybindings,`cht tmux`
+2. For a great tutorial [https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/](https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)
+3. For a vertical split `<CTRL>-a SHIFT |`
+4. For a horizontal split `<CTRL>-a SHIFT -`
+5. For standard keybindings,`cht tmux`
+6. To go into edit mode on cur pane `<CTRL>-a {` . Then `v` to get into visual copy and `y` to copy to SYSTEM clipboard.
+7. To rotate panes in the current layout `<CTRL>-a <SPACE>`
+8. To paste from SYSTEM clipboard `<CTRL>-a }`
+9. To start my standard development tmux session `tmuxinator development`
 
 ## Git stuff I keep forgetting
 
