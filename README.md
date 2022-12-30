@@ -6,7 +6,7 @@ I test this on my two main Linux computers, and my work Linux laptop.
 
 ## Demo Video
 
-[![asciicast](https://asciinema.org/a/545212.svg)](https://asciinema.org/a/545212)
+[![Watch the video](https://img.youtube.com/vi/v2ei_qOBXL8/0.jpg)](https://www.youtube.com/watch?v=v2ei_qOBXL8)
 
 ## VIM:
 
