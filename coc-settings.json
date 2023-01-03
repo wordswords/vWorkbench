@@ -22,4 +22,7 @@
     "blade": "blade-formatter",
     "cmake": "cmake-format"
   }
+  {
+    "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
+  }
 }

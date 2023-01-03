@@ -201,6 +201,10 @@ report_progress 'Stop unwanted changes dirtying up the dotfiles commit tracking'
     git restore --staged ~/.vim || echo ''
 report_done
 
+report_progress "Install chatGPT CLI AI"
+    gem install openai_pipe
+report_done
+
 report_progress 'Running vim local commands for plugins'
     echo '''
     :CocInstall coc-vimlsp

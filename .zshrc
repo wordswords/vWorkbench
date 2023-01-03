@@ -163,5 +163,9 @@ echo "tmux sessions:" && tmux ls
 source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
 
+# open AI cli client
+source ~/.dotfiles/SECRETS/openai-access-token.sh
+alias ai="openai_pipe"
+
 # Required for tmuxinator
 export EDITOR=vim
