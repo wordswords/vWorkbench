@@ -375,6 +375,12 @@ The Github copilot plugin is installed. It assumes you have a subscription.
 2. `:Copilot disable` to disable autocompletes for the current buffer.
 3. `<TAB>` to accept current autocomplete.
 
+## ChatGPT OpenAI CLI Plugin
+
+1. You have to configure the plugin first by `mkdir -p ~/.dotfiles/SECRETS/ && echo export OPENAI_ACCESS_TOKEN=<your token> > ~/.dotfiles/SECRETS/openai-access-token.sh`
+2. Then, just use `ai 'Convert to json'` anywhere in your pipe, for example `cat bla.json | ai 'pretty print this json'`
+3. Other examples of use can be found at [https://github.com/Aesthetikx/openai_pipe](https://github.com/Aesthetikx/openai_pipe)
+
 ## Vista Plugin
 
 Vista is used for coc.vim or ctags specific function lists for quickly jumping
