@@ -100,6 +100,7 @@ report_progress 'Installing/updating vim plugins to latest version'
     git clone git@github.com:Xuyuanp/nerdtree-git-plugin.git
     git clone git@github.com:ciaranm/securemodelines.git
     git clone git@github.com:dpelle/vim-LanguageTool
+    git clone git@github.com:elixir-editors/vim-elixir.git
     git clone git@github.com:jelera/vim-javascript-syntax.git
     git clone git@github.com:junegunn/goyo.vim
     git clone git@github.com:junegunn/limelight.vim
@@ -218,6 +219,17 @@ report_progress 'Running vim local commands for plugins'
     rm ~/.dotfiles/vimscript.vs
 report_done
 
+report_progress 'Installing ddgr duck duck go search from CLI'
+    sudo apt install ddgr
+report_done
+
+report_progress 'Installing Elixir development toolset'
+    git clone https://github.com/elixir-lsp/elixir-ls.git ~/.elixir-ls
+    cd ~/.elixir-ls
+    mix deps get
+    mix compile
+report_done
+
 # Linux-specific lines
 cur_os=get_os
 if [[ cur_os == 'linux' ]];
@@ -241,6 +253,10 @@ then
     report_progress 'Configuring tmuxinator'
         mkdir -p ~/.config/tmuxinator
         ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
+    report_done
+
+    report_progress 'Syncing clipboards on Ubuntu Linux'
+        python3 ~/.dotfiles/bin/sync-clipboards-ubuntu.py
     report_done
 
     echo

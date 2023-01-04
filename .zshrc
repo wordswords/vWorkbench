@@ -167,5 +167,8 @@ fpath=(~/.zsh.d/ $fpath)
 source ~/.dotfiles/SECRETS/openai-access-token.sh
 alias ai="openai_pipe"
 
+# duckduckgo search from CLI
+alias ddg="ddgr"
+
 # Required for tmuxinator
 export EDITOR=vim
