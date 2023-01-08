@@ -9,7 +9,7 @@ It is my experience that the knowledge and skills you will need as a software en
 
 ## Personal Efficiency and Productivity
 
-It is a sad fact of software development, that more often than not, you will be judged on your speed of completing development features, not the quality of the code you produce, or the long term effect on the product it will have.
+It is a sad fact of software development that, more often than not, you will be judged on your speed of completing development features, not the quality of the code you produce, or the long term effect on the product it will have.
 
 So you have got to work on your productivity and efficiency in your job role, because of two things:
 
