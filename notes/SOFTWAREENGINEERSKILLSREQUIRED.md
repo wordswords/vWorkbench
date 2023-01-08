@@ -16,7 +16,7 @@ So you have got to work on your productivity and efficiency in your job role, be
 - You need to be able to develop and ship code fast in most software organisations anyway.
 - You need to be able to develop and ship code FASTER than the normal expectations, because you will (as a responsible and knowledgable software engineer) take extra time to make sure the quality of your contributions is as high as you can get it NO MATTER WHAT pressures project management will put you under.
 
-Lots of lazy software developers go down the 'short cut' route of just getting features developed as fast as possible. This can get them far, but it is fundamentally unethical and ignorant approach around the craft of technical excellence you should be pursuing as a software developer, and the beneficial long-term affects it has on software products.
+Lots of lazy software developers go down the 'short cut' route of just getting features developed as fast as possible. This can get them far, but it is a fundamentally unethical and ignorant approach around the craft of technical excellence you should be pursuing as a software developer, and the beneficial long-term affects it has on software products.
 
 To improve technical efficiency/productivity there many skills you can improve, including:
 
