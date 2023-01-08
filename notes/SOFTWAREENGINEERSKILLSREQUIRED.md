@@ -18,7 +18,7 @@ So you have got to work on your productivity and efficiency in your job role, be
 
 Lots of lazy software developers go down the 'short cut' route of just getting features developed as fast as possible. This can get them far, but it is a fundamentally unethical and ignorant approach, contrary to the craft of technical excellence you should be pursuing as a software developer, and the beneficial long-term effects it has on software products.
 
-To improve technical efficiency/productivity there many skills you can improve, including:
+To improve technical efficiency/productivity there are many skills you can improve, including:
 
 - Knowing your own personal software development environment inside out, and making it as efficient for you as possible.
 - Eating well, sleeping well, exercising well, keeping good physical health, optimising for a sedentary job where you will need to be at your most mentally alert for the rest of your career.
