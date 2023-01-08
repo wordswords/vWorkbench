@@ -52,7 +52,7 @@ This area also covers the knowledge of how the business works and how and why th
 
 I often think that as software engineers, we are often not given access to the meetings and learn the decisions that determine a lot of the business objectives and practices, and we are not sufficiently educated, especially in large organisations, how we can add the best value to the business, which may sometimes not be included in, or even run counter to, what we are told to do by our immediate management!
 
-Also a lot of engineer types shy away from the business knowledge and are uninterested in developing their knowledge and domain knowledge. They just want to be told what to do. That is fine, but it will reduce the impact you can have on the success of the business, and how people will see you in that particular organisation. It will also reduce the autonomy and freedom you are given.
+A lot of engineer types shy away from the business knowledge and are uninterested in developing their knowledge and domain knowledge. They just want to be told what to do. That is fine, but it will reduce the impact you can have on the success of the business, and how people will see you in that particular organisation. It will also reduce the autonomy and freedom you are given.
 
 ## People and Communication Skills
 
