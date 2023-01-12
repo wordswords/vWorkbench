@@ -172,3 +172,9 @@ alias ddg="ddgr"
 
 # Required for tmuxinator
 export EDITOR=vim
+
+# Required for Apple Magic Pad 2
+
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
+gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+
