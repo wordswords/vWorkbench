@@ -488,7 +488,7 @@ all of them
 case all of them
 4. `:e problemfile.php` - edit the problem file to start the profiling process
 5. `:qa` - when done quit vim and look at the log file
-6. Open up vim-profile.log and search for 'Total time' to see the biggest
+6. Open up `vim-profile.log` and search for 'Total time' to see the biggest
 culprits
 
 ## Joplin commandline
