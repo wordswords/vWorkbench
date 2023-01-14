@@ -279,7 +279,7 @@ First move the cursor over a word or line and then:
 
 ## Git Fugitive Blame Window
 
-1. `:Gblame` for line-by-line git blame on current file, select a commit
+1. `:Git blame` for line-by-line git blame on current file, select a commit
 and press 'o' to open the commit diff with the commit message in a new window.
 2. `Enter` to open a diff of the chosen commit in current window
 3. `C` `A` and `D` resize the blame window up until the commit, author and date
@@ -373,7 +373,7 @@ The Github copilot plugin is installed. It assumes you have a subscription.
 ## ChatGPT OpenAI CLI Plugin
 
 1. You have to configure the plugin first by `mkdir -p ~/.dotfiles/SECRETS/ && echo export OPENAI_ACCESS_TOKEN=<your token> > ~/.dotfiles/SECRETS/openai-access-token.sh`
-2. Then, just use `ai 'Convert to json'` anywhere in your pipe, for example `cat bla.json | ai 'pretty print this json'`
+2. Then, just use `ai <query>` anywhere in your pipe, for example `cat bla.json | ai 'pretty print this json'`
 3. Other examples of use can be found at [https://github.com/Aesthetikx/openai_pipe](https://github.com/Aesthetikx/openai_pipe)
 
 ## Vista Plugin
