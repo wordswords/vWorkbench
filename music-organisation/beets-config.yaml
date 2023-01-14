@@ -1,0 +1,64 @@
+plugins: duplicates replaygain the ftintitle discogs badfiles embedart fetchart
+directory: /mnt2/music/
+
+import:
+    copy: no
+replaygain:
+    command: /usr/bin/mp3gain
+    targetlevel: 92
+    overwrite: no
+    auto: yes
+    backend: command
+    threads: 20
+    parallel_on_import: no
+    per_disc: no
+    peak: 'true'
+    r128: [Opus]
+    r128_targetlevel: 84
+    noclip: yes
+paths:
+    default: '%the{$albumartist}/$album/$artist - $title $bpm'
+    singleton: '%the{$albumartist}/$artist - $title $bpm'
+    comp: '%the{$albumartist}/artist - $title $bpm'
+the:
+    the: yes
+    a: yes
+    format: '{0}, {1}'
+    strip: no
+    patterns: []
+discogs:
+    apikey: rAzVUQYRaoFjeBjyWuWZ
+    apisecret: plxtUTqoCzwxZpqdPysCwGuBSmZNdZVy
+    tokenfile: discogs_token.json
+    source_weight: 0.5
+    user_token: ''
+    separator: ', '
+    index_tracks: no
+ftintitle:
+    auto: yes
+    drop: no
+    format: feat. {0}
+duplicates:
+    album: no
+    checksum: ''
+    copy: ''
+    count: no
+    delete: no
+    format: ''
+    full: no
+    keys: []
+    merge: no
+    move: ''
+    path: no
+    tiebreak: {}
+    strict: no
+    tag: ''
+badfiles:
+    check_on_import: yes
+    commands:
+        flac: flac --test --warnings-as-errors --silent
+va_name: 'Various Artists'
+fetchart:
+    cautious: true
+    cover_names: front back
+
