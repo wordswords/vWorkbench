@@ -115,7 +115,7 @@ export SECURE_DIR="${HOME}/.secure"
 
 ## [++ SOURCE EMPLOYER-SPECIFIC SETTINGS ++]
 set -o extendedglob
-for f (~/.dotfiles/secrets/**/^*("~"|dpkg-(dist|old|new)|.(tmp|back|bak))(N.))  . $f
+for f (~/.dotfiles/SECRETS/**/^*("~"|dpkg-(dist|old|new)|.(tmp|back|bak))(N.))  . $f
 set +o extendedglob
 ## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
 
@@ -136,6 +136,8 @@ alias vi="vim -u NONE"
 alias hn="curl 'hkkr.in/h-n10-f2'"
 alias hn100="curl 'hkkr.in/h-n100-f2'"
 alias tmux="TERM=xterm-256color tmux-non-dead.tmux" 
+alias ai="openai_pipe"
+alias ddg="ddgr"
 ## [-- ALIASES --]
 
 ## [++ Required for Golang install syntax ++]
@@ -153,22 +155,15 @@ curl https://cheat.sh/:zsh > ~/.zsh.d/_cht
 alias cht='cht.sh'
 ## [-- cht.sh Initialization --]
 
-## [++ COMMANDS RUN ON EVERY INTERACTIVE SHELL ++]
+## [++ VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL ++]
 updatedotfiles
 fortuneprint
 echo "tmux sessions:" && tmux ls 
-## [-- COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
+## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
-
-# open AI cli client
-source ~/.dotfiles/SECRETS/openai-access-token.sh
-alias ai="openai_pipe"
-
-# duckduckgo search from CLI
-alias ddg="ddgr"
 
 # Required for Apple Magic Pad 2
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
