@@ -288,23 +288,16 @@ respectively.
 
 ## Git Fugitive Status Window
 
-1. `:Gstatus` to bring up the git status message, but this time it's
-interactive.
-2. `-` to stage or unstage a file
-3. `cc` or `:Gitcommit` will commit the staged files
+1. `:Git` to bring up the interactive git status message while on a changed track file.
+2. `<ENTER>` to stage or unstage a file
+3. `:Git commit` will commit the staged files
 4. `D` or `:GDiff` will open a diff
-5. `g?` displays help with more commands
-6. `:GLog` displays a log message for the current selected file in a quickfix
-window
-7. `:copen` to open the Quickfix window
-8. `:cnext` and `:cprevious` navigate the quickfix window by displaying
-different file versions
 
 ## Git Fugitive Mergetool
 
 1. Whenever you have a merge conflict, use `git mergetool` to open this.
-2. If you want to just use one entire side, move your cursor to that side with <Ctrl-w> h, for example. Then do :Gwrite!.
-3. Buffers are setup so [YOUR local branch (2) | resulting mergefile (1) | THEIR merge in branch (3) ]
+2. If you want to just use one entire side, move your cursor to that side with `<Ctrl-W> h`, for example. Then do `:Gwrite!`.
+3. Buffers are setup so `[YOUR local branch (2) | resulting mergefile (1) | THEIR merge in branch (3) ]`
 4. Use `]c` and `[c` to navigate through the conflicts
 5. Use the center pane to navigate. use `d2o` to obtain from YOUR local branch, use `d3o` to obtain from THEIR branch.
 6. OR go to local branch OR merge in branch, select the conflict, and use `dp` to choose that version.
