@@ -1,4 +1,4 @@
-DevTestOps and Jenkins
+# DevTestOps and Jenkins
 
 There is a lot involved with automating any complex test automation on Jenkins. It might
 seem easy at first, but the main problem is that, as the complexity of your
@@ -17,7 +17,7 @@ only a few scale. The first is that you should NEVER define your pipeline
 scripts on Jenkins itself. Infrastructure-as-code is the whole philosophy of
 DevOps, and if you're not doing that, then you will run into a lot of problems.
 
-* With Jenkins you define your "pipelines" in a ``Jenkinsfile``. These outline a
+* With Jenkins you define your "pipelines" in a `Jenkinsfile`. These outline a
 number of steps you take, for example, spinning up the different parts of your
 application in Docker containers before running tests against them.
 
@@ -66,12 +66,13 @@ the master/main for that repository, your Jenkins pipeline should be running
 your tests to make sure they all work whenever anything changes. Using your
 tests to test your tests. Sounds good right?
 
-* Another thing is, always use 'set -e' on the Bash scripts you're using for
+* Another thing is, always use `set -e` on the Bash scripts you're using for
 automation. I KNOW this is not perfect. I know there are some weird edgecases
-where 'set -e' actually causes bugs. But it's the closest thing to error
+where `set -e` actually causes bugs. But it's the closest thing to error
 checking that Bash has, and you definitely need it for your Bash scripts in
 Jenkins, where a single mistake can cause you to have to wait for another 10+
-minute run to complete.
+minute run to complete. Also consider other Bash error trapping options, there
+are a few.
 
 * Whenever there is an error in any Bash script in your Jenkins job, the job
 should terminate. That allows for quicker feedback that something needs to be
