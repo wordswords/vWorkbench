@@ -17,4 +17,3 @@ deleteAllDockerContent() {
 }
 
 deleteAllDockerContent
-

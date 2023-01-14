@@ -14,4 +14,3 @@
 That should allow both trainee and trainer to share the same terminal session.
 
 Either party can terminate the shared screen by pressing Control-D at any time.
-

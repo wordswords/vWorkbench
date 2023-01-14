@@ -26,4 +26,3 @@ echo "* Run the following script to enable the trainer to connect: ./setup_train
 echo ""
 read -r -p "Press any key to continue.."
 screen -m -S training_screen
-
