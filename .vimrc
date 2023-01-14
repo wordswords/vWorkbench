@@ -285,14 +285,12 @@ let g:powerline_symbols = 'fancy'
 """
 """ NERDTree CONFIG
 """
-" Startup NerdTree when vim is started, except in vimdiff mode
+" Startup NerdTree when vim is started to edit a directory, except in vimdiff mode
 if &diff
     " Do nothing
 else
     if (expand("%"))
       autocmd VimEnter * silent NERDTree %
-    else
-      autocmd VimEnter * silent NERDTree
     endif
 endif
 autocmd VimEnter * wincmd p
