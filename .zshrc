@@ -161,11 +161,8 @@ fortuneprint
 echo "tmux sessions:" && tmux ls 
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+## [++ Powerlevel10k prompt configuration ++]
 source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
-
-# Required for Apple Magic Pad 2
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
-gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+## [-- Powerlevel10k prompt configuration --]
 

@@ -13,6 +13,12 @@ SECURE_DIR="${HOME}"/.secure
 
 report_heading 'Deploy Dotfiles: Part 2'
 
+report_progress 'Testing Github access'
+    ssh -T git@github.com 2> /tmp/githubaccesscheck.txt || echo ""
+    grep 'successfully authenticated' /tmp/githubaccesscheck.txt || ( echo ERROR: Github acccess not available && exit 1; )
+    rm /tmp/githubaccesscheck.txt
+report_done
+
 report_progress 'Running ctags'
     ctags -R *
 report_done
@@ -67,12 +73,12 @@ report_progress 'Setting up symbolic links'
     ln --force -s ~/.dotfiles/.bash_aliases ~/.zsh_aliases
     ln --force -s ~/.dotfiles/.bash_profile ~/.bash_profile
     ln --force -s ~/.dotfiles/.bash_profile_remote ~/.bash_profile_remote
-    ln --force -s -n ~/.dotfiles/.vim ~/.vim
+    ln --force -s ~/.dotfiles/coc-settings.json ~/.vim/coc-settings.json
     ln --force -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
     ln --force -s ~/.dotfiles/.vimrc ~/.vimrc
-    ln --force -s ~/.dotfiles/.zshrc ~/.zshrc
     ln --force -s ~/.dotfiles/.zshenv ~/.zshenv
-    ln --force -s ~/.dotfiles/coc-settings.json ~/.vim/coc-settings.json
+    ln --force -s ~/.dotfiles/.zshrc ~/.zshrc
+    ln --force -s -n ~/.dotfiles/.vim ~/.vim
 report_done
 
 report_progress 'Installing Powerlevel10k prompt'
@@ -85,19 +91,11 @@ report_progress 'Creating vim backup file directory structure'
     mkdir ~/.backup/vim/undos || echo "INFO: Undofile backup directory seems to be already there."
 report_done
 
-report_progress 'Testing Github access'
-    ssh -T git@github.com 2> /tmp/githubaccesscheck.txt || echo ""
-    grep 'successfully authenticated' /tmp/githubaccesscheck.txt || ( echo ERROR: Github acccess not available && exit 1; )
-    rm /tmp/githubaccesscheck.txt
-report_done
-
 report_progress 'Installing/updating vim plugins to latest version'
     rm -rf ~/.dotfiles/.vim/pack/plugins/start/*
     mkdir -p ~/.dotfiles/.vim/pack/plugins/start/
     cd ~/.dotfiles/.vim/pack/plugins/start/ || exit 1
 
-    git clone git@github.com:Shougo/denite.nvim.git
-    git clone git@github.com:Xuyuanp/nerdtree-git-plugin.git
     git clone git@github.com:ciaranm/securemodelines.git
     git clone git@github.com:dpelle/vim-LanguageTool
     git clone git@github.com:elixir-editors/vim-elixir.git
@@ -116,11 +114,13 @@ report_progress 'Installing/updating vim plugins to latest version'
     git clone git@github.com:roxma/vim-hug-neovim-rpc
     git clone git@github.com:ryanoasis/vim-devicons.git
     git clone git@github.com:scrooloose/nerdtree.git
+    git clone git@github.com:Shougo/denite.nvim.git
     git clone git@github.com:tomasr/molokai.git
     git clone git@github.com:tpope/vim-bundler.git
     git clone git@github.com:tpope/vim-fugitive.git
     git clone git@github.com:tpope/vim-git
     git clone git@github.com:vim-airline/vim-airline
+    git clone git@github.com:Xuyuanp/nerdtree-git-plugin.git
 report_done
 
 report_progress 'Installing Github Copilot VIM9 plugin'
@@ -159,7 +159,17 @@ report_progress 'Installing vim9/coc extensions'
     echo '{"dependencies":{}}'> package.json
 
     # Change extension names to the extensions you need
-    sudo npm install coc-sh coc-tsserver coc-vimlsp coc-json coc-prettier coc-html coc-phpls coc-css coc-python --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+    sudo npm install \
+        coc-css \
+        coc-html \
+        coc-json \
+        coc-phpls \
+        coc-prettier \
+        coc-python \
+        coc-sh \
+        coc-tsserver \
+        coc-vimlsp \
+        --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
     sudo npm install -g vim-language-server
 report_done
 
@@ -208,7 +218,6 @@ report_done
 
 report_progress 'Running vim local commands for plugins'
     echo '''
-    :CocInstall coc-vimlsp
     :CocUpdateSync
     :Copilot setup
     :helptags ALL
@@ -240,6 +249,11 @@ then
         gsettings set org.workrave.breaks.daily-limit enabled true
         gsettings set org.workrave.breaks.rest-break enabled true
         gsettings set org.workrave.breaks.micro-pause enabled false
+    report_done
+
+    report_progress 'Configuring Trackpad settings'
+        gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
+        gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
     report_done
 
     report_progress 'Installing tmux snap'
@@ -283,16 +297,15 @@ then
         sudo snap install spotify 2>/dev/null || sudo snap refresh spotify
         report_done
     fi
-
-
 fi
 
 echo
 echo "-- NEXT STEPS -- "
 echo
 echo '''You will have to install your nerdfont manually, download
-DroidSansNerdFontMono from https://github.com/ryanoasis/nerd-fonts . After this,
-you will have to set your terminal emulator to use said font.'''
+DroidSansNerdFontMono from https://github.com/ryanoasis/nerd-fonts.
+After this, you will have to set your terminal emulator to use 
+said font.'''
 
 report_heading 'Deploy Dotfiles: Part 2 Complete'
 report_heading 'Deploy Process: Complete.'
