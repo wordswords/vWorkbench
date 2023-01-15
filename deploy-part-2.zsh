@@ -284,6 +284,9 @@ then
         go install github.com/ankitpokhrel/jira-cli/cmd/jira@latest
         report_progress '''JIRA-CLI go client installed. You will now have to set it up with your local JIRA_API token, see: https://github.com/ankitpokhrel/jira-cli/'''
         report_done
+    else
+        # remove go jira client if it was installed previously
+        rm ~/go/bin/jira || echo ''
     fi
     echo
     read "?Do you want to install or update the Ubuntu snap images of Spotify and Morgen? (y/N)? " SNAPINSTALL
