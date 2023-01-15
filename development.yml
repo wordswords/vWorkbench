@@ -6,10 +6,9 @@ socket_name: development
 tmux_detached: false
 windows:
     - editor:
-        layout: main-horizontal
+        layout: main-vertical
         panes:
             - vim
-            - #empty shell
             - hn
 startup_window: editor
     
