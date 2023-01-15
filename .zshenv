@@ -37,6 +37,11 @@ tmuxsessionsprint() {
 }
 autoload -Uz tmuxsessionsprint
 
+ai() {
+    openai_pipe $@ | tee >(pbcopy)
+}
+autoload -Uz ai
+
 ## [-- CUSTOM ZSH FUNCTIONS --]
 
 

@@ -220,9 +220,10 @@ web browser, Tmux, VIM9, VIM9 terminal and gVIM.
 
 1. `<Control-c>` copies text in Gnome applications including the web browser, after
 being selected by the mouse. Also 'copy' using the right click will copy.
-2. `<Control-v>` should paste in all Gnome applications including the web browser. Also
-you can use right click -> 'paste'.
-3. While in tmux, `<Control-Shift-v>` will paste to the terminal.
+2. `<Control-v>` should paste in all Gnome applications, except for the
+terminal, including the web browser. Also you can use right click -> 'paste'.
+3. While in the Gnome terminal, or in the Gnome terminal in tmux,
+`<Control-Shift-v>` will paste to the terminal.
 4. While in tmux, `<Control-a-{>` will enter clipboard mode which is similar to VIM's
 visual mode. Scroll using VIM keybindings, page up, page down, or the mouse, and
 press `v` to start the selection copy, and `y` to copy it onto the clipboard.

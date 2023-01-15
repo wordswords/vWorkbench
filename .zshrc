@@ -122,7 +122,6 @@ set +o extendedglob
 
 ## [++ ALIASES ++]
 ( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
-alias ai="openai_pipe | tee >(pbcopy)"
 alias bat="batcat"
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias colors='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
