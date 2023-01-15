@@ -22,6 +22,7 @@ autoload -Uz updatedotfiles
 fortuneprint() {
     echo "\n"
     echo -e "[-- \e[0;36m$(fortune)\e[0m --]"
+    echo "\n"
 }
 autoload -Uz fortuneprint
 
@@ -32,6 +33,7 @@ autoload -Uz ttyprint
 
 tmuxsessionsprint() {
     echo "[-- Tmux sessions: \e[0;35m$(tmux ls 2>&1)\e[0m --]"
+    echo "\n"
 }
 autoload -Uz tmuxsessionsprint
 
