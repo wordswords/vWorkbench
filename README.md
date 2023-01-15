@@ -455,7 +455,8 @@ The Github copilot plugin is installed. It assumes you have a subscription.
 ## ChatGPT OpenAI CLI Plugin
 
 1. You have to configure the plugin first by `mkdir -p ~/.dotfiles/SECRETS/ && echo export OPENAI_ACCESS_TOKEN=<your token> > ~/.dotfiles/SECRETS/openai-access-token.sh`
-2. Then, just use `ai <query>` anywhere in your pipe, for example `cat bla.json | ai 'pretty print this json'`
+2. Then, just use `ai <query>` anywhere in your pipe, for example `cat bla.json | ai 'pretty print this json'` the result will be copied to the clipboard
+and also output on the pipe
 3. Other examples of use can be found at [https://github.com/Aesthetikx/openai_pipe](https://github.com/Aesthetikx/openai_pipe)
 
 ## Vista Plugin
