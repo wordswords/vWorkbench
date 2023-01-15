@@ -279,8 +279,8 @@ browser
 
 It behaves like Windows 10/11 window resize shortcuts. For example:
 
-1. `<Windows Key-RIGHT>` take split the current window and move it to 50% right of screen
-2. `<Windows Key-LEFT>` take the current window and move it to 50% right of screen
+1. `<Windows Key-RIGHT>` take the current window and move it to 50% right of screen
+2. `<Windows Key-LEFT>` take the current window and move it to 50% left of screen
 3. `<Windows Key-UP>` take the current window and full screen it
 4. `<Windows Key-DOWN>` take the current window and un-full screen it, move it into a
 window in the centre of the desktop
