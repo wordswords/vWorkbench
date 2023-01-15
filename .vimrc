@@ -52,7 +52,7 @@ let mapleader=","
 def s:PasteFromSystemClipboard()
     call feedkeys(":set paste\<CR>:r! xclip -selection clipboard -o\<CR>:set nopaste\<CR>")
 enddef
-nnoremap <leader>P :call <SID>PasteFromSystemClipboard()<CR>
+nnoremap <C-v> :call <SID>PasteFromSystemClipboard()<CR>
 
 " Foot pedal
 nnoremap <F6> i
