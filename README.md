@@ -241,6 +241,50 @@ paste the text, and then switch out of paste mode.
 6. While in VIM, using `y` will yank straight to the clipboard. Usually I use visual
 mode to copy things while in VIM.
 
+## Productivity Shortcuts
+
+The more you can use the keyboard and not a pointing device, the faster you will be,
+and the less ergonomics problems you will have.
+
+### Tmux shortcuts:
+
+1. `<Control-a> <RIGHT>` move to the right pane from the cursor.
+2. `<Control-a> <DOWN>` move to the down pane from the cursor.
+3. `<Control-a> <UP>` move to the up pane from the cursor.
+4. `<Control-a> <LEFT>` move to the left pane from the cursor.
+5. `<Control-a> r` reload current config file.
+
+### Tmux pane resize shortcuts:
+
+1. `<Control-a> <Control-RIGHT>` Extend current pane to the right
+2. `<Control-a> <Control-DOWN>` Extend current pane down
+3. `<Control-a> <Control-UP>` Extend current pane up
+4. `<Control-a> <Control-LEFT>`Extend current pane to the left
+
+### Gnome shortcuts:
+
+1. `<Control-Shift-n>` open a new terminal window from anywhere on the gnome desktop.
+2. `<Windows Key>` toggle ArcMenu. Start typing to search for an application to run.
+3. `<Windows Key-Tab>` switch to next application (better than alt-tab)
+4. `<Windows Key-Shift-Tab>` switch to previous application (better than alt-shift-tab)
+5. `<Windows Key-l>` lock the Gnome session so it requires a pwd to get back in
+6. `<Print Screen>` take a screenshot using Gnome internal screen shot tool. Very useful.
+7. `<Control-Alt-Home>` OR `<Control-WEB>` (on Kinesis keyboard) - open a new tab in Firefox
+and move the focus to it.
+8. Select a valid URL in Gnome terminal and then `<Control>-Left Click` to open it in a web
+browser
+9. `<Windows Key-d>` minimise all applications and show a blank desktop.
+
+### Gnome window resize shortcuts:
+
+It behaves like Windows 10/11 window resize shortcuts. For example:
+
+1. `<Windows Key-RIGHT>` take split the current window and move it to 50% right of screen
+2. `<Windows Key-LEFT>` take the current window and move it to 50% right of screen
+3. `<Windows Key-UP>` take the current window and full screen it
+4. `<Windows Key-DOWN>` take the current window and un-full screen it, move it into a
+window in the centre of the desktop
+
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
 
 1. `<LEFT>`       - prev text error
