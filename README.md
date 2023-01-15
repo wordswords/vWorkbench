@@ -124,38 +124,30 @@ that directory, no need to type cd.
 3. Type `l` for a long-style ls.
 4. `delta <file1> <file2>` for a nice 2 way diff style interface where you can
 analyse and easily copy changes between files.
-5. `cat <file> | pbcopy` to cat a file into the local OS clipboard, very useful
 for then using on a website form.
-6. Use `<tab>` to activate oh-my-zsh's autocomplete plugins. For example `git
+5. Use `<tab>` to activate oh-my-zsh's autocomplete plugins. For example `git
 <tab>`
-7. Run `repos.sh` to check the branch name of all git repositories under the
+6. Run `repos.sh` to check the branch name of all git repositories under the
 current directory. Very useful when you have a number of different projects
 that interact with each other and you want to quickly see which repos branches
 you have checked out.
-8. Use `vi` instead of `vim` to load a separate minimal vim config, useful if
+7. Use `vi` instead of `vim` to load a separate minimal vim config, useful if
     there are problems with the vim config.
-9. Use `notes` to launch Joplin, my note-taking app.
-10. Use `please` after realising that you needed sudo with the last command, to
+8. Use `notes` to launch Joplin, my note-taking app.
+9. Use `please` after realising that you needed sudo with the last command, to
     repeat the last command with sudo
-11. Use `ports` to list the open ports on the system in a readable way.
-12. Use `tree` for a handy diagram of the full directory tree under the current
+10. Use `ports` to list the open ports on the system in a readable way.
+11. Use `tree` for a handy diagram of the full directory tree under the current
 directory.
-13. Use `ref <jira issue number, no prefix>` to open firefox with the details
+12. Use `ref <jira issue number, no prefix>` to open firefox with the details
 of that issue.
-14. Use `lookup <jira issue number, no prefix>` to print the jira-cli ticket
+13. Use `lookup <jira issue number, no prefix>` to print the jira-cli ticket
 summary of that issue on the command line.
-15. Use `bat <file>` for a syntax-highlighting quick cat.
-16. Use `hn` to get the top 10 Hacker News Network headlines for the hour.
-17. Use `hn100` to get the top 100 Hacker News Network headlines for the hour.
-18. Use `ddg <search query>` from the terminal to open a Firefox browser with the
+14. Use `bat <file>` for a syntax-highlighting quick cat.
+15. Use `hn` to get the top 10 Hacker News Network headlines for the hour.
+16. Use `hn100` to get the top 100 Hacker News Network headlines for the hour.
+17. Use `ddg <search query>` from the terminal to open a Firefox browser with the
 query in the DuckDuckGo search engine.
-
-## GUI Shortcuts under Ubuntu for when you don't want to use a mouse
-
-1. `<CTRL>-<ALT>-v` - open gVIM whenever you have a text input on the GUI or
-a browser or whatever. When you save the file, it will copy it to the clipboard.
-So just `<CTRL>-v` afterwards to paste it into the text input.
-2. `<CTRL>-s` - search for application and run it.
 
 ## VIM9 shortcuts
 
@@ -203,16 +195,14 @@ that should insert it properly.
 23. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
 24. To run Prettier on language servers that support this VS Code prettier,
 use `:Prettier`
-25. ``<Control> - C`` - select text in visual mode and then copy to system
-clipboard.
-26. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
+25. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
 word-wrap)
-27. `%` when positioned over a code bracket to skip to the next code bracket
-28. `>i{` when positioned over a code bracket to ident the code up to the next
+26. `%` when positioned over a code bracket to skip to the next code bracket
+27. `>i{` when positioned over a code bracket to ident the code up to the next
 code bracket
-29. `:map` to show the keymappings made by your plugins and .vimrc. Note this is
+28. `:map` to show the keymappings made by your plugins and .vimrc. Note this is
 somewhat difficult to follow.
-30. `*` and `#` will search forward and backward through the file with the exact
+29. `*` and `#` will search forward and backward through the file with the exact
 same word that is under the cursor in normal mode.
 
 [https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)
@@ -239,6 +229,8 @@ press `v` to start the selection copy, and `y` to copy it onto the clipboard.
 paste the text, and then switch out of paste mode.
 6. While in VIM, using `y` will yank straight to the clipboard. Usually I use visual
 mode to copy things while in VIM.
+7. While in any terminal, you can use the `pbcopy` or `pbpaste` aliases in a pipe.
+For example `echo This will be copied to the clipboard | pbcopy` and `pbpaste | sort`
 
 ## Productivity Shortcuts
 
@@ -480,9 +472,8 @@ around large projects.
 3. For a vertical split `<CTRL>-a SHIFT |`
 4. For a horizontal split `<CTRL>-a SHIFT -`
 5. For standard keybindings,`cht tmux`
-6. To go into edit mode on cur pane `<CTRL>-a {` . Then `v` to get into visual copy and `y` to copy to SYSTEM clipboard.
-7. To rotate panes in the current layout `<CTRL>-a <SPACE>`
-8. To start my standard development tmux session `tmuxinator development`
+6. To rotate panes in the current layout `<CTRL>-a <SPACE>`
+7. To start my standard development tmux session `tmuxinator development`
 
 ## Git stuff I keep forgetting
 
