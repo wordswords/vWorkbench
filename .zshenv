@@ -25,6 +25,17 @@ fortuneprint() {
     echo "\n"
 }
 autoload -Uz fortuneprint
+
+ttyprint() {
+    echo "[-- Current TTY: \e[0;35m${GPG_TTY}\e[0m --]"
+}
+autoload -Uz ttyprint
+
+tmuxsessionsprint() {
+    echo "[-- Tmux sessions: \e[0;35m$(tmux ls 2>&1)\e[0m --]"
+}
+autoload -Uz tmuxsessionsprint
+
 ## [-- CUSTOM ZSH FUNCTIONS --]
 
 

@@ -1,3 +1,4 @@
+export GPG_TTY=$(tty)
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -121,23 +122,24 @@ set +o extendedglob
 
 ## [++ ALIASES ++]
 ( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
+alias ai="openai_pipe | tee >(pbcopy)"
 alias bat="batcat"
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
+alias colors='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
+alias ddg="ddgr"
 alias grep="grep --color"
-alias l='ls -CF'
+alias hn100="curl 'hkkr.in/h-n100-f2'"
+alias hn="curl 'hkkr.in/h-n10-f2'"
 alias la='ls -A'
 alias ll='ls -alF'
+alias l='ls -CF'
 alias ls="ls --color"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias please='sudo $(fc -ln -1)'
 alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
-alias vi="vim -u NONE"
-alias hn="curl 'hkkr.in/h-n10-f2'"
-alias hn100="curl 'hkkr.in/h-n100-f2'"
 alias tmux="TERM=xterm-256color tmux-non-dead.tmux" 
-alias ai="openai_pipe"
-alias ddg="ddgr"
+alias vi="vim -u NONE"
 ## [-- ALIASES --]
 
 ## [++ Required for Golang install syntax ++]
@@ -155,14 +157,17 @@ curl https://cheat.sh/:zsh > ~/.zsh.d/_cht
 alias cht='cht.sh'
 ## [-- cht.sh Initialization --]
 
-## [++ VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL ++]
-updatedotfiles
-fortuneprint
-echo "tmux sessions:" && tmux ls 
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 
 ## [++ Powerlevel10k prompt configuration ++]
 source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
 ## [-- Powerlevel10k prompt configuration --]
+
+## [++ VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL ++]
+updatedotfiles
+fortuneprint
+ttyprint
+tmuxsessionsprint
+## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 
