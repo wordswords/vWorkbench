@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/bin/bash
+
+if [ $(id -u) -ne 0 ] ; then
+    echo 'You must be root to run this script'
+    exit 1
+fi
 
 # Setting this, so the repo does not need to be given on the commandline:
 export BORG_REPO=/mnt2/borg-backup
