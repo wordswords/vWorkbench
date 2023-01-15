@@ -270,7 +270,7 @@ and the less ergonomic problems you will have.
 6. `<Print Screen>` take a screenshot using Gnome internal screen shot tool. Very useful.
 7. `<Control-Alt-Home>` OR `<Control-WEB>` (on Kinesis keyboard) - open a new tab in Firefox
 and move the focus to it. This is a custom shortcut that I implemented from here:
-(https://askubuntu.com/questions/831135/shortcut-to-open-new-browser)[https://askubuntu.com/questions/831135/shortcut-to-open-new-browser]
+[https://askubuntu.com/questions/831135/shortcut-to-open-new-browser](https://askubuntu.com/questions/831135/shortcut-to-open-new-browser)
 8. Select a valid URL in Gnome terminal and then `<Control>-Left Click` to open it in a web
 browser
 9. `<Windows Key-d>` minimise all applications and show a blank desktop.
