@@ -240,8 +240,6 @@ press `v` to start the selection copy, and `y` to copy it onto the clipboard.
 paste the text, and then switch out of paste mode.
 6. While in VIM, using `y` will yank straight to the clipboard. Usually I use visual
 mode to copy things while in VIM.
-7. While in VIM and in a terminal in VIM, paste using `<CTRL>-W "` will paste the
-contents of the clipboard into the terminal.
 
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
 
