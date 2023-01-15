@@ -206,19 +206,42 @@ that should insert it properly.
 use `:Prettier`
 25. ``<Control> - C`` - select text in visual mode and then copy to system
 clipboard.
-26. ``<Control> - <Shift> - V`` paste into VIM from system clipboard
-27. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
+26. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
 word-wrap)
-28. `%` when positioned over a code bracket to skip to the next code bracket
-29. `>i{` when positioned over a code bracket to ident the code up to the next
+27. `%` when positioned over a code bracket to skip to the next code bracket
+28. `>i{` when positioned over a code bracket to ident the code up to the next
 code bracket
-30. `:map` to show the keymappings made by your plugins and .vimrc. Note this is
+29. `:map` to show the keymappings made by your plugins and .vimrc. Note this is
 somewhat difficult to follow.
-31. `*` and `#` will search forward and backward through the file with the exact
+30. `*` and `#` will search forward and backward through the file with the exact
 same word that is under the cursor in normal mode.
-32. `<leader>P` to paste the contents of the SYSTEM clipboard into the current file.
 
 [https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)
+
+## The Clipboard
+
+Under Ubuntu, there are two clipboards, for some crazy reason that I don't understand.
+
+As part of the installation of the this environment, Gnome is attempted to be patched
+via a hook, to synchronise these clipboards.
+
+These shortcuts should therefore work for all clipboard contents, across Gnome, your
+web browser, Tmux, VIM9, VIM9 terminal and gVIM.
+
+1. `<Control-c>` copies text in Gnome applications including the web browser, after
+being selected by the mouse. Also 'copy' using the right click will copy.
+2. `<Control-v>` should paste in all Gnome applications including the web browser. Also
+you can use right click -> 'paste'.
+3. While in tmux, `<Control-Shift-v>` will paste to the terminal.
+4. While in tmux, `<Control-a-{>` will enter clipboard mode which is similar to VIM's
+visual mode. Scroll using VIM keybindings, page up, page down, or the mouse, and
+press `v` to start the selection copy, and `y` to copy it onto the clipboard.
+5. While in VIM, `<Control-v>` will switch into insert mode, switch into paste mode,
+paste the text, and then switch out of paste mode.
+6. While in VIM, using `y` will yank straight to the clipboard. Usually I use visual
+mode to copy things while in VIM.
+7. While in VIM and in a terminal in VIM, paste using `<CTRL>-W "` will paste the
+contents of the clipboard into the terminal.
 
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
 
@@ -310,8 +333,9 @@ More info:
 
 1. You can run arbitrary commands such as ``:term ls -al`` and see the results in
 an updating terminal.
-2. `<CTRL>-W "` will paste the contents of the clipboard into the terminal.
-3. `:terminal` just to open an empty terminal
+2. It is recommended that if you want an interactive terminal, use a tmux split.
+This is because the paste functionality doesn't work too great while in VIM9 terminal.
+Also it has problems running some terminal applications while run under VIM9 in tmux.
 
 ## VIM Regex
 
@@ -397,8 +421,7 @@ around large projects.
 5. For standard keybindings,`cht tmux`
 6. To go into edit mode on cur pane `<CTRL>-a {` . Then `v` to get into visual copy and `y` to copy to SYSTEM clipboard.
 7. To rotate panes in the current layout `<CTRL>-a <SPACE>`
-8. To paste from SYSTEM clipboard `<CTRL>-a }`
-9. To start my standard development tmux session `tmuxinator development`
+8. To start my standard development tmux session `tmuxinator development`
 
 ## Git stuff I keep forgetting
 
