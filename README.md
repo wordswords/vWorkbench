@@ -351,6 +351,16 @@ First move the cursor over a word or line and then:
 2. `<leader> b` to lookup the current line with git blame
 3. `<leader> j` to lookup the current issue number under cursor with jira-cli
 
+## Git Fugitive Workflow
+
+1. `:Git` to bring up the interactive git status message while on a changed track file.
+2. `a` to stage or `d` to unstage a file
+3. `:Git commit` will commit the staged files
+4. `:Git push` will push the commit
+5. `:Git diff` will open a diff
+6. `g?` displays help with more commands.
+7. `:q` to close the status window, you never need to write changes.
+
 ## Git Fugitive Blame Window
 
 1. `:Git blame` for line-by-line git blame on current file, select a commit
@@ -359,15 +369,6 @@ and press 'o' to open the commit diff with the commit message in a new window.
 3. `C` `A` and `D` resize the blame window up until the commit, author and date
 respectively.
 4. `g?` displays help with more commands.
-
-## Git Fugitive Status Window
-
-1. `:Git` to bring up the interactive git status message while on a changed track file.
-2. `a` to stage or `d` to unstage a file
-3. `:Git commit` will commit the staged files
-4. `:Git push` will push the commit
-5. `:Git diff` will open a diff
-6. `g?` displays help with more commands.
 
 ## Git Fugitive Mergetool
 
