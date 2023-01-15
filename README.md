@@ -244,7 +244,7 @@ mode to copy things while in VIM.
 ## Productivity Shortcuts
 
 The more you can use the keyboard and not a pointing device, the faster you will be,
-and the less ergonomics problems you will have.
+and the less ergonomic problems you will have.
 
 ### Tmux shortcuts:
 
@@ -270,7 +270,8 @@ and the less ergonomics problems you will have.
 5. `<Windows Key-l>` lock the Gnome session so it requires a pwd to get back in
 6. `<Print Screen>` take a screenshot using Gnome internal screen shot tool. Very useful.
 7. `<Control-Alt-Home>` OR `<Control-WEB>` (on Kinesis keyboard) - open a new tab in Firefox
-and move the focus to it.
+and move the focus to it. This is a custom shortcut that I implemented from here:
+(https://askubuntu.com/questions/831135/shortcut-to-open-new-browser)[https://askubuntu.com/questions/831135/shortcut-to-open-new-browser]
 8. Select a valid URL in Gnome terminal and then `<Control>-Left Click` to open it in a web
 browser
 9. `<Windows Key-d>` minimise all applications and show a blank desktop.
@@ -284,6 +285,22 @@ It behaves like Windows 10/11 window resize shortcuts. For example:
 3. `<Windows Key-UP>` take the current window and full screen it
 4. `<Windows Key-DOWN>` take the current window and un-full screen it, move it into a
 window in the centre of the desktop
+
+### Firefox Shortcuts
+
+I install vinium on Firefox which allows you to use the VIM shortcuts on most pages
+
+1. `<h> <j> <k> <l>` to scroll as per normal in vim.
+2. `gg` to go to the top of the page
+3. `G` to go to the bottom of the page
+4. `d` to scroll down half a page
+5. `u` to scroll up half a page
+6. `t` to open a new tab
+7. `T` to search through your open tabs
+8. `<Control>-<Alt>-v` while focused on an input element to open gVIM. When you write and save
+the buffer in gVIM it will copy it to the clipboard and focus on the box you have left,
+so you can quickly insert it in the text input on
+the browser.
 
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
 
@@ -354,9 +371,11 @@ respectively.
 ## Git Fugitive Status Window
 
 1. `:Git` to bring up the interactive git status message while on a changed track file.
-2. `<ENTER>` to stage or unstage a file
+2. `a` to stage or `d` to unstage a file
 3. `:Git commit` will commit the staged files
-4. `D` or `:GDiff` will open a diff
+4. `:Git push` will push the commit
+5. `:Git diff` will open a diff
+6. `g?` displays help with more commands.
 
 ## Git Fugitive Mergetool
 
