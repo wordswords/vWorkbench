@@ -251,7 +251,9 @@ and the less ergonomic problems you will have.
 1. `<Control-a> <Control-RIGHT>` Extend current pane to the right
 2. `<Control-a> <Control-DOWN>` Extend current pane down
 3. `<Control-a> <Control-UP>` Extend current pane up
-4. `<Control-a> <Control-LEFT>`Extend current pane to the left
+4. `<Control-a> <Control-LEFT>` Extend current pane to the left
+5. `<Control-a> <SPACE>` Switch through different pane arrangements. Also useful for clearing 
+any problems with a garbled terminal.
 
 ### Gnome shortcuts:
 
