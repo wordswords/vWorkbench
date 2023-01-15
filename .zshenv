@@ -13,16 +13,15 @@ notes() {
 autoload -Uz notes
 
 updatedotfiles() {
-    cd ~/.dotfiles
-    git pull 2>/dev/null | echo ''
-    cd -
+    cd ~/.dotfiles >/dev/null 2>/dev/null
+    git pull >/dev/null 2>/dev/null | echo ''
+    cd - >/dev/null 2>/dev/null
 }
 autoload -Uz updatedotfiles
 
 fortuneprint() {
     echo "\n"
     echo -e "[-- \e[0;36m$(fortune)\e[0m --]"
-    echo "\n"
 }
 autoload -Uz fortuneprint
 

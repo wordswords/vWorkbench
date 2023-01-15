@@ -153,7 +153,7 @@ eval "$(mcfly init zsh)"
 
 ## [++ cht.sh Initialization ++]
 mkdir -p ~/.zsh.d/
-curl https://cheat.sh/:zsh > ~/.zsh.d/_cht
+curl https://cheat.sh/:zsh > ~/.zsh.d/_cht 2>/dev/null
 alias cht='cht.sh'
 ## [-- cht.sh Initialization --]
 
