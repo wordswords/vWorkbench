@@ -6,7 +6,8 @@ I test this on my two main Linux computers, and my work Linux laptop.
 
 ## Demo Video
 
-[![Watch the video](https://img.youtube.com/vi/v2ei_qOBXL8/0.jpg)](https://www.youtube.com/watch?v=v2ei_qOBXL8)
+[![Watch the video](https://img.youtube.com/vi/09ZJYe0kRT4/0.jpg)](https://www.youtube.com/watch?v=09ZJYe0kRT4)
+
 
 ## VIM:
 
@@ -253,7 +254,7 @@ and the less ergonomic problems you will have.
 2. `<Control-a> <Control-DOWN>` Extend current pane down
 3. `<Control-a> <Control-UP>` Extend current pane up
 4. `<Control-a> <Control-LEFT>` Extend current pane to the left
-5. `<Control-a> <SPACE>` Switch through different pane arrangements. Also useful for clearing 
+5. `<Control-a> <SPACE>` Switch through different pane arrangements. Also useful for clearing
 any problems with a garbled terminal.
 
 ### Gnome shortcuts:
