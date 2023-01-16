@@ -42,6 +42,16 @@ ai() {
 }
 autoload -Uz ai
 
+gg() {
+    SURFRAW_graphical_browser="/snap/bin/firefox" SURFRAW_graphical=yes SURFRAW_lang="uk" sr google $@
+}
+autoload -Uz gg
+
+so() {
+    SURFRAW_graphical_browser="/snap/bin/firefox" SURFRAW_graphical=yes SURFRAW_lang="uk" sr stack $@
+}
+autoload -Uz so
+
 ## [-- CUSTOM ZSH FUNCTIONS --]
 
 

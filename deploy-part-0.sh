@@ -85,6 +85,10 @@ report_progress 'Installing cht.sh a command line help client'
     chmod +x "$PATH_DIR/cht.sh"
 report_done
 
+report_progress 'Installing surfraw a command line google search client'
+    sudo apt install surfraw surfraw-extra -y
+report_done
+
 # os-specific lines
 cur_os=get_os
 if [[ cur_os == 'ubuntu' || cur_os == 'osx' ]];

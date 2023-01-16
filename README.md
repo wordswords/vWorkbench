@@ -149,7 +149,9 @@ summary of that issue on the command line.
 16. Use `hn100` to get the top 100 Hacker News Network headlines for the hour.
 17. Use `gg <search query>` from the terminal to open a Firefox browser with the
 query in the Google.co.uk search engine.
-18. Use `pstree` for a nice graph showing all processes and subprocesses running.
+18. Use `so <search query>` from the terminal to open a Firefox browser,
+and search stackoverflow using `<search query>`
+19. Use `pstree` for a nice graph showing all processes and subprocesses running.
 
 ## VIM9 shortcuts
 
