@@ -147,8 +147,8 @@ summary of that issue on the command line.
 14. Use `bat <file>` for a syntax-highlighting quick cat.
 15. Use `hn` to get the top 10 Hacker News Network headlines for the hour.
 16. Use `hn100` to get the top 100 Hacker News Network headlines for the hour.
-17. Use `ddg <search query>` from the terminal to open a Firefox browser with the
-query in the DuckDuckGo search engine.
+17. Use `gg <search query>` from the terminal to open a Firefox browser with the
+query in the Google.co.uk search engine.
 18. Use `pstree` for a nice graph showing all processes and subprocesses running.
 
 ## VIM9 shortcuts
