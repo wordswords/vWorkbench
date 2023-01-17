@@ -608,7 +608,19 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 ## External Scripts
 
 I have written a few helper scripts in ~/.dotfiles/bin
+    
+### `ai-files-purpose.zsh`
+    
+This will ask OpenAI to have a guess at the contents of each file in the current
+directory based on their naming and some AI magic, and tell its guess for each 
+file. Often it is accurate but not always. Run it again for another guess.
+    
+### `ai-dir-purpose.zsh`
 
+This will ask OpenAI to have a guess at the purpose of the current directory based
+on the naming of the files in it, and some AI magic. Often it is accurate but not
+always. Run it again for another guess.
+    
 ### `gg.zsh` and `so.zsh`
     
 You can pipe multiple lines of text to these scripts and then will search
