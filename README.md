@@ -5,7 +5,7 @@ helper scripts for good measure.
 
 I test this mainly on my ThinkStation box running the latest Ubuntu LTS, and
 on my W11 box running Ubuntu under WSL2. I haven't tested it on OSX for ages,
-and can pretty much guarantee it won't run on that anymore.
+and can pretty much guarantee it won't run on that without a lot of work.
 
 ## Demo Video
 
