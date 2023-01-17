@@ -609,6 +609,17 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 
 I have written a few helper scripts in ~/.dotfiles/bin
 
+### `gg.zsh` and `so.zsh`
+    
+You can pipe multiple lines of text to these scripts and then will search
+google.co.uk and stackoverflow respectively for the text you've piped to 
+them.
+    
+### `osx.zsh`
+
+Running this should get a virtualised OSX setup up and running, providing 
+you have about 50GB free, and a CPU that supports KVM virtualisation.
+
 ### `repos.sh`
 
 ![Alt text](https://i.imgur.com/U0h7a8F.png "repos.sh")
