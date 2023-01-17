@@ -350,8 +350,6 @@ documentation for that feature.
 
 ## VIM9 Leader Search Functions
 
-Use `<CTRL>-f` and `<CTRL>-b` to scroll the popups.
-
 First move the cursor over a word or line and then:
 
 1. `<leader> w` to lookup the current single word on wikipedia
