@@ -1,6 +1,6 @@
 # My .dotfiles
 
-My setup with custom settings for bash, zsh and vim, with some extra `~/bin`
+My development environment setup with custom settings for bash, zsh and vim, with some extra `~/bin`
 helper scripts for good measure. 
 
 I test this mainly on my ThinkStation box running the latest Ubuntu LTS, and
