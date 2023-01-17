@@ -348,15 +348,23 @@ e.g. method, variable etc.
 documentation for that feature.
 10. `:help coc-nvim` for the reference documentation for Coc.vim
 
-## VIM9 Popup Functions
+## VIM9 Leader Search Functions
 
-For any of these, use `<CTRL>-f` and `<CTRL>-b` to scroll the popups.
+Use `<CTRL>-f` and `<CTRL>-b` to scroll the popups.
 
 First move the cursor over a word or line and then:
 
 1. `<leader> w` to lookup the current single word on wikipedia
 2. `<leader> b` to lookup the current line with git blame
 3. `<leader> j` to lookup the current issue number under cursor with jira-cli
+
+In visual mode you can also do:
+
+1. `<leader> g` to open a firefox window with the google results of the visual
+selection
+2. `<leader> s` to open a firefox window with the stackoverflow results of the visual
+selection
+
 
 ## Git Fugitive Workflow
 

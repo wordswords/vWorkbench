@@ -58,6 +58,12 @@ nnoremap <C-v> :call <SID>PasteFromSystemClipboard()<CR>
 nnoremap <F6> i
 imap <F6> <Esc>
 
+" Search visual selection via stackoverflow
+vnoremap <leader>s :!~/.dotfiles/bin/so.zsh<CR>u<CR>
+
+" Search visual selection via google.co.uk
+vnoremap <leader>g :!~/.dotfiles/bin/gg.zsh<CR>u<CR>
+
 def s:BringUpDotfilesReadme()
     call feedkeys(":sp ~/.dotfiles/README.md\<CR>:Vista!!\<CR>")
 enddef
