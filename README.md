@@ -608,6 +608,12 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 ## External Scripts
 
 I have written a few helper scripts in ~/.dotfiles/bin
+
+### `delete-all-docker-content.sh`
+    
+This will clean the local install of all docker containers and images. This
+is non-destructive as it doesn't actually uninstall docker, and you can just
+docker pull them all again.
     
 ### `ai-files-purpose.zsh`
     
