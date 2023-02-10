@@ -578,6 +578,22 @@ Different flags you can use include: `-f` - follow child processes as they are
 created by the original program, and there is a flag that will strace a particular
 PID, so it will attach itself to an already running program.
 
+## Regular Expressions
+
+Lots of languages support regular expressions, but if you want to do complex things
+on the command line with regex, then just reach for Perl. Even the latest modern sed
+doesn't support all of the Regex spec that Perl does.
+
+1. Find, exec and regex is a common thing I end up doing. This is how to do it in
+Perl: `find . -name '*.html' -exec perl -i -pe "s/jpg\?/jpg/g"`
+2. Test 1 - BEFORE you do the above, always use an online regex checker such as:
+(https://regexr.com/)[https://regexr.com/] which is very good for perl.
+3. Test 2 - It is also worth echoing/catting data to the perl pipe with a regex so
+that you can test things a second time before running a potentially dangerous regex query.
+`echo 'bla.jpg?asdfasdf=asdfasdf' | perl -pe 's/(?<=[?&;]).*//g'`, just take the -i off the
+line for a dry run, and to pick up input from the pipe instead of editing a file.
+4. Remember to backup the files before running 1 too. `cp -r ./dir ./.bak.dir` can save hours.
+
 ## Docker/Docker Compose stuff I forget
 
 1. `docker system prune -a` - remove all unused Docker container images.
