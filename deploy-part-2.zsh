@@ -221,6 +221,7 @@ report_done
 
 report_progress 'Running vim local commands for plugins'
     echo '''
+    :!echo Installing vim plugins, press a key to continue
     :CocUpdateSync
     :Copilot setup
     :helptags ALL
@@ -229,10 +230,6 @@ report_progress 'Running vim local commands for plugins'
     ''' > ~/.dotfiles/vimscript.vs
     vim -s ~/.dotfiles/vimscript.vs
     rm ~/.dotfiles/vimscript.vs
-report_done
-
-report_progress 'Installing ddgr duck duck go search from CLI'
-    sudo apt install ddgr
 report_done
 
 report_progress 'Installing Elixir development toolset'
