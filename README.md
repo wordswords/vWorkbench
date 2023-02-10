@@ -557,6 +557,27 @@ Git Book:
 Check out my simpleton Git workflow here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md](https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md)
 
+## Python 3 stuff I forget
+
+1. Use `ipython` for interactive REPL Python 3 stuff.
+2. Add `import ipdb;ipdb.set_trace()` anywhere in your code to open up
+an interactive debugger using ipython when the code hits that line.
+3. Add `import IPython; IPython.embed()` to open up IPython when the execution
+hits this point.
+
+## Using Strace
+
+You can use `strace` to find out what a Linux binary is exactly doing.
+It will list all the system calls made by that binary.
+
+For example:
+
+`strace python follow.py`
+
+Different flags you can use include: `-f` - follow child processes as they are
+created by the original program, and there is a flag that will strace a particular
+PID, so it will attach itself to an already running program.
+
 ## Docker/Docker Compose stuff I forget
 
 1. `docker system prune -a` - remove all unused Docker container images.
