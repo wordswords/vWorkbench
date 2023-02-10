@@ -467,7 +467,8 @@ The Github copilot VIM plugin is installed. It assumes you have a subscription.
 ## OpenAI Codex VIM Plugin
 
 The OpenAI Codex VIM plugin is installed. It assumes you have a subscription to
-OpenAI's services.
+OpenAI's services and that you have configured it in ~/.config with your OpenAI
+token.
 
 It works in a lot of languages, but is by far the best when used with Python.
 
