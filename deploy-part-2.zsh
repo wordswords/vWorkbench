@@ -69,10 +69,12 @@ report_progress 'Setting up local bin directory'
 report_done
 
 report_progress 'Setting up symbolic links'
+    ln --force -s ~/.dotfiles/.vim ~/.vim
     ln --force -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
     ln --force -s ~/.dotfiles/.bash_aliases ~/.zsh_aliases
     ln --force -s ~/.dotfiles/.bash_profile ~/.bash_profile
     ln --force -s ~/.dotfiles/.bash_profile_remote ~/.bash_profile_remote
+    rm -f ~/.vim/coc-settings.json
     ln --force -s ~/.dotfiles/coc-settings.json ~/.vim/coc-settings.json
     ln --force -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
     ln --force -s ~/.dotfiles/.vimrc ~/.vimrc
@@ -116,6 +118,7 @@ report_progress 'Installing/updating vim plugins to latest version'
     git clone git@github.com:scrooloose/nerdtree.git
     git clone git@github.com:Shougo/denite.nvim.git
     git clone git@github.com:tomasr/molokai.git
+    git clone git@github.com:tom-doerr/vim_codex.git
     git clone git@github.com:tpope/vim-bundler.git
     git clone git@github.com:tpope/vim-fugitive.git
     git clone git@github.com:tpope/vim-git
@@ -165,7 +168,7 @@ report_progress 'Installing vim9/coc extensions'
         coc-json \
         coc-phpls \
         coc-prettier \
-        coc-python \
+        coc-pyright \
         coc-sh \
         coc-tsserver \
         coc-vimlsp \
@@ -233,11 +236,18 @@ report_progress 'Installing ddgr duck duck go search from CLI'
 report_done
 
 report_progress 'Installing Elixir development toolset'
+    rm -rf ~/.elixir-ls
     git clone https://github.com/elixir-lsp/elixir-ls.git ~/.elixir-ls
     cd ~/.elixir-ls
-    mix deps get
+    mix deps.get
     mix compile
 report_done
+
+report_progress 'Python3 + OpenAI codex development toolset'
+    python3 -m pip install --upgrade pip
+    python3 -m pip install --upgrade --force-reinstall aiohttp openai
+report_done
+
 
 # Linux-specific lines
 cur_os=get_os

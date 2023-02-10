@@ -1,7 +1,7 @@
 # My .dotfiles
 
 My development environment setup with custom settings for bash, zsh and vim, with some extra `~/bin`
-helper scripts for good measure. 
+helper scripts for good measure.
 
 I test this mainly on my ThinkStation box running the latest Ubuntu LTS, and
 on my W11 box running Ubuntu under WSL2. I haven't tested it on OSX for ages,
@@ -458,11 +458,28 @@ in every file - `a`, without raising errors if the matches are not found - `q`
 
 ## Github Copilot
 
-The Github copilot plugin is installed. It assumes you have a subscription.
+The Github copilot VIM plugin is installed. It assumes you have a subscription.
 
 1. `:Copilot enable` to enable autocompletes for the current buffer.
 2. `:Copilot disable` to disable autocompletes for the current buffer.
 3. `<TAB>` to accept current autocomplete.
+
+## OpenAI Codex VIM Plugin
+
+The OpenAI Codex VIM plugin is installed. It assumes you have a subscription to
+OpenAI's services.
+
+It works in a lot of languages, but is by far the best when used with Python.
+
+1. Create a new file with the right file extension and a VIM-recognisable type
+for what you want to start working on.
+2. Create a comment explaining what you want to do, e.g. build a function or
+class with all the requirements that you want, in human readable format. The more
+precise you are, the more likely your wish will be fufilled.
+3. Move the cursor to the line below the comment and press `<C-x> <C-x>`
+4. OpenAI should start writing you some code. Press `<C-x> <C-x>` until it starts
+writing rubbish code.
+5. Edit/fix bugs/extend as you wish.
 
 ## ChatGPT OpenAI CLI Plugin
 
@@ -470,6 +487,7 @@ The Github copilot plugin is installed. It assumes you have a subscription.
 2. Then, just use `ai <query>` anywhere in your pipe, for example `cat bla.json | ai 'pretty print this json'` the result will be copied to the clipboard
 and also output on the pipe
 3. Other examples of use can be found at [https://github.com/Aesthetikx/openai_pipe](https://github.com/Aesthetikx/openai_pipe)
+
 
 ## Vista Plugin
 
@@ -610,32 +628,32 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 I have written a few helper scripts in ~/.dotfiles/bin
 
 ### `delete-all-docker-content.sh`
-    
+
 This will clean the local install of all docker containers and images. This
 is non-destructive as it doesn't actually uninstall docker, and you can just
 docker pull them all again.
-    
+
 ### `ai-files-purpose.zsh`
-    
+
 This will ask OpenAI to have a guess at the contents of each file in the current
-directory based on their naming and some AI magic, and tell its guess for each 
+directory based on their naming and some AI magic, and tell its guess for each
 file. Often it is accurate but not always. Run it again for another guess.
-    
+
 ### `ai-dir-purpose.zsh`
 
 This will ask OpenAI to have a guess at the purpose of the current directory based
 on the naming of the files in it, and some AI magic. Often it is accurate but not
 always. Run it again for another guess.
-    
+
 ### `gg.zsh` and `so.zsh`
-    
+
 You can pipe multiple lines of text to these scripts and then will search
-google.co.uk and stackoverflow respectively for the text you've piped to 
+google.co.uk and stackoverflow respectively for the text you've piped to
 them.
-    
+
 ### `osx.zsh`
 
-Running this should get a virtualised OSX setup up and running, providing 
+Running this should get a virtualised OSX setup up and running, providing
 you have about 50GB free, and a CPU that supports KVM virtualisation.
 
 ### `repos.sh`

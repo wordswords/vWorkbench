@@ -527,6 +527,15 @@ nnoremap <silent><leader>b :call <SID>GitBlameLine()<CR>
 """
 
 """
+""" Start of vim_codex CONFIG
+"""
+nnoremap  <C-x> :CreateCompletion 1000<CR>
+inoremap  <C-x> <Esc>li<C-g>u<Esc>l:CreateCompletion 1000<CR>
+"""
+""" End of vim_codex CONFIG
+"""
+
+"""
 """ START of LanguageTool grammar checker plugin CONFIG
 """
 let g:languagetool_jar="~/.dotfiles/LanguageTool-5.2/languagetool-commandline.jar"
