@@ -54,11 +54,6 @@ autoload -Uz so
 
 ## [-- CUSTOM ZSH FUNCTIONS --]
 
-
-## [++ SOURCE REMOTE CONNECTION ALIASES ++]
-source ~/.zsh_aliases
-## [-- SOURCE REMOTE CONNECTION ALIASES --]
-
 ## [++ FOR RUST ++]
 ls ~ | grep -q config >/dev/null 2>/dev/null && source "~/.cargo/env"
 ## [-- FOR RUST --

@@ -4,7 +4,6 @@
 set -e
 source ./deploy-common.sh
 
-
 report_heading 'Deploy Prerequisites: Part 0'
 
 # apt-get lines
@@ -66,10 +65,13 @@ report_done
 report_progress 'Install Elixir for Elixir development'
     sudo apt install elixir erlang -y
 report_done
+report_progress 'Install Nmap for Network admin'
+    sudo apt install nmap -y
+report_done
 
 # custom installation lines
 report_progress 'Installing McFly, a zsh Control-R replacement'
-    curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --force --git cantino/mcfly
+    curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --force --git cantino/mcfly
 report_done
 
 report_progress 'Installing Delta, a git diff viewer'

@@ -50,6 +50,7 @@ report_progress 'Removing existing dotfiles'
     rm -rf ~/.vim
     rm -f ~/.vimrc
     rm -f ~/.bash_profile
+    rm -f ~/.vim/coc-settings.json
 report_done
 
 report_progress 'Installing oh-my-zsh plugins'
@@ -69,12 +70,12 @@ report_progress 'Setting up local bin directory'
 report_done
 
 report_progress 'Setting up symbolic links'
+    mkdir -p ~/.dotfiles/.vim
     ln --force -s ~/.dotfiles/.vim ~/.vim
     ln --force -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
     ln --force -s ~/.dotfiles/.bash_aliases ~/.zsh_aliases
     ln --force -s ~/.dotfiles/.bash_profile ~/.bash_profile
     ln --force -s ~/.dotfiles/.bash_profile_remote ~/.bash_profile_remote
-    rm -f ~/.vim/coc-settings.json
     ln --force -s ~/.dotfiles/coc-settings.json ~/.vim/coc-settings.json
     ln --force -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
     ln --force -s ~/.dotfiles/.vimrc ~/.vimrc
@@ -94,8 +95,8 @@ report_progress 'Creating vim backup file directory structure'
 report_done
 
 report_progress 'Installing/updating vim plugins to latest version'
-    rm -rf ~/.dotfiles/.vim/pack/plugins/start/*
-    mkdir -p ~/.dotfiles/.vim/pack/plugins/start/
+    rm -rf ~/.dotfiles/.vim/pack/plugins/start || ''
+    mkdir -p ~/.dotfiles/.vim/pack/plugins/start
     cd ~/.dotfiles/.vim/pack/plugins/start/ || exit 1
 
     git clone git@github.com:ciaranm/securemodelines.git
