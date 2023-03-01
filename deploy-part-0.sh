@@ -104,9 +104,12 @@ then
     report_progress 'Installing workrave, a reminder app to take screenbreaks'
         sudo apt install workrave -y
     report_done
-
-    report_progress 'Install cool-retro-term for a great terminal'
-        sudo apt install cool-retro-term -y
+fi
+if [[ cur_os == 'windows' ]];
+then
+    report_progress 'Copying alacritty terminal emulator config to windows profile location for Windows user conta'
+        sudo mkdir -p /mnt/c/Users/conta/AppData/Roaming/alacritty
+        sudo cp ~/.dotfiles/windows-alacritty.yml  /mnt/c/Users/conta/AppData/Roaming/alacritty/alacritty.yml
     report_done
 fi
 
