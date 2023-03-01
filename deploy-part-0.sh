@@ -91,6 +91,10 @@ report_progress 'Installing surfraw a command line google search client'
     sudo apt install surfraw surfraw-extra -y
 report_done
 
+report_progress 'Installing epy a command line epub reader'
+    pip3 install git+https://github.com/wustho/epy
+report_done
+
 # os-specific lines
 cur_os=get_os
 if [[ cur_os == 'ubuntu' || cur_os == 'osx' ]];
@@ -113,7 +117,7 @@ then
     report_done
 fi
 
-# ui-dependant lines
+
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt install unattended-upgrades
     sudo dpkg-reconfigure unattended-upgrades
