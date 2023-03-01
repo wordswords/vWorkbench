@@ -665,10 +665,11 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 
 I have written a few helper scripts in ~/.dotfiles/bin
 
-### search-ebooks.sh
+### `search-ebooks.sh <term>`
 
 This searches my ThinkSation server for epub books according to a wildcard.
-It then displays the results as a sorted list so they can be opened.
+It then displays the results as a sorted list so they can be opened by
+epy which is a command-line epub reader.
 
 ### `delete-all-docker-content.sh`
 
