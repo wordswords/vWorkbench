@@ -5,7 +5,7 @@
   * [Demo Video](#demo-video)
   * [VIM](#vim)
     + [How to Decode the vim-airline Buffer Statusline](#how-to-decode-the-vim-airline-buffer-statusline)
-    + [How to Decode tye Nerdtree file status symbols](#how-to-decode-nerdtree-file-status-symbols)
+    + [How to Decode the Nerdtree file status symbols](#how-to-decode-nerdtree-file-status-symbols)
   * [ZSH](#zsh)
 - [Installation / Updating](#installation---updating)
   * [Installation Requirements for .dotfiles](#installation-requirements-for-dotfiles)
