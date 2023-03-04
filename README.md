@@ -59,6 +59,7 @@
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
+## What is this?
 
 My development environment setup with custom settings for bash, zsh and vim, with some extra `~/bin`
 helper scripts for good measure.
