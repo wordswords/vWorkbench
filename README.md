@@ -1,7 +1,7 @@
 # My .dotfiles
 
 - [My .dotfiles](#my-dotfiles)
-  * [What is this?](#what-is-this-)
+  * [What is this?](#what-is-this)
   * [Demo Video](#demo-video)
   * [VIM:](#vim-)
     + [How to Decode the vim-airline Buffer Statusline](#how-to-decode-the-vim-airline-buffer-statusline)
@@ -60,7 +60,7 @@
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-## What is this?
+## What is this
 
 My development environment setup with custom settings for bash, zsh and vim, with some extra `~/bin`
 helper scripts for good measure.
