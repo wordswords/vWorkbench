@@ -3,10 +3,10 @@
 - [My .dotfiles](#my-dotfiles)
   * [What is this?](#what-is-this)
   * [Demo Video](#demo-video)
-  * [VIM:](#vim-)
+  * [VIM](#vim)
     + [How to Decode the vim-airline Buffer Statusline](#how-to-decode-the-vim-airline-buffer-statusline)
     + [How to decode Nerdtree file status symbols](#how-to-decode-nerdtree-file-status-symbols)
-  * [ZSH:](#zsh-)
+  * [ZSH](#zsh)
 - [Installation / Updating](#installation---updating)
   * [Installation Requirements for .dotfiles](#installation-requirements-for-dotfiles)
   * [What It Will Install](#what-it-will-install)
@@ -74,7 +74,7 @@ and can pretty much guarantee it won't run on that without a lot of work.
 [![Watch the video](https://img.youtube.com/vi/09ZJYe0kRT4/0.jpg)](https://www.youtube.com/watch?v=09ZJYe0kRT4)
 
 
-## VIM:
+## VIM
 
 ![Alt text](https://i.imgur.com/K6fBzSH.png "VIM setup")
 
@@ -117,7 +117,7 @@ They correspond to the git status of the file in the repo.
 * 'Clean'     :`✔︎`
 * 'Unknown'   :`?`
 
-## ZSH:
+## ZSH
 
 ![Alt text](https://i.imgur.com/yBs7bKu.png "My zsh setup")
 
