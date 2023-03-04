@@ -5,7 +5,7 @@
   * [Demo Video](#demo-video)
   * [VIM](#vim)
     + [How to Decode the vim-airline Buffer Statusline](#how-to-decode-the-vim-airline-buffer-statusline)
-    + [How to decode Nerdtree file status symbols](#how-to-decode-nerdtree-file-status-symbols)
+    + [How to Decode tye Nerdtree file status symbols](#how-to-decode-nerdtree-file-status-symbols)
   * [ZSH](#zsh)
 - [Installation / Updating](#installation---updating)
   * [Installation Requirements for .dotfiles](#installation-requirements-for-dotfiles)
@@ -102,7 +102,7 @@ code / total lines of code, current column number / total columns, and so on.
 code related errors. To toggle this, use `:set nospell` or `:set spell`. It
 highlights spelling errors in comments.
 
-### How to decode Nerdtree file status symbols
+### How to Decode the Nerdtree file status symbols
 
 They correspond to the git status of the file in the repo.
 
