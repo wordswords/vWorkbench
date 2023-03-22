@@ -6,6 +6,13 @@ source ./deploy-common.sh
 
 report_heading 'Deploy Prerequisites: Part 0'
 
+
+# Bash snippet to check that a certain locale is se# apt-get lines
+
+report_progress 'Checking locale'
+     locale | grep -q LANG=en_GB.UTF-8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
+report_done
+
 # apt-get lines
 report_progress 'Upgrade all packages/distro to latest version'
     sudo apt update -y && sudo apt dist-upgrade -y && sudo apt upgrade -y && sudo apt autoremove -y
@@ -95,6 +102,13 @@ report_progress 'Installing epy a command line epub reader'
     pip3 install git+https://github.com/wustho/epy
 report_done
 
+report_progress 'Installing Google Cloud CLI client'
+    sudo apt-get install apt-transport-https ca-certificates gnupg
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+    sudo apt-get update && sudo apt-get install google-cloud-cli -y
+report_done
+
 # os-specific lines
 cur_os=get_os
 if [[ cur_os == 'ubuntu' || cur_os == 'osx' ]];
@@ -119,7 +133,7 @@ fi
 
 
 report_progress 'We will now attempt to enable automated unattended-upgrades'
-    sudo apt install unattended-upgrades
+    sudo apt install unattended-upgrades -y
     sudo dpkg-reconfigure unattended-upgrades
 report_done
 
