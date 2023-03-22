@@ -315,7 +315,9 @@ echo
 echo "-- NEXT STEPS -- "
 echo
 echo '''You will have to install your nerdfont manually, download
-DroidSansNerdFontMono from https://github.com/ryanoasis/nerd-fonts.
+DroidSansNerdFontMono from https://github.com/ryanoasis/nerd-fonts 
+here: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono/complete
+
 After this, you will have to set your terminal emulator to use 
 said font.'''
 
