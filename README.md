@@ -723,6 +723,14 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 2. `issues` to show open issues allocated to you.
 3. `board` to show the current JIRA board.
 
+## Printing (on Ubuntu)
+
+I have setup my laserject to print from the commandline via CUPS. This is useful
+when printing out shopping lists etc, quickly.
+
+1. `lp <file>` to print the file.
+2. `echo bla | lp --` to print the pipe.
+
 ## External Scripts
 
 I have written a few helper scripts in ~/.dotfiles/bin
