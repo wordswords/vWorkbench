@@ -1,1 +1,6 @@
-rclone copy /mnt2/video gdrive:rclone-backup/video -P --fast-list &
+#!/bin/bash
+
+./rclone-backup.sh /mnt2/video video
+
+
+

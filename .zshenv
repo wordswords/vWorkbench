@@ -52,6 +52,11 @@ so() {
 }
 autoload -Uz so
 
+check_backup() {
+    ~/.dotfiles/backup/check-for-failed-backup.zsh
+}
+autoload -Uz check_backup
+
 ## [-- CUSTOM ZSH FUNCTIONS --]
 
 ## [++ FOR RUST ++]

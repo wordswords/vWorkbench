@@ -1,1 +1,5 @@
-rclone copy /mnt/games gdrive:rclone-backup/games -P --fast-list && rclone copy /mnt/gamesincoming gdrive:rclone-backup/gamesincoming -P --fast-list &
+#!/bin/bash
+
+./rclone-backup.sh /mnt/games games && ./rclone-backup.sh /mnt/gamesincoming gamesincoming
+
+

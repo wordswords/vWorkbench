@@ -1,1 +1,5 @@
-rclone copy /mnt/ebooks gdrive:rclone-backup/ebooks -P --fast-list --exclude Movies/ --exclude TV/ --exclude nfsmnt &
+#!/bin/bash
+
+./rclone-backup.sh /mnt/ebooks ebooks
+
+

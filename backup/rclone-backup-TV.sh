@@ -1,1 +1,4 @@
-rclone copy /mnt2/TV gdrive:rclone-backup/TV -P --fast-list &
+#!/bin/bash
+
+./rclone-backup.sh /mnt2/TV TV
+
