@@ -7,13 +7,17 @@ source ./deploy-common.sh
 report_heading 'Deploy Prerequisites: Part 0'
 
 
-# Bash snippet to check that a certain locale is se# apt-get lines
-
+# Must go before everything else
 report_progress 'Checking locale'
      locale | grep -q LANG=en_GB.UTF-8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
 report_done
 
-# apt-get lines
+report_progress 'Restoring last modified dates for .dotfiles'
+    sudo apt install git-restore-mtime
+    sudo git restore-mtime
+report_done
+
+# Main lines
 report_progress 'Upgrade all packages/distro to latest version'
     sudo apt update -y && sudo apt dist-upgrade -y && sudo apt upgrade -y && sudo apt autoremove -y
 report_done
