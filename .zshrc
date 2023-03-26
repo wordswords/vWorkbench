@@ -124,7 +124,6 @@ mkdir -p ~/.zsh.d/
 curl https://cheat.sh/:zsh > ~/.zsh.d/_cht 2>/dev/null
 alias cht='cht.sh'
 ## [-- cht.sh Initialization --]
-## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 ## [++ Powerlevel10k prompt configuration ++]
 source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
@@ -135,3 +134,4 @@ fortuneprint
 ttyprint
 tmuxsessionsprint
 check_backup
+## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
