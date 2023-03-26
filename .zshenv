@@ -15,7 +15,7 @@ autoload -Uz notes
 updatedotfiles() {
     cd ~/.dotfiles >/dev/null 2>/dev/null
     git pull >/dev/null 2>/dev/null | echo ''
-    git restore-mtime --force ~/.dotfiles/backup/.last_successful_backup &>/dev/null
+    git restore-mtime --force ~/.dotfiles/backup/.last_successful_backup &|>/dev/null
     cd - >/dev/null 2>/dev/null
 }
 autoload -Uz updatedotfiles
