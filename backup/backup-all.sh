@@ -17,5 +17,5 @@ chmod 700 /home/david/.dotfiles/backup/.last_successful_backup
 chown david:david ~/.dotfiles/backup/.last_successful_backup
 
 # update the git repo
-sudo -u david git add ~/.dotfiles/backup/.last_successful_backup && git commit -m 'updated last successful backup' && git push -f
+sudo -u david git add ~/.dotfiles/backup/.last_successful_backup && git commit -m 'Updated last successful backup' && git push -f |&>/dev/null
 
