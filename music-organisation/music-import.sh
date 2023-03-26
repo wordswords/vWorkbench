@@ -9,8 +9,8 @@ sudo pip3 install --upgrade beets
 # Fix perms
 
 USER=`whoami`
-sudo chown -R $USER:$USER /mnt2/incomingmusic
-sudo chown -R $USER:$USER /mnt2/music
+sudo chown -R $USER:users /mnt2/incomingmusic
+sudo chown -R $USER:users /mnt2/music
 sudo chmod -R 775 /mnt2/incomingmusic
 sudo chmod -R 775 /mnt2/music
 
