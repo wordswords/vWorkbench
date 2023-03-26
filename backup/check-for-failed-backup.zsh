@@ -30,7 +30,7 @@ then
     things_are_bad
 fi
 
-if test `find "${BACKUP_FLAG_FILENAME}" -mmin +120`
+if test `find "${BACKUP_FLAG_FILENAME}" -mtime +1`
 then
     things_are_bad
 else
