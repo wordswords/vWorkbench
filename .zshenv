@@ -61,6 +61,7 @@ autoload -Uz checkbackup
 weatherprint() {
     echo "[-- \e[0;36m"
     inxi -c 0 -W Manchester,UK | grep Report | sed 's/Report: /Weather: /g'
+    inxi -c 0 -xxxW Manchester,UK | grep wind | sed 's/wind: / Wind: /g'
     echo "\e[0m--]\n"
 }
 autoload -Uz weatherprint
