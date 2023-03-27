@@ -12,7 +12,7 @@ sudo -u david cd ~/.dotfiles/backup && ./rclone-backup-games.sh
 sudo -u david cd ~/.dotfiles/backup && ./rclone-backup-video.sh
 
 # if it gets this far, it's successful
-echo "OK" > /home/david/.dotfiles/backup/.last_successful_backup
+sudo echo "Last backup success: `date`" > ~/.dotfiles/backup/.last_successful_backup
 chmod 700 /home/david/.dotfiles/backup/.last_successful_backup
 chown david:david ~/.dotfiles/backup/.last_successful_backup
 
