@@ -79,6 +79,9 @@ report_done
 report_progress 'Install Nmap for Network admin'
     sudo apt install nmap -y
 report_done
+report_progress 'Install inxi for weather info on login'
+    sudo apt install inxi -y
+report_done
 
 # custom installation lines
 report_progress 'Installing McFly, a zsh Control-R replacement'

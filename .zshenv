@@ -15,7 +15,7 @@ autoload -Uz notes
 updatedotfiles() {
     cd ~/.dotfiles >/dev/null 2>/dev/null
     git pull >/dev/null 2>/dev/null | echo ''
-    git restore-mtime --force ~/.dotfiles/backup/.last_successful_backup &|>/dev/null
+    git restore-mtime --force ~/.dotfiles/backup/.last_successful_backup >/dev/null 2>/dev/null
     cd - >/dev/null 2>/dev/null
 }
 autoload -Uz updatedotfiles
@@ -53,10 +53,17 @@ so() {
 }
 autoload -Uz so
 
-check_backup() {
+checkbackup() {
     ~/.dotfiles/backup/check-for-failed-backup.zsh
 }
-autoload -Uz check_backup
+autoload -Uz checkbackup
+
+weatherprint() {
+    echo "[-- \e[0;36m"
+    inxi -c 0 -W Manchester,UK | grep Report | sed 's/Report: /Weather: /g'
+    echo "\e[0m--]\n"
+}
+autoload -Uz weatherprint
 
 ## [-- CUSTOM ZSH FUNCTIONS --]
 

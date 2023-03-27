@@ -89,7 +89,7 @@ export SECURE_DIR="${HOME}/.secure"
 ## [-- PATHS --]
 ## [++ SOURCE EMPLOYER-SPECIFIC SETTINGS ++]
 set -o extendedglob
-for f (~/.dotfiles/SECRETS/**/^*("~"|dpkg-(dist|old|new)|.(tmp|back|bak))(N.))  . $f
+for f (~/.dotfiles/SECRETS/**/^*("~"|dpkg-(dist|old|new)|.(tmp|back|bak))(N.))  . $f 2>/dev/null
 set +o extendedglob
 ## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
 ## [++ ALIASES ++]
@@ -133,5 +133,6 @@ updatedotfiles
 fortuneprint
 ttyprint
 tmuxsessionsprint
-check_backup
+weatherprint
+checkbackup
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
