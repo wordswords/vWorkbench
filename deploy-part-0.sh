@@ -79,8 +79,11 @@ report_done
 report_progress 'Install Nmap for Network admin'
     sudo apt install nmap -y
 report_done
-report_progress 'Install inxi for weather info on login'
+report_progress 'Install inxi for weather info on logonn'
     sudo apt install inxi -y
+report_done
+report_progress 'Install asciicinema for screencasts'
+    sudo apt install asciicinema -y
 report_done
 
 # custom installation lines
