@@ -85,7 +85,7 @@ report_done
 report_progress 'Install asciicinema for screencasts'
     sudo apt-add-repository ppa:zanchey/asciinema
     sudo apt-get update
-    sudo apt-get install asciinema
+    sudo apt-get install asciinema -y
 report_done
 
 # custom installation lines
