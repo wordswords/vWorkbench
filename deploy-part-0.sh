@@ -83,7 +83,7 @@ report_progress 'Install inxi for weather info on logonn'
     sudo apt install inxi -y
 report_done
 report_progress 'Install asciicinema for screencasts'
-    sudo apt-add-repository ppa:zanchey/asciinema
+    sudo apt-add-repository ppa:zanchey/asciinema -y
     sudo apt-get update
     sudo apt-get install asciinema -y
 report_done
