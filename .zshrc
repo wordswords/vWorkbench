@@ -117,11 +117,11 @@ export GO111MODULE=on
 ## [-- Required for Golang install syntax --]
 ## [++ McFly Initialization ++]
 export MCFLY_KEY_SCHEME=vim
-eval "$(mcfly init zsh)"
+(&>/dev/null eval "$(mcfly init zsh)" &)
 ## [-- McFly Initialization --]
 ## [++ cht.sh Initialization ++]
 mkdir -p ~/.zsh.d/
-curl https://cheat.sh/:zsh > ~/.zsh.d/_cht 2>/dev/null
+(&>/dev/null curl https://cheat.sh/:zsh > ~/.zsh.d/_cht 2>/dev/null &)
 alias cht='cht.sh'
 ## [-- cht.sh Initialization --]
 ## [++ Powerlevel10k prompt configuration ++]
