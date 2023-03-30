@@ -248,6 +248,20 @@ report_progress 'Python3 + OpenAI codex development toolset'
 report_done
 
 
+report_progress 'Installing tmux plugin manager'
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+report_done
+
+report_progress 'Installing tmuxinator'
+    gem install tmuxinator
+report_done
+
+report_progress 'Configuring tmuxinator'
+    mkdir -p ~/.config/tmuxinator
+    ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
+report_done
+
+
 # Linux-specific lines
 cur_os=get_os
 if [[ cur_os == 'linux' ]];
@@ -263,23 +277,6 @@ then
     report_progress 'Configuring Trackpad settings'
         gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
         gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
-    report_done
-
-    report_progress 'Installing tmux snap'
-        sudo snap install tmux-non-dead --classic 2>/dev/null || sudo snap refresh tmux-non-dead
-    report_done
-
-    report_progress 'Installing tmux plugin manager'
-        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    report_done
-
-    report_progress 'Installing tmuxinator'
-        gem install tmuxinator
-    report_done
-
-    report_progress 'Configuring tmuxinator'
-        mkdir -p ~/.config/tmuxinator
-        ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
     report_done
 
     report_progress 'Syncing clipboards on Ubuntu Linux'
