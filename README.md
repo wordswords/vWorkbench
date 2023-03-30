@@ -731,6 +731,20 @@ when printing out shopping lists etc, quickly.
 1. `lp <file>` to print the file.
 2. `echo bla | lp --` to print the pipe.
 
+## 24 bit colour
+
+THIS is the best guide to enabling 24 bit colour on all terminal emulators
+and tmux, that I've found:
+
+[https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6](https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6)
+
+To test whether you have got a proper 24 bit colour setup, use this:
+
+`curl -s https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh >24-bit-color.sh
+bash 24-bit-color.sh`
+
+You should see colour fades with NO stepping, just a complete blend.
+
 ## External Scripts
 
 I have written a few helper scripts in ~/.dotfiles/bin
