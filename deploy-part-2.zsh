@@ -249,7 +249,7 @@ report_done
 
 
 report_progress 'Installing tmux plugin manager'
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || cd ~/.tmux/plugins/tpm && git pull && cd -
 report_done
 
 report_progress 'Installing tmuxinator'
