@@ -244,7 +244,7 @@ report_done
 report_progress 'Python3 + OpenAI codex development toolset'
     python3 -m pip install --upgrade pip
     python3 -m pip install --upgrade --force-reinstall aiohttp openai
-    cp ~/.dotfiles/SECRETS/openaiapirc ~/.config/
+    #cp ~/.dotfiles/SECRETS/openaiapirc ~/.config/
 report_done
 
 
@@ -253,6 +253,7 @@ report_progress 'Installing tmux plugin manager'
 report_done
 
 report_progress 'Installing tmuxinator'
+    sudo chown -R david /var/lib/gems || ''
     gem install tmuxinator
 report_done
 
