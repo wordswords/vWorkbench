@@ -133,6 +133,5 @@ updatedotfiles
 fortuneprint
 ttyprint
 tmuxsessionsprint
-weatherprint
 checkbackup
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
