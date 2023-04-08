@@ -312,6 +312,10 @@ then
         report_done
     fi
 fi
+report_progress "Outputting 24-bit console colour test - there should be no banding!"
+    ~/.dotfiles/bin/24-bit-color.sh
+report_done
+
 
 echo
 echo "-- NEXT STEPS -- "
