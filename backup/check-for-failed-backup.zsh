@@ -11,7 +11,8 @@ OK_MESSAGE="[-- ${GREEN}Backup seems OK${NOCOLOR} --]"
 
 finally(){
     echo "\n"
-    awk -i inplace '!seen[$0]++' ~/.zshrc
+    cat ~/.zshrc | uniq > ~/.zshrc.uniq
+    mv ~/.zshrc.uniq ~/.zshrc
     exit 0
 }
 things_are_bad(){
