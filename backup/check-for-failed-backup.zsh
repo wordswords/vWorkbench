@@ -16,7 +16,7 @@ finally(){
     exit 0
 }
 things_are_bad(){
-    BAD_MESSAGE="* ${ERROR_MESSAGE} ***\n** ${ERROR_MESSAGE} **\n*** ${ERROR_MESSAGE} *"
+    BAD_MESSAGE="[-- * ${ERROR_MESSAGE} ***\n** ${ERROR_MESSAGE} **\n*** ${ERROR_MESSAGE} * --]"
     echo "echo \"${BAD_MESSAGE}\"" >> ~/.zshrc
     echo "${BAD_MESSAGE}"
     finally
