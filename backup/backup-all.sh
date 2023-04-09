@@ -5,6 +5,7 @@ set -x
 cd /home/david/.dotfiles/backup/
 
 ./borg-backup-server-config.sh
+chown -R david:david /mnt2/borg-backup
 runuser -u david /home/david/.dotfiles/backup/rclone-backup-borg.sh 
 runuser -u david /home/david/.dotfiles/backup/rclone-backup-ebooks.sh 
 runuser -u david /home/david/.dotfiles/backup/rclone-backup-music.sh 
