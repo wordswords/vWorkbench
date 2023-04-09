@@ -1,5 +1,7 @@
-#!/usr/bin/env zsh
-# vim: spell set nowrap
+#!/usr/bin/zsh
+# vim: foldmethod=marker foldmarker=report_progress,report_done
+
+
 ## To be run after installation of oh-my-zsh
 
 # Load in status message printing functions

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-## Sets up configuration
+# vim: foldmethod=marker foldmarker=report_progress,report_done
 
 set -e
 
