@@ -101,7 +101,6 @@ report_progress 'Installing/updating vim plugins to latest version'
     mkdir -p ~/.dotfiles/.vim/pack/plugins/start
     cd ~/.dotfiles/.vim/pack/plugins/start/ || exit 1
 
-    git clone git@github.com:ciaranm/securemodelines.git
     git clone git@github.com:dpelle/vim-LanguageTool
     git clone git@github.com:elixir-editors/vim-elixir.git
     git clone git@github.com:jelera/vim-javascript-syntax.git
