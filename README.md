@@ -1,11 +1,10 @@
 # My .dotfiles
 
-- [My .dotfiles](#my-dotfiles)
-  * [What is this?](#what-is-this)
+  * [What is this](#what-is-this)
   * [Demo Video](#demo-video)
   * [VIM](#vim)
     + [How to Decode the vim-airline Buffer Statusline](#how-to-decode-the-vim-airline-buffer-statusline)
-    + [How to Decode the Nerdtree file status symbols](#how-to-decode-nerdtree-file-status-symbols)
+    + [How to Decode the Nerdtree file status symbols](#how-to-decode-the-nerdtree-file-status-symbols)
   * [ZSH](#zsh)
 - [Installation / Updating](#installation---updating)
   * [Installation Requirements for .dotfiles](#installation-requirements-for-dotfiles)
@@ -46,6 +45,8 @@
   * [Profiling VIM to find plugin speed problems](#profiling-vim-to-find-plugin-speed-problems)
   * [Joplin commandline](#joplin-commandline)
   * [JIRA Go Client](#jira-go-client)
+  * [Printing (on Ubuntu)](#printing--on-ubuntu-)
+  * [24 bit colour](#24-bit-colour)
   * [External Scripts](#external-scripts)
     + [`search-ebooks.sh <term>`](#-search-ebookssh--term--)
     + [`delete-all-docker-content.sh`](#-delete-all-docker-contentsh-)
