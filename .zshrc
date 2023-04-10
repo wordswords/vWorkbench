@@ -5,6 +5,7 @@ export GPG_TTY=$(tty)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+set +x
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -117,7 +118,7 @@ export GO111MODULE=on
 ## [-- Required for Golang install syntax --]
 ## [++ McFly Initialization ++]
 export MCFLY_KEY_SCHEME=vim
-(&>/dev/null eval "$(mcfly init zsh)" &)
+(&>/dev/null eval "$(mcfly init zsh)" 2> /dev/null &)
 ## [-- McFly Initialization --]
 ## [++ cht.sh Initialization ++]
 mkdir -p ~/.zsh.d/
