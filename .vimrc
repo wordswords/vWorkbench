@@ -2,8 +2,9 @@
 " |  https://github.com/wordswords/dotfiles   |
 " \- - - - - - - - - - - - - - - - - - - - - -/
 "
-" vim: spell indent nowrap
-"
+" vim: foldmethod=marker foldmarker=[START],[END]
+
+" [START] General CONFIG
 syntax enable
 set autoindent                     " Automatically indent code
 set background=dark                " Dark background, light foreground
@@ -41,7 +42,7 @@ set undofile                       " Drop undo files
 set wildmenu                       " Allow for menu based file navigation
 set wildmode=list:longest,full
 
-""" no bells, ever
+" no bells, ever
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
@@ -73,9 +74,30 @@ nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 set t_Co=256
 
 
-"""
-""" START OF COC.vim CONFIG
-"""
+" Stop <> marks being inserted on all filetypes from lh-brackets plugin
+let g:cb_no_default_brackets = 1
+
+" Turn off macro recording
+noremap q <Nop>
+
+" Disable F1 help launcher
+nmap <F1> :echo<CR>
+nmap <F1> <c-o>:echo<CR>
+
+" Copy from visual mode to system keyboard
+vnoremap <C-c> "+y
+
+" Vim fonts for gVIM
+set guifont=DroidSansMono\ Nerd\ Font\ 18 
+
+" Highlighted ruler for extra focus
+highlight CursorLine term=bold cterm=bold guibg=Grey40
+highlight CursorColumn term=bold cterm=bold guibg=Grey40
+set cursorline cursorcolumn
+
+" [END] General CONFIG
+
+" [START] COC.vim CONFIG
 
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
@@ -237,16 +259,14 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-"""
-""" END OF COC.vim CONFIG
-"""
+" [END] COC.vim CONFIG
 
-" GUI config
+" [START] GUI CONFIG
 let g:prettier#autoformat = 1 " Prettier code formatter automatically files
 let g:rehash256 = 1 " Ensure 256 colour mode
+" [END] GUI config
 
-" Default colourscheme
-
+" [START] Colourscheme CONFIG
 " You might have to force true color when using regular vim inside tmux as the
 " colorscheme can appear to be grayscale with "termguicolors" option enabled.
 if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
@@ -259,49 +279,23 @@ set termguicolors
 colorscheme molokai
 hi SpecialKey ctermfg=grey guifg=grey70
 hi NonText ctermfg=grey guifg=grey70
+" [END] Colourscheme config
 
-" Disable modelines, use securemodelines.vim instead
-set nomodeline
-let g:secure_modelines_verbose = 0
-let g:secure_modelines_modelines = 15
+" [START] Modelines CONFIG
+set modelines=5
+set modeline
+" [END] Modelines config
 
-" Stop <> marks being inserted on all filetypes from lh-brackets plugin
-let g:cb_no_default_brackets = 1
-
-" Turn off macro recording
-noremap q <Nop>
-
-" Disable F1 help launcher
-nmap <F1> :echo<CR>
-nmap <F1> <c-o>:echo<CR>
-
-" Copy from visual mode to system keyboard
-vnoremap <C-c> "+y
-
-" Vim fonts for gVIM
-set guifont=DroidSansMono\ Nerd\ Font\ 18 
-
-" Highlighted ruler for extra focus
-highlight CursorLine term=bold cterm=bold guibg=Grey40
-highlight CursorColumn term=bold cterm=bold guibg=Grey40
-set cursorline cursorcolumn
-
-"""
-""" vim-airline CONFIG
-"""
+" [START] vim-airline CONFIG
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline_powerline_fonts = 1
 let g:powerline_symbols = 'fancy'
-"""
-""" END of vim-airline CONFIG
-"""
+" [END] vim-airline CONFIG
 
-"""
-""" NERDTree CONFIG
-"""
-" Startup NerdTree when vim is started to edit a directory, except in vimdiff mode
+" [START] NERDTree CONFIG
+" Start NerdTree when vim is started to edit a directory, except in vimdiff mode
 if &diff
     " Do nothing
 else
@@ -330,13 +324,9 @@ let NERDTreeShowHidden = 1
 " Pressing <UP> cursor toggles NerdTree
 "
 noremap <UP> :NERDTreeToggle<CR>
-"""
-""" END OF Nerdtree CONFIG
-"""
+" [END] Nerdtree CONFIG
 
-"""
-""" Filetype formats/autocmd CONFIG
-"""
+" [START] Filetype formats/autocmd CONFIG
 function SetRestructuredTextOptions()
   au BufRead,BufNewFile *.rst setlocal textwidth=80
   setlocal spell
@@ -386,9 +376,9 @@ function SetGitCommitFileOptions()
   setlocal spell " highlight spelling mistakes
 endfunction
 
-""" remove trailing whitespace on these filetypes only:
+" remove trailing whitespace on these filetypes only:
 autocmd FileType text,markdown,Makefile,Jenkinsfile,Python autocmd BufWritePre <buffer> %s/\s\+$//e
-""" file-type-specific stuff
+" file-type-specific stuff
 autocmd BufRead,BufNewFile *.f90 set filetype=Fortran
 autocmd BufRead,BufNewFile *.robot setlocal noexpandtab
 autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
@@ -398,35 +388,23 @@ autocmd BufRead,BufNewFile Makefile call SetMakeFileOptions()
 autocmd BufRead,BufNewFile *.py call SetPythonFileOptions()
 autocmd FileType gitcommit call SetGitCommitFileOptions()
 autocmd FileType plugin indent on " for writing plugins
-"""
-""" END of Filetype formats/autocmd CONFIG
-"""
+" [END] Filetype formats/autocmd CONFIG
 
-"""
-""" Goyo CONFIG
-"""
+" [START] Goyo CONFIG
 noremap <F12> :Goyo<CR> " this toggles distraction-free mode
-"""
-""" END of Goyo CONFIG
-"""
+" [END] Goyo CONFIG
 
-"""
-""" Vista CONFIG
-"""
+" [START] Vista CONFIG
 let g:vista_default_executive = "coc"
 nmap <silent><DOWN> :Vista!!<ENTER>
 
-""" Automatically close vim if vista is the only buffer left
+" Automatically close vim if vista is the only buffer left
 autocmd bufenter * if (winnr("$") == 1 && bufwinnr("__vista__") > 0) | q | endif
-""" If only NerdTree and Vista buffers are left, automatically close VIM
+" If only NerdTree and Vista buffers are left, automatically close VIM
 autocmd bufenter * if (winnr("$") == 2 && bufwinnr("__vista__") > 0 && exists("b:NERDTree")) | qa | endif
-"""
-""" END of Vista CONFIG
-"""
+" [END] Vista CONFIG
 
-"""
-""" Wordy CONFIG
-"""
+" [START] Wordy CONFIG
 " Wordy is only activated when editing text files
 let g:wordy#ring = [
   \ 'weak',
@@ -441,14 +419,9 @@ let g:wordy#ring = [
   \ 'adjectives',
   \ 'adverbs',
   \ ]
-"""
-""" END of Wordy CONFIG
-"""
+" [END] Wordy CONFIG
 
-
-"""
-""" nerdtree-git-plugin CONFIG
-"""
+" [START] nerdtree-git-plugin CONFIG
 let g:NERDTreeGitStatusUseNerdFonts = 1 "default: 0
 let g:NERDTreeGitStatusShowClean = 1 "default: 0
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all' "heavy feature default:normal
@@ -465,24 +438,19 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \ }
-"""
-""" END of nerdtree-git-plugin CONFIG
-"""
+" [END] nerdtree-git-plugin CONFIG
 
-"""
-""" START of bash-language-server CONFIG
-"""
+" [START] bash-language-server CONFIG
 if executable('bash-language-server')
   au User lsp_setup call lsp#register_server({
         \ 'name': 'bash-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server START']},
         \ 'allowlist': ['sh'],
         \ })
 endif
+" [END] bash-language-server CONFIG
 
-"""
-""" START of wikipedia2text lookup CONFIG
-"""
+" [START] wikipedia2text lookup CONFIG
 " See: https://github.com/chrisbra/wikipedia2text
 " Assumes you have installed the wikipedia2text script to your path
 " with the filename 'wp2t'
@@ -497,13 +465,9 @@ enddef
 
 
 nnoremap <silent><leader>w :call <SID>LookupPopup()<CR>
-"""
-""" END of wikipedia2text lookup CONFIG
-"""
+" [END] wikipedia2text lookup CONFIG
 
-"""
-""" START of JiraIssueLookupPopup lookup CONFIG
-"""
+" [START] JiraIssueLookupPopup lookup CONFIG
 def s:JiraIssueLookupPopup()
     set mouse=a
     var popup_win = printf("jira view issue --plain %s", expand('<cword>'))
@@ -514,13 +478,9 @@ def s:JiraIssueLookupPopup()
 enddef
 
 nnoremap <silent><leader>j :call <SID>JiraIssueLookupPopup()<CR>
-"""
-""" END of JiraIssueLookupPopup lookup CONFIG
-"""
+" [END] JiraIssueLookupPopup lookup CONFIG
 
-"""
-""" START of GitBlaneLine lookup CONFIG
-"""
+" [START] GitBlaneLine lookup CONFIG
 def s:GitBlameLine()
     var popup_win = printf("git -C %s blame -s -L %s,%s -- %s | head -c 8", expand('%:h'), line('.'), line('.'), expand('%:p'))
         ->system()
@@ -532,26 +492,16 @@ def s:GitBlameLine()
 enddef
 
 nnoremap <silent><leader>b :call <SID>GitBlameLine()<CR>
-"""
-""" END of GitBlaneLine lookup CONFIG
-"""
+" [END] GitBlaneLine lookup CONFIG
 
-"""
-""" Start of vim_codex CONFIG
-"""
+" [START] vim_codex CONFIG
 nnoremap  <C-x> :CreateCompletion 1000<CR>
 inoremap  <C-x> <Esc>li<C-g>u<Esc>l:CreateCompletion 1000<CR>
-"""
-""" End of vim_codex CONFIG
-"""
+" [END] vim_codex CONFIG
 
-"""
-""" START of LanguageTool grammar checker plugin CONFIG
-"""
+" [START] LanguageTool grammar checker plugin CONFIG
 let g:languagetool_jar="~/.dotfiles/LanguageTool-5.2/languagetool-commandline.jar"
 let g:languagetool_lang="en-GB"
 hi LanguageToolGrammarError  guisp=blue gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=blue term=underline cterm=none
 hi LanguageToolSpellingError guisp=red  gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
-"""
-""" END of LanguageTool grammar checker plugin CONFIG
-"""
+" [END] LanguageTool grammar checker plugin CONFIG

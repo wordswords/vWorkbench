@@ -1,11 +1,10 @@
 # My .dotfiles
 
-- [My .dotfiles](#my-dotfiles)
-  * [What is this?](#what-is-this)
+  * [What is this](#what-is-this)
   * [Demo Video](#demo-video)
   * [VIM](#vim)
     + [How to Decode the vim-airline Buffer Statusline](#how-to-decode-the-vim-airline-buffer-statusline)
-    + [How to Decode the Nerdtree file status symbols](#how-to-decode-nerdtree-file-status-symbols)
+    + [How to Decode the Nerdtree file status symbols](#how-to-decode-the-nerdtree-file-status-symbols)
   * [ZSH](#zsh)
 - [Installation / Updating](#installation---updating)
   * [Installation Requirements for .dotfiles](#installation-requirements-for-dotfiles)
@@ -46,6 +45,8 @@
   * [Profiling VIM to find plugin speed problems](#profiling-vim-to-find-plugin-speed-problems)
   * [Joplin commandline](#joplin-commandline)
   * [JIRA Go Client](#jira-go-client)
+  * [Printing (on Ubuntu)](#printing--on-ubuntu-)
+  * [24 bit colour](#24-bit-colour)
   * [External Scripts](#external-scripts)
     + [`search-ebooks.sh <term>`](#-search-ebookssh--term--)
     + [`delete-all-docker-content.sh`](#-delete-all-docker-contentsh-)
@@ -469,6 +470,21 @@ an updating terminal.
 This is because the paste functionality doesn't work too great while in VIM9 terminal.
 Also it has problems running some terminal applications while run under VIM9 in tmux.
 
+## VIM modelines and folds
+
+Several of my dotfiles, including the main deploy scripts, use modelines to setup
+some fold markers. This allows for much easier organisation and navigation.
+
+Modelines are enabled by default with the security patch.
+
+1. To expand a fold, press 'l' when on the fold.
+2. The mouse can also be used to open and close folds by clicking in the
+fold column: Click on a '+' to open the closed fold at this row. Click on any other
+non-blank character to close the open fold at this row.
+3. To close a fold `zc` when the cursor is on it
+4. To close ALL folds `zM`
+5. To open ALL folds `zR`
+
 ## VIM Regex
 
 1. Turn on "Very magic mode" for VIM when you have to enter a regex that
@@ -731,6 +747,11 @@ when printing out shopping lists etc, quickly.
 1. `lp <file>` to print the file.
 2. `echo bla | lp --` to print the pipe.
 
+## Remote Connection
+
+To remotely SSH via preshared key SSH to my home server, assuming you have authentication
+use the alias `hq`
+
 ## 24 bit colour
 
 THIS is the best guide to enabling 24 bit colour on all terminal emulators
@@ -740,10 +761,11 @@ and tmux, that I've found:
 
 To test whether you have got a proper 24 bit colour setup, use this:
 
-`curl -s https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh >24-bit-color.sh
-bash 24-bit-color.sh`
+`~/.dotfiles/bin/24-bit-color.sh`
 
 You should see colour fades with NO stepping, just a complete blend.
+
+This script is run for you when you run the second deploy script.
 
 ## External Scripts
 

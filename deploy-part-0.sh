@@ -1,5 +1,5 @@
 #!/bin/bash
-# vim: spell set nowrap
+# vim: foldmethod=marker foldmarker=report_progress,report_done
 
 set -e
 source ./deploy-common.sh
