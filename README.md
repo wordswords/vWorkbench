@@ -747,6 +747,12 @@ when printing out shopping lists etc, quickly.
 1. `lp <file>` to print the file.
 2. `echo bla | lp --` to print the pipe.
 
+## fzf
+
+`fzf` is installed. There are many things you can do with it. Here is a good source:
+
+`https://andrew-quinn.me/fzf/`
+
 ## Remote Connection
 
 To remotely SSH via preshared key SSH to my home server, assuming you have authentication
