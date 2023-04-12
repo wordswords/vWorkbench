@@ -218,6 +218,10 @@ query in the Google.co.uk search engine.
 18. Use `so <search query>` from the terminal to open a Firefox browser,
 and search stackoverflow using `<search query>`
 19. Use `pstree` for a nice graph showing all processes and subprocesses running.
+20. Use `<CNTRL-X> <CNTRL-E>` to open up a text editor while in a shell. When you
+save the text content, it will copy it back to the shell to execute. You can use
+this method to use Github Copilot and OpenAI Codex in VIM to generate shell commands
+and then have them execute in the shell.
 
 ## VIM9 shortcuts
 
@@ -352,7 +356,7 @@ window in the centre of the desktop
 
 ### Firefox Shortcuts
 
-I install vinium on Firefox which allows you to use the VIM shortcuts on most pages
+I install Vinium on Firefox which allows you to use the VIM shortcuts on most pages
 
 1. `<h> <j> <k> <l>` to scroll as per normal in vim.
 2. `gg` to go to the top of the page
