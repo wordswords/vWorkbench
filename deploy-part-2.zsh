@@ -36,7 +36,14 @@ report_done
 
 report_progress 'Install LanguageTool grammar checker'
     cd ~/.dotfiles
-    ls ./LanguageTool-5.2.zip || $( wget https://languagetool.org/download/LanguageTool-5.2.zip && unzip LanguageTool-5.2.zip )
+    rm -rf ./LanguageToo*
+    wget https://languagetool.org/download/LanguageTool-5.9.zip
+    # LanguageTool 5.9 is the last version that works with the vim plugin
+    # When the vim plugin gets fixed, then we can use the latest version
+    # wget https://languagetool.org/download/LanguageTool-stable.zip
+    mkdir -p ./LanguageTool
+    unzip -d ./LanguageTool ./LanguageTool-*.zip
+    mv ./LanguageTool/*/* ./LanguageTool
     cd -
 report_done
 

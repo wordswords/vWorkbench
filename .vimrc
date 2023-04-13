@@ -500,7 +500,7 @@ inoremap  <C-x> <Esc>li<C-g>u<Esc>l:CreateCompletion 1000<CR>
 " [END] vim_codex CONFIG
 
 " [START] LanguageTool grammar checker plugin CONFIG
-let g:languagetool_jar="~/.dotfiles/LanguageTool-5.2/languagetool-commandline.jar"
+let g:languagetool_jar="~/.dotfiles/LanguageTool/languagetool-commandline.jar"
 let g:languagetool_lang="en-GB"
 hi LanguageToolGrammarError  guisp=blue gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=blue term=underline cterm=none
 hi LanguageToolSpellingError guisp=red  gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
