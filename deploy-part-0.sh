@@ -120,13 +120,6 @@ report_progress 'Installing epy a command line epub reader'
     pip3 install git+https://github.com/wustho/epy
 report_done
 
-report_progress 'Installing Google Cloud CLI client'
-    sudo apt-get install apt-transport-https ca-certificates gnupg
-    echo "deb https://packages.cloud.google.com/apt-getcloud-sdk jammy main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-    sudo apt-get update && sudo apt-get install google-cloud-cli -y
-report_done
-
 # os-specific lines
 cur_os=get_os
 if [[ cur_os == 'ubuntu' || cur_os == 'osx' ]];
