@@ -417,6 +417,8 @@ e.g. method, variable etc.
 9. `K` for the language feature under the cursor to pull up the language server
 documentation for that feature.
 10. `:help coc-nvim` for the reference documentation for Coc.vim
+11. To scroll popups that appear, use `<Control-j>` to scroll up, and `<Control-k>`
+for down.
 
 ## VIM9 Leader Search Functions
 
@@ -428,10 +430,10 @@ First move the cursor over a word or line and then:
 
 In visual mode you can also do:
 
-1. `<leader> g` to open a firefox window with the google results of the visual
+1. `<leader> g` to open a firefox window with the google results of the lines in the visual
 selection
-2. `<leader> s` to open a firefox window with the stackoverflow results of the visual
-selection
+2. `<leader> s` to open a firefox window with the stackoverflow results of the lines in the
+visual selection
 
 
 ## Git Fugitive Workflow
