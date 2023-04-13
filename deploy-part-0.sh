@@ -93,6 +93,9 @@ report_done
 report_progress 'Install shellcheck for shell script formatting'
     sudo apt-get install shellcheck -y
 report_done
+report_progress 'Install docker-compose'
+    sudo apt-get install docker-compose  -y
+report_done
 
 # custom installation lines
 report_progress 'Installing McFly, a zsh Control-R replacement'
