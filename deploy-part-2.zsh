@@ -166,6 +166,7 @@ report_progress 'Installing vim9/coc'
 report_done
 
 report_progress 'Installing vim9/coc extensions'
+    sudo chown -R $USER ~/.config
     mkdir -p ~/.config/coc/extensions
     cd ~/.config/coc/extensions
     echo '{"dependencies":{}}'> package.json
