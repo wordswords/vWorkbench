@@ -4,7 +4,7 @@
 set -e
 
 # Load in status message printing functions
-. ./deploy-common.sh
+source ./deploy-common.sh
 
 report_heading 'Deploy Dotfiles: Part 1'
 
