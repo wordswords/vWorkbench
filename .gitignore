@@ -13,3 +13,6 @@ iterm2/com.googlecode.iterm2.plist*
 secrets/**
 SECRETS/**
 tags
+LanguageTool
+hqconfig/explainshell
+
