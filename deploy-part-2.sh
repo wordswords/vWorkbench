@@ -182,7 +182,7 @@ report_progress 'Installing vim9/coc extensions'
         coc-tsserver \
         coc-vimlsp \
         --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-    npm install -g vim-language-server
+    sudo npm install -g vim-language-server
 report_done
 
 report_progress 'Installing pynvim for python integration with vim'
@@ -199,7 +199,7 @@ report_progress 'Setting default git config.. change this if you are not David C
 report_done
 
 report_progress 'Installing and configuring Joplin CLI notetaking app'
-    ( which joplin-cli 2>/dev/null && sudo npm update -g joplin ) \
+    ( which joplin-cli 2>/dev/null && npm update -g joplin ) \
     || ( NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli )
 report_done
 
@@ -213,9 +213,7 @@ report_progress 'Changing shell to /bin/zsh.'
 report_done
 
 report_progress 'Customising Fortune random quoter'
-    set -o extendedglob
-    sudo rm -rf "/usr/share/games/fortunes/*" || echo ''
-    set +o extendedglob
+    sudo rm -rf /usr/share/games/fortunes/* || true
     sudo tar xzf ~/.dotfiles/gaiman-fortunes.tgz -C /usr/share/games/fortunes/
 report_done
 
