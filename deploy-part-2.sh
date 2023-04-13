@@ -45,7 +45,7 @@ report_done
 
 report_progress 'Install wikipedia2text'
 cd ~/.dotfiles
-rm -rf ./wikipedia2text || echo ''
+rm -rf ./wikipedia2text || true
 cd ~/.dotfiles && git clone git@github.com:chrisbra/wikipedia2text.git
 ln -sf ~/.dotfiles/wikipedia2text/wikipedia2text ~/.dotfiles/bin/wp2t
 cd -
@@ -92,8 +92,8 @@ ln --force -s -n ~/.dotfiles/.vim ~/.vim
 report_done
 
 report_progress 'Installing Powerlevel10k prompt'
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k || echo ''
-ln --force -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh || echo ''
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k || true
+ln --force -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh || true
 report_done
 
 report_progress 'Creating vim backup file directory structure'
@@ -299,7 +299,7 @@ if [[ "${cur_os}" == 'linux' ]]; then
 		report_done
 	else
 		# remove go jira client if it was installed previously
-		rm ~/go/bin/jira || echo ''
+		rm ~/go/bin/jira || true
 	fi
 	echo
 	read -r "?Do you want to install or update the Ubuntu snap images of Spotify and Morgen? (y/N)? " SNAPINSTALL
