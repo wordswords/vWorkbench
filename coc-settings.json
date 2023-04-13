@@ -1,4 +1,8 @@
 {
+  // shell script language server (coc-sh)
+  "bashIde.shellcheckPath": "shellcheck",
+  "bashIde.explainshellEndpoint": "hq.djdavidcraddock.net:5000",
+  "bashIde.globPattern": "**/*@(.sh|.zsh|.bash)",
   // diagnostic-languageserver
   "diagnostic-languageserver.filetypes": {
     "vim": "vint",
@@ -21,8 +25,8 @@
     "sh": "shfmt",
     "blade": "blade-formatter",
     "cmake": "cmake-format"
-  }
+  },
   {
-    "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
   }
 }

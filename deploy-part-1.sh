@@ -32,4 +32,3 @@ report_progress 'Installing oh-my-zsh'
 report_done
 
 report_finished 'Deploy Dotfiles: Part 1'
-

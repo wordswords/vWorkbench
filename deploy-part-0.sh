@@ -13,79 +13,85 @@ report_progress 'Checking locale'
 report_done
 
 report_progress 'Restoring last modified dates for .dotfiles'
-    sudo apt install git-restore-mtime
+    sudo apt-get install git-restore-mtime
     sudo git restore-mtime
 report_done
 
 # Main lines
 report_progress 'Upgrade all packages/distro to latest version'
-    sudo apt update -y && sudo apt dist-upgrade -y && sudo apt upgrade -y && sudo apt autoremove -y
+    sudo apt-getupdate -y && sudo apt-getdist-upgrade -y && sudo apt-getupgrade -y && sudo apt-getautoremove -y
 report_done
 report_progress 'Upgrade VIM to latest version using third-party repo'
     sudo add-apt-repository ppa:jonathonf/vim -y
-    sudo apt update -y && sudo apt upgrade -y
-    sudo apt install vim-gtk3 -y || sudo apt upgrade vim-gtk3 -y
+    sudo apt-getupdate -y && sudo apt-getupgrade -y
+    sudo apt-get install vim-gtk3 -y || sudo apt-getupgrade vim-gtk3 -y
 report_done
 report_progress 'Install Speedtest from ookla for testing network speed'
     curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
     sudo apt-get install speedtest -y
 report_done
 report_progress 'Install Git'
-    sudo apt install git -y
+    sudo apt-get install git -y
 report_done
 report_progress 'Install Python 3 used for vim plugins'
-    sudo apt install python3 -y
-    sudo apt install python3-pip -y
+    sudo apt-get install python3 -y
+    sudo apt-get install python3-pip -y
 report_done
 report_progress 'Install latest open JDK used for LanguageTool'
-    sudo apt install default-jdk -y
+    sudo apt-get install default-jdk -y
 report_done
 report_progress 'Install zsh the best shell (so far)'
-    sudo apt install zsh -y
+    sudo apt-get install zsh -y
 report_done
 report_progress 'Install Ctags used for vim-fugitive'
-    sudo apt install universal-ctags -y
+    sudo apt-get install universal-ctags -y
 report_done
 report_progress 'Install net-tools used for network diagnostics'
-    sudo apt install net-tools -y
+    sudo apt-get install net-tools -y
 report_done
 report_progress 'Install fortune used for fortune cookie'
-    sudo apt install fortune-mod -y
+    sudo apt-get install fortune-mod -y
 report_done
 report_progress 'Install Ripgrewp used for :CocSearch'
-    sudo apt install ripgrep -y
+    sudo apt-get install ripgrep -y
 report_done
 report_progress 'Install tree for showing directory structures'
-    sudo apt install tree -y
+    sudo apt-get install tree -y
 report_done
 report_progress 'Install w3m text browser for wikipedia2text'
-    sudo apt install w3m -y
+    sudo apt-get install w3m -y
 report_done
 report_progress 'Install  bat, a cat clone with syntax highlighting and Git integration'
-    sudo apt install bat -y
+    sudo apt-get install bat -y
 report_done
 report_progress 'Install curl for downloading from the web'
-    sudo apt install curl -y
+    sudo apt-get install curl -y
 report_done
 report_progress 'Install xclip and xsel for clipboard access'
-    sudo apt install xclip xsel -y
+    sudo apt-get install xclip xsel -y
 report_done
 report_progress 'Install tmux terminal multiplexer'
-    sudo apt install tmux -y
+    sudo apt-get install tmux -y
 report_done
 report_progress 'Install Elixir for Elixir development'
-    sudo apt install elixir erlang -y
+    sudo apt-get install elixir erlang -y
 report_done
 report_progress 'Install Nmap for Network admin'
-    sudo apt install nmap -y
+    sudo apt-get install nmap -y
 report_done
 report_progress 'Install inxi for weather info on logonn'
-    sudo apt install inxi -y
+    sudo apt-get install inxi -y
 report_done
 report_progress 'Install asciicinema for screencasts'
     sudo apt-add-repository ppa:zanchey/asciinema -y
     sudo apt-get update
     sudo apt-get install asciinema -y
+report_done
+report_progress 'Install shfmt for shell script formatting'
+    sudo apt-get install shfmt -y
+report_done
+report_progress 'Install shellcheck for shell script formatting'
+    sudo apt-get install shellcheck -y
 report_done
 
 # custom installation lines
@@ -107,7 +113,7 @@ report_progress 'Installing cht.sh a command line help client'
 report_done
 
 report_progress 'Installing surfraw a command line google search client'
-    sudo apt install surfraw surfraw-extra -y
+    sudo apt-get install surfraw surfraw-extra -y
 report_done
 
 report_progress 'Installing epy a command line epub reader'
@@ -116,7 +122,7 @@ report_done
 
 report_progress 'Installing Google Cloud CLI client'
     sudo apt-get install apt-transport-https ca-certificates gnupg
-    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt-getcloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
     sudo apt-get update && sudo apt-get install google-cloud-cli -y
 report_done
@@ -132,7 +138,7 @@ fi
 if [[ cur_os == 'ubuntu' ]];
 then
     report_progress 'Installing workrave, a reminder app to take screenbreaks'
-        sudo apt install workrave -y
+        sudo apt-get install workrave -y
     report_done
 fi
 if [[ cur_os == 'windows' ]];
@@ -145,7 +151,7 @@ fi
 
 
 report_progress 'We will now attempt to enable automated unattended-upgrades'
-    sudo apt install unattended-upgrades -y
+    sudo apt-get install unattended-upgrades -y
     sudo dpkg-reconfigure unattended-upgrades
 report_done
 

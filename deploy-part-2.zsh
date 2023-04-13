@@ -179,6 +179,7 @@ report_progress 'Installing vim9/coc extensions'
         coc-prettier \
         coc-pyright \
         coc-sh \
+        coc-diagnostic \
         coc-tsserver \
         coc-vimlsp \
         --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
