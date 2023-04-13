@@ -255,7 +255,6 @@ report_progress 'Python3 + OpenAI codex development toolset'
     #cp ~/.dotfiles/SECRETS/openaiapirc ~/.config/
 report_done
 
-
 report_progress 'Installing tmux plugin manager'
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || cd ~/.tmux/plugins/tpm && git pull && cd -
 report_done
@@ -269,7 +268,6 @@ report_progress 'Configuring tmuxinator'
     mkdir -p ~/.config/tmuxinator
     ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
 report_done
-
 
 # Linux-specific lines
 cur_os=get_os
