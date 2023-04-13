@@ -230,12 +230,10 @@ report_done
 
 report_progress 'Running vim local commands for plugins'
 echo '''
-    :!echo Installing vim plugins, press a key to continue<CR>
-    :CocUpdateSync<CR>
-    :Copilot setup<CR>
-    :helptags ALL<CR>
-    :qa<CR>
-
+    :CocUpdateSync
+    :Copilot setup
+    :helptags ALL
+    :qa
     ''' >~/.dotfiles/vimscript.vs
 vim -s ~/.dotfiles/vimscript.vs
 rm ~/.dotfiles/vimscript.vs
