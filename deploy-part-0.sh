@@ -79,9 +79,6 @@ report_done
 report_progress 'Install Nmap for Network admin'
     sudo apt-get install nmap -y
 report_done
-report_progress 'Install inxi for weather info on logonn'
-    sudo apt-get install inxi -y
-report_done
 report_progress 'Install asciicinema for screencasts'
     sudo apt-add-repository ppa:zanchey/asciinema -y
     sudo apt-get update
