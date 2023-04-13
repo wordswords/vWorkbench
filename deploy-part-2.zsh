@@ -32,7 +32,7 @@ report_progress 'Installing latest nodejs and bash-language-server'
     sudo ./node-lts.sh --yes
     rm ./node-lts.sh
     export PATH="/usr/local/bin/:$PATH"
-    sudo npm -i -g bash-language-server
+    npm install -g bash-language-server
 report_done
 
 report_progress 'Install LanguageTool grammar checker'
