@@ -19,11 +19,11 @@ report_done
 
 # Main lines
 report_progress 'Upgrade all packages/distro to latest version'
-    sudo apt-getupdate -y && sudo apt-getdist-upgrade -y && sudo apt-getupgrade -y && sudo apt-getautoremove -y
+    sudo apt-get update -y && sudo apt-getdist-upgrade -y && sudo apt-getupgrade -y && sudo apt-getautoremove -y
 report_done
 report_progress 'Upgrade VIM to latest version using third-party repo'
     sudo add-apt-repository ppa:jonathonf/vim -y
-    sudo apt-getupdate -y && sudo apt-getupgrade -y
+    sudo apt-get update -y && sudo apt-getupgrade -y
     sudo apt-get install vim-gtk3 -y || sudo apt-getupgrade vim-gtk3 -y
 report_done
 report_progress 'Install Speedtest from ookla for testing network speed'
