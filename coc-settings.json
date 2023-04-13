@@ -3,6 +3,7 @@
   "bashIde.shellcheckPath": "shellcheck",
   "bashIde.explainshellEndpoint": "hq.djdavidcraddock.net:5000",
   "bashIde.globPattern": "**/*@(.sh|.zsh|.bash)",
+  "bashIde.shellcheckArguments": "--exclude=1091",
   // diagnostic-languageserver
   "diagnostic-languageserver.filetypes": {
     "vim": "vint",

@@ -1,17 +1,12 @@
-#!/usr/bin/zsh
+#!/bin/bash
 # vim: foldmethod=marker foldmarker=report_progress,report_done
 
-
-## To be run after installation of oh-my-zsh
+## To be run after the previous two deploy scripts
 
 # Load in status message printing functions
 source ./deploy-common.sh
-# Load in functions
-source ./.zshenv
 
 set -e
-
-SECURE_DIR="${HOME}"/.secure
 
 report_heading 'Deploy Dotfiles: Part 2'
 
@@ -22,7 +17,7 @@ report_progress 'Testing Github access'
 report_done
 
 report_progress 'Running ctags'
-    ctags -R *
+    ctags -R ./*
 report_done
 
 report_progress 'Installing latest nodejs and bash-language-server'
@@ -64,10 +59,12 @@ report_progress 'Removing existing dotfiles'
 report_done
 
 report_progress 'Installing oh-my-zsh plugins'
-    cd ~/.oh-my-zsh/plugins && ( git clone https://github.com/zsh-users/zsh-syntax-highlighting.git && \
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git && \
-    git clone https://github.com/agkozak/zsh-z.git ./zsh-z && \
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && yes | ~/.fzf/install ) || echo "INFO: OMZ plugins already seem to be installed."
+    cd ~/.oh-my-zsh/plugins && \
+    ( git clone https://github.com/zsh-users/zsh-syntax-highlighting.git && \
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git && \
+        git clone https://github.com/agkozak/zsh-z.git ./zsh-z && \
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && yes | ~/.fzf/install ) \
+    || echo "INFO: OMZ plugins already seem to be installed."
 report_done
 
 report_progress 'Removing default ~/.zshrc directory'
@@ -95,7 +92,7 @@ report_progress 'Setting up symbolic links'
 report_done
 
 report_progress 'Installing Powerlevel10k prompt'
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k || echo ''
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k || echo ''
     ln --force -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh || echo ''
 report_done
 
@@ -105,7 +102,7 @@ report_progress 'Creating vim backup file directory structure'
 report_done
 
 report_progress 'Installing/updating vim plugins to latest version'
-    rm -rf ~/.dotfiles/.vim/pack/plugins/start || ''
+    rm -rf ~/.dotfiles/.vim/pack/plugins/start || true
     mkdir -p ~/.dotfiles/.vim/pack/plugins/start
     cd ~/.dotfiles/.vim/pack/plugins/start/ || exit 1
 
@@ -167,13 +164,13 @@ report_progress 'Installing vim9/coc'
 report_done
 
 report_progress 'Installing vim9/coc extensions'
-    sudo chown -R $USER ~/.config
+    sudo chown -R "${USER}" ~/.config
     mkdir -p ~/.config/coc/extensions
     cd ~/.config/coc/extensions
     echo '{"dependencies":{}}'> package.json
 
     # Change extension names to the extensions you need
-    sudo npm install \
+    npm install \
         coc-css \
         coc-html \
         coc-json \
@@ -185,7 +182,7 @@ report_progress 'Installing vim9/coc extensions'
         coc-tsserver \
         coc-vimlsp \
         --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-    sudo npm install -g vim-language-server
+    npm install -g vim-language-server
 report_done
 
 report_progress 'Installing pynvim for python integration with vim'
@@ -202,15 +199,17 @@ report_progress 'Setting default git config.. change this if you are not David C
 report_done
 
 report_progress 'Installing and configuring Joplin CLI notetaking app'
-    ( which joplin-cli 2>/dev/null && sudo npm update -g joplin ) || ( NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli )
+    ( which joplin-cli 2>/dev/null && sudo npm update -g joplin ) \
+    || ( NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli )
 report_done
 
-report_progress 'Import Joplin config, enable encryption and syncnotes'
-    ( which jopli-cli 2>/dev/null) && ( /usr/bin/joplin-cli config --import < ~/.dotfiles/joplin.config ) && joplin-cli e2ee enable && syncnotes
+report_progress 'Import Joplin config, enable encryption and sync notes'
+    ( which jopli-cli 2>/dev/null) && ( /usr/bin/joplin-cli config --import < ~/.dotfiles/joplin.config ) \
+    && joplin-cli e2ee enable && joplin-cli sync
 report_done
 
 report_progress 'Changing shell to /bin/zsh.'
-    sudo chsh -s $(which zsh 2>/dev/null) $(whoami)
+    sudo chsh -s "$(which zsh)" "$(whoami)"
 report_done
 
 report_progress 'Customising Fortune random quoter'
@@ -263,7 +262,7 @@ report_progress 'Installing tmux plugin manager'
 report_done
 
 report_progress 'Installing tmuxinator'
-    sudo chown -R david /var/lib/gems || ''
+    sudo chown -R david /var/lib/gems || true
     gem install tmuxinator
 report_done
 
@@ -296,7 +295,7 @@ then
     echo
     echo "-- OPTIONAL EXTRAS -- "
     echo
-    read "?Do you want to install JIRA-CLI Go client? (y/N)? " JIRAINSTALL
+    read -r "?Do you want to install JIRA-CLI Go client? (y/N)? " JIRAINSTALL
     if [[ ${JIRAINSTALL} == 'yes' || ${JIRAINSTALL} == 'y' || ${JIRAINSTALL} == 'Y' ]];
     then
         sudo snap install go --classic 2>/dev/null || sudo snap refresh go
@@ -309,7 +308,7 @@ then
         rm ~/go/bin/jira || echo ''
     fi
     echo
-    read "?Do you want to install or update the Ubuntu snap images of Spotify and Morgen? (y/N)? " SNAPINSTALL
+    read -r "?Do you want to install or update the Ubuntu snap images of Spotify and Morgen? (y/N)? " SNAPINSTALL
     if [[ ${SNAPINSTALL} == 'yes' || ${SNAPINSTALL} == 'y' || ${SNAPINSTALL} == 'Y' ]];
     then
         report_progress 'Installing Morgen calendar app via snap'
@@ -329,12 +328,12 @@ report_done
 echo
 echo "-- NEXT STEPS -- "
 echo
-echo '''You will have to install your nerdfont manually, download
-DroidSansNerdFontMono from https://github.com/ryanoasis/nerd-fonts 
+echo ''' You will have to install your nerdfont manually, download
+DroidSansNerdFontMono from https://github.com/ryanoasis/nerd-fonts
 here: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono/complete
 
-After this, you will have to set your terminal emulator to use 
-said font.'''
+After this, you will have to set your terminal emulator to use
+said font. '''
 
 report_heading 'Deploy Dotfiles: Part 2 Complete'
 report_heading 'Deploy Process: Complete.'
