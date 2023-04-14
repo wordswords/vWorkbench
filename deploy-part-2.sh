@@ -246,8 +246,7 @@ mkdir -p ~/.config/tmuxinator
 ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
 report_done
 cur_os=$(get_os)
-
-# Windows-specific lines
+report_progress 'Running any Windows specific configuration'
 if [[ $cur_os == 'windows' ]] ; then
     cd ~/.dotfiles
     mkdir -p win32yank
@@ -259,51 +258,56 @@ if [[ $cur_os == 'windows' ]] ; then
     cd -
     rm -rf ~/.dotfiles/win32yank/
 fi
-# Linux-specific lines
+report_done
+report_progress 'Running any Linux specific configuration'
 if [[ $cur_os == 'linux' ]] ; then
-	report_progress 'Configuring workrave'
-	gsettings set org.workrave.timers.daily-limit limit 14400
-	gsettings set org.workrave.timers.rest-break limit 2700
-	gsettings set org.workrave.breaks.daily-limit enabled true
-	gsettings set org.workrave.breaks.rest-break enabled true
-	gsettings set org.workrave.breaks.micro-pause enabled false
-	report_done
-	report_progress 'Configuring Trackpad settings'
+
+    # workrave settings.. currently not working
+	#gsettings set org.workrave.timers.daily-limit limit 14400
+	#gsettings set org.workrave.timers.rest-break limit 2700
+	#gsettings set org.workrave.breaks.daily-limit enabled true
+	#gsettings set org.workrave.breaks.rest-break enabled true
+	#gsettings set org.workrave.breaks.micro-pause enabled false
+
+    # disable touchpad tap to click
 	gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 	gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
-	report_done
-	report_progress 'Syncing clipboards on Ubuntu Linux'
-	python3 ~/.dotfiles/bin/sync-clipboards-ubuntu.py
-	report_done
+
+    # sync clipboards on ubuntu
+    python3 ~/.dotfiles/bin/sync-clipboards-ubuntu.py
+
 	echo
 	echo "-- OPTIONAL EXTRAS -- "
 	echo
-	read -r "?Do you want to install JIRA-CLI Go client? (y/N)? " JIRAINSTALL
-	if [[ ${JIRAINSTALL} == 'yes' || ${JIRAINSTALL} == 'y' || ${JIRAINSTALL} == 'Y' ]]; then
-		sudo snap install go --classic 2>/dev/null || sudo snap refresh go
-		go install golang.org/dl/go1.19@latest
-		go install github.com/ankitpokhrel/jira-cli/cmd/jira@latest
-		report_progress '''JIRA-CLI go client installed. You will now have to set it up with your local JIRA_API token, see: https://github.com/ankitpokhrel/jira-cli/'''
-		report_done
-	else
-		# remove go jira client if it was installed previously
-		rm ~/go/bin/jira || true
-	fi
-	echo
-	read -r "?Do you want to install or update the Ubuntu snap images of Spotify and Morgen? (y/N)? " SNAPINSTALL
-	if [[ ${SNAPINSTALL} == 'yes' || ${SNAPINSTALL} == 'y' || ${SNAPINSTALL} == 'Y' ]]; then
-		report_progress 'Installing Morgen calendar app via snap'
-		sudo snap install morgen 2>/dev/null || sudo snap refresh morgen
-		report_done
-		report_progress 'Installing Spotify app via snap'
-		sudo snap install spotify 2>/dev/null || sudo snap refresh spotify
-		report_done
-	fi
+
+    read -rp "Do you want to install JIRA-CLI Go client? (y/yes/N)? " JIRAINSTALL
+    case "$JIRAINSTALL" in
+        Y|y|yes)
+            sudo snap install go --classic 2>/dev/null || sudo snap refresh go
+            go install golang.org/dl/go1.19@latest
+            go install github.com/ankitpokhrel/jira-cli/cmd/jira@latest
+        ;;
+        *)
+            # remove go jira client if it was installed previously
+            rm ~/go/bin/jira || true
+        ;;
+    esac
+
+	read -rp "?Do you want to install or update the Ubuntu snap images of Spotify and Morgen? (y/N)? " SNAPINSTALL
+    case "$SNAPINSTALL" in
+        Y|y|yes)
+            sudo snap install morgen 2>/dev/null || sudo snap refresh morgen
+        ;;
+        *)
+            true
+        ;;
+    esac
 fi
+report_done
 report_progress "Outputting 24-bit console colour test - there should be no banding!"
 ~/.dotfiles/bin/24-bit-color.sh
 report_done
-
+report_progress "Deploy Process: Complete"
 echo
 echo "-- NEXT STEPS -- "
 echo
@@ -315,6 +319,5 @@ here: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSan
 After this, you will have to set your terminal emulator to use
 said font.
 '''
-
-report_heading 'Deploy Dotfiles: Part 2 Complete'
-report_heading 'Deploy Process: Complete.'
+report_done
+report_heading 'All Done.'
