@@ -93,29 +93,28 @@ report_done
 report_progress 'Install docker-compose'
     sudo apt-get install docker-compose  -y
 report_done
+report_progress 'Install vint for vim script linting'
+    pip3 install vint
+report_done
 
 # custom installation lines
 report_progress 'Installing McFly, a zsh Control-R replacement'
     curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --force --git cantino/mcfly
 report_done
-
 report_progress 'Installing Delta, a git diff viewer'
     wget https://github.com/dandavison/delta/releases/download/0.15.1/git-delta_0.15.1_amd64.deb
     sudo dpkg -i git-delta_0.15.1_amd64.deb
     rm git-delta_0.15.1_amd64.deb
 report_done
-
 report_progress 'Installing cht.sh a command line help client'
     PATH_DIR="$HOME/bin"  # or another directory on your $PATH
     mkdir -p "$PATH_DIR"
     curl https://cht.sh/:cht.sh > "$PATH_DIR/cht.sh"
     chmod +x "$PATH_DIR/cht.sh"
 report_done
-
 report_progress 'Installing surfraw a command line google search client'
     sudo apt-get install surfraw surfraw-extra -y
 report_done
-
 report_progress 'Installing epy a command line epub reader'
     pip3 install git+https://github.com/wustho/epy
 report_done

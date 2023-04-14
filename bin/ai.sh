@@ -2,5 +2,5 @@
 set -e
 shopt -s lastpipe
 read -r input;
-openai_pipe ${input} | tee >(xclip -selection clipboard)
+openai_pipe ${input} | tee >(xclip.sh)
 

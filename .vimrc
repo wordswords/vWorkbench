@@ -3,7 +3,6 @@
 " \- - - - - - - - - - - - - - - - - - - - - -/
 "
 " vim: foldmethod=marker foldmarker=[START],[END]
-
 " [START] General CONFIG
 syntax enable
 set autoindent                     " Automatically indent code
@@ -49,10 +48,10 @@ set noerrorbells novisualbell t_vb=
 let mapleader=","
 
 " Paste from system clipboard
-def s:PasteFromSystemClipboard()
-    call feedkeys(":set paste\<CR>:r! xclip -selection clipboard -o\<CR>:set nopaste\<CR>")
-enddef
-nnoremap <C-v> :call <SID>PasteFromSystemClipboard()<CR>
+function! PasteFromSystemClipboard()
+    call feedkeys(":set paste\<CR>:r! ~/bin/xclip.sh -selection clipboard -o 2>/dev/null\<CR>:set nopaste\<CR>")
+endfunction
+nnoremap <C-v> :call PasteFromSystemClipboard()<CR>
 
 " Foot pedal
 nnoremap <F6> i
@@ -67,10 +66,11 @@ vnoremap <leader>g y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n
 " Send visual selection to OpenAI
 vnoremap <leader>o y:read !echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> ai.sh 2>/dev/null<CR><CR>
 
-def s:BringUpDotfilesReadme()
+function! BringUpDotfilesReadme()
     call feedkeys(":sp ~/.dotfiles/README.md\<CR>:Vista!!\<CR>")
-enddef
-nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
+endfunction
+
+nnoremap <leader>h :call BringUpDotfilesReadme()<CR>
 
 " Set gVIM settings to be the same as the terminal
 set t_Co=256
