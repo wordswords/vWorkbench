@@ -246,8 +246,8 @@ mkdir -p ~/.config/tmuxinator
 ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
 report_done
 # Linux-specific lines
-cur_os=get_os
-if [[ "${cur_os}" == 'linux' ]]; then
+cur_os=$(get_os)
+if [[ $cur_os == 'linux' ]]; then
 	report_progress 'Configuring workrave'
 	gsettings set org.workrave.timers.daily-limit limit 14400
 	gsettings set org.workrave.timers.rest-break limit 2700
