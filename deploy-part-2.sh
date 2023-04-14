@@ -151,6 +151,12 @@ git apply nerdtree_plugin_fix.diff
 cd -
 report_done
 
+report_progress 'Patching vim_codex to make it work post OpenAI Codex shutdown'
+cp ~/.dotfiles/vim_codex_fix.diff ~/.vim/pack/plugins/start/vim_codex/vim_codex
+cd ~/.vim/pack/plugins/start/vim_codex/vim_codex/
+git apply vim_codex_fix.diff
+cd -
+report_done
 report_progress 'Installing vim colorscheme'
 git clone git@github.com:shannonmoeller/vim-monokai256.git ./colorscheme
 mkdir -p ~/.vim/colors/
