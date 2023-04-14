@@ -1,12 +1,9 @@
-diff --git a/nerdtree_plugin/git_status.vim b/nerdtree_plugin/git_status.vim
-index 2ca085f..a11201f 100644
---- a/nerdtree_plugin/git_status.vim
-+++ b/nerdtree_plugin/git_status.vim
+--- nerdtree_plugin/git_status.vim
++++ nerdtree_plugin/git_status.vim
 @@ -79,7 +79,6 @@ let s:need_migrate_vals = {
              \ 'g:NERDTreeMapNextHunk':        'g:NERDTreeGitStatusMapNextHunk',
              \ 'g:NERDTreeMapPrevHunk':        'g:NERDTreeGitStatusMapPrevHunk',
              \ 'g:NERDTreeShowIgnoredStatus':  'g:NERDTreeGitStatusShowIgnored',
 -            \ 'g:NERDTreeIndicatorMapCustom': 'g:NERDTreeGitStatusIndicatorMapCustom',
              \ }
- 
- for [s:oldv, s:newv] in items(s:need_migrate_vals)
+

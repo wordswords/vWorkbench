@@ -1,8 +1,6 @@
-diff --git a/~/.vim/pack/plugins/start/vim_codex/python/plugin.py b/plugin.py
-index ae385a3..2d40b9e 100644
---- a/~/.vim/pack/plugins/start/vim_codex/python/plugin.py
-+++ b/plugin.py
-@@ -54,7 +54,7 @@ def initialize_openai_api():
+--- a/plugin.py
++++ a/plugin.py
+@@ -54,7 +54,7 @@
  
  def complete_input_max_length(input_prompt, max_input_length=MAX_SUPPORTED_INPUT_LENGTH, stop=None, max_tokens=64):
      input_prompt = input_prompt[-max_input_length:]

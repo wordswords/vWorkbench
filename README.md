@@ -641,6 +641,16 @@ Git Book:
 Check out my simpleton Git workflow here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md](https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md)
 
+## GNU diff/patching stuff I forget
+
+### Creating a patch to apply later
+1. To generated the patch diff `diff -u <file1> <file2> > patch.diff`
+2. Edit the patch file and make sure both files are the same filename that you want patched.
+
+### Applying the patch
+1. Copy the patch.diff into the directory of the file needing to be patched
+2. Run `patch -p1 < patch.diff`
+
 ## Python 3 stuff I forget
 
 1. Use `ipython` for interactive REPL Python 3 stuff.

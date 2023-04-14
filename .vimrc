@@ -527,8 +527,8 @@ nnoremap <silent><leader>b :call <SID>GitBlameLine()<CR>
 " [END] GitBlaneLine lookup CONFIG
 
 " [START] vim_codex CONFIG
-nnoremap  <C-x> :CreateCompletion 1000<CR>
-inoremap  <C-x> <Esc>li<C-g>u<Esc>l:CreateCompletion 1000<CR>
+nnoremap  <C-x> :CreateCompletion 100<CR>
+inoremap  <C-x> <Esc>li<C-g>u<Esc>l:CreateCompletion 100<CR>
 " [END] vim_codex CONFIG
 
 " [START] LanguageTool grammar checker plugin CONFIG

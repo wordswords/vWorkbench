@@ -147,14 +147,14 @@ report_done
 report_progress 'Patching NerdTree to remove deprecated error'
 cp ~/.dotfiles/nerdtree_plugin_fix.diff ~/.vim/pack/plugins/start/nerdtree-git-plugin/nerdtree_plugin
 cd ~/.vim/pack/plugins/start/nerdtree-git-plugin/nerdtree_plugin
-git apply nerdtree_plugin_fix.diff
+patch -p1 < nerdtree_plugin_fix.diff
 cd -
 report_done
 
 report_progress 'Patching vim_codex to make it work post OpenAI Codex shutdown'
-cp ~/.dotfiles/vim_codex_fix.diff ~/.vim/pack/plugins/start/vim_codex/vim_codex
-cd ~/.vim/pack/plugins/start/vim_codex/vim_codex/
-git apply vim_codex_fix.diff
+cp ~/.dotfiles/vim_codex_patch.diff ~/.vim/pack/plugins/start/vim_codex/python
+cd ~/.vim/pack/plugins/start/vim_codex/python/
+patch -p1 < vim_codex_patch.diff
 cd -
 report_done
 report_progress 'Installing vim colorscheme'
