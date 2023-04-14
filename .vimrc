@@ -60,7 +60,7 @@ nnoremap <F6> i
 imap <F6> <Esc>
 
 " Search visual selection via stackoverflow
-vnoremap <leader>g y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> so.sh<CR><CR>
+vnoremap <leader>s y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> so.sh<CR><CR>
 
 " Search visual selection via google.co.uk
 vnoremap <leader>g y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> gg.sh<CR><CR>

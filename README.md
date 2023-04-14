@@ -783,6 +783,26 @@ This script is run for you when you run the second deploy script.
 
 I have written a few helper scripts in ~/.dotfiles/bin
 
+### `gg.sh`,`so.sh`, `ai.sh`, `gg`, `so`, `ai`
+
+You can pipe multiple lines of text to these scripts. They will look up the
+result in:
+
+`gg.sh` - Google
+`so.sh` - Stack Overflow
+`ai.sh` - ChatGPT (providing you have an API key)
+
+The first two will open a new tab or web browser in Firefox (only works in Ubuntu)
+with your query on those sites.
+
+The third will output the result of the query to STDOUT, and also save the result
+on your clipboard.
+
+You can also use the three commands WITHOUT the extension to allow for easy `<cmd> <query>`
+use while in a interactive console, for example
+
+$ `ai why are cornflakes crunchy?`
+
 ### `search-ebooks.sh <term>`
 
 This searches my ThinkSation server for epub books according to a wildcard.
@@ -806,12 +826,6 @@ file. Often it is accurate but not always. Run it again for another guess.
 This will ask OpenAI to have a guess at the purpose of the current directory based
 on the naming of the files in it, and some AI magic. Often it is accurate but not
 always. Run it again for another guess.
-
-### `gg.zsh` and `so.zsh`
-
-You can pipe multiple lines of text to these scripts and then will search
-google.co.uk and stackoverflow respectively for the text you've piped to
-them.
 
 ### `osx.zsh`
 
