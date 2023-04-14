@@ -60,10 +60,10 @@ nnoremap <F6> i
 imap <F6> <Esc>
 
 " Search visual selection via stackoverflow
-vnoremap <leader>s :!~/.dotfiles/bin/so.zsh<CR>u<CR>
+vnoremap <leader>g y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> so.sh<CR><CR>
 
 " Search visual selection via google.co.uk
-vnoremap <leader>g :!~/.dotfiles/bin/gg.zsh<CR>u<CR>
+vnoremap <leader>g y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> gg.sh<CR><CR>
 
 def s:BringUpDotfilesReadme()
     call feedkeys(":sp ~/.dotfiles/README.md\<CR>:Vista!!\<CR>")
@@ -487,10 +487,11 @@ nnoremap <C-k> :call ScrollPopup(-3)<CR>
 
 def s:LookupPopup()
     set mouse=a
-    printf("wp2t -s %s", expand('<cword>'))
+    var popup_win = printf("wp2t -s %s", expand('<cword>'))
          ->system()
          ->split("\n")
          ->popup_atcursor({ "padding": [1, 1, 1, 1] })
+    call setbufvar(winbufnr(popup_win), '&filetype', 'git')
 enddef
 
 
