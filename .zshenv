@@ -44,12 +44,12 @@ ai() {
 autoload -Uz ai
 
 gg() {
-    SURFRAW_graphical_browser="/snap/bin/firefox" SURFRAW_graphical=yes SURFRAW_lang="uk" sr google $@
+    gg.sh $@
 }
 autoload -Uz gg
 
 so() {
-    SURFRAW_graphical_browser="/snap/bin/firefox" SURFRAW_graphical=yes SURFRAW_lang="uk" sr stack $@
+    so.sh $@
 }
 autoload -Uz so
 
