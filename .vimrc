@@ -43,8 +43,7 @@ set wildmenu                       " Allow for menu based file navigation
 set wildmode=list:longest,full
 
 " no bells, ever
-set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
+set noerrorbells novisualbell t_vb=
 
 " map the <leader> character to comma
 let mapleader=","
@@ -60,10 +59,13 @@ nnoremap <F6> i
 imap <F6> <Esc>
 
 " Search visual selection via stackoverflow
-vnoremap <leader>s y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> so.sh<CR><CR>
+vnoremap <leader>s y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> so.sh 2>/dev/null<CR><CR>
 
 " Search visual selection via google.co.uk
-vnoremap <leader>g y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> gg.sh<CR><CR>
+vnoremap <leader>g y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> gg.sh 2>/dev/null<CR><CR>
+
+" Send visual selection to OpenAI
+vnoremap <leader>o y:read !echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> ai.sh 2>/dev/null<CR><CR>
 
 def s:BringUpDotfilesReadme()
     call feedkeys(":sp ~/.dotfiles/README.md\<CR>:Vista!!\<CR>")
@@ -72,7 +74,6 @@ nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 
 " Set gVIM settings to be the same as the terminal
 set t_Co=256
-
 
 " Stop <> marks being inserted on all filetypes from lh-brackets plugin
 let g:cb_no_default_brackets = 1
