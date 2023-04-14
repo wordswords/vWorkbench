@@ -121,20 +121,20 @@ report_progress 'Installing epy a command line epub reader'
 report_done
 
 # os-specific lines
-cur_os=get_os
-if [[ cur_os == 'ubuntu' || cur_os == 'osx' ]];
+cur_os=$(get_os)
+if [[ ${cur_os} == 'ubuntu' || ${cur_os} == 'osx' ]];
 then
     report_progress 'Installing vim-anywhere for allowing text to be edited on any text input'
         curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
     report_done
 fi
-if [[ cur_os == 'ubuntu' ]];
+if [[ ${cur_os} == 'ubuntu' ]];
 then
     report_progress 'Installing workrave, a reminder app to take screenbreaks'
         sudo apt-get install workrave -y
     report_done
 fi
-if [[ cur_os == 'windows' ]];
+if [[ ${cur_os} == 'windows' ]];
 then
     report_progress 'Copying alacritty terminal emulator config to windows profile location for Windows user conta'
         sudo mkdir -p /mnt/c/Users/conta/AppData/Roaming/alacritty
