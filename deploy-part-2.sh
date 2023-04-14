@@ -7,6 +7,7 @@
 source ./deploy-common.sh
 
 set -e
+set -x
 
 report_heading 'Deploy Dotfiles: Part 2'
 
@@ -231,8 +232,13 @@ report_done
 report_progress 'Running vim local commands for plugins'
 echo '''
     :CocUpdateSync
+    :!wait 10
     :Copilot setup
+    :!wait 10
     :helptags ALL
+    :!wait 10
+    :CreateCompletion
+    :!wait 10
     :qa
     ''' >~/.dotfiles/vimscript.vs
 vim -s ~/.dotfiles/vimscript.vs
