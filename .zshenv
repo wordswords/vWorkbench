@@ -49,7 +49,7 @@ gg() {
 autoload -Uz gg
 
 so() {
-    echo $@ so.sh
+    echo $@ | so.sh
 }
 autoload -Uz so
 
