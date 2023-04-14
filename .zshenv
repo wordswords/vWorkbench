@@ -44,12 +44,12 @@ ai() {
 autoload -Uz ai
 
 gg() {
-    gg.sh $@
+    echo $@ | gg.sh
 }
 autoload -Uz gg
 
 so() {
-    so.sh $@
+    echo $@ so.sh
 }
 autoload -Uz so
 
