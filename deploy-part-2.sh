@@ -280,7 +280,7 @@ if [[ $cur_os == 'linux' ]] ; then
 	echo "-- OPTIONAL EXTRAS -- "
 	echo
 
-    read -rp "Do you want to install JIRA-CLI Go client? (y/yes/N)? " JIRAINSTALL
+    read -rp "Do you want to install/update JIRA-CLI Go client? (y/yes/N)? " JIRAINSTALL
     case "$JIRAINSTALL" in
         Y|y|yes)
             sudo snap install go --classic 2>/dev/null || sudo snap refresh go
@@ -293,7 +293,7 @@ if [[ $cur_os == 'linux' ]] ; then
         ;;
     esac
 
-	read -rp "?Do you want to install or update the Ubuntu snap images of Spotify and Morgen? (y/N)? " SNAPINSTALL
+	read -rp "Do you want to install/update the Ubuntu snap images of Spotify and Morgen? (y/yes/N)? " SNAPINSTALL
     case "$SNAPINSTALL" in
         Y|y|yes)
             sudo snap install morgen 2>/dev/null || sudo snap refresh morgen
