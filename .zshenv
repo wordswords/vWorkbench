@@ -39,7 +39,7 @@ tmuxsessionsprint() {
 autoload -Uz tmuxsessionsprint
 
 ai() {
-    openai_pipe $@ | tee >(pbcopy)
+    echo $@ | ai.sh
 }
 autoload -Uz ai
 
