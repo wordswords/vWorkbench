@@ -452,6 +452,34 @@ if executable('bash-language-server')
 endif
 " [END] bash-language-server CONFIG
 
+" [START] Scrolling VIM9 popups using keyboard CONFIG
+function! ScrollPopup(nlines)
+    let winids = popup_list()
+    if len(winids) == 0
+        return
+    endif
+
+    " Ignore hidden popups
+    let prop = popup_getpos(winids[0])
+    if prop.visible != 1
+        return
+    endif
+
+    let firstline = prop.firstline + a:nlines
+    let buf_lastline = str2nr(trim(win_execute(winids[0], "echo line('$')")))
+    if firstline < 1
+        let firstline = 1
+    elseif prop.lastline + a:nlines > buf_lastline
+        let firstline = buf_lastline + prop.firstline - prop.lastline
+    endif
+
+    call popup_setoptions(winids[0], {'firstline': firstline})
+endfunction
+
+nnoremap <C-j> :call ScrollPopup(3)<CR>
+nnoremap <C-k> :call ScrollPopup(-3)<CR>
+" [END] Scrolling VIM9 popups using keyboard CONFIG
+
 " [START] wikipedia2text lookup CONFIG
 " See: https://github.com/chrisbra/wikipedia2text
 " Assumes you have installed the wikipedia2text script to your path
