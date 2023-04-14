@@ -245,9 +245,22 @@ report_progress 'Configuring tmuxinator'
 mkdir -p ~/.config/tmuxinator
 ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
 report_done
-# Linux-specific lines
 cur_os=$(get_os)
-if [[ $cur_os == 'linux' ]]; then
+
+# Windows-specific lines
+if [[ $cur_os == 'windows' ]] ; then
+    cd ~/.dotfiles
+    mkdir -p win32yank
+    cd win32yank
+    wget https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip
+    unzip win32yank-x64.zip
+    cp win32yank.exe ~/bin
+    chmod u+x ~/bin/win32yank.exe
+    cd -
+    rm -rf ~/.dotfiles/win32yank/
+fi
+# Linux-specific lines
+if [[ $cur_os == 'linux' ]] ; then
 	report_progress 'Configuring workrave'
 	gsettings set org.workrave.timers.daily-limit limit 14400
 	gsettings set org.workrave.timers.rest-break limit 2700

@@ -1,5 +1,4 @@
 # My .dotfiles
-
   * [What is this](#what-is-this)
   * [Demo Video](#demo-video)
   * [VIM](#vim)
@@ -58,7 +57,6 @@
     + [`blameline`](#-blameline-)
     + [`git logline`](#-git-logline-)
 - [Modifying](#modifying)
-
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## What is this
@@ -288,6 +286,8 @@ Under Ubuntu, there are two clipboards, for some crazy reason that I don't under
 As part of the installation of the this environment, Gnome is attempted to be patched
 via a hook, to synchronise these clipboards.
 
+Under Ubuntu4Windows, the clipboard should also be synced to the windows clipboard.
+
 These shortcuts should therefore work for all clipboard contents, across Gnome, your
 web browser, Tmux, VIM9, VIM9 terminal and gVIM.
 
@@ -306,6 +306,7 @@ paste the text, and then switch out of paste mode.
 mode to copy things while in VIM.
 7. While in any terminal, you can use the `pbcopy` or `pbpaste` aliases in a pipe.
 For example `echo This will be copied to the clipboard | pbcopy` and `pbpaste | sort`
+8. If you want to, you can also do `echo This will be copied to the clipboard | xclip.sh`
 
 ## Productivity Shortcuts
 
@@ -367,8 +368,7 @@ I install Vinium on Firefox which allows you to use the VIM shortcuts on most pa
 7. `T` to search through your open tabs
 8. `<Control>-<Alt>-v` while focused on an input element to open gVIM. When you write and save
 the buffer in gVIM it will copy it to the clipboard and focus on the box you have left,
-so you can quickly insert it in the text input on
-the browser.
+so you can quickly insert it in the text input on the browser.
 9. `<Control>-l` move the focus to the url box so you can type in a url
 
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)

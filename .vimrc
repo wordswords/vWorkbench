@@ -3,6 +3,7 @@
 " \- - - - - - - - - - - - - - - - - - - - - -/
 "
 " vim: foldmethod=marker foldmarker=[START],[END]
+
 " [START] General CONFIG
 syntax enable
 set autoindent                     " Automatically indent code
@@ -49,22 +50,13 @@ let mapleader=","
 
 " Paste from system clipboard
 function! PasteFromSystemClipboard()
-    call feedkeys(":set paste\<CR>:r! ~/bin/xclip.sh -selection clipboard -o 2>/dev/null\<CR>:set nopaste\<CR>")
+    call feedkeys(":read ! xclip.sh -o 2>/dev/null\<CR>")
 endfunction
 nnoremap <C-v> :call PasteFromSystemClipboard()<CR>
 
 " Foot pedal
 nnoremap <F6> i
 imap <F6> <Esc>
-
-" Search visual selection via stackoverflow
-vnoremap <leader>s y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> so.sh 2>/dev/null<CR><CR>
-
-" Search visual selection via google.co.uk
-vnoremap <leader>g y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> gg.sh 2>/dev/null<CR><CR>
-
-" Send visual selection to OpenAI
-vnoremap <leader>o y:read !echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> ai.sh 2>/dev/null<CR><CR>
 
 function! BringUpDotfilesReadme()
     call feedkeys(":sp ~/.dotfiles/README.md\<CR>:Vista!!\<CR>")
@@ -84,10 +76,6 @@ noremap q <Nop>
 " Disable F1 help launcher
 nmap <F1> :echo<CR>
 nmap <F1> <c-o>:echo<CR>
-
-" Copy from visual mode to system keyboard
-vnoremap <C-c> "+y
-
 " Vim fonts for gVIM
 set guifont=DroidSansMono\ Nerd\ Font\ 18 
 
@@ -97,6 +85,43 @@ highlight CursorColumn term=bold cterm=bold guibg=Grey40
 set cursorline cursorcolumn
 
 " [END] General CONFIG
+
+" [START] Visual selection search options CONFIG
+" Search visual selection via stackoverflow
+vnoremap <leader>s y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> so.sh 2>/dev/null<CR><CR>
+
+" Search visual selection via google.co.uk
+vnoremap <leader>g y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> gg.sh 2>/dev/null<CR><CR>
+
+" Send visual selection to OpenAI and output the result
+vnoremap <leader>o y:read !echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> ai.sh 2>/dev/null<CR><CR>
+" [END] Visual selection search options CONFIG
+
+" [START] Clipboard synchronisation hackery CONFIG
+autocmd TextYankPost * call YankDebounced()
+
+function! Yank(timer)
+    call system('win32yank.exe -i --crlf', @")
+    redraw!
+endfunction
+
+let g:yank_debounce_time_ms = 500
+let g:yank_debounce_timer_id = -1
+
+function! YankDebounced()
+    let l:now = localtime()
+    call timer_stop(g:yank_debounce_timer_id)
+    let g:yank_debounce_timer_id = timer_start(g:yank_debounce_time_ms, 'Yank')
+endfunction
+
+if !has("clipboard") && executable("/mnt/c/windows/system32/clip.exe")
+    noremap <C-c> :call system('~/bin/xclip.sh', GetSelectedText())<CR>
+else
+    " We're under Linux, nicer and saner. Copy from visual mode to system keyboard
+    vnoremap <C-c> "+y
+endif
+" [END] Clipboard synchronisation hackery CONFIG
+
 
 " [START] COC.vim CONFIG
 

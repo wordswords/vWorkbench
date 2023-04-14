@@ -5,10 +5,16 @@ source ~/.dotfiles/deploy-common.sh
 
 cur_os=$(get_os)
 
-# give an example of an if statement using bash and a string comparison on a variable
+RunWin32yank() {
+    if [[ $2 == '-o' ]]; then
+        win32yank.exe "$@"
+    else
+        win32yank.exe -i --crlf "$@"
+    fi
+}
 
 if [[ $cur_os == 'windows' ]] ; then
-    /mnt/c/Windows/System32/clip.exe "$@"
+    RunWin32yank "$@"
 fi
 if [[ $cur_os == 'linux' ]] ; then
     xclip -selection clipboard "$@"
