@@ -72,7 +72,7 @@ and can pretty much guarantee it won't run on that without a lot of work.
 
 ## Demo Video
 
-[![Watch the video](https://img.youtube.com/vi/09ZJYe0kRT4/0.jpg)](https://www.youtube.com/watch?v=09ZJYe0kRT4)
+[![Watch the video](https://img.youtube.com/vi/X91F5WvubPs/0.jpg)](https://www.youtube.com/watch?v=X91F5WvubPs)
 
 
 ## VIM
