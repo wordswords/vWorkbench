@@ -1,6 +1,5 @@
  # My Development Enviroment (dotfiles)
 
--[TOC]
  * [What is this](#what-is-this)
   * [Demo Video](#demo-video)
   * [VIM](#vim)
