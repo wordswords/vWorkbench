@@ -61,12 +61,12 @@
 
 ## What is this
 
-My development environment setup with custom settings for bash, zsh and vim, with some extra `~/bin`
-helper scripts for good measure.
+My development environment setup with heavily custom settings.
 
-I test this mainly on my ThinkStation box running the latest Ubuntu LTS, and
-on my W11 box running Ubuntu under WSL2. I haven't tested it on OSX for ages,
-and can pretty much guarantee it won't run on that without a lot of work.
+I test this mainly on my the latest Ubuntu LTS, and
+on my W11 box running Ubuntu under WSL2. I also test it under Lubuntu.
+I haven't tested it on OSX for ages, and can pretty much guarantee
+it won't run on that without a lot of work.
 
 ## Demo Video
 
@@ -152,10 +152,11 @@ regularly in my work. Currently it includes:
 * Install Joplin the command-line open source Evernote replacement, and secure
 it with encryption, and download all my notes (presuming you are me).
 * Ask if you want to install my usual apps - https://Morgen.so : a paid multiplatform
-calendar app that I use with Google Calendar and Spotify. These are delivered
+calendar app that I use with Google Calendar. This is delivered
 via the snap installation process.
 * Ask if you want to install the excellent Golang JIRA CLI client which makes
 navigating JIRA boards less painful.
+* Setup a development environment for Elixir.
 * Setup 'fortune' with random Neil Gaiman quotes displayed on login.
 
 You may well have to customise, mix and match, and edit these individual
@@ -170,7 +171,7 @@ advise running this setup in a docker container or virtual machine.
 3. `./deploy-part-0.sh` to attempt to install preqs
 4. `./deploy-part-1.sh` to install and setup oh-my-zsh
 5. Press `control-D` to drop out of oh-my-zsh
-6. `./deploy-part-2.zsh` to install the vast majority of the customisations
+6. `./deploy-part-2.sh` to install the vast majority of the customisations
 7. By default it sets your git email address to be my address.
 You probably want to change this if you're not me!
 8. It will also attempt by default to log in to my Joplin account, which will
@@ -179,9 +180,6 @@ not succeed without my credentials. So you probably want to change that.
 # Using the Dotfiles Environment
 
 ## Shell shortcuts
-
-The most important command is `cht <language/tech/cmd> <query>` which will answer a
-lot of questions with examples on common use. It requires internet access.
 
 1. `<CTRL>-<R>` for an intelligent search through previous commands using McFly.
 2. Type `z` and a directory name accessible from your current directory to cd to
@@ -220,6 +218,10 @@ and search stackoverflow using `<search query>`
 save the text content, it will copy it back to the shell to execute. You can use
 this method to use Github Copilot and OpenAI Codex in VIM to generate shell commands
 and then have them execute in the shell.
+21. Use `cht <language> <command>` to consult the chtsht.sh repository of high quality
+cheatsheets on many subjects.
+22. Use `ai <query>` to ask ChatGPT for some wisdom. Whatever it returns will
+automatically be copied to the clipboard.
 
 ## VIM9 shortcuts
 
@@ -286,7 +288,7 @@ Under Ubuntu, there are two clipboards, for some crazy reason that I don't under
 As part of the installation of the this environment, Gnome is attempted to be patched
 via a hook, to synchronise these clipboards.
 
-Under Ubuntu4Windows, the clipboard should also be synced to the windows clipboard.
+Under Ubuntu4Windows, the clipboard should also be synced to the Windows clipboard.
 
 These shortcuts should therefore work for all clipboard contents, across Gnome, your
 web browser, Tmux, VIM9, VIM9 terminal and gVIM.
@@ -417,8 +419,8 @@ e.g. method, variable etc.
 9. `K` for the language feature under the cursor to pull up the language server
 documentation for that feature.
 10. `:help coc-nvim` for the reference documentation for Coc.vim
-11. To scroll popups that appear, use `<Control-j>` to scroll up, and `<Control-k>`
-for down.
+11. To scroll popups that appear, use `<Control-j>` to scroll down, and `<Control-k>`
+for up.
 
 ## VIM9 Leader Search Functions
 
@@ -434,7 +436,6 @@ In visual mode you can also do:
 selection
 2. `<leader> s` to open a firefox window with the stackoverflow results of the lines in the
 visual selection
-
 
 ## Git Fugitive Workflow
 
@@ -556,6 +557,9 @@ token.
 
 It works in a lot of languages, but is by far the best when used with Python.
 
+Although OpenAI Codex has been discontinued, the plugin still works with OpenAI
+thanks to a patch I found.
+
 1. Create a new file with the right file extension and a VIM-recognisable type
 for what you want to start working on.
 2. Create a comment explaining what you want to do, e.g. build a function or
@@ -643,11 +647,13 @@ Check out my simpleton Git workflow here:
 
 ## GNU diff/patching stuff I forget
 
-### Creating a patch to apply later
-1. To generated the patch diff `diff -u <file1> <file2> > patch.diff`
-2. Edit the patch file and make sure both files are the same filename that you want patched.
+### Creating a simple patch to apply later
+1. To generate the patch, run the following command in the same dir
+as the file you want to patch `diff -u <file1> <file2> > patch.diff`
+2. Edit the patch file and make sure both filenames mentioned are the
+same filename that you want patched.
 
-### Applying the patch
+### Applying the simple patch
 1. Copy the patch.diff into the directory of the file needing to be patched
 2. Run `patch -p1 < patch.diff`
 
@@ -757,7 +763,7 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 
 ## Printing (on Ubuntu)
 
-I have setup my laserject to print from the commandline via CUPS. This is useful
+I have setup my laserjet to print from the commandline via CUPS. This is useful
 when printing out shopping lists etc, quickly.
 
 1. `lp <file>` to print the file.

@@ -122,7 +122,6 @@ else
 endif
 " [END] Clipboard synchronisation hackery CONFIG
 
-
 " [START] COC.vim CONFIG
 
 autocmd BufRead,BufNewFile *.zsh set filetype=bash
@@ -172,8 +171,8 @@ endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <LEFT> <Plug>(coc-diagnostic-prev)
+nmap <RIGHT> <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -245,8 +244,8 @@ omap ac <Plug>(coc-classobj-a)
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
   nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
-  inoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  inoremap <silent><nowait><expr> <C-l> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<C-l>"
+  inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<C-h>"
   vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
   vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
 endif
@@ -360,7 +359,7 @@ function SetRestructuredTextOptions()
   setlocal spell
 endfunction
 
-function SetTextAndMarkdownOptions()
+function! SetTextAndMarkdownOptions()
   au BufRead,BufNewFile *.txt *.md call pencil#init()
                             \ | call lexical#init()
                             \ | call textobj#quote#init()
@@ -378,14 +377,14 @@ function SetTextAndMarkdownOptions()
   call feedkeys(":Copilot disable\<CR>")
 endfunction
 
-function SetMakefileOptions()
+function! SetMakefileOptions()
   setlocal noexpandtab
   setlocal tabstop=4
   setlocal shiftwidth=4
   setlocal softtabstop=0
 endfunction
 
-function SetPythonFileOptions()
+function! SetPythonFileOptions()
   " To meet PEP8
   setlocal textwidth=79
   setlocal shiftwidth=4
@@ -397,7 +396,7 @@ function SetPythonFileOptions()
   setlocal fileformat=unix
 endfunction
 
-function SetGitCommitFileOptions()
+function! SetGitCommitFileOptions()
   setlocal colorcolumn+=51 " set additional marker for line wrap
   setlocal wrap " Enable word wrap
   setlocal textwidth=70
@@ -511,34 +510,34 @@ nnoremap <C-k> :call ScrollPopup(-3)<CR>
 " Assumes you have installed the wikipedia2text script to your path
 " with the filename 'wp2t'
 
-def s:LookupPopup()
+function! LookupPopup()
     set mouse=a
     var popup_win = printf("wp2t -s %s", expand('<cword>'))
          ->system()
          ->split("\n")
          ->popup_atcursor({ "padding": [1, 1, 1, 1] })
     call setbufvar(winbufnr(popup_win), '&filetype', 'git')
-enddef
+endfunction
 
 
-nnoremap <silent><leader>w :call <SID>LookupPopup()<CR>
+nnoremap <silent><leader>w :call LookupPopup()<CR>
 " [END] wikipedia2text lookup CONFIG
 
 " [START] JiraIssueLookupPopup lookup CONFIG
-def s:JiraIssueLookupPopup()
+function! JiraIssueLookupPopup()
     set mouse=a
     var popup_win = printf("jira view issue --plain %s", expand('<cword>'))
          ->system()
          ->split("\n")
          ->popup_atcursor({ "padding": [1, 1, 1, 1] })
     call setbufvar(winbufnr(popup_win), '&filetype', 'git')
-enddef
+endfunction
 
-nnoremap <silent><leader>j :call <SID>JiraIssueLookupPopup()<CR>
+nnoremap <silent><leader>j :call JiraIssueLookupPopup()<CR>
 " [END] JiraIssueLookupPopup lookup CONFIG
 
 " [START] GitBlaneLine lookup CONFIG
-def s:GitBlameLine()
+function! GitBlameLine()
     var popup_win = printf("git -C %s blame -s -L %s,%s -- %s | head -c 8", expand('%:h'), line('.'), line('.'), expand('%:p'))
         ->system()
         ->printf("git -C " .. expand('%:h') .. " log --stat -1 %s")
@@ -546,9 +545,9 @@ def s:GitBlameLine()
         ->split("\n")
         ->popup_atcursor({ "padding": [0, 1, 1, 1] })
     call setbufvar(winbufnr(popup_win), '&filetype', 'git')
-enddef
+endfunction
 
-nnoremap <silent><leader>b :call <SID>GitBlameLine()<CR>
+nnoremap <silent><leader>b :call GitBlameLine()<CR>
 " [END] GitBlaneLine lookup CONFIG
 
 " [START] vim_codex CONFIG
