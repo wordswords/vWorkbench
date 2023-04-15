@@ -1,5 +1,7 @@
-# My .dotfiles
-  * [What is this](#what-is-this)
+ # My Development Enviroment (dotfiles)
+
+-[TOC]
+ * [What is this](#what-is-this)
   * [Demo Video](#demo-video)
   * [VIM](#vim)
     + [How to Decode the vim-airline Buffer Statusline](#how-to-decode-the-vim-airline-buffer-statusline)
@@ -26,6 +28,7 @@
   * [Git Fugitive Blame Window](#git-fugitive-blame-window)
   * [Git Fugitive Mergetool](#git-fugitive-mergetool)
   * [VIM's inbuilt terminal](#vim-s-inbuilt-terminal)
+  * [VIM modelines and folds](#vim-modelines-and-folds)
   * [VIM Regex](#vim-regex)
   * [Wildcards for searching and editing files and directories](#wildcards-for-searching-and-editing-files-and-directories)
   * [Processing lots of files with `:argdo`](#processing-lots-of-files-with---argdo-)
@@ -33,9 +36,12 @@
   * [OpenAI Codex VIM Plugin](#openai-codex-vim-plugin)
   * [ChatGPT OpenAI CLI Plugin](#chatgpt-openai-cli-plugin)
   * [Vista Plugin](#vista-plugin)
-- [Other Notes](#other-notes)
+- [Additional Notes](#additional-notes)
   * [Tmux](#tmux)
-  * [Git commands I keep forgetting](#git-commands-i-keep-forgetting)
+  * [Git information I keep forgetting](#git-information-i-keep-forgetting)
+  * [GNU diff/patching information I forget](#gnu-diff-patching-information-i-forget)
+    + [Creating a simple patch to apply later](#creating-a-simple-patch-to-apply-later)
+    + [Applying the simple patch](#applying-the-simple-patch)
   * [Python 3 information I forget](#python-3-information-i-forget)
   * [Using Strace](#using-strace)
   * [Regular Expressions](#regular-expressions)
@@ -45,18 +51,21 @@
   * [Joplin commandline](#joplin-commandline)
   * [JIRA Go Client](#jira-go-client)
   * [Printing (on Ubuntu)](#printing--on-ubuntu-)
+  * [fzf](#fzf)
+  * [Remote Connection](#remote-connection)
   * [24 bit colour](#24-bit-colour)
   * [External Scripts](#external-scripts)
+    + [`gg.sh`,`so.sh`, `ai.sh`, `gg`, `so`, `ai`](#-ggsh---sosh----aish----gg----so----ai-)
     + [`search-ebooks.sh <term>`](#-search-ebookssh--term--)
     + [`delete-all-docker-content.sh`](#-delete-all-docker-contentsh-)
     + [`ai-files-purpose.zsh`](#-ai-files-purposezsh-)
     + [`ai-dir-purpose.zsh`](#-ai-dir-purposezsh-)
-    + [`gg.zsh` and `so.zsh`](#-ggzsh--and--sozsh-)
     + [`osx.zsh`](#-osxzsh-)
     + [`repos.sh`](#-repossh-)
     + [`blameline`](#-blameline-)
     + [`git logline`](#-git-logline-)
 - [Modifying](#modifying)
+
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## What is this
