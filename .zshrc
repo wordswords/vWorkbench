@@ -92,11 +92,11 @@ source ~/.oh-my-zsh/plugins/z/z.plugin.zsh
 export PATH="/usr/local/bin:/bin:/usr/bin:${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:/usr/games"
 export SECURE_DIR="${HOME}/.secure"
 ## [-- PATHS --]
-## [++ SOURCE EMPLOYER-SPECIFIC SETTINGS ++]
+## [++ SOURCE SECRETS ++]
 set -o extendedglob
 for f (~/.dotfiles/SECRETS/**/^*("~"|dpkg-(dist|old|new)|.(tmp|back|bak))(N.))  . $f 2>/dev/null
 set +o extendedglob
-## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
+## [-- SOURCE SECRETS --]
 ## [++ ALIASES ++]
 alias bat="batcat"
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
