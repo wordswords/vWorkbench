@@ -96,6 +96,9 @@ report_done
 report_progress 'Install vint for vim script linting'
     pip3 install vint
 report_done
+report_progress 'Install write-good for markdown English betterment'
+    npm install -g write-good
+report_done
 
 # custom installation lines
 report_progress 'Installing McFly, a zsh Control-R replacement'
