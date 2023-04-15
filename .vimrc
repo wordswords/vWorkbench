@@ -77,7 +77,7 @@ noremap q <Nop>
 nmap <F1> :echo<CR>
 nmap <F1> <c-o>:echo<CR>
 " Vim fonts for gVIM
-set guifont=DroidSansMono\ Nerd\ Font\ 18 
+set guifont=DroidSansMono\ Nerd\ Font\ 18
 
 " Highlighted ruler for extra focus
 highlight CursorLine term=bold cterm=bold guibg=Grey40
@@ -404,7 +404,7 @@ function! SetGitCommitFileOptions()
 endfunction
 
 " remove trailing whitespace on these filetypes only:
-autocmd FileType text,markdown,Makefile,Jenkinsfile,Python autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd FileType text,markdown,Makefile,Jenkinsfile,Python,vim,sh autocmd BufWritePre <buffer> %s/\s\+$//e
 " file-type-specific stuff
 autocmd BufRead,BufNewFile *.f90 set filetype=Fortran
 autocmd BufRead,BufNewFile *.robot setlocal noexpandtab
