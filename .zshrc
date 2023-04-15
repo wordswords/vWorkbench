@@ -1,5 +1,5 @@
 # vim: foldmethod=marker foldmarker=++],--]
-zmodload zsh/zprof
+#zmodload zsh/zprof
 ## [++ OMZ Config ++]
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -7,7 +7,6 @@ zmodload zsh/zprof
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-POWERLEVEL9K_INSTANT_PROMPT=verbose
 set +x
 export GPG_TTY=$(tty)
 # Path to your oh-my-zsh installation.
@@ -101,7 +100,7 @@ set +o extendedglob
 ( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
 alias bat="batcat"
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
-alias colours='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
+alias colours='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done;'
 alias ddg="ddgr"
 alias grep="grep --color"
 alias hn100="curl 'hkkr.in/h-n100-f2'"
@@ -117,6 +116,7 @@ alias pbpaste='xclip -selection clipboard -o'
 alias please='sudo $(fc -ln -1)'
 alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
 alias vi="vim -u NONE"
+alias zshconfig="vim ~/.dotfiles/.zshrc && ~/.dotfiles/bin/deploy-zshrc.sh"
 ## [-- ALIASES --]
 ## [++ Required for Golang install syntax ++]
 export GO111MODULE=on
@@ -143,5 +143,5 @@ checkbackup
 getweather
 echo '' # BLANK LINE
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
-# zprof - Uncomment this to profile zsh startup
+#zprof #- Uncomment this to profile zsh startup
 
