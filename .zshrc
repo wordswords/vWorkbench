@@ -89,7 +89,7 @@ zstyle ':completion:*' menu select
 source ~/.oh-my-zsh/plugins/z/z.plugin.zsh
 ## [-- OMZ Config --]
 ## [++ PATHS ++]
-export PATH="${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:${HOME}/go/bin:${PATH}"
+export PATH="/bin:/usr/bin:/usr/local/bin:${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:/usr/games"
 export SECURE_DIR="${HOME}/.secure"
 ## [-- PATHS --]
 ## [++ SOURCE EMPLOYER-SPECIFIC SETTINGS ++]
