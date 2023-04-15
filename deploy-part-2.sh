@@ -10,6 +10,12 @@ set -e
 set -x
 
 report_heading 'Deploy Dotfiles: Part 2'
+report_progress 'Checking for existence of SECRETS directory'
+if [[ ! -d ~/.dotfiles/SECRETS ]] ; then
+    echo "ERROR: SECRETS directory does not exist.  Please create it and put your secrets in it."
+    exit 1
+fi
+report_done
 report_progress 'Testing Github access'
 ssh -T git@github.com 2>/tmp/githubaccesscheck.txt || echo ""
 grep 'successfully authenticated' /tmp/githubaccesscheck.txt || (echo ERROR: Github acccess not available && exit 1)
@@ -210,13 +216,13 @@ report_done
 report_progress 'Running vim local commands for plugins'
 echo '''
     :CocUpdateSync
-    :sleep 10
+    :sleep 4
     :Copilot setup
-    :sleep 10
+    :sleep 4
     :helptags ALL
-    :sleep 10
+    :sleep 4
     :CreateCompletion
-    :sleep 10
+    :sleep 4
     :qa
     ''' >~/.dotfiles/vimscript.vs
 vim -s ~/.dotfiles/vimscript.vs
@@ -232,7 +238,6 @@ report_done
 report_progress 'Python3 + OpenAI codex development toolset'
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade --force-reinstall aiohttp openai
-#cp ~/.dotfiles/SECRETS/openaiapirc ~/.config/
 report_done
 report_progress 'Installing tmux plugin manager'
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || cd ~/.tmux/plugins/tpm && git pull && cd -
