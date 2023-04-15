@@ -292,10 +292,11 @@ if [[ $cur_os == 'linux' ]] ; then
         ;;
     esac
 
-	read -rp "Do you want to install/update the Ubuntu snap images of Spotify and Morgen? (y/yes/N)? " SNAPINSTALL
+	read -rp "Do you want to install/update the Ubuntu snap images of Morgen and Firefox? (y/yes/N)? " SNAPINSTALL
     case "$SNAPINSTALL" in
         Y|y|yes)
             sudo snap install morgen 2>/dev/null || sudo snap refresh morgen
+            sudo snap install firefox 2>/dev/null || sudo snap refresh firefox
         ;;
         *)
             true
