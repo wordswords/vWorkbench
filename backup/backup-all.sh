@@ -1,4 +1,11 @@
-#!/bin/bash
+#!/bin/sh
+if [ $(id -u) -ne 0 ] ; then
+    echo 'You must be root to run this script'
+    exit 1
+fi
+
+if [ -z "$STY" ]; then exec screen -dm -S backup-all /bin/bash "$0"; fi
+
 set -e
 set -x
 
@@ -17,7 +24,7 @@ runuser -u david /home/david/.dotfiles/backup/rclone-backup-borg.sh
 #runuser -u david /home/david/.dotfiles/backup/rclone-backup-video.sh
 
 # if it gets this far, it's successful
-echo Last backup success: $(date) > /home/david/.dotfiles/backup/.last_successful_backup
+echo Last backup success: "$(date)" > /home/david/.dotfiles/backup/.last_successful_backup
 chown -R david:david /home/david/.dotfiles
 
 # update the git repo
