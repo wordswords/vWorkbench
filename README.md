@@ -118,7 +118,7 @@ They correspond to the git status of the file in the repo.
 
 ## ZSH
 
-![Alt text](https://i.imgur.com/yBs7bKu.png "My zsh setup")
+![Alt text](https://https://i.imgur.com/oZmTLND.png "My zsh setup")
 
 ZSH uses oh-my-zsh in Powerlevel10k mode, which provides fast and responsive
 auto-complete options. Use `<TAB>` to autocomplete. It will also show the status
