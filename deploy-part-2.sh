@@ -56,7 +56,7 @@ report_progress 'Installing oh-my-zsh plugins'
 cd ~/.oh-my-zsh/plugins &&
 	(git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &&
 		git clone https://github.com/zsh-users/zsh-autosuggestions.git &&
-		git clone https://github.com/agkozak/zsh-z.git ./zsh-z &&
+		git clone https://github.com/agkozak/zsh-z.git &&
 		git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && yes | ~/.fzf/install) ||
 	echo "INFO: OMZ plugins already seem to be installed."
 report_done
