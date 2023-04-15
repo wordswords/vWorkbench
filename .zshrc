@@ -92,12 +92,13 @@ source ~/.oh-my-zsh/plugins/z/z.plugin.zsh
 export PATH="/usr/local/bin:/bin:/usr/bin:${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:/usr/games"
 export SECURE_DIR="${HOME}/.secure"
 ## [-- PATHS --]
-## [++ SOURCE SECRETS ++]
+## [++ SOURCE EMPLOYER-SPECIFIC SETTINGS ++]
 set -o extendedglob
 for f (~/.dotfiles/SECRETS/**/^*("~"|dpkg-(dist|old|new)|.(tmp|back|bak))(N.))  . $f 2>/dev/null
 set +o extendedglob
-## [-- SOURCE SECRETS --]
+## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
 ## [++ ALIASES ++]
+( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
 alias bat="batcat"
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias colours='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
@@ -106,16 +107,16 @@ alias grep="grep --color"
 alias hn100="curl 'hkkr.in/h-n100-f2'"
 alias hn="curl 'hkkr.in/h-n10-f2'"
 alias hq="ssh -p 608 david@hq.djdavidcraddock.com"
+alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
-alias l='ls -CF'
 alias ls="ls --color"
+alias path="echo \"$PATH\" | tr \":\" \"\n\" | nl"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias please='sudo $(fc -ln -1)'
 alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
 alias vi="vim -u NONE"
-( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
 ## [-- ALIASES --]
 ## [++ Required for Golang install syntax ++]
 export GO111MODULE=on
