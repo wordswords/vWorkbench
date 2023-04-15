@@ -89,7 +89,7 @@ zstyle ':completion:*' menu select
 source ~/.oh-my-zsh/plugins/z/z.plugin.zsh
 ## [-- OMZ Config --]
 ## [++ PATHS ++]
-export PATH="/bin:/usr/bin:/usr/local/bin:${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:/usr/games"
+export PATH="/usr/local/bin:bin:/usr/bin:${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:/usr/games"
 export SECURE_DIR="${HOME}/.secure"
 ## [-- PATHS --]
 ## [++ SOURCE EMPLOYER-SPECIFIC SETTINGS ++]
@@ -140,4 +140,5 @@ ttyprint
 tmuxsessionsprint
 checkbackup
 getweather
+echo '' # BLANK LINE
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
