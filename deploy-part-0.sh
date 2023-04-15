@@ -6,15 +6,19 @@ source ./deploy-common.sh
 
 report_heading 'Deploy Prerequisites: Part 0'
 
-
 # Must go before everything else
 report_progress 'Checking locale'
      locale | grep -q LANG=en_GB.UTF-8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
 report_done
-
 report_progress 'Restoring last modified dates for .dotfiles'
     sudo apt-get install git-restore-mtime
     sudo git restore-mtime
+report_done
+report_progress 'Checking for existence of SECRETS directory'
+if [[ ! -d ~/.dotfiles/SECRETS ]] ; then
+    echo "ERROR: SECRETS directory does not exist.  Please create it and put your secrets in it."
+    exit 1
+fi
 report_done
 
 # Main lines
@@ -98,6 +102,9 @@ report_progress 'Install vint for vim script linting'
 report_done
 report_progress 'Install write-good for markdown English betterment'
     npm install -g write-good
+report_done
+report_progress 'Install markdownlint-cli for markdown English betterment'
+    npm install -g markdownlint-cli
 report_done
 
 # custom installation lines

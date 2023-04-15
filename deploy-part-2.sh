@@ -10,12 +10,6 @@ set -e
 set -x
 
 report_heading 'Deploy Dotfiles: Part 2'
-report_progress 'Checking for existence of SECRETS directory'
-if [[ ! -d ~/.dotfiles/SECRETS ]] ; then
-    echo "ERROR: SECRETS directory does not exist.  Please create it and put your secrets in it."
-    exit 1
-fi
-report_done
 report_progress 'Testing Github access'
 ssh -T git@github.com 2>/tmp/githubaccesscheck.txt || echo ""
 grep 'successfully authenticated' /tmp/githubaccesscheck.txt || (echo ERROR: Github acccess not available && exit 1)
