@@ -58,6 +58,11 @@ checkbackup() {
 }
 autoload -Uz checkbackup
 
+getweather() {
+    ~/.dotfiles/bin/get-weather.sh
+}
+autoload -Uz getweather
+
 ## [-- CUSTOM ZSH FUNCTIONS --]
 
 ## [++ FOR RUST ++]

@@ -139,4 +139,5 @@ fortuneprint
 ttyprint
 tmuxsessionsprint
 checkbackup
+getweather
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
