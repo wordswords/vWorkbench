@@ -1,5 +1,5 @@
 # vim: foldmethod=marker foldmarker=++],--]
-
+zmodload zsh/zprof
 ## [++ OMZ Config ++]
 export GPG_TTY=$(tty)
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -143,3 +143,5 @@ checkbackup
 getweather
 echo '' # BLANK LINE
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
+# zprof - Uncomment this to profile zsh startup
+
