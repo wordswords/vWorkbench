@@ -1,5 +1,6 @@
 # vim: foldmethod=marker foldmarker=++],--]
 
+## [++ OMZ Config ++]
 export GPG_TTY=$(tty)
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -86,6 +87,7 @@ bindkey '≠' autosuggest-accept
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 source ~/.oh-my-zsh/plugins/z/z.plugin.zsh
+## [-- OMZ Config --]
 ## [++ PATHS ++]
 export PATH="${HOME}/bin:${HOME}/.local/bin:/usr/local/bin:${HOME}/go/bin:${PATH}"/*++]*//*--]*/
 export SECURE_DIR="${HOME}/.secure"
