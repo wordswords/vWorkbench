@@ -35,7 +35,17 @@ borg create                         \
     /etc                            \
     /home                           \
     /root                           \
-    /var
+    /var/log                        \
+    /mnt/ebooks                     \
+    /mnt/games                      \
+    /mnt/gamesincoming              \
+    /mnt2/music                     \
+    /mnt2/incomingmusic             \
+    /mnt2/incomingmusic             \
+    /mnt2/TV                        \
+    /mnt2/video
+
+
 
 backup_exit=$?
 
