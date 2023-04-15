@@ -65,9 +65,9 @@
     + [`git logline`](#-git-logline-)
 - [Modifying](#modifying)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+MD TOC Generator link which I haven't got around to automating: [http://ecotrust-canada.github.io/markdown-toc/](http://ecotrust-canada.github.io/markdown-toc/)
 
-## What is this
+## What Is This
 
 My development environment setup with heavily custom settings.
 
@@ -79,7 +79,6 @@ it won't run on that without a lot of work.
 ## Demo Video
 
 [![Watch the video](https://img.youtube.com/vi/X91F5WvubPs/0.jpg)](https://www.youtube.com/watch?v=X91F5WvubPs)
-
 
 ## VIM
 
@@ -147,7 +146,9 @@ up-to-date.
 * You have to use a ‘Nerd font’ - this is a specially patched font with extra
 symbol characters for use in vim. This is not a prerequisite, it will show you
 how to install it at the end of the dotfile deployment.
-* There are a lot of others. You can run a script that will attempt to install
+* You have to have a directory created in ~/.dotfiles/SECRETS with the credentials
+/keys/APIkeys required to use the environment. This is not done for you.
+* There are a lot of software prereqs. You can run a script that will attempt to install
 the prerequisites under Ubuntu by executing `./deploy-part-0.sh`.
 
 ## What It Will Install
@@ -402,6 +403,19 @@ replaced word in the current window
 
 [![asciicast](https://asciinema.org/a/518234.svg)](https://asciinema.org/a/518234)
 
+## Coc.vim Basics
+
+1. Use `:CocUpdateSync` to update all Coc.vim plugins to the latest version. This
+is done for you on deploy anyway.
+2. `<spacebar>` is the leader key for a lot of advanced Coc functionality.
+3. `<spacebar>-a` brings up the 'CocDiagnostics' window which is similar to the
+VIM9 quickfix window but with LSP errors. Press `<Esc>` to close this window.
+4. `Navigate through the CocDiagnostic errors using `<LEFT>` and `<RIGHT>` while
+in a document supported by a Coc LSP.
+5. `K` for documentation on the language feature under the cursorr.
+6. To scroll popups that appear, use `<Control-j>` to scroll down, and `<Control-k>`
+for up.
+
 ## Coc.vim Shortcuts on large software projects
 
 Coc.vim is meant to provide an approximate mapping for Visual Studio Code's
@@ -413,22 +427,14 @@ for the Code editor:
 
 This is an excellent introduction to Coc.vim's objectives: [https://samroeca.com/coc-plugin.html](https://samroeca.com/coc-plugin.html)
 
-1. `:CocDiagnostics` to show the errors in the current language server.
-2. `<LEFT>` for the prev diagnostic error, this should be on any programming
-language server.
-3. `<RIGHT>` for the next diagnostic error, this should be on any programming
-language server.
-4. `:CocRename` for language server assisted refactoring by renaming a constant,
+1. `:CocRename` for language server assisted refactoring by renaming a constant,
 e.g. method, variable etc.
-5. `gd` to jump to the definition of the language object under the cursor.
-6. `gy` to jump to the type definition of the language object under cursor.
-7. `gi` to jump to the implementation of the language object under cursor.
-8. `gr` to show all references to the language object under cursor.
-9. `K` for the language feature under the cursor to pull up the language server
+2. `gd` to jump to the definition of the language object under the cursor.
+3. `gy` to jump to the type definition of the language object under cursor.
+4. `gi` to jump to the implementation of the language object under cursor.
+5. `gr` to show all references to the language object under cursor.
 documentation for that feature.
-10. `:help coc-nvim` for the reference documentation for Coc.vim
-11. To scroll popups that appear, use `<Control-j>` to scroll down, and `<Control-k>`
-for up.
+6. `:help coc-nvim` for the comiplete reference documentation for Coc.vim
 
 ## VIM9 Leader Search Functions
 
