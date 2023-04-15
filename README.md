@@ -33,14 +33,14 @@
   * [OpenAI Codex VIM Plugin](#openai-codex-vim-plugin)
   * [ChatGPT OpenAI CLI Plugin](#chatgpt-openai-cli-plugin)
   * [Vista Plugin](#vista-plugin)
-- [Additional Notes](#additional-notes)
+- [Other Notes](#other-notes)
   * [Tmux](#tmux)
-  * [Git stuff I keep forgetting](#git-stuff-i-keep-forgetting)
-  * [Python 3 stuff I forget](#python-3-stuff-i-forget)
+  * [Git commands I keep forgetting](#git-commands-i-keep-forgetting)
+  * [Python 3 information I forget](#python-3-information-i-forget)
   * [Using Strace](#using-strace)
   * [Regular Expressions](#regular-expressions)
-  * [Docker/Docker Compose stuff I forget](#docker-docker-compose-stuff-i-forget)
-  * [Ubuntu Package Stuff](#ubuntu-package-stuff)
+  * [Docker/Docker Compose information I forget](#docker-docker-compose-information-i-forget)
+  * [Ubuntu Package information](#ubuntu-package-information)
   * [Profiling VIM to find plugin speed problems](#profiling-vim-to-find-plugin-speed-problems)
   * [Joplin commandline](#joplin-commandline)
   * [JIRA Go Client](#jira-go-client)
@@ -81,23 +81,23 @@ it won't run on that without a lot of work.
 
 Full docs: [https://github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
 
-1. The problems in the file are noted in the far right. If there are no problems
+1. The problems in the file show in the far right. If there are no problems
 there will be no red or orange expanded sections.
 
 * Orange - Warnings
 * Red - Errors
 
-2. It will show you how many warnings or errors there are, and the line number of
+2. It will show you the number of warnings or errors there are, and the line number of
 the first one. You should be able to skip between warnings/errors with the
 `<Left>` and `<Right>` keys.
 
 3. When you are searching through the file with `/` then it shows you: your term,
-how many matches there are of your term, and which one you're on.
+the number of matches there are of your term, and which one you're on.
 
 4. Other info displayed includes File Format, file type detected, current line of
 code / total lines of code, current column number / total columns, and so on.
 
-5. When it shows 'SPELL' is on, it is checking text spellings in addition to any
+5. When it shows 'SPELL' is on, it will highlight text spellings and any
 code related errors. To toggle this, use `:set nospell` or `:set spell`. It
 highlights spelling errors in comments.
 
@@ -121,48 +121,48 @@ They correspond to the git status of the file in the repo.
 ![Alt text](https://i.imgur.com/yBs7bKu.png "My zsh setup")
 
 ZSH uses oh-my-zsh in Powerlevel10k mode, which provides fast and responsive
-auto-complete options. Just hit `<TAB>` to autocomplete. It will also show the status
+auto-complete options. Use `<TAB>` to autocomplete. It will also show the status
 of the current Git repo.
 
 https://github.com/romkatv/powerlevel10k
 
 # Installation / Updating
 
-The scripts are designed to install for the first time OR update the current
+The same scripts either install from nothing OR update the current
 version. When you install my .dotfiles every time you log into a console, it
 will fetch down the latest master from this repo. If there are any changes, you
-are advised to rerun the scripts in 'Install Steps' below to keep your copy
-uptodate.
+should rerun the scripts in 'Install Steps' below to keep your copy
+up-to-date.
 
 ## Installation Requirements for .dotfiles
 
 * You have to use a ‘Nerd font’ - this is a specially patched font with extra
 symbol characters for use in vim. This is not a prerequisite, it will show you
 how to install it at the end of the dotfile deployment.
-* There are many others. You can run a script that will attempt to install
+* There are a lot of others. You can run a script that will attempt to install
 the prerequisites under Ubuntu by executing `./deploy-part-0.sh`.
 
 ## What It Will Install
 
 It will install my VIM9 development environment and anything else I use
-regularly in my work. Currently it includes:
+in my work. It includes:
 
 * Install my heavily customised version of VIM9 with coc.vim and other plugins
 * Install latest version of Oh-my-ZSH and set your default shell to ZSH
 * Install Joplin the command-line open source Evernote replacement, and secure
 it with encryption, and download all my notes (presuming you are me).
 * Ask if you want to install my usual apps - https://Morgen.so : a paid multiplatform
-calendar app that I use with Google Calendar. This is delivered
+calendar app that I use with Google Calendar. This is updated
 via the snap installation process.
-* Ask if you want to install the excellent Golang JIRA CLI client which makes
+* Ask if you want to install the superb Golang JIRA CLI client which makes
 navigating JIRA boards less painful.
 * Setup a development environment for Elixir.
 * Setup 'fortune' with random Neil Gaiman quotes displayed on login.
 
 You may well have to customise, mix and match, and edit these individual
 settings because  you won't have the authentication required for this whole
-process to work. If you are serious about reusing what I've done, I would
-advise running this setup in a docker container or virtual machine.
+process to work. If you are serious about reusing what I've done, you should
+run this setup in a docker container or virtual machine.
 
 ## Install Steps
 
@@ -171,11 +171,11 @@ advise running this setup in a docker container or virtual machine.
 3. `./deploy-part-0.sh` to attempt to install preqs
 4. `./deploy-part-1.sh` to install and setup oh-my-zsh
 5. Press `control-D` to drop out of oh-my-zsh
-6. `./deploy-part-2.sh` to install the vast majority of the customisations
+6. `./deploy-part-2.sh` to install almost all customisations
 7. By default it sets your git email address to be my address.
 You probably want to change this if you're not me!
 8. It will also attempt by default to log in to my Joplin account, which will
-not succeed without my credentials. So you probably want to change that.
+not succeed without my credentials. You probably want to change that.
 
 # Using the Dotfiles Environment
 
@@ -186,16 +186,16 @@ not succeed without my credentials. So you probably want to change that.
 that directory, no need to type cd.
 3. Type `l` for a long-style ls.
 4. `delta <file1> <file2>` for a nice 2 way diff style interface where you can
-analyse and easily copy changes between files.
+analyse and copy changes between files.
 for then using on a website form.
 5. Use `<tab>` to activate oh-my-zsh's autocomplete plugins. For example `git
 <tab>`
 6. Run `repos.sh` to check the branch name of all git repositories under the
-current directory. Very useful when you have a number of different projects
-that interact with each other and you want to quickly see which repos branches
+current directory. Useful when you have a lot of different projects
+that interact with each other and you want to see which repos branches
 you have checked out.
 7. Use `vi` instead of `vim` to load a separate minimal vim config, useful if
-    there are problems with the vim config.
+there's problems with the vim config.
 8. Use `notes` to launch Joplin, my note-taking app.
 9. Use `please` after realising that you needed sudo with the last command, to
     repeat the last command with sudo
@@ -219,14 +219,14 @@ save the text content, it will copy it back to the shell to execute. You can use
 this method to use Github Copilot and OpenAI Codex in VIM to generate shell commands
 and then have them execute in the shell.
 21. Use `cht <language> <command>` to consult the chtsht.sh repository of high quality
-cheatsheets on many subjects.
+cheatsheets on a lot of subjects.
 22. Use `ai <query>` to ask ChatGPT for some wisdom. Whatever it returns will
-automatically be copied to the clipboard.
+be copied to the clipboard.
 
 ## VIM9 shortcuts
 
 The most important VIM shortcut is `<leader> h` which is currently mapped to `, h`.
-This will open up this document, which is kept up to date.
+This will open up this document, which is usually up to date.
 
 1. `<TAB>` to activate autocomplete plug ins.
 2. `,` is set to be the `<leader>` key in VIM9, use it to trigger shortcuts.
@@ -285,7 +285,7 @@ same word that is under the cursor in normal mode.
 
 Under Ubuntu, there are two clipboards, for some crazy reason that I don't understand.
 
-As part of the installation of the this environment, Gnome is attempted to be patched
+As part of the installation of the this environment, Gnome is patched
 via a hook, to synchronise these clipboards.
 
 Under Ubuntu4Windows, the clipboard should also be synced to the Windows clipboard.
@@ -361,7 +361,7 @@ window in the centre of the desktop
 
 I install Vinium on Firefox which allows you to use the VIM shortcuts on most pages
 
-1. `<h> <j> <k> <l>` to scroll as per normal in vim.
+1. `<h> <j> <k> <l>` to scroll as normal in vim.
 2. `gg` to go to the top of the page
 3. `G` to go to the bottom of the page
 4. `d` to scroll down half a page
@@ -370,7 +370,7 @@ I install Vinium on Firefox which allows you to use the VIM shortcuts on most pa
 7. `T` to search through your open tabs
 8. `<Control>-<Alt>-v` while focused on an input element to open gVIM. When you write and save
 the buffer in gVIM it will copy it to the clipboard and focus on the box you have left,
-so you can quickly insert it in the text input on the browser.
+then you can quickly insert it in the text input on the browser.
 9. `<Control>-l` move the focus to the url box so you can type in a url
 
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
@@ -462,7 +462,7 @@ respectively.
 2. If you want to just use one entire side, move your cursor to that side with `<Ctrl-W> h`, for example. Then do `:Gwrite!`.
 3. Buffers are setup so `[YOUR local branch (2) | resulting mergefile (1) | THEIR merge in branch (3) ]`
 4. Use `]c` and `[c` to navigate through the conflicts
-5. Use the center pane to navigate. use `d2o` to obtain from YOUR local branch, use `d3o` to obtain from THEIR branch.
+5. Use the center pane to navigate. use `d2o` to pull the change from YOUR local branch, use `d3o` to pull the change from THEIR branch.
 6. OR go to local branch OR merge in branch, select the conflict, and use `dp` to choose that version.
 7. When done, use `:wq`
 
@@ -600,7 +600,7 @@ around large projects.
 6. To rotate panes in the current layout `<CTRL>-a <SPACE>`
 7. To start my standard development tmux session `tmuxinator development`
 
-## Git stuff I keep forgetting
+## Git information I keep forgetting
 
 1. `git status` - will tell you what branch you're on and what files have
 changed. Use this all the time.
@@ -645,7 +645,7 @@ Git Book:
 Check out my simpleton Git workflow here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md](https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md)
 
-## GNU diff/patching stuff I forget
+## GNU diff/patching information I forget
 
 ### Creating a simple patch to apply later
 1. To generate the patch, run the following command in the same dir
@@ -657,9 +657,9 @@ same filename that you want patched.
 1. Copy the patch.diff into the directory of the file needing to be patched
 2. Run `patch -p1 < patch.diff`
 
-## Python 3 stuff I forget
+## Python 3 information I forget
 
-1. Use `ipython` for interactive REPL Python 3 stuff.
+1. Use `ipython` for interactive REPL Python 3 information.
 2. Add `import ipdb;ipdb.set_trace()` anywhere in your code to open up
 an interactive debugger using ipython when the code hits that line.
 3. Add `import IPython; IPython.embed()` to open up IPython when the execution
@@ -694,7 +694,7 @@ that you can test things a second time before running a potentially dangerous re
 line for a dry run, and to pick up input from the pipe instead of editing a file.
 4. Remember to backup the files before running 1 too. `cp -r ./dir ./.bak.dir` can save hours.
 
-## Docker/Docker Compose stuff I forget
+## Docker/Docker Compose information I forget
 
 1. `docker system prune -a` - remove all unused Docker container images.
 This is essential to do occasionally to reclaim disk space.
@@ -714,7 +714,7 @@ the local directory.
 Also checkout the notes I took from the Docker Deep Dive book here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md](https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md)
 
-## Ubuntu Package Stuff
+## Ubuntu Package information
 
 1. `sudo apt install <package>` - install package
 2. `sudo apt remove <package>` - remove package
@@ -865,7 +865,7 @@ current checkout state.
 
 This shows a line-by-line git blame on a particular file, e.g. `blameline README.md`
 showing the origin commit and a snippet of the commit message. Very useful
-for figuring out how a file was put together.
+for finding how the contents of a file was created.
 
 ### `git logline`
 
