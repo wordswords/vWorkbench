@@ -368,19 +368,24 @@ window in the centre of the desktop
 
 ### Firefox Shortcuts
 
-I install Vinium on Firefox which allows you to use the VIM shortcuts on most pages
+I install Vinium-C on Firefox which allows you to use the VIM shortcuts on most pages
 
-1. `<h> <j> <k> <l>` to scroll as normal in vim.
-2. `gg` to go to the top of the page
-3. `G` to go to the bottom of the page
-4. `d` to scroll down half a page
-5. `u` to scroll up half a page
-6. `t` to open a new tab
-7. `T` to search through your open tabs
-8. `<Control>-<Alt>-v` while focused on an input element to open gVIM. When you write and save
+1. `?` for a keymap
+2. `<alt>-<f4>` to close
+3. `<alt>-<enter>` to toggle fullscreen or not
+4.  `<h> <j> <k> <l>` to scroll as normal in vim.
+5.  `f` to go into 'link mode'. All links are highlighted. Press the key sequence of the
+link you want to visit. Press `<esc>` to close.
+6. `gg` to go to the top of the page
+7. `G` to go to the bottom of the page
+8. `d` to scroll down half a page
+9. `u` to scroll up half a page
+10. `t` to open a new tab
+11. `T` to search through your open tabs
+12. On Ubuntu only: `<Control>-<Alt>-v` while focused on an input element to open gVIM. When you write and save
 the buffer in gVIM it will copy it to the clipboard and focus on the box you have left,
 then you can quickly insert it in the text input on the browser.
-9. `<Control>-l` move the focus to the url box so you can type in a url
+13. `<Control>-l` move the focus to the url box so you can type in a url
 
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
 
