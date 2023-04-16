@@ -3,6 +3,6 @@
 set -e
 set -x
 
-sudo wget -O /etc/cron.weekly/docker-pi-hole https://raw.githubusercontent.com/pi-hole/docker-pi-hole/master/examples/docker-pi-hole.cron
+cp ./docker-pi-hole.cron.weekly /etc/cron.weekly/docker-pi-hole
 sudo chmod 700 /etc/cron.weekly/docker-pi-hole
 
