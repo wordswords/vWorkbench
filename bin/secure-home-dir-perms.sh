@@ -9,6 +9,7 @@ sudo chown -R "${USER}":"${USER}" "${HOME}"
 sudo chmod -R 770 "${HOME}"
 sudo chmod -R 700 "${HOME}"/.dotfiles/SECRETS
 sudo chmod -R 700 "${HOME}"/.secure
+sudo chmod -R 700 "${HOME}"/.ssh
 
 
 
