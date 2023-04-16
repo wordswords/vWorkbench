@@ -19,6 +19,10 @@ if [[ ! -d ~/.dotfiles/SECRETS ]] ; then
     echo "ERROR: SECRETS directory does not exist.  Please create it and put your secrets in it."
     exit 1
 fi
+report_done
+report_progress 'Creating ~/.secure directory'
+    mkdir -p ~/.secure
+report_done
 report_progress 'Ensure home directory permissions are set securely'
    ~/.dotfiles/bin/secure-home-dir-perms.sh
 report_done
