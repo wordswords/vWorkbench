@@ -415,7 +415,7 @@ is done for you on deploy anyway.
 2. `<spacebar>` is the leader key for a lot of advanced Coc functionality.
 3. `<spacebar>-a` brings up the 'CocDiagnostics' window which is similar to the
 VIM9 quickfix window but with LSP errors. Press `<Esc>` to close this window.
-4. `Navigate through the CocDiagnostic errors using `<LEFT>` and `<RIGHT>` while
+4. Navigate through the CocDiagnostic errors using `<LEFT>` and `<RIGHT>` while
 in a document supported by a Coc LSP.
 5. `K` for documentation on the language feature under the cursorr.
 6. To scroll popups that appear, use `<Control-j>` to scroll down, and `<Control-k>`
