@@ -101,7 +101,6 @@ set +o extendedglob
 alias bat="batcat"
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias colours='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done;'
-alias ddg="ddgr"
 alias grep="grep --color"
 alias hn100="curl 'hkkr.in/h-n100-f2'"
 alias hn="curl 'hkkr.in/h-n10-f2'"

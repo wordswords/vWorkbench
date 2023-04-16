@@ -53,6 +53,12 @@ so() {
 }
 autoload -Uz so
 
+re() {
+    echo $@ | re.sh
+}
+autoload -Uz re
+
+
 checkbackup() {
     ~/.dotfiles/backup/check-for-failed-backup.zsh
 }
