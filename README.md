@@ -818,25 +818,29 @@ This script is run for you when you run the second deploy script.
 
 I have written a few helper scripts in ~/.dotfiles/bin
 
-### `gg.sh`,`so.sh`, `ai.sh`, `gg`, `so`, `ai`
+### `gg.sh`,`so.sh`, `ai.sh`, `re.sh`, `gg`, `so`, `ai`, `re`
 
 You can pipe multiple lines of text to these scripts. They will look up the
 result in:
 
 `gg.sh` - Google
 `so.sh` - Stack Overflow
+`re.sh` - Reddit
 `ai.sh` - ChatGPT (providing you have an API key)
 
-The first two will open a new tab or web browser in Firefox (only works in Ubuntu)
+The first three will open a new tab or web browser in Firefox (only works in Ubuntu)
 with your query on those sites.
 
-The third will output the result of the query to STDOUT, and also save the result
+The last will output the result of the query to STDOUT, and also save the result
 on your clipboard.
 
 You can also use the three commands WITHOUT the extension to allow for easy `<cmd> <query>`
 use while in a interactive console, for example
 
-$ `ai why are cornflakes crunchy?`
+$ `ai why are cornflakes crunchy` - this will output on the terminal the answer to your q
+and copy the result to the clipboard
+$ `re why are cornflakes crunchy` - this will open a web browser with the query and search
+reddit
 
 ### `search-ebooks.sh <term>`
 
