@@ -16,9 +16,9 @@ Pin-Priority: 501
 ''' > /tmp/mozillateamppa
 sudo mv /tmp/mozillateamppa /etc/apt/preferences.d/mozillateamppa
 
-# after saving, do
 sudo apt update
 sudo apt install firefox # or firefox-esr
 
 # hack to make firefox work with other scripts
 sudo ln -s /bin/firefox /snap/bin/firefox ||  true
+
