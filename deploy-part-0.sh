@@ -23,7 +23,7 @@ report_done
 
 # Main lines
 report_progress 'Upgrade all packages/distro to latest version'
-    sudo apt-get update -y && sudo apt-getdist-upgrade -y && sudo apt-get upgrade -y && sudo apt-getautoremove -y
+    sudo apt-get update -y && sudo apt-get dist-upgrade -y && sudo apt-get upgrade -y && sudo apt-getautoremove -y
 report_done
 report_progress 'Upgrade VIM to latest version using third-party repo'
     sudo add-apt-repository ppa:jonathonf/vim -y
