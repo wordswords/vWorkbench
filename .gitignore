@@ -14,7 +14,7 @@ secrets/**
 SECRETS/**
 tags
 LanguageTool
-hqconfig/explainshell
+hqconfig/explainshell/explainshell
 hqconfig/pihole/etc-dnsmasq.d
 hqconfig/pihole/etc-pihole
 
