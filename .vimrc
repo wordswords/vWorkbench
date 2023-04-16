@@ -44,6 +44,7 @@ set wildmode=list:longest,full
 
 " no bells, ever
 set noerrorbells novisualbell t_vb=
+set belloff=all
 
 " map the <leader> character to comma
 let mapleader=","
