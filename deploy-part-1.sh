@@ -26,6 +26,6 @@ report_progress 'Removing existing zsh config'
 report_done
 report_progress 'Installing oh-my-zsh'
     cd ~ || exit 1
-    sh -c "$(wget --no-check-certificate https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 report_done
 report_finished 'Deploy Dotfiles: Part 1'
