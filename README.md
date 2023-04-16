@@ -423,11 +423,11 @@ for up.
 
 ## Coc.vim Shortcuts on large software projects
 
-Coc.vim is meant to provide an approximate mapping for Visual Studio Code's
-plugins and IntelliSense features onto VIM9 and Neovim. It does this with various
-degrees of compatibility. Often these features are not currently documented and require
-prior knowledge of how the Code editor does things. This URL is the documentation
-for the Code editor:
+Coc.vim (stands for Conquerer of Completion.. I know) is meant to provide an 
+approximate mapping for Visual Studio Code's plugins and IntelliSense features 
+onto VIM9 and Neovim. It does this with various degrees of compatibility. Often 
+these features are not currently documented and require prior knowledge of how 
+the Code editor does things. This URL is the documentation for the Code editor:
 [https://docs.microsoft.com/en-us/visualstudio/ide/navigating-code?view=vs-2022](https://docs.microsoft.com/en-us/visualstudio/ide/navigating-code?view=vs-2022)
 
 This is an excellent introduction to Coc.vim's objectives: [https://samroeca.com/coc-plugin.html](https://samroeca.com/coc-plugin.html)
