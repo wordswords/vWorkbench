@@ -256,6 +256,21 @@ if [[ $cur_os == 'windows' ]] ; then
     chmod u+x ~/bin/win32yank.exe
     cd -
     rm -rf ~/.dotfiles/win32yank/
+
+	echo
+	echo "-- OPTIONAL EXTRAS -- "
+	echo
+
+    read -rp "Do you want to install/update Firefox for WSL2? (y/yes/N)? " WSLFIREFOXINSTALL
+    case "$WSLFIREFOXINSTALL" in
+        Y|y|yes)
+            ~/.dotfiles/bin/wsl2-firefox.sh
+        ;;
+        *)
+            true
+        ;;
+    esac
+
 fi
 report_done
 report_progress 'Running any Linux specific configuration'
@@ -288,7 +303,7 @@ if [[ $cur_os == 'linux' ]] ; then
         ;;
         *)
             # remove go jira client if it was installed previously
-            rm ~/go/bin/jira || true
+            rm ~/go/bin/jira &>/dev/null || true
         ;;
     esac
 
