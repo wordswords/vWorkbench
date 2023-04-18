@@ -1,17 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 if [ $(id -u) -ne 0 ] ; then
     echo 'You must be root to run this script'
     exit 1
 fi
 
-if [ -z "$STY" ]; then exec screen -dm -S backup-all /bin/bash "$0"; fi
+#if [ -z "$STY" ]; then exec screen -dm -S backup-all /bin/bash "$0"; fi
 
 set -e
 set -x
 
 cd /home/david/.dotfiles/backup/
 
-./borg-backup-server-config.sh
+#./borg-backup-server-config.sh
 chown -R david:david /mnt2/borg-backup
 runuser -u david /home/david/.dotfiles/backup/rclone-backup-borg.sh
 
