@@ -3,11 +3,11 @@
 set -x
 set -e
 
+killall dnsmasq || true
 cd ./pihole/
 docker-compose up -d
 cd -
 
-killall dnsmasq || true
 cd ./explainshell/explainshell/
 docker-compose up -d
 cd -
