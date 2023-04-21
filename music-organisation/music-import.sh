@@ -22,6 +22,3 @@ beet dup -d
 # Clean incoming directory
 sudo rm -rf /mnt2/incomingmusic/*
 
-# Backup music
-cd ~/.dotfiles/backup/ && ~/.dotfiles/backup/rclone-backup-music.sh
-
