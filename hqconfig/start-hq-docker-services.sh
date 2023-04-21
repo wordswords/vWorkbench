@@ -3,6 +3,7 @@
 set -x
 set -e
 
+sudo killall dnsmasq
 cd ./explainshell/explainshell/
 docker-compose up -d
 cd -
