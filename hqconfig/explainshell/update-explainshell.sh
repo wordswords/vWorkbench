@@ -12,6 +12,6 @@ for mpage in $(cat ./manlist.txt) ; do
     echo Processing: $mpage
     docker-compose exec -T web bash -c "PYTHONPATH=. python explainshell/manager.py --log info $mpage" 2>/dev/null | grep successfully
 done
-IFS=$OLDIFA
+IFS=$OLDIFS
 echo "All man pages processed."
 
