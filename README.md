@@ -423,10 +423,10 @@ for up.
 
 ## Coc.vim Shortcuts on large software projects
 
-Coc.vim (stands for Conquerer of Completion.. I know) is meant to provide an 
-approximate mapping for Visual Studio Code's plugins and IntelliSense features 
-onto VIM9 and Neovim. It does this with various degrees of compatibility. Often 
-these features are not currently documented and require prior knowledge of how 
+Coc.vim (stands for Conquerer of Completion.. I know) is meant to provide an
+approximate mapping for Visual Studio Code's plugins and IntelliSense features
+onto VIM9 and Neovim. It does this with various degrees of compatibility. Often
+these features are not currently documented and require prior knowledge of how
 the Code editor does things. This URL is the documentation for the Code editor:
 [https://docs.microsoft.com/en-us/visualstudio/ide/navigating-code?view=vs-2022](https://docs.microsoft.com/en-us/visualstudio/ide/navigating-code?view=vs-2022)
 
@@ -596,7 +596,6 @@ writing rubbish code.
 and also output on the pipe
 3. Other examples of use can be found at [https://github.com/Aesthetikx/openai_pipe](https://github.com/Aesthetikx/openai_pipe)
 
-
 ## Vista Plugin
 
 Vista is used for coc.vim or ctags specific function lists for quickly jumping
@@ -667,12 +666,14 @@ Check out my simpleton Git workflow here:
 ## GNU diff/patching information I forget
 
 ### Creating a simple patch to apply later
+
 1. To generate the patch, run the following command in the same dir
 as the file you want to patch `diff -u <file1> <file2> > patch.diff`
 2. Edit the patch file and make sure both filenames mentioned are the
 same filename that you want patched.
 
 ### Applying the simple patch
+
 1. Copy the patch.diff into the directory of the file needing to be patched
 2. Run `patch -p1 < patch.diff`
 
