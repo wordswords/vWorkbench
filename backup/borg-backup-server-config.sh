@@ -36,15 +36,8 @@ borg create                         \
     /home                           \
     /root                           \
     /var/log                        \
-    /mnt/ebooks                     \
-    /mnt/games                      \
-    /mnt/gamesincoming              \
-    /mnt2/music                     \
-    /mnt2/incomingmusic             \
-    /mnt2/incomingmusic             \
-    /mnt2/TV                        \
-    /mnt2/video
-
+    /mnt                            \
+    /mnt2
 
 
 backup_exit=$?

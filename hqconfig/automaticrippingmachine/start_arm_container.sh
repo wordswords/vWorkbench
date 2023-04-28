@@ -1,9 +1,5 @@
 #!/bin/bash
-if [ $(id -u) -ne 0 ] ; then
-    echo 'You must be root to run this script'
-    exit 1
-fi
-sudo runuser -u arm docker run -d \
+docker run -d \
     -p "8080:8080" \
     -e ARM_UID="1001" \
     -e ARM_GID="1003" \
@@ -13,9 +9,7 @@ sudo runuser -u arm docker run -d \
     -v "/home/arm/media:/home/arm/media" \
     -v "/etc/arm/config:/etc/arm/config" \
     --device="/dev/sr0:/dev/sr0" \
-    --device="/dev/sr1:/dev/sr1" \
-    --device="/dev/sr2:/dev/sr2" \
-    --device="/dev/sr3:/dev/sr3" \
+    --device="/dev/sg5:/dev/sg5" \
     --privileged \
     --restart "always" \
     --name "arm-rippers" \

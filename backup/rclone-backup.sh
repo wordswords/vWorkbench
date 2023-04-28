@@ -3,5 +3,5 @@ set -e
 set -x
 src=${1}
 dst=${2}
-rclone copy ${src} gdrive:rclone-backup/${dst} -P --drive-pacer-min-sleep=10ms --drive-pacer-burst=200 --fast-list --exclude nfsmnt
+rclone sync ${src} gdrive:rclone-backup/${dst} -P --drive-pacer-min-sleep=10ms --drive-pacer-burst=200 --fast-list --exclude nfsmnt
 
