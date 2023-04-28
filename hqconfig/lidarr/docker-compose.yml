@@ -1,0 +1,51 @@
+version: "2.1"
+services:
+  lidarr-extended:
+    image: randomninjaatk/lidarr-extended:latest
+    container_name: lidarr-extended
+    volumes:
+      - /home/lidarr/config:/config
+      - /home/lidarr/downloads:/downloads-lidarr-extended
+      - /mnt2/music:/music
+    environment:
+      - TZ=Europe/London
+      - PUID=1002
+      - PGID=1005
+      - enableAudioScript=true
+      - enableVideoScript=true
+      - scriptInterval=15m
+      - configureLidarrWithOptimalSettings=true
+      - searchSort=date
+      - audioFormat=native
+      - audioBitrate=lossless
+      - requireQuality=true
+      - enableReplaygainTags=true
+      - audioLyricType=both
+      - dlClientSource=both
+      - arlToken=Token_Goes_Here
+      - tidalCountryCode=US
+      - addDeezerTopArtists=true
+      - addDeezerTopAlbumArtists=true
+      - addDeezerTopTrackArtists=true
+      - topLimit=10
+      - addRelatedArtists=false
+      - numberOfRelatedArtistsToAddPerArtist=5
+      - lidarrSearchForMissing=true
+      - addFeaturedVideoArtists=false
+      - plexUrl=http://x.x.x.x:32400
+      - plexToken=Token_Goes_Here
+      - youtubeSubtitleLanguage=en
+      - enableQueueCleaner=true
+      - matchDistance=5
+      - enableBeetsTagging=true
+      - beetsMatchPercentage=90
+      - retryNotFound=90
+    ports:
+      - 8686:8686
+    restart: unless-stopped
+    networks:
+      - arr-net
+
+networks:
+  arr-net:
+    driver: bridge
