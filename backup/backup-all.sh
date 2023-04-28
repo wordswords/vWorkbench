@@ -22,5 +22,7 @@ chown -R david:david /home/david/.dotfiles
 # update the git repo
 runuser -u david /home/david/.dotfiles/backup/save-last-backedup.sh
 
+hardcopy -h /home/david/.dotfiles/backup/.last_backup_all_run.log
+
 
 
