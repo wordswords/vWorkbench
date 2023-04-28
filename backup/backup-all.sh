@@ -4,6 +4,8 @@ if [ $(id -u) -ne 0 ] ; then
     exit 1
 fi
 
+# Screen setup
+echo "defscrollback 1000000" >> ~/.screenrc
 if [ -z "$STY" ]; then exec screen -dm -S backup-all /bin/bash "$0"; fi
 
 set -e
