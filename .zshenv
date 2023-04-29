@@ -38,6 +38,11 @@ tmuxsessionsprint() {
 }
 autoload -Uz tmuxsessionsprint
 
+tramsprint() {
+    ~/.dotfiles/bin/trams BMR
+}
+autoload -Uz tramsprint
+
 ai() {
     echo $@ | ai.sh
 }

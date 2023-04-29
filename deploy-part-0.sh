@@ -115,6 +115,13 @@ report_done
 report_progress 'Install yamllint'
     sudo apt install yamllint -y
 report_done
+report_progress 'Installing Manchester Metrolink Commandline App for Tram times'
+    cd ~/.dotfiles/bin
+    wget https://github.com/ayubmalik/trams/releases/download/v1.0.2/trams-linux-amd64
+    mv trams-linux-amd64 trams
+    chmod u+x trams
+report_done
+
 
 
 # custom installation lines
