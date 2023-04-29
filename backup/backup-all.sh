@@ -1,12 +1,14 @@
 #!/bin/bash
-if [ $(id -u) -ne 0 ] ; then
+if [ "$(id -u)" -ne 0 ] ; then
     echo 'You must be root to run this script'
     exit 1
 fi
 
 # Screen setup
-echo "defscrollback 1000000" >> ~/.screenrc
-if [ -z "$STY" ]; then exec screen -dm -S backup-all /bin/bash "$0" || /bin/bash; fi
+echo "defscrollback 1000000" > ~/.screenrc
+if [ -z "$STY" ]; then
+    exec screen -dm -S backup-all "/bin/bash $0 || read -p 'Backup failed. Press enter to continue.'";
+fi
 
 set -e
 set -x
