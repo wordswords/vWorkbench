@@ -4,32 +4,26 @@ set -x
 set -e
 
 killall dnsmasq || true
-cd ./pihole/
-docker-compose up -d
-cd -
 
-cd ./explainshell/explainshell/
-docker-compose up -d
-cd -
+function updateAndUp() {
+    cd "$1"
+    docker compose down || true
+    docker compose pull
+    docker compose build
+    docker compose up -d
+    cd -
+}
+function JustUp() {
+    cd "$1"
+    docker compose up -d
+    cd -
+}
+JustUp ./pihole
+updateAndUp ./explainshell/explainshell
+updateAndUp ./prowlarr
+updateAndUp ./lidarr
+updateAndUp ./qbtorrent
+updateAndUp ./calibreweb
 
-cd ./automaticrippingmachine
-docker-compose up -d
-cd -
-
-cd ./prowlarr
-docker-compose up -d
-cd -
-
-cd ./lidarr
-docker-compose up -d
-cd -
-
-cd ./qbtorrent
-docker-compose up -d
-cd -
-
-cd ./calibreweb
-docker-compose up -d
-cd -
 
 
