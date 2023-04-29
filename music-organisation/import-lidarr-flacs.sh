@@ -3,6 +3,7 @@
 set -e
 set -x
 
-sudo find /home/lidarr/downloads -name '*.flac' -type f -exec mv {} /mnt2/incomingmusic/ \;
-./music-import.sh
+find /home/lidarr/downloads -name '*.flac' -type f -exec mv {} /mnt2/incomingmusic/ \;
+runuser -u david /home/david/.dotfiles/music-organisation/music-import.sh
+
 
