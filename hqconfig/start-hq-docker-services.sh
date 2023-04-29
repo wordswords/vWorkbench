@@ -28,4 +28,8 @@ cd ./qbtorrent
 docker-compose up -d
 cd -
 
+cd ./calibreweb
+docker-compose up -d
+cd -
+
 
