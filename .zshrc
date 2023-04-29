@@ -97,17 +97,17 @@ for f (~/.dotfiles/SECRETS/**/^*("~"|dpkg-(dist|old|new)|.(tmp|back|bak))(N.))  
 set +o extendedglob
 ## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
 ## [++ ALIASES ++]
-( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
 alias bat="batcat"
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias colours='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done;'
+alias firefox="/snap/bin/firefox"
 alias grep="grep --color"
 alias hn100="curl 'hkkr.in/h-n100-f2'"
 alias hn="curl 'hkkr.in/h-n10-f2'"
 alias hq="ssh -p 608 david@hq.djdavidcraddock.com"
-alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
+alias l='ls -CF'
 alias ls="ls --color"
 alias path="echo \"$PATH\" | tr \":\" \"\n\" | nl"
 alias pbcopy='xclip -selection clipboard'
@@ -116,6 +116,7 @@ alias please='sudo $(fc -ln -1)'
 alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
 alias vi="vim -u NONE"
 alias zshconfig="vim ~/.dotfiles/.zshrc && ~/.dotfiles/bin/deploy-zshrc.sh"
+( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
 ## [-- ALIASES --]
 ## [++ Required for Golang install syntax ++]
 export GO111MODULE=on
