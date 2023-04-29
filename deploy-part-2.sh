@@ -270,17 +270,6 @@ if [[ $cur_os == 'windows' ]] ; then
             true
         ;;
     esac
-    read -rp "Do you want to update WSL2 if there are any updates? (y/yes/N)? " WSL2UPDATE
-    case "$WSL2UPDATE" in
-        Y|y|yes)
-            ~/.dotfiles/bin/wsl2-update.sh
-        ;;
-        *)
-            true
-        ;;
-    esac
-
-
 fi
 report_done
 report_progress 'Running any Linux specific configuration'
