@@ -39,7 +39,8 @@ tmuxsessionsprint() {
 autoload -Uz tmuxsessionsprint
 
 tramsprint() {
-    ~/.dotfiles/bin/trams BMR
+    echo "\nTram times:\n"
+    ~/.dotfiles/bin/trams display BRT
 }
 autoload -Uz tramsprint
 
