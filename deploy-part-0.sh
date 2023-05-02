@@ -121,7 +121,7 @@ report_progress 'Install Manchester Metrolink Commandline App for Tram times'
     mv trams-linux-amd64 trams
     chmod u+x trams
 report_done
-report_progres 'Install MozillaVPN for VPN privacy'
+report_progress 'Install MozillaVPN for VPN privacy'
     sudo add-apt-repository ppa:mozillacorp/mozillavpn -y
     sudo apt-get update -y
     sudo apt-get install mozillavpn -y
