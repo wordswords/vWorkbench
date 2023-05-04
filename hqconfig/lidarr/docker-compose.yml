@@ -1,3 +1,4 @@
+---
 version: "2.1"
 services:
   lidarr-extended:
@@ -6,34 +7,34 @@ services:
     volumes:
       - /home/lidarr/config:/config
       - /home/lidarr/downloads:/downloads-lidarr-extended
-      - /mnt2/music:/music
+      - /home/lidarr/rootmusic:/music
     environment:
       - TZ=Europe/London
-      - PUID=1002
-      - PGID=1005
+      - PUID=0
+      - PGID=0
       - enableAudioScript=true
-      - enableVideoScript=true
+      - enableVideoScript=false
       - scriptInterval=15m
       - configureLidarrWithOptimalSettings=true
       - searchSort=date
-      - audioFormat=native
+      - audioFormat=flac
       - audioBitrate=lossless
       - requireQuality=true
       - enableReplaygainTags=true
       - audioLyricType=both
       - dlClientSource=both
-      - arlToken=Token_Goes_Here
-      - tidalCountryCode=US
-      - addDeezerTopArtists=true
-      - addDeezerTopAlbumArtists=true
-      - addDeezerTopTrackArtists=true
+      - arlToken=65ef2246e944c5ce83262971751869c9fccf0e19931e4cf169ba2dacca734bcaf1191f6a655d90b9822f6165e3ba60823d7e48e7f9c00d6801c7097618775890ec068efbdc4dc9df154c9fd90af00cda494d00ad120915707cce5dcbfd97ff19
+      - tidalCountryCode=GB
+      - addDeezerTopArtists=false
+      - addDeezerTopAlbumArtists=false
+      - addDeezerTopTrackArtists=false
       - topLimit=10
       - addRelatedArtists=false
       - numberOfRelatedArtistsToAddPerArtist=5
       - lidarrSearchForMissing=true
       - addFeaturedVideoArtists=false
-      - plexUrl=http://x.x.x.x:32400
-      - plexToken=Token_Goes_Here
+      - plexUrl=http://10.159.1.168:32400
+      # - plexToken=Token_Goes_Here
       - youtubeSubtitleLanguage=en
       - enableQueueCleaner=true
       - matchDistance=5
@@ -44,8 +45,11 @@ services:
       - 8686:8686
     restart: unless-stopped
     networks:
-      - arr-net
+      arr-net:
+        ipv4_address: 172.20.128.2
 
 networks:
   arr-net:
+    subnet: 172.20.128.0/24
     driver: bridge
+    ip_range: 172.20.128.0/24

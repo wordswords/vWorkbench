@@ -1,3 +1,4 @@
+---
 version: "3.7"
 
 services:
@@ -14,8 +15,11 @@ services:
     volumes:
       - /home/lidarr/prowlarr-config:/config
     networks:
-      - lidarr_arr-net
+      lidarr_arr-net:
+        ipv4_address: 172.20.128.6
 
 networks:
   lidarr_arr-net:
+    #subnet: 172.20.128.0/24
+    driver: bridge
     external: true

@@ -19,9 +19,11 @@ services:
       - 6881:6881/udp
     restart: unless-stopped
     networks:
-      - lidarr_arr-net
+      lidarr_arr-net:
+        ipv4_address: 172.20.128.4
 
 networks:
   lidarr_arr-net:
-    external: true
-
+  #  - subnet: 172.20.128.0/24
+    driver: bridge
+  #    ip_range: 172.20.128.0/24
