@@ -15,11 +15,10 @@ services:
     volumes:
       - /home/lidarr/prowlarr-config:/config
     networks:
-      lidarr_arr-net:
+      lidarr_lidarr-net:
         ipv4_address: 172.20.128.6
 
 networks:
-  lidarr_arr-net:
-    #subnet: 172.20.128.0/24
+  lidarr_lidarr-net:
     driver: bridge
     external: true

@@ -1,5 +1,5 @@
 ---
-version: "2.1"
+version: "3.7"
 services:
   lidarr-extended:
     image: randomninjaatk/lidarr-extended:latest
@@ -45,11 +45,12 @@ services:
       - 8686:8686
     restart: unless-stopped
     networks:
-      arr-net:
+      lidarr-net:
         ipv4_address: 172.20.128.2
 
 networks:
-  arr-net:
-    subnet: 172.20.128.0/24
+  lidarr-net:
     driver: bridge
-    ip_range: 172.20.128.0/24
+    ipam:
+      config:
+        - subnet: 172.20.128.0/24
