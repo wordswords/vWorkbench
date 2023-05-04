@@ -6,7 +6,7 @@ services:
     container_name: lidarr-extended
     volumes:
       - /home/lidarr/config:/config
-      - /home/lidarr/downloads:/downloads-lidarr-extended
+      - /home/lidarr/downloads:/downloads
       - /home/lidarr/rootmusic:/music
     environment:
       - TZ=Europe/London
@@ -54,4 +54,3 @@ networks:
     ipam:
       config:
         - subnet: 172.20.128.0/24
-
