@@ -747,6 +747,37 @@ the latest versions of the container tags.
 Also checkout the notes I took from the Docker Deep Dive book here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md](https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md)
 
+## Troubleshooting Disk I/O performance Notes
+
+### Iostat
+
+1. https://coderwall.com/p/utc42q/understanding-iostat
+2. https://www.igvita.com/2009/06/23/measuring-optimizing-io-performance/
+
+### Fio
+
+1. https://tobert.github.io/post/2014-04-28-getting-started-with-fio.html
+2. https://tobert.github.io/post/2014-04-17-fio-output-explained.html
+3. http://serverfault.com/questions/677340/poor-iscsi-performance-with-ssd-disks-and-10-gbe-network
+
+### DD
+
+Use inbuilt `dd` command for simple sequential I/O performance measurements
+
+### Bonnie++
+
+1. For random tests
+2. Attention: bonnie++ creates an enourmous read and write queue thus the load average will increase to 15+
+3. https://www.jamescoyle.net/how-to/599-benchmark-disk-io-with-dd-and-bonnie
+
+## Troubleshooting CPU utilisation Notes
+
+1. Use `htop` which will already be installed
+
+## Troubleshooting Network utilisation Notes
+
+1. Can use `speedtest` which is already installed
+
 ## Ubuntu Package information
 
 1. `sudo apt install <package>` - install package
