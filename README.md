@@ -730,6 +730,19 @@ run wordpress cat /etc/issue`.
 `<service>` name from `docker-compose ps`.
 7. `docker build .` - builds the container described in the `Dockerfile` from
 the local directory.
+8. `docker-compose network ls` and `docker-compose network inspect <network id>` will get info
+on the networks defined in docker compose.
+9. For more examples on docker-compose networks and files, check out my server setup
+here: [https://github.com/wordswords/dotfiles/blob/master/hqconfig/](https://github.com/wordswords/dotfiles/blob/master/hqconfig/)
+10. `docker-compose up -d` will spin up the docker container(s) using docker-compose
+and run it as a daeamon, e.g. in the background.
+11. `docker-compose up` will spin up the docker container(s) using docker-compose
+and run it in the foreground, and output all the logs to the terminal. Useful for
+troubleshooting.
+12. `docker-compose logs -f <container id>` will attach to the container id and tail -f
+the logs.
+13. `docker-compose pull` will update all the containers in the docker-compose file with
+the latest versions of the container tags.
 
 Also checkout the notes I took from the Docker Deep Dive book here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md](https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md)
