@@ -116,6 +116,7 @@ alias please='sudo $(fc -ln -1)'
 alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
 alias vi="vim -u NONE"
 alias zshconfig="vim ~/.dotfiles/.zshrc && ~/.dotfiles/bin/deploy-zshrc.sh"
+alias externalip="curl https://ifconfig.co/json ; echo"
 ( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
 ## [-- ALIASES --]
 ## [++ Required for Golang install syntax ++]

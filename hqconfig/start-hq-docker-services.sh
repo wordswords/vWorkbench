@@ -36,6 +36,8 @@ function PruneUnusuedContainers() {
 }
 
 JustUp ./pihole
+sudo ~/bin/man-vpn-disconnect.sh
+sudo ~/bin/man-vpn-connect.sh
 JustDown ./explainshell/explainshell
 JustDown ./prowlarr
 JustDown ./qbtorrent
