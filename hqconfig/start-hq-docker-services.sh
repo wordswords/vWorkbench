@@ -15,17 +15,17 @@ function updateAndUp() {
 }
 function JustUp() {
     cd "$1"
-    docker-compose up -d
+    docker compose up -d
     cd -
 }
 function JustDown() {
     cd "$1"
-    docker-compose down || true
+    docker compose down || true
     cd -
 }
 function JustUpdate() {
     cd "$1"
-    docker-compose pull
+    docker compose pull
     cd -
 }
 function PruneNetworks() {
