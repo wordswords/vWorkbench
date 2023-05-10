@@ -36,13 +36,15 @@ function PruneUnusuedContainers() {
 }
 
 JustUp ./pihole
-sudo ~/bin/man-vpn-disconnect.sh
-sudo ~/bin/man-vpn-connect.sh
+/home/david/bin/man-vpn-disconnect.sh || true
+/home/david/bin/man-vpn-connect.sh
 JustDown ./explainshell/explainshell
 JustDown ./prowlarr
 JustDown ./qbtorrent
 JustDown ./lidarr
 JustDown ./calibreweb
+JustDown ./calibre
+JustDown ./calibre-comics
 PruneUnusuedContainers
 PruneNetworks
 JustUpdate ./explainshell/explainshell
@@ -50,10 +52,14 @@ JustUpdate ./lidarr
 JustUpdate ./prowlarr
 JustUpdate ./qbtorrent
 JustUpdate ./calibreweb
+JustUpdate ./calibre
+JustUpdate ./calibre-comics
 JustUp ./explainshell/explainshell
 JustUp ./lidarr
 JustUp ./prowlarr
 JustUp ./qbtorrent
 JustUp ./calibreweb
+JustUp ./calibre
+JustUp ./calibre-comics
 
 
