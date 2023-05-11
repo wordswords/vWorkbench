@@ -12,6 +12,7 @@ services:
       - TZ=Europe/London
     volumes:
       - /mnt/comics:/config
+      - /mnt/incomingebooks:/newbooks
     ports:
       - 9082:8080
       - 9182:8181
