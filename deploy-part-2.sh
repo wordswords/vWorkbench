@@ -18,13 +18,7 @@ report_done
 report_progress 'Running ctags'
 ctags -R ./*
 report_done
-report_progress 'Installing latest nodejs and bash-language-server'
-# Install latest nodejs
-curl -sfLS install-node.vercel.app/lts >node-lts.sh
-chmod u+x node-lts.sh
-sudo ./node-lts.sh --yes
-rm ./node-lts.sh
-export PATH="/usr/local/bin/:$PATH"
+report_progress 'Installing bash-language-server through npm'
 npm install -g bash-language-server
 report_done
 report_progress 'Install LanguageTool grammar checker'
@@ -152,6 +146,7 @@ cd ~/.vim/pack/coc/start
 curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
 report_done
 report_progress 'Installing vim9/coc extensions'
+mkdir -p ~/.config
 sudo chown -R "${USER}" ~/.config
 mkdir -p ~/.config/coc/extensions
 cd ~/.config/coc/extensions
