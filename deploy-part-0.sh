@@ -8,7 +8,7 @@ report_heading 'Deploy Prerequisites: Part 0'
 
 # Must go before everything else
 report_progress 'Checking locale'
-     locale | grep -q LANG=en_GB.utf8 || ( echo 'en_GB.UTF8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
+     locale | grep -q LANG=en_GB.utf-8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
 report_done
 report_progress 'Restoring last modified dates for .dotfiles'
     sudo apt-get install git-restore-mtime
