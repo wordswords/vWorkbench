@@ -37,7 +37,7 @@ error() {
   else
     echo "Error on or near line ${parent_lineno}; exiting with status ${code}" | tee >> /home/david/.dotfiles/backup/.backup_error
   fi
-  read -p "** Press any key to exit **"
+  #read -p "** Press any key to exit **"
   exit "${code}"
 }
 
