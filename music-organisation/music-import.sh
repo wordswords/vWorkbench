@@ -8,11 +8,15 @@ fi
 set -e
 set -x
 
+# Move any FLACs from the arm-ripped directory to the incoming directory
+runuser -u david /home/david/.dotfiles/music-organisation/import-arm-ripped-flacs.sh
+
 # Fix perms
 chown -R david:users /mnt2/incomingmusic
 chown -R david:users /mnt2/music
 chmod -R 775 /mnt2/incomingmusic
 chmod -R 775 /mnt2/music
+
 
 # Import music
 runuser -u david /home/david/.dotfiles/music-organisation/beet-import.sh
