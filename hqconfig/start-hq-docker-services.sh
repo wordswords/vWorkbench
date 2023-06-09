@@ -57,7 +57,7 @@ JustUpdate ./calibreweb
 JustUpdate ./calibreweb-comics
 JustUpdate ./calibre
 JustUpdate ./calibre-comics
-JustUp ./explainshell/explainshell
+#JustUp ./explainshell/explainshell
 #JustUp ./lidarr
 #JustUp ./prowlarr
 #JustUp ./qbtorrent
