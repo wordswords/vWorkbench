@@ -28,6 +28,19 @@ function JustUpdate() {
     docker compose pull
     cd -
 }
+function JustRecreate() {
+    cd "$1"
+    docker compose up --build --force-recreate
+    cd -
+}
+function BuildLocalAndTag() {
+    cd "$1"
+    docker build \
+      --no-cache \
+      --pull \
+      -t "$2" .
+    cd -
+}
 function PruneNetworks() {
     docker network prune -f
 }
@@ -53,10 +66,13 @@ JustUpdate ./explainshell/explainshell
 JustUpdate ./lidarr
 JustUpdate ./prowlarr
 JustUpdate ./qbtorrent
+#BuildLocalAndTag ./docker-calibre-web calibre-web:dchq
+#JustRecreate ./calibreweb
+#JustRecreate ./calibreweb-comics
 JustUpdate ./calibreweb
-JustUpdate ./calibreweb-comics
 JustUpdate ./calibre
 JustUpdate ./calibre-comics
+JustUpdate ./calibreweb-comics
 #JustUp ./explainshell/explainshell
 #JustUp ./lidarr
 #JustUp ./prowlarr

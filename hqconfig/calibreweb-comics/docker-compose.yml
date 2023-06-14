@@ -14,5 +14,5 @@ services:
       - /home/david/.config/calibreweb-comics:/config
       - /mnt/comics:/comics
     ports:
-      - 8085:8085
+      - 8085:8083
     restart: unless-stopped
