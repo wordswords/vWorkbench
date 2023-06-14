@@ -140,10 +140,9 @@ updatedotfiles
 fortuneprint
 ttyprint
 tmuxsessionsprint
-checkbackup
+#checkbackup
 getweather
 tramsprint
 echo '' # BLANK LINE
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 #zprof #- Uncomment this to profile zsh startup
-
