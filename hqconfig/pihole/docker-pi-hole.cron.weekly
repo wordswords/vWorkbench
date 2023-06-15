@@ -1,9 +1,0 @@
-# Pi-hole: A black hole for Internet advertisements
-# Weekly maintenance tasks
-
-DOCKER_NAME=pihole
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-
-docker exec -it ${DOCKER_NAME} update.sh
-docker exec -it ${DOCKER_NAME} gravity.sh
-

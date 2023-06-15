@@ -3,8 +3,6 @@
 set -x
 set -e
 
-killall dnsmasq || true
-
 function updateAndUp() {
     cd "$1"
     docker compose down || true
@@ -48,7 +46,6 @@ function PruneUnusuedContainers() {
     docker image prune -a -f
 }
 
-JustUp ./pihole
 /home/david/bin/man-vpn-disconnect.sh || true
 /home/david/bin/man-vpn-connect.sh
 #./explainshell/install-explainshell.sh
@@ -62,7 +59,7 @@ JustDown ./calibre
 JustDown ./calibre-comics
 PruneUnusuedContainers
 PruneNetworks
-JustUpdate ./explainshell/explainshell
+#JustUpdate ./explainshell/explainshell
 JustUpdate ./lidarr
 JustUpdate ./prowlarr
 JustUpdate ./qbtorrent
@@ -77,9 +74,9 @@ JustUpdate ./calibreweb-comics
 #JustUp ./lidarr
 #JustUp ./prowlarr
 #JustUp ./qbtorrent
-JustUp ./calibreweb
 JustUp ./calibre
 JustUp ./calibre-comics
+JustUp ./calibreweb
 JustUp ./calibreweb-comics
 
 
