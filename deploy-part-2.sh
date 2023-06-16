@@ -217,13 +217,13 @@ echo '''
 vim -s ~/.dotfiles/vimscript.vs
 rm ~/.dotfiles/vimscript.vs
 report_done
-report_progress 'Installing Elixir development toolset'
-rm -rf ~/.elixir-ls
-git clone https://github.com/elixir-lsp/elixir-ls.git ~/.elixir-ls
-cd ~/.elixir-ls
-mix deps.get
-mix compile
-report_done
+#report_progress 'Installing Elixir development toolset'
+#rm -rf ~/.elixir-ls
+#git clone https://github.com/elixir-lsp/elixir-ls.git ~/.elixir-ls
+#cd ~/.elixir-ls
+#mix deps.get
+#mix compile
+#report_done
 report_progress 'Python3 + OpenAI codex development toolset'
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade --force-reinstall aiohttp openai
