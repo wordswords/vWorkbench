@@ -150,6 +150,8 @@ how to install it at the end of the dotfile deployment.
 /keys/APIkeys required to use the environment. This is not done for you.
 * There are a lot of software prereqs. You can run a script that will attempt to install
 the prerequisites under Ubuntu by executing `./deploy-part-0.sh`.
+* If you are using Ubuntu for Windows under WSL2, which is my personal favourite configuration
+then you are highly recommended to install the alacritty terminal emulator before installing.
 
 ## What It Will Install
 
