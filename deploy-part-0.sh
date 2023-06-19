@@ -182,7 +182,6 @@ fi
 
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades -y
-    sudo dpkg-reconfigure unattended-upgrades --force
 report_done
 
 report_finished 'Deploy Prerequisites: Part 0 Complete'
