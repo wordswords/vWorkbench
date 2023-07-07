@@ -36,7 +36,7 @@ google () {
     for term in "$@"; do
         search="${search}%20${term}"
     done
-    "${FIREFOX_BIN}" "http://www.google${TLD}/search?q=${search}" &
+    "${FIREFOX_BIN}" "https://www.google${TLD}/search?q=${search}" &
 }
 
 set_firefox_path
