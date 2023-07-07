@@ -2,5 +2,5 @@
 set -e
 shopt -s lastpipe
 read -r input;
-SURFRAW_graphical_browser="firefox-esr" SURFRAW_graphical=yes SURFRAW_lang="uk" sr google inurl:reddit.com "${input}"
+"/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe google inurl:reddit.com" "${input}"
 
