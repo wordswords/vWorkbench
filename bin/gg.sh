@@ -32,5 +32,7 @@ google() {
     done
     "${FIREFOX_BIN}" "http://www.google.co.uk/search?q=$search" &
 }
+
+set_firefox_path
 google "${input}"
 
