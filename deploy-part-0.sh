@@ -179,7 +179,6 @@ then
     report_done
 fi
 
-
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades -y
 report_done
