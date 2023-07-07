@@ -71,7 +71,7 @@ report_done
 report_progress 'Install w3m text browser for wikipedia2text'
     sudo apt-get install w3m -y
 report_done
-report_progress 'Install  bat, a cat clone with syntax highlighting and Git integration'
+report_progress 'Install bat, a cat clone with syntax highlighting and Git integration'
     sudo apt-get install bat -y
 report_done
 report_progress 'Install curl for downloading from the web'
