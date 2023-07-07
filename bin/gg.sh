@@ -2,7 +2,29 @@
 set -e
 shopt -s lastpipe
 read -r input;
-FIREFOX_BIN="/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
+
+get_os () {
+  uname_s="$(uname -s)"
+  if echo $uname_s | grep 'Darwin' >/dev/null
+  then
+    baseos='osx'
+  else
+        if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+            baseos='windows'
+        else
+            baseos='linux'
+        fi
+  fi
+  echo $baseos
+}
+set_firefox_path() {
+    if [ "$(get_os)" == "windows" ]; then
+        export FIREFOX_BIN="/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
+    fi
+    if [ "$(get_os)" == "linux" ]; then
+        export FIREFOX_BIN="firefox"
+    fi
+}
 google() {
     search=""
     for term in "$@"; do
