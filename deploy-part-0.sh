@@ -177,6 +177,9 @@ then
         sudo mkdir -p /mnt/c/Users/conta/AppData/Roaming/alacritty
         sudo cp ~/.dotfiles/windows-terminal-emulators-config/windows-alacritty.yml  /mnt/c/Users/conta/AppData/Roaming/alacritty/alacritty.yml
     report_done
+    report_progress 'Installing Firefox-esr for WSL2'
+        sudo apt install firefox-esr -y
+    report_done
 fi
 
 report_progress 'We will now attempt to enable automated unattended-upgrades'
