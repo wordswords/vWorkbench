@@ -9,11 +9,11 @@ get_os () {
   then
     baseos='osx'
   else
-        if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
-            baseos='windows'
-        else
-            baseos='linux'
-        fi
+    if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+        baseos='windows'
+    else
+        baseos='linux'
+    fi
   fi
   echo $baseos
 }
@@ -21,12 +21,13 @@ get_os () {
 set_firefox_path () {
     if [ "$(get_os)" == "windows" ]; then
         export FIREFOX_BIN="/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
-    fi
-    if [ "$(get_os)" == "linux" ]; then
+    elif [ "$(get_os)" == "linux" ]; then
         export FIREFOX_BIN="firefox"
-    fi
-    if [ "$(get_os)" == "osx" ]; then
+    elif [ "$(get_os)" == "osx" ]; then
         export FIREFOX_BIN="/Applications/Firefox.app/Contents/MacOS/firefox"
+    else
+        echo "Unknown OS"
+        exit 1
     fi
 }
 
