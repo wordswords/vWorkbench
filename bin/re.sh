@@ -2,5 +2,4 @@
 set -e
 shopt -s lastpipe
 read -r input;
-"/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe google inurl:reddit.com" "${input}"
-
+echo "inurl:reddit ${input}" | ~/bin/gg.sh
