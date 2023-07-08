@@ -4,18 +4,18 @@ shopt -s lastpipe
 read -r input;
 
 get_os () {
-  uname_s="$(uname -s)"
-  if echo "$uname_s" | grep 'Darwin' >/dev/null
-  then
-    baseos='osx'
-  else
-    if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
-        baseos='windows'
+    uname_s="$(uname -s)"
+    if echo "$uname_s" | grep 'Darwin' >/dev/null
+    then
+      baseos='osx'
     else
-        baseos='linux'
+      if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+          baseos='windows'
+      else
+          baseos='linux'
+      fi
     fi
-  fi
-  echo $baseos
+    echo $baseos
 }
 
 set_firefox_path () {
