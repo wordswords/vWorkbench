@@ -441,15 +441,19 @@ e.g. method, variable etc.
 4. `gi` to jump to the implementation of the language object under cursor.
 5. `gr` to show all references to the language object under cursor.
 documentation for that feature.
-6. `:help coc-nvim` for the comiplete reference documentation for Coc.vim
+6. `:help coc-nvim` for the complete reference documentation for Coc.vim
 
 ## VIM9 Leader Search Functions
 
 First move the cursor over a word or line and then:
 
-1. `<leader> w` to lookup the current single word on wikipedia
-2. `<leader> b` to lookup the current line with git blame
-3. `<leader> j` to lookup the current issue number under cursor with jira-cli
+1. `<leader> h` to access this help file and to toggle opening and closing
+this file and the outline
+2. `<leader> w` to lookup the current single word on Wikipedia
+3. `<leader> b` to lookup the current line with git blame
+4. `<leader> j` to lookup the current issue number under cursor with jira-cli
+5. `<leader> p` to save the current file as a markdown-formatted code post
+for reddit in the location `~/redditpost.md`
 
 In visual mode you can also do:
 
