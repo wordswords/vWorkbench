@@ -59,6 +59,7 @@ nnoremap <C-v> :call <SID>PasteFromSystemClipboard()<CR>
 function! s:FormatForReddit()
 %s/^/     /g " no need for sendkeys
 w! ~/redditpost.md
+sp ~/redditpost.md
 " \/ undo is better than rereplace
 normal! u
 endfunction
@@ -84,7 +85,7 @@ endfunction
 
 function! s:CloseDotfilesReadme()
 :Vista!!
-:bd
+:windo if expand('%:t') == 'README.md' | q! | endif
 nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 endfunction
 
@@ -398,7 +399,7 @@ function! SetTextAndMarkdownOptions()
   nmap <RIGHT> ]s " next spelling/grammar error
   nmap <F1> :LanguageToolCheck<CR>
   " don't want copilot when writing text
-  call feedkeys(":Copilot disable\<CR>")
+  :Copilot disable
 endfunction
 
 function! SetMakefileOptions()

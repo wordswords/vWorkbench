@@ -454,12 +454,13 @@ this file and the outline
 4. `<leader> j` to lookup the current issue number under cursor with jira-cli
 5. `<leader> p` to save the current file as a markdown-formatted code post
 for reddit in the location `~/redditpost.md`
+6. `<leader> y` to copy the whole current file to the clipboard
 
 In visual mode you can also do:
 
-1. `<leader> g` to open a firefox window with the google results of the lines in the visual
+1. `<leader> g` to open a Firefox window with the google results of the lines in the visual
 selection
-2. `<leader> s` to open a firefox window with the stackoverflow results of the lines in the
+2. `<leader> s` to open a Firefox window with the Stackoverflow results of the lines in the
 visual selection
 
 ## Git Fugitive Workflow
