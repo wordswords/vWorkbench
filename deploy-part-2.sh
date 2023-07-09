@@ -88,6 +88,8 @@ rm -rf ~/.dotfiles/.vim/pack/plugins/start || true
 mkdir -p ~/.dotfiles/.vim/pack/plugins/start
 cd ~/.dotfiles/.vim/pack/plugins/start/ || exit 1
 
+git clone git@github.com:Shougo/denite.nvim.git
+git clone git@github.com:Xuyuanp/nerdtree-git-plugin.git
 git clone git@github.com:dpelle/vim-LanguageTool
 git clone git@github.com:elixir-editors/vim-elixir.git
 git clone git@github.com:jelera/vim-javascript-syntax.git
@@ -95,6 +97,7 @@ git clone git@github.com:junegunn/goyo.vim
 git clone git@github.com:junegunn/limelight.vim
 git clone git@github.com:kana/vim-textobj-user
 git clone git@github.com:liuchengxu/vista.vim.git
+git clone git@github.com:madox2/vim-ai.git
 git clone git@github.com:reedes/vim-lexical
 git clone git@github.com:reedes/vim-litecorrect
 git clone git@github.com:reedes/vim-pencil
@@ -105,14 +108,12 @@ git clone git@github.com:roxma/nvim-yarp.git
 git clone git@github.com:roxma/vim-hug-neovim-rpc
 git clone git@github.com:ryanoasis/vim-devicons.git
 git clone git@github.com:scrooloose/nerdtree.git
-git clone git@github.com:Shougo/denite.nvim.git
-git clone git@github.com:tomasr/molokai.git
 git clone git@github.com:tom-doerr/vim_codex.git
+git clone git@github.com:tomasr/molokai.git
 git clone git@github.com:tpope/vim-bundler.git
 git clone git@github.com:tpope/vim-fugitive.git
 git clone git@github.com:tpope/vim-git
 git clone git@github.com:vim-airline/vim-airline
-git clone git@github.com:Xuyuanp/nerdtree-git-plugin.git
 report_done
 report_progress 'Installing Github Copilot VIM9 plugin'
 rm -rf ~/.vim/pack/github/start/copilot.vim
