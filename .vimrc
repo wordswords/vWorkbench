@@ -55,6 +55,14 @@ function! PasteFromSystemClipboard()
 endfunction
 nnoremap <C-v> :call PasteFromSystemClipboard()<CR>
 
+" Format file for reddit markdown post
+function! FormatForReddit()
+    call feedkeys(":%s/^/     /g\<CR>")
+    call feedkeys(":!w ~/redditpost.md\<CR>")
+    call feedkeys(":%s/^     //g\<CR>")
+endfunction
+nnoremap <C-R> :call FormatForReddit()<CR>
+
 " Foot pedal
 nnoremap <F6> i
 imap <F6> <Esc>
