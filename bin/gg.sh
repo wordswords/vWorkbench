@@ -34,10 +34,12 @@ set_firefox_path () {
 google () {
     TLD=".co.uk"
     search=""
+    encoded=""
     for term in "$@"; do
         search="${search}%20${term}"
     done
-    "${FIREFOX_BIN}" "https://www.google${TLD}/search?q=${search}" &
+    encoded=$(jq -rn --arg x '${search}' '$x|@uri')
+    "${FIREFOX_BIN}" "https://www.google${TLD}/search?q=${encoded}" &
 }
 
 set_firefox_path
