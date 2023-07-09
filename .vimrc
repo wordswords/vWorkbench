@@ -50,28 +50,37 @@ set belloff=all
 let mapleader=","
 
 " Paste from system clipboard
-function! PasteFromSystemClipboard()
-    call feedkeys(":read ! xclip.sh -o 2>/dev/null\<CR>")
+function! s:PasteFromSystemClipboard()
+    :read ! xclip.sh -o 2>/dev/null
 endfunction
 nnoremap <C-v> :call PasteFromSystemClipboard()<CR>
 
-" Format file for reddit markdown post
-function! FormatForReddit()
-    call feedkeys(":%s/^/     /g\<CR>")
-    call feedkeys(":!w ~/redditpost.md\<CR>")
-    call feedkeys(":%s/^     //g\<CR>")
+" Format file for code Reddit markdown post
+function! s:FormatForReddit()
+    %s/^/     /g " no need for sendkeys
+    w! ~/redditpost.md
+    " \/ undo is better than rereplace
+    normal! u
 endfunction
-nnoremap <C-R> :call FormatForReddit()<CR>
+nnoremap <leader>p :call <SID>FormatForReddit()<CR>
 
 " Foot pedal
 nnoremap <F6> i
 imap <F6> <Esc>
 
-function! BringUpDotfilesReadme()
-    call feedkeys(":sp ~/.dotfiles/README.md\<CR>:Vista!!\<CR>")
+" Dotfiles help toggle
+nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
+function! s:BringUpDotfilesReadme()
+    :sp ~/.dotfiles/README.md
+    :Vista!!
+    nnoremap <leader>h :call <SID>CloseDotfilesReadme()<CR>
 endfunction
 
-nnoremap <leader>h :call BringUpDotfilesReadme()<CR>
+function! s:CloseDotfilesReadme()
+    :Vista!!
+    :bd
+nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
+endfunction
 
 " Set gVIM settings to be the same as the terminal
 set t_Co=256

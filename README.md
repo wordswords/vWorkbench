@@ -524,7 +524,7 @@ mode' by prefixing the regex with `\v`.
 group, e.g. surrounded by `(` and `)`. For example, `:s/v(cat) hunting (mice)/\2
 hunting \1` replaces 'cat' hunting 'mice' with 'mice' hunting 'cat.
 4. Vim has a weird non-greedy regex match `.\{-}` which means `.+?`. So to
-strip a document of all its html tags use this: `:%s/<.\{-}>/ /g`.
+strip a document of all its html tags use this: `:%s/<.\{-}>/\r/g`.
 
 ## Wildcards for searching and editing files and directories
 
