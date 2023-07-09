@@ -51,18 +51,24 @@ let mapleader=","
 
 " Paste from system clipboard
 function! s:PasteFromSystemClipboard()
-    :read ! xclip.sh -o 2>/dev/null
+read ! ~/bin/xclip.sh -o 2>/dev/null
 endfunction
-nnoremap <C-v> :call PasteFromSystemClipboard()<CR>
+nnoremap <C-v> :call <SID>PasteFromSystemClipboard()<CR>
 
 " Format file for code Reddit markdown post
 function! s:FormatForReddit()
-    %s/^/     /g " no need for sendkeys
-    w! ~/redditpost.md
-    " \/ undo is better than rereplace
-    normal! u
+%s/^/     /g " no need for sendkeys
+w! ~/redditpost.md
+" \/ undo is better than rereplace
+normal! u
 endfunction
 nnoremap <leader>p :call <SID>FormatForReddit()<CR>
+
+" Yank whole file into clipboard
+function! s:YankFile()
+%yank+
+endfunction
+nnoremap <leader>y :call <SID>YankFile()<CR>
 
 " Foot pedal
 nnoremap <F6> i
@@ -71,14 +77,14 @@ imap <F6> <Esc>
 " Dotfiles help toggle
 nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 function! s:BringUpDotfilesReadme()
-    :sp ~/.dotfiles/README.md
-    :Vista!!
-    nnoremap <leader>h :call <SID>CloseDotfilesReadme()<CR>
+:sp ~/.dotfiles/README.md
+:Vista!!
+nnoremap <leader>h :call <SID>CloseDotfilesReadme()<CR>
 endfunction
 
 function! s:CloseDotfilesReadme()
-    :Vista!!
-    :bd
+:Vista!!
+:bd
 nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 endfunction
 
@@ -119,24 +125,24 @@ vnoremap <leader>o y:read !echo <C-r>=escape(substitute(shellescape(getreg('"'))
 autocmd TextYankPost * call YankDebounced()
 
 function! Yank(timer)
-    call system('win32yank.exe -i --crlf', @")
-    redraw!
+call system('win32yank.exe -i --crlf', @")
+redraw!
 endfunction
 
 let g:yank_debounce_time_ms = 500
 let g:yank_debounce_timer_id = -1
 
 function! YankDebounced()
-    let l:now = localtime()
-    call timer_stop(g:yank_debounce_timer_id)
-    let g:yank_debounce_timer_id = timer_start(g:yank_debounce_time_ms, 'Yank')
+let l:now = localtime()
+call timer_stop(g:yank_debounce_timer_id)
+let g:yank_debounce_timer_id = timer_start(g:yank_debounce_time_ms, 'Yank')
 endfunction
 
 if !has("clipboard") && executable("/mnt/c/windows/system32/clip.exe")
-    noremap <C-c> :call system('~/bin/xclip.sh', GetSelectedText())<CR>
+noremap <C-c> :call system('~/bin/xclip.sh', GetSelectedText())<CR>
 else
-    " We're under Linux, nicer and saner. Copy from visual mode to system keyboard
-    vnoremap <C-c> "+y
+" We're under Linux, nicer and saner. Copy from visual mode to system keyboard
+vnoremap <C-c> "+y
 endif
 " [END] Clipboard synchronisation hackery CONFIG
 
@@ -165,26 +171,26 @@ set signcolumn=yes
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config
 inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
+  \ coc#pum#visible() ? coc#pum#next(1) :
+  \ CheckBackspace() ? "\<Tab>" :
+  \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+                          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
@@ -202,11 +208,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
+if CocAction('hasProvider', 'hover')
+call CocActionAsync('doHover')
+else
+call feedkeys('K', 'in')
+endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor
@@ -220,11 +226,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s)
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+autocmd!
+" Setup formatexpr specified filetype(s)
+autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+" Update signature help on jump placeholder
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying code actions to the selected code block
@@ -260,12 +266,12 @@ omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-j> and <C-k> to scroll float windows/popups
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
-  nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
-  inoremap <silent><nowait><expr> <C-l> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<C-l>"
-  inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<C-h>"
-  vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
-  vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
+nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
+nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
+inoremap <silent><nowait><expr> <C-l> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<C-l>"
+inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<C-h>"
+vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
+vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
 endif
 
 " Use CTRL-S for selections ranges

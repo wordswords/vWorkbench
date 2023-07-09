@@ -6,7 +6,7 @@ source ~/.dotfiles/deploy-common.sh
 cur_os=$(get_os)
 
 RunWin32yank() {
-    if [[ $2 == '-o' ]]; then
+    if [[ $1 == '-o' ]]; then
         win32yank.exe "$@"
     else
         win32yank.exe -i --crlf "$@"
