@@ -55,6 +55,16 @@ read ! ~/bin/xclip.sh -o 2>/dev/null
 endfunction
 nnoremap <C-v> :call <SID>PasteFromSystemClipboard()<CR>
 
+" Google Search the system clipboard
+function! s:GoogleSearch()
+normal! gv"zy
+redir! > /tmp/googlesearchvim
+echo getreg('z')
+redir END
+silent !~/bin/gg.sh
+endfunction
+vnoremap <leader>g :<c-u>call <SID>GoogleSearch()<CR>
+
 " Format file for code Reddit markdown post
 function! s:FormatForReddit()
 %s/^/     /g " no need for sendkeys
@@ -115,36 +125,12 @@ set cursorline cursorcolumn
 " Search visual selection via stackoverflow
 vnoremap <leader>s y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> so.sh 2>/dev/null<CR><CR>
 
-" Search visual selection via google.co.uk
-vnoremap <leader>g y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> gg.sh 2>/dev/null<CR><CR>
-
 " Send visual selection to OpenAI and output the result
 vnoremap <leader>o y:read !echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> ai.sh 2>/dev/null<CR><CR>
 " [END] Visual selection search options CONFIG
 
 " [START] Clipboard synchronisation hackery CONFIG
-autocmd TextYankPost * call YankDebounced()
-
-function! Yank(timer)
-call system('win32yank.exe -i --crlf', @")
-redraw!
-endfunction
-
-let g:yank_debounce_time_ms = 500
-let g:yank_debounce_timer_id = -1
-
-function! YankDebounced()
-let l:now = localtime()
-call timer_stop(g:yank_debounce_timer_id)
-let g:yank_debounce_timer_id = timer_start(g:yank_debounce_time_ms, 'Yank')
-endfunction
-
-if !has("clipboard") && executable("/mnt/c/windows/system32/clip.exe")
-noremap <C-c> :call system('~/bin/xclip.sh', GetSelectedText())<CR>
-else
-" We're under Linux, nicer and saner. Copy from visual mode to system keyboard
 vnoremap <C-c> "+y
-endif
 " [END] Clipboard synchronisation hackery CONFIG
 
 " [START] COC.vim CONFIG
