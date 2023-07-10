@@ -34,7 +34,6 @@ gsearch () {
     ~/bin/urlencode.py
     encoded=$(head -c 1000 /tmp/googlesearchvimencoded)
     url="https://www.google${TLD}/search?q=${encoded}"
-    #rm -rf /tmp/googlesearchvim*
     sleep 1
     eval "${FIREFOX_BIN}" "${url}"
 }

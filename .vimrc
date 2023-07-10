@@ -55,25 +55,27 @@ read ! ~/bin/xclip.sh -o 2>/dev/null
 endfunction
 nnoremap <C-v> :call <SID>PasteFromSystemClipboard()<CR>
 
-" Google Search the system clipboard
+" Google Search the selected text
 function! s:GoogleSearch()
 normal! gv"zy
 redir! > /tmp/googlesearchvim
 echo getreg('z')
 redir END
 silent !~/bin/gg.sh
+redraw!
 endfunction
 vnoremap <leader>g :<c-u>call <SID>GoogleSearch()<CR>
 
 " Format file for code Reddit markdown post
 function! s:FormatForReddit()
-%s/^/     /g " no need for sendkeys
-w! ~/redditpost.md
-sp ~/redditpost.md
-" \/ undo is better than rereplace
-normal! u
+normal! gv"xy
+redir! > /tmp/formatforredditvim
+silent! echo getreg('x')
+redir END
+sp /tmp/formatforredditvim
+%s/^/     /g
 endfunction
-nnoremap <leader>p :call <SID>FormatForReddit()<CR>
+vnoremap <leader>p :<c-u>call <SID>FormatForReddit()<CR>
 
 " Yank whole file into clipboard
 function! s:YankFile()
