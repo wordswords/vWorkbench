@@ -401,11 +401,9 @@ function! SetTextAndMarkdownOptions()
   let g:pencil#cursorwrap = 1     " 0=disable, 1=enable (def)
   setlocal spell
   setlocal nowrap " this is required for special text wrapping
-  "nmap <leader>l <Plug>Ysurroundiw]%a(<C-R>*)<Esc>
   " scroll through spelling/grammar errors
   nmap <LEFT> [s " last spelling/grammar error
   nmap <RIGHT> ]s " next spelling/grammar error
-  nmap <F1> :LanguageToolCheck<CR>
 endfunction
 
 function! SetMakefileOptions()
