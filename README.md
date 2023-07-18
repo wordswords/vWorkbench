@@ -455,6 +455,8 @@ this file and the outline
 5. `<leader> p` to save the current file as a markdown-formatted code post
 for reddit in the location `~/redditpost.md`
 6. `<leader> y` to copy the whole current file to the clipboard
+7. `<leader> l` to run the LanguageToolCheck command on the current file
+8. `<leader> c` to toggle Copilot enable/disable on the current file
 
 In visual mode you can also do:
 

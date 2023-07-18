@@ -101,6 +101,26 @@ function! s:CloseDotfilesReadme()
 nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 endfunction
 
+" Git Copilot toggle
+nnoremap <silent><leader>c :call <SID>ToggleCopilotOff()<CR>
+function! s:ToggleCopilotOff()
+:Copilot disable
+:Copilot status
+nnoremap <silent><leader>c :call <SID>ToggleCopilotOn()<CR>
+endfunction
+
+function! s:ToggleCopilotOn()
+:Copilot enable
+:Copilot status
+nnoremap <silent><leader>c :call <SID>ToggleCopilotOff()<CR>
+endfunction
+
+" Run language tool
+nnoremap <silent><leader>l :call <SID>RunLanguageToolCheck()<CR>
+function! s:RunLanguageToolCheck()
+:LanguageToolCheck
+endfunction
+
 " Set gVIM settings to be the same as the terminal
 set t_Co=256
 
@@ -381,13 +401,11 @@ function! SetTextAndMarkdownOptions()
   let g:pencil#cursorwrap = 1     " 0=disable, 1=enable (def)
   setlocal spell
   setlocal nowrap " this is required for special text wrapping
-  nmap <leader>l <Plug>Ysurroundiw]%a(<C-R>*)<Esc>
+  "nmap <leader>l <Plug>Ysurroundiw]%a(<C-R>*)<Esc>
   " scroll through spelling/grammar errors
   nmap <LEFT> [s " last spelling/grammar error
   nmap <RIGHT> ]s " next spelling/grammar error
   nmap <F1> :LanguageToolCheck<CR>
-  " don't want copilot when writing text
-  :Copilot disable
 endfunction
 
 function! SetMakefileOptions()
