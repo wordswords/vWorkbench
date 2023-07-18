@@ -245,20 +245,6 @@ if [[ $cur_os == 'windows' ]] ; then
     chmod u+x ~/bin/win32yank.exe
     cd -
     rm -rf ~/.dotfiles/win32yank/
-
-	echo
-	echo "-- OPTIONAL EXTRAS -- "
-	echo
-
-    read -rp "Do you want to install/update Firefox for WSL2? (y/yes/N)? " WSLFIREFOXINSTALL
-    case "$WSLFIREFOXINSTALL" in
-        Y|y|yes)
-            ~/.dotfiles/bin/wsl2-firefox.sh
-        ;;
-        *)
-            true
-        ;;
-    esac
 fi
 report_done
 report_progress 'Running any Linux specific configuration'
