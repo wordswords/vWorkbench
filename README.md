@@ -394,19 +394,18 @@ then you can quickly insert it in the text input on the browser.
 1. `<LEFT>`       - prev text error
 2. `<RIGHT>`      - next text error
 3. `<UP>`         - toggle Nerdtree
-3. `<DOWN>`       - toggle Vista
-5. `<F1>`         - Run `:LanguageToolCheck`, a Java-based spelling and grammar checker
-6. `zg`           - Mark as a good word
-7. `zw`           - Like `zg` but mark the word as a wrong (bad) word
-8. `zug`          - Unmark as good word
-9. `zuw`          - Unmark as wrong (bad) word
-10. `z=`           - For the word under/after the cursor suggest correctly spelled
+4. `<DOWN>`       - toggle Vista
+5. `zg`           - Mark as a good word
+6. `zw`           - Like `zg` but mark the word as a wrong (bad) word
+7. `zug`          - Unmark as good word
+8. `zuw`          - Unmark as wrong (bad) word
+9. `z=`           - For the word under/after the cursor suggest correctly spelled
 words
-11. `1z=`         - Use the first suggestion, without prompting
-12. `.`           - Redo - repeat last word replacement
-13. `:spellr`     - Repeat the replacement done by `z=` for all matches with the
+10. `1z=`         - Use the first suggestion, without prompting
+11. `.`           - Redo - repeat last word replacement
+12. `:spellr`     - Repeat the replacement done by `z=` for all matches with the
 replaced word in the current window
-14. `<F12>`       - Toggle 'Goyo' distraction-free mode.
+13. `<F12>`       - Toggle 'Goyo' distraction-free mode.
 
 [![asciicast](https://asciinema.org/a/518234.svg)](https://asciinema.org/a/518234)
 
