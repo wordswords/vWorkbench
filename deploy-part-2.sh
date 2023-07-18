@@ -108,7 +108,6 @@ git clone git@github.com:roxma/nvim-yarp.git
 git clone git@github.com:roxma/vim-hug-neovim-rpc
 git clone git@github.com:ryanoasis/vim-devicons.git
 git clone git@github.com:scrooloose/nerdtree.git
-git clone git@github.com:tom-doerr/vim_codex.git
 git clone git@github.com:tomasr/molokai.git
 git clone git@github.com:tpope/vim-bundler.git
 git clone git@github.com:tpope/vim-fugitive.git
@@ -127,12 +126,6 @@ report_progress 'Patching NerdTree to remove deprecated error'
 cp ~/.dotfiles/nerdtree_plugin_fix.diff ~/.vim/pack/plugins/start/nerdtree-git-plugin/nerdtree_plugin
 cd ~/.vim/pack/plugins/start/nerdtree-git-plugin/nerdtree_plugin
 patch -p1 < nerdtree_plugin_fix.diff
-cd -
-report_done
-report_progress 'Patching vim_codex to make it work post OpenAI Codex shutdown'
-cp ~/.dotfiles/vim_codex_patch.diff ~/.vim/pack/plugins/start/vim_codex/python
-cd ~/.vim/pack/plugins/start/vim_codex/python/
-patch -p1 < vim_codex_patch.diff
 cd -
 report_done
 report_progress 'Installing vim colorscheme'
