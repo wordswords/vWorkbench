@@ -60,7 +60,7 @@ JustDown ./calibre-comics
 PruneUnusuedContainers
 PruneNetworks
 #JustUpdate ./explainshell/explainshell
-JustUpdate ./lidarr
+#JustUpdate ./lidarr
 JustUpdate ./prowlarr
 JustUpdate ./qbtorrent
 #BuildLocalAndTag ./docker-calibre-web calibre-web:dchq
