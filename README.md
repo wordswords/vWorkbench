@@ -962,6 +962,3 @@ A compact summary of commits to a directory or file, e.g. `git logline
 
 If you want, you can fork this repo and base your config on this. If you have
 any problems using these dotfiles please let me know and I can help you.
-
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
