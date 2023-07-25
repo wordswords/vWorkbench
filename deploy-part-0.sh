@@ -115,11 +115,8 @@ report_progress 'Nuke current node install'
     sudo rm -rf /usr/local/lib/node_modules/*
 report_done
 report_progress 'Installing latest nodejs'
-    # Install latest nodejs
-    curl -sfLS install-node.vercel.app/lts >node-lts.sh
-    chmod u+x node-lts.sh
-    sudo ./node-lts.sh --yes
-    rm ./node-lts.sh
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
+    sudo apt-get install -y nodejs
 report_done
 export PATH="/usr/local/bin/:$PATH"
 report_progress 'Install vint for vim script linting'
