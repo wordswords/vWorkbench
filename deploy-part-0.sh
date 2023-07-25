@@ -114,6 +114,8 @@ report_progress 'Nuke current node install'
     sudo apt remove nodejs -y
     sudo apt remove npm -y
     sudo rm -rf /usr/lib/node_modules/*
+    sudo rm /bin/node
+    sudo rm /bin/nodejs
 report_done
 report_progress 'Installing latest nodejs'
     sudo apt install nodejs npm build-essential -y
