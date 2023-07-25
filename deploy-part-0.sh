@@ -112,7 +112,7 @@ report_progress 'Install docker-compose'
 report_done
 report_progress 'Nuke current node install'
     sudo apt remove nodejs -y
-    sudo rm -rf /usr/local/lib/node_modules/*
+    sudo rm -rf /usr/lib/node_modules/*
 report_done
 report_progress 'Installing latest nodejs'
     curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
