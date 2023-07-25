@@ -26,6 +26,12 @@ report_done
 report_progress 'Ensure home directory permissions are set securely'
    ~/.dotfiles/bin/secure-home-dir-perms.sh
 report_done
+report_progress 'Install Git'
+    sudo apt-get install git -y
+report_done
+report_progress 'Clone hqconfig repository for server configuration'
+    git clone git@github.com:wordswords/hqconfig.git ~/.dotfiles/hqconfig
+report_done
 
 # Main lines
 report_progress 'Upgrade all packages/distro to latest version'
@@ -39,9 +45,6 @@ report_done
 report_progress 'Install Speedtest from ookla for testing network speed'
     curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
     sudo apt-get install speedtest -y
-report_done
-report_progress 'Install Git'
-    sudo apt-get install git -y
 report_done
 report_progress 'Install Python 3 used for vim plugins'
     sudo apt-get install python3 -y
