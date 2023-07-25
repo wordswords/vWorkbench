@@ -19,7 +19,7 @@ report_progress 'Running ctags'
 ctags -R ./*
 report_done
 report_progress 'Installing bash-language-server through npm'
-sudo npm install -g bash-language-server
+npm install -g bash-language-server
 report_done
 report_progress 'Install LanguageTool grammar checker'
 cd ~/.dotfiles
@@ -147,7 +147,7 @@ cd ~/.config/coc/extensions
 echo '{"dependencies":{}}' >package.json
 
 # Change extension names to the extensions you need
-sudo npm install \
+npm install \
 	coc-css \
 	coc-html \
 	coc-json \
@@ -159,7 +159,7 @@ sudo npm install \
 	coc-tsserver \
 	coc-vimlsp \
 	--global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-sudo npm install -g vim-language-server
+npm install -g vim-language-server
 report_done
 report_progress 'Installing pynvim for python integration with vim'
 pip3 install --user pynvim
