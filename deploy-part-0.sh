@@ -115,10 +115,7 @@ report_progress 'Nuke current node install'
     sudo rm -rf /usr/lib/node_modules/*
 report_done
 report_progress 'Installing latest nodejs'
-    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
     sudo apt install nodejs -y
-    sudo chown -R root:users /usr/lib/ 2>/dev/null || true
-    sudo chmod -R 755 /usr/lib/ 2>/dev/null || true
     sudo chmod -R 775 /usr/lib/node_modules/ 2>/dev/null || true
 report_done
 export PATH="/usr/local/bin/:$PATH"
