@@ -147,3 +147,7 @@ tramsprint
 echo '' # BLANK LINE
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 #zprof #- Uncomment this to profile zsh startup
+
+# fnm
+export PATH="/home/david/.local/share/fnm:$PATH"
+eval "`fnm env`"

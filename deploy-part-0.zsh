@@ -124,7 +124,6 @@ report_done
 report_progress 'Installing fnm node version manager and using it to install node lts'
  curl -fsSL https://fnm.vercel.app/install | bash
  export PATH="/home/david/.local/share/fnm:$PATH"
- alias rehash='hash -r'
  eval "`fnm env`"
  fnm install --lts
 report_done

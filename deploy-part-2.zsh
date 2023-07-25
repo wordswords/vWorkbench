@@ -6,6 +6,10 @@
 # Load in status message printing functions
 source ./deploy-common.sh
 
+# only needed because fnm has just been installed..
+export PATH="/home/david/.local/share/fnm:$PATH"
+eval "`fnm env`"
+
 set -e
 set -x
 
