@@ -47,9 +47,11 @@ report_progress 'Install Speedtest from ookla for testing network speed'
     curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
     sudo apt-get install speedtest -y
 report_done
-report_progress 'Install Python 3 used for vim plugins'
+report_progress 'Install Python used for vim plugins'
     sudo apt-get install python3 -y
     sudo apt-get install python3-pip -y
+    pip install --upgrade pip # upgrade python2 (!) pip
+    pip3 install --upgrade pip # upgrade python3
 report_done
 report_progress 'Install latest open JDK used for LanguageTool'
     sudo apt-get install default-jdk -y
