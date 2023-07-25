@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # vim: foldmethod=marker foldmarker=report_progress,report_done
 
 set -e
@@ -113,17 +113,21 @@ report_done
 report_progress 'Nuke current node install'
     sudo apt remove nodejs -y
     sudo apt remove npm -y
-    sudo rm -rf /usr/lib/node_modules/*
+    sudo rm -rf /usr/lib/node_modules
     sudo rm -f /bin/node
+    sudo rm -f /bin/npm
     sudo rm -f /bin/nodejs
+    sudo rm -f /usr/local/bin/node
+    sudo rm -f /usr/local/bin/npm
+    sudo rm -f /usr/local/bin/nodejs
 report_done
-report_progress 'Installing latest nodejs'
-    curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-    sudo apt update
-    sudo apt install nodejs npm build-essential -y
-    sudo chmod -R 775 /usr/lib/node_modules/ 2>/dev/null || true
+report_progress 'Installing fnm node version manager and using it to install node lts'
+ curl -fsSL https://fnm.vercel.app/install | bash
+ export PATH="/home/david/.local/share/fnm:$PATH"
+ alias rehash='hash -r'
+ eval "`fnm env`"
+ fnm install --lts
 report_done
-export PATH="/usr/local/bin/:$PATH"
 report_progress 'Install vint for vim script linting'
     pip3 install vint
 report_done
