@@ -120,7 +120,6 @@ report_done
 report_progress 'Installing latest nodejs'
     sudo apt install nodejs npm build-essential -y
     sudo chmod -R 775 /usr/lib/node_modules/ 2>/dev/null || true
-    export PATH="/usr/local/bin/:${PATH}"
 report_done
 export PATH="/usr/local/bin/:$PATH"
 report_progress 'Install vint for vim script linting'
