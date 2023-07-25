@@ -30,6 +30,7 @@ report_progress 'Install Git'
     sudo apt-get install git -y
 report_done
 report_progress 'Clone hqconfig repository for server configuration'
+    rm -rf ~/.hqconfig
     git clone git@github.com:wordswords/hqconfig.git ~/.hqconfig
     ln -s ~/.hqconfig ~/.dotfiles/hqconfig
 report_done
