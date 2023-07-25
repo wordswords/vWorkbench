@@ -110,6 +110,10 @@ report_done
 report_progress 'Install docker-compose'
     sudo apt-get install docker-compose  -y
 report_done
+report_progress 'Nuke current node install'
+    sudo apt remove nodejs -y
+    sudo rm -rf /usr/local/lib/node_modules/*
+report_done
 report_progress 'Installing latest nodejs'
     # Install latest nodejs
     curl -sfLS install-node.vercel.app/lts >node-lts.sh
@@ -121,14 +125,12 @@ export PATH="/usr/local/bin/:$PATH"
 report_progress 'Install vint for vim script linting'
     pip3 install vint
 report_done
-# write-good currently doesn't work with latest node lts
-#report_progress 'Install write-good for markdown English betterment'
-#    npm install -g write-good
-#report_done
-# markdown-cli currently doesn't work with latest node lts
-#report_progress 'Install markdownlint-cli for markdown English betterment'
-#    npm install -g markdownlint-cli
-#report_done
+report_progress 'Install write-good for markdown English betterment'
+    npm install -g write-good
+report_done
+report_progress 'Install markdownlint-cli for markdown English betterment'
+    npm install -g markdownlint-cli
+report_done
 report_progress 'Install yamllint'
     sudo apt install yamllint -y
 report_done
