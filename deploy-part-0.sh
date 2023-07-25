@@ -112,10 +112,11 @@ report_progress 'Install docker-compose'
 report_done
 report_progress 'Nuke current node install'
     sudo apt remove nodejs -y
+    sudo apt remove npm -y
     sudo rm -rf /usr/lib/node_modules/*
 report_done
 report_progress 'Installing latest nodejs'
-    sudo apt install nodejs -y
+    sudo apt install nodejs npm build-essential -y
     sudo chmod -R 775 /usr/lib/node_modules/ 2>/dev/null || true
 report_done
 export PATH="/usr/local/bin/:$PATH"
