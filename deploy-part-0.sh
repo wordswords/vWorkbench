@@ -125,9 +125,10 @@ report_done
 #report_progress 'Install write-good for markdown English betterment'
 #    npm install -g write-good
 #report_done
-report_progress 'Install markdownlint-cli for markdown English betterment'
-    npm install -g markdownlint-cli
-report_done
+# markdown-cli currently doesn't work with latest node lts
+#report_progress 'Install markdownlint-cli for markdown English betterment'
+#    npm install -g markdownlint-cli
+#report_done
 report_progress 'Install yamllint'
     sudo apt install yamllint -y
 report_done
