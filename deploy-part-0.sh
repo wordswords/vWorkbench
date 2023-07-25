@@ -117,6 +117,7 @@ report_done
 report_progress 'Installing latest nodejs'
     curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
     sudo apt-get install -y nodejs
+    sudo chown -R david:users /usr/local/lib/node_modules/
 report_done
 export PATH="/usr/local/bin/:$PATH"
 report_progress 'Install vint for vim script linting'
