@@ -19,7 +19,7 @@ report_progress 'Running ctags'
 ctags -R ./*
 report_done
 report_progress 'Installing bash-language-server through npm'
-npm install -g bash-language-server
+sudo npm install -g bash-language-server
 report_done
 report_progress 'Install LanguageTool grammar checker'
 cd ~/.dotfiles
@@ -147,7 +147,7 @@ cd ~/.config/coc/extensions
 echo '{"dependencies":{}}' >package.json
 
 # Change extension names to the extensions you need
-npm install \
+sudo npm install \
 	coc-css \
 	coc-html \
 	coc-json \
