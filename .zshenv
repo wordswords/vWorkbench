@@ -77,6 +77,3 @@ autoload -Uz getweather
 
 ## [-- CUSTOM ZSH FUNCTIONS --]
 
-## [++ FOR RUST ++]
-ls ~ | grep -q config >/dev/null 2>/dev/null && source "~/.cargo/env"
-## [-- FOR RUST --
