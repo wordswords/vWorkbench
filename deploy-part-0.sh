@@ -31,7 +31,7 @@ report_progress 'Install Git'
 report_done
 report_progress 'Clone hqconfig repository for server configuration'
     git clone git@github.com:wordswords/hqconfig.git ~/.hqconfig
-    sudo ln -s ~/.hqconfig ~/.dotfiles/hqconfig
+    ln -s ~/.hqconfig ~/.dotfiles/hqconfig
 report_done
 
 # Main lines
