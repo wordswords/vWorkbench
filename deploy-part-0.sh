@@ -125,10 +125,10 @@ report_progress 'Install vint for vim script linting'
     pip3 install vint
 report_done
 report_progress 'Install write-good for markdown English betterment'
-    npm install -g write-good
+    sudo npm install -g write-good
 report_done
 report_progress 'Install markdownlint-cli for markdown English betterment'
-    npm install -g markdownlint-cli
+    sudo npm install -g markdownlint-cli
 report_done
 report_progress 'Install yamllint'
     sudo apt install yamllint -y
