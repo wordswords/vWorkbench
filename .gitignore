@@ -19,4 +19,5 @@ hqconfig/pihole/etc-dnsmasq.d
 hqconfig/pihole/etc-pihole
 bin/trams
 hqconfig/
+hqconfig/**
 
