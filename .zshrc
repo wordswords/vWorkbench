@@ -141,6 +141,8 @@ updatedotfiles
 fortuneprint
 ttyprint
 tmuxsessionsprint
+extipprint
+echo "\n"
 #checkbackup
 getweather
 tramsprint

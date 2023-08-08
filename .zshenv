@@ -32,9 +32,17 @@ ttyprint() {
 }
 autoload -Uz ttyprint
 
+
+extipprint() {
+    echo "[-- External IP location:"
+    curl https://ifconfig.co/json 2>/dev/null | grep zip_code
+    curl https://ifconfig.co/json 2>/dev/null | grep city
+    echo " --]"
+}
+autoload -Uz extipprint
+
 tmuxsessionsprint() {
     echo "[-- Tmux sessions: \e[0;35m$(tmux ls 2>&1)\e[0m --]"
-    echo "\n"
 }
 autoload -Uz tmuxsessionsprint
 
