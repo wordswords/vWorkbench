@@ -54,5 +54,7 @@ Finally, I really recommend writing reviews of your books and reading others rev
 
 Goodreads.com is my favourite review site, it's one of the most extensive.
 
-"That's what I do. I read books, and I know things."
+## Summary
+
+To paraphrase George R R Martin - "That's what I do. I read books, and I know things."
 
