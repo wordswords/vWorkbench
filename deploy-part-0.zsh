@@ -175,6 +175,16 @@ report_done
 report_progress 'Installing epy a command line epub reader'
     pip3 install git+https://github.com/wustho/epy
 report_done
+report_progress 'Installing winbox wine snap'
+    sudo snap install winbox
+    sudo ufw allow 5678/udp
+    sudo ufw reload
+report_done
+report_progress 'Installing Appimage Launcher'
+    sudo add-apt-repository ppa:appimagelauncher-team/stable -y
+    sudo apt update 
+    sudo apt install appimagelauncher -y
+report_done
 
 # os-specific lines
 cur_os=$(get_os)
