@@ -231,7 +231,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || cd ~/.tmux/
 report_done
 report_progress 'Installing tmuxinator'
 sudo chown -R david /var/lib/gems || true
-gem install tmuxinator
+sudo gem install tmuxinator
 report_done
 report_progress 'Configuring tmuxinator'
 mkdir -p ~/.config/tmuxinator
