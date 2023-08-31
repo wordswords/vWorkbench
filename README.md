@@ -79,10 +79,10 @@
 
 My development environment setup with heavily custom settings.
 
-I test this mainly on my the latest Ubuntu LTS, and
-on my W11 box running Ubuntu under WSL2. I also test it under Lubuntu.
-I haven't tested it on OSX for ages, and can pretty much guarantee
-it won't run on that without a lot of work.
+I'm testing this on Ubuntu 23.01 and on my W11 box running Ubuntu under WSL2.
+I also test it under the latest Lubuntu LTS.
+I haven't tested it on OSX for ages, and can pretty much guarantee it won't
+run on that without a lot of work.
 
 ## Demo Video
 
