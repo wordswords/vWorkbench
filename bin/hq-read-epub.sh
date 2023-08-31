@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Remotely connects to my home server and allows me to read an epub in the terminal.
+
 set -e
 
 QUERY="$*"
