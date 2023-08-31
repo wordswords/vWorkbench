@@ -2,8 +2,9 @@
 
 set -e
 BOOKPATHROOT=/mnt/ebooks
+PARAMS="*$**.epub"
 
-params="*$**.epub"
-bookpath=$(find "${BOOKPATHROOT}" -type f -iname "${params}" 2>/dev/null | fzf --disabled)
+cd "${BOOKPATHROOT}"
+bookpath=$(find . -type f -iname "${PARAMS}" 2>/dev/null | sort -r | fzf --disabled)
 epy "${bookpath}"
-
+cd -
