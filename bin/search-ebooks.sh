@@ -2,5 +2,6 @@
 
 set -e
 params="*$**.epub"
-epy $(find /mnt/ebooks -type f -iname "${params}" | fzf)
+bookpath=$(find /mnt/ebooks -type f -iname "${params}" | fzf --disabled)
+epy "${bookpath}"
 
