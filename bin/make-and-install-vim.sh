@@ -6,7 +6,8 @@ VERSION="9.0"
 
 TMP_DIR=$(mktemp -d)
 cd "${TMP_DIR}"
-sudo apt install libxt-dev libpython3-dev -y
+sudo apt remove vim vim-gtk3 -y
+sudo apt install libxt-dev libpython3-dev libncurses-dev -y
 wget https://www.mirrorservice.org/pub/vim/unix/vim-${VERSION}.tar.bz2
 bunzip2 vim*bz2
 tar xf vim*tar
