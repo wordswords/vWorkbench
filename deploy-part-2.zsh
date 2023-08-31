@@ -177,12 +177,8 @@ git config --global user.email "$(tr <~/.dotfiles/secretseadd 'N-ZA-Mn-za-m' 'A-
 set +x
 report_done
 report_progress 'Installing and configuring Joplin CLI notetaking app'
-(which joplin-cli 2>/dev/null && npm update -g joplin) ||
-	(NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin && sudo ln -s ~/.joplin-bin/bin/joplin /usr/bin/joplin-cli)
-report_done
-report_progress 'Import Joplin config, enable encryption and sync notes'
-(which jopli-cli 2>/dev/null) && (/usr/bin/joplin-cli config --import <~/.dotfiles/joplin.config) &&
-	joplin-cli e2ee enable && joplin-cli sync
+NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
+sudo ln -s ~/.joplin-bin/bin/joplin /bin/joplin-cli)
 report_done
 report_progress 'Changing shell to /bin/zsh.'
 sudo chsh -s "$(which zsh)" "$(whoami)"
