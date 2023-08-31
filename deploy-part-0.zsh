@@ -39,10 +39,8 @@ report_done
 report_progress 'Upgrade all packages/distro to latest version'
     sudo apt-get update -y && sudo apt-get dist-upgrade -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y
 report_done
-report_progress 'Upgrade VIM to latest version using third-party repo'
-    sudo add-apt-repository ppa:jonathonf/vim -y
-    sudo apt-get update -y && sudo apt-get upgrade -y
-    sudo apt-get install vim-gtk3 -y || sudo apt-get upgrade vim-gtk3 -y
+report_progress 'Download compile and install VIM on Ubuntu'
+    ~/.dotfiles/bin/make-and-install-vim.sh
 report_done
 report_progress 'Install Speedtest from ookla for testing network speed'
     curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
