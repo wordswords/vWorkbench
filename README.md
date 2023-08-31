@@ -72,6 +72,7 @@
       * [repos.sh](#repossh)
       * [blameline](#blameline)
       * [git logline](#git-logline)
+      * [make-and-install-vim.sh](#make-and-install-vimsh)
 * [Modifying](#modifying)
 <!--te-->
 
