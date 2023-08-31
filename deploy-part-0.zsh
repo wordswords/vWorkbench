@@ -118,6 +118,7 @@ report_progress 'Nuke current node install'
     sudo rm -f /usr/local/bin/nodejs
 report_done
 report_progress 'Installing fnm node version manager and using it to install node lts'
+ sudo apt install unzip -y
  curl -fsSL https://fnm.vercel.app/install | bash
  export PATH="/home/david/.local/share/fnm:$PATH"
  eval "`fnm env`"
