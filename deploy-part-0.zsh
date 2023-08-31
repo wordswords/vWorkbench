@@ -55,6 +55,9 @@ report_done
 report_progress 'Install latest open JDK used for LanguageTool'
     sudo apt-get install default-jdk -y
 report_done
+report_progress 'Install Ruby, used for a few things'
+    sudo apt-get install ruby -y
+report_done
 report_progress 'Install zsh the best shell (so far)'
     sudo apt-get install zsh -y
 report_done
