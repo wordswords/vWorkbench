@@ -39,12 +39,11 @@ report_done
 report_progress 'Upgrade all packages/distro to latest version'
     sudo apt-get update -y && sudo apt-get dist-upgrade -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y
 report_done
-report_progress 'Download compile and install VIM on Ubuntu'
+report_progress 'Download compile and install VIM9 on Ubuntu'
     ~/.dotfiles/bin/make-and-install-vim.sh
 report_done
 report_progress 'Install Speedtest from ookla for testing network speed'
-    curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
-    sudo apt-get install speedtest -y
+    pip install speedtest-cli
 report_done
 report_progress 'Install Python used for vim plugins'
     sudo apt-get install python3 -y
@@ -95,9 +94,7 @@ report_progress 'Install Nmap for Network admin'
     sudo apt-get install nmap -y
 report_done
 report_progress 'Install asciicinema for screencasts'
-    sudo apt-add-repository ppa:zanchey/asciinema -y
-    sudo apt-get update
-    sudo apt-get install asciinema -y
+    sudo pip3 install asciinema
 report_done
 report_progress 'Install shfmt for shell script formatting'
     sudo apt-get install shfmt -y
@@ -174,14 +171,9 @@ report_progress 'Installing epy a command line epub reader'
     pip3 install git+https://github.com/wustho/epy
 report_done
 report_progress 'Installing winbox wine snap'
-    sudo snap install winbox
+    sudo snap refresh winbox || sudo snap install winbox
     sudo ufw allow 5678/udp
     sudo ufw reload
-report_done
-report_progress 'Installing Appimage Launcher'
-    sudo add-apt-repository ppa:appimagelauncher-team/stable -y
-    sudo apt update 
-    sudo apt install appimagelauncher -y
 report_done
 
 # os-specific lines

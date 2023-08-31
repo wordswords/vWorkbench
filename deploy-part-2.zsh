@@ -178,7 +178,7 @@ set +x
 report_done
 report_progress 'Installing and configuring Joplin CLI notetaking app'
 NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
-sudo ln -s ~/.joplin-bin/bin/joplin /bin/joplin-cli)
+sudo ln -sf ~/.joplin-bin/bin/joplin /bin/joplin-cli
 report_done
 report_progress 'Changing shell to /bin/zsh.'
 sudo chsh -s "$(which zsh)" "$(whoami)"
@@ -295,6 +295,9 @@ fi
 report_done
 report_progress "Outputting 24-bit console colour test - there should be no banding!"
 ~/.dotfiles/bin/24-bit-color.sh
+report_done
+report_progress "Outputting speedtest results"
+speedtest-cli
 report_done
 report_progress "Deploy Process: Complete"
 echo
