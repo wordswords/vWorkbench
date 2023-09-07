@@ -19,6 +19,7 @@ if [[ ! -d ~/.dotfiles/SECRETS ]] ; then
     echo "SECRETS directory does not exist.  Please create it and put your secrets in it. Running config tool:"
     ~/.dotfiles/bin/setup-secrets-dir.sh
 fi
+source ~/.dotfiles/SECRETS/vimz_config.sh
 report_done
 report_progress 'Creating ~/.secure directory'
     mkdir -p ~/.secure
@@ -123,7 +124,7 @@ report_done
 report_progress 'Installing fnm node version manager and using it to install node lts'
  sudo apt install unzip -y
  curl -fsSL https://fnm.vercel.app/install | bash
- export PATH="/home/david/.local/share/fnm:$PATH"
+ export PATH="/home/${VIMZ_USER}/.local/share/fnm:$PATH"
  eval "`fnm env`"
  fnm install --lts
 report_done
