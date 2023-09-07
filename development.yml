@@ -1,4 +1,4 @@
-# /home/david/.config/tmuxinator/development.yml
+# ~/.config/tmuxinator/development.yml
 
 name: development
 root: ~/workspace
