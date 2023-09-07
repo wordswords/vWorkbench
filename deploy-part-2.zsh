@@ -6,8 +6,11 @@
 # Load in status message printing functions
 source ./deploy-common.sh
 
+# Load in vimz config variables
+source ~/.dotfiles/SECRETS/vimz_config.sh
+
 # only needed because fnm has just been installed..
-export PATH="/home/david/.local/share/fnm:$PATH"
+export PATH="/home/${VIMZ_USER}/.local/share/fnm:$PATH"
 eval "`fnm env`"
 
 set -e
@@ -169,11 +172,11 @@ report_progress 'Installing pynvim for python integration with vim'
 pip3 install --user pynvim
 pip3 install jedi
 report_done
-report_progress 'Setting default git config.. change this if you are not David Craddock!'
+report_progress 'Setting default git config..'
 rm ~/.gitconfig
 cp ~/.dotfiles/.gitconfig ~/.gitconfig
 set -x
-git config --global user.email "$(tr <~/.dotfiles/secretseadd 'N-ZA-Mn-za-m' 'A-Za-z')"
+git config --global user.email "${VIMZ_EMAIL}"
 set +x
 report_done
 report_progress 'Installing and configuring Joplin CLI notetaking app'
@@ -212,13 +215,6 @@ echo '''
 vim -s ~/.dotfiles/vimscript.vs
 rm ~/.dotfiles/vimscript.vs
 report_done
-#report_progress 'Installing Elixir development toolset'
-#rm -rf ~/.elixir-ls
-#git clone https://github.com/elixir-lsp/elixir-ls.git ~/.elixir-ls
-#cd ~/.elixir-ls
-#mix deps.get
-#mix compile
-#report_done
 report_progress 'Python3 + OpenAI codex development toolset'
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade --force-reinstall aiohttp openai
@@ -227,7 +223,7 @@ report_progress 'Installing tmux plugin manager'
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || cd ~/.tmux/plugins/tpm && git pull && cd -
 report_done
 report_progress 'Installing tmuxinator'
-sudo chown -R david /var/lib/gems || true
+sudo chown -R ${VIMZ_USER} /var/lib/gems || true
 sudo gem install tmuxinator
 report_done
 report_progress 'Configuring tmuxinator'
@@ -250,13 +246,6 @@ fi
 report_done
 report_progress 'Running any Linux specific configuration'
 if [[ $cur_os == 'linux' ]] ; then
-
-    # workrave settings.. currently not working
-	#gsettings set org.workrave.timers.daily-limit limit 14400
-	#gsettings set org.workrave.timers.rest-break limit 2700
-	#gsettings set org.workrave.breaks.daily-limit enabled true
-	#gsettings set org.workrave.breaks.rest-break enabled true
-	#gsettings set org.workrave.breaks.micro-pause enabled false
 
     # disable touchpad tap to click
 	gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
