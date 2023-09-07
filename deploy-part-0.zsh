@@ -16,8 +16,8 @@ report_progress 'Restoring last modified dates for .dotfiles'
 report_done
 report_progress 'Checking for existence of SECRETS directory'
 if [[ ! -d ~/.dotfiles/SECRETS ]] ; then
-    echo "ERROR: SECRETS directory does not exist.  Please create it and put your secrets in it."
-    exit 1
+    echo "SECRETS directory does not exist.  Please create it and put your secrets in it. Running config tool:"
+    ~/.dotfiles/bin/setup-secrets-dir.sh
 fi
 report_done
 report_progress 'Creating ~/.secure directory'
