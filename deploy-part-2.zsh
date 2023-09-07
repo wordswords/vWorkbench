@@ -4,21 +4,21 @@
 ## To be run after the previous two deploy scripts
 
 # Load in status message printing functions
+set -e
+set -x
 source ./deploy-common.sh
 
 # Load in vimz config variables
 source ~/.dotfiles/SECRETS/vimz_config.sh
 
 # only needed because fnm has just been installed..
-export PATH="/home/${VIMZ_USER}/.local/share/fnm:$PATH"
+export PATH="/home/${USER}/.local/share/fnm:$PATH"
 eval "`fnm env`"
 
-set -e
-set -x
 
 report_heading 'Deploy Dotfiles: Part 2'
 report_progress 'Testing Github access'
-ssh -T git@github.com 2>/tmp/githubaccesscheck.txt || echo ""
+ssh -T git@github.com >/tmp/githubaccesscheck.txt || echo ""
 grep 'successfully authenticated' /tmp/githubaccesscheck.txt || (echo ERROR: Github acccess not available && exit 1)
 rm /tmp/githubaccesscheck.txt
 report_done
