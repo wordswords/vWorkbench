@@ -12,7 +12,7 @@ source ./deploy-common.sh
 source ~/.dotfiles/SECRETS/vimz_config.sh
 
 # only needed because fnm has just been installed..
-export PATH="/home/${USER}/.local/share/fnm:$PATH"
+export PATH="/home/${VIMZ_USER}/.local/share/fnm:$PATH"
 eval "`fnm env`"
 
 
