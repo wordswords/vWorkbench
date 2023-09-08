@@ -12,12 +12,12 @@ source ./deploy-common.sh
 source ~/.dotfiles/SECRETS/vimz_config.sh
 
 # only needed because fnm has just been installed..
-export PATH="/home/${VIMZ_USER}/.local/share/fnm:$PATH"
-eval "`fnm env`"
+#export PATH="/home/${VIMZ_USER}/.local/share/fnm:$PATH"
+#eval "`fnm env`"
 
 report_heading 'Deploy Dotfiles: Part 2'
 report_progress 'Testing Github access'
-ssh -T git@github.com >/tmp/githubaccesscheck.txt || echo ""
+ssh -T git@github.com 2>/tmp/githubaccesscheck.txt || echo ""
 grep 'successfully authenticated' /tmp/githubaccesscheck.txt || (echo ERROR: Github acccess not available && exit 1)
 rm /tmp/githubaccesscheck.txt
 report_done
