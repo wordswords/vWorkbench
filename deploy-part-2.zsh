@@ -15,7 +15,6 @@ source ~/.dotfiles/SECRETS/vimz_config.sh
 export PATH="/home/${VIMZ_USER}/.local/share/fnm:$PATH"
 eval "`fnm env`"
 
-
 report_heading 'Deploy Dotfiles: Part 2'
 report_progress 'Testing Github access'
 ssh -T git@github.com >/tmp/githubaccesscheck.txt || echo ""

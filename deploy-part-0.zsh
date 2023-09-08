@@ -124,7 +124,7 @@ report_done
 report_progress 'Installing fnm node version manager and using it to install node lts'
  sudo apt install unzip -y
  curl -fsSL https://fnm.vercel.app/install | bash
- export PATH="/home/${VIMZ_USER}/.local/share/fnm:$PATH"
+ export PATH="/home/${USER}/.local/share/fnm:$PATH"
  eval "`fnm env`"
  fnm install --lts
 report_done
