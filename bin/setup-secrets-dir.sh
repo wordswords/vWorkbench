@@ -5,7 +5,7 @@ set -x
 
 rm -rf ~/.dotfiles/SECRETS_TEMPLATE_PROC
 cp -r ~/.dotfiles/SECRETS_TEMPLATE ~/.dotfiles/SECRETS_TEMPLATE_PROC
-cp -r ~/.dotfiles/SECRETS ~/.dotfiles/.SECRETS_BACKUP
+cp -r ~/.dotfiles/SECRETS ~/.dotfiles/.SECRETS_BACKUP || true
 
 echo "Building configuration.."
 read -rp "Enter BORG Backup Passphrase:" VIMZ_BORG_PASSPHRASE
