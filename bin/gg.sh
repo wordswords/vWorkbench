@@ -24,7 +24,7 @@ gsearch () {
     if [ "$os" == "windows" ]; then
         FIREFOX_BIN="/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe"
     elif [ "$os" == "linux" ]; then
-        FIREFOX_BIN="firefox"
+        FIREFOX_BIN="/snap/bin/firefox"
     elif [ "$os" == "osx" ]; then
         FIREFOX_BIN="/Applications/Firefox.app/Contents/MacOS/firefox"
     else
