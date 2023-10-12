@@ -16,6 +16,7 @@ deleteAllDockerContent() {
             docker rmi -f "${imgref}"
         fi
     done
+    docker system prune
     sudo service dockerd start || true
     sudo /etc/init.d/docker start || true
 }
