@@ -143,7 +143,7 @@ ttyprint
 tmuxsessionsprint
 extipprint
 echo "\n"
-#checkbackup
+checkbackup
 getweather
 tramsprint
 echo '' # BLANK LINE
