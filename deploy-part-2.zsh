@@ -25,7 +25,7 @@ report_progress 'Running ctags'
 ctags -R ./*
 report_done
 report_progress 'Installing bash-language-server through npm'
-npm install -g bash-language-server
+sudo npm install -g bash-language-server
 report_done
 report_progress 'Install LanguageTool grammar checker'
 cd ~/.dotfiles
@@ -165,7 +165,7 @@ npm install \
 	coc-tsserver \
 	coc-vimlsp \
 	--global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-npm install -g vim-language-server
+sudo npm install -g vim-language-server
 report_done
 report_progress 'Installing pynvim for python integration with vim'
 pip3 install --user pynvim
@@ -179,7 +179,7 @@ git config --global user.email "${VIMZ_EMAIL}"
 set +x
 report_done
 report_progress 'Installing and configuring Joplin CLI notetaking app'
-NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
+NPM_CONFIG_PREFIX=~/.joplin-bin sudo npm install -g joplin
 sudo ln -sf ~/.joplin-bin/bin/joplin /bin/joplin-cli
 /bin/joplin-cli config --import-file ~/.dotfiles/joplin.config
 report_done
@@ -284,9 +284,6 @@ fi
 report_done
 report_progress "Outputting 24-bit console colour test - there should be no banding!"
 ~/.dotfiles/bin/24-bit-color.sh
-report_done
-report_progress "Outputting speedtest results"
-speedtest-cli
 report_done
 report_progress "Deploy Process: Complete"
 echo
