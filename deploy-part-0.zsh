@@ -121,8 +121,10 @@ report_progress 'Nuke current node install'
     sudo rm -f /usr/local/bin/npm
     sudo rm -f /usr/local/bin/nodejs
 report_done
-report_progress 'Installing fnm node version manager and using it to install node lts'
+report_progress 'Installing node'
     ~/bin/install-node.sh
+    sudo chown -R root:users /usr/lib/node_modules
+    sudo chmod -R 775 /usr/lib/node_modules
 report_done
 report_progress 'Install vint for vim script linting'
     pip3 install vint
