@@ -35,7 +35,6 @@ report_progress 'Clone hqconfig repository for server configuration'
     git clone git@github.com:wordswords/hqconfig.git ~/.hqconfig
     ln -s ~/.hqconfig ~/.dotfiles/hqconfig
 report_done
-
 # Main lines
 report_progress 'Upgrade all packages/distro to latest version'
     sudo apt-get update -y && sudo apt-get dist-upgrade -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y
@@ -178,6 +177,9 @@ report_progress 'Installing winbox wine snap'
     sudo snap refresh winbox || sudo snap install winbox
     sudo ufw allow 5678/udp
     sudo ufw reload
+report_done
+report_progress 'Install Plexamp flatpak'
+    flatpak install -y flathub com.plexamp.Plexamp
 report_done
 
 # os-specific lines
