@@ -186,15 +186,17 @@ run this setup in a docker container or virtual machine.
 
 ## Install Steps
 
+I am still in the process of seperating my personal configuration from a generic
+configuration which will be useful to everyone.
+
+However, if you are keen to try this out as it is:
+
 1. `git clone git@github.com:/wordswords/dotfiles ~/.dotfiles`
 2. `cd ~/.dotfiles/`
-3. `./deploy-part-0.sh` to attempt to install preqs
-4. `./deploy-part-1.sh` to install and setup oh-my-zsh
-5. Press `control-D` to drop out of oh-my-zsh
-6. `./deploy-part-2.sh` to install almost all customisations
-7. By default it sets your git email address to be my address.
-You probably want to change this if you're not me!
-8. It will also attempt by default to log in to my Joplin account, which will
+3. Prepare all config you need to prepare in ~/.dotfiles/SECRETS. There are
+templates of what is required in ~/.dotfiles/SECRETS_TEMPLATES 
+4. `./deploy.sh`
+5. It will also attempt by default to log in to my Joplin account, which will
 not succeed without my credentials. You probably want to change that.
 
 # Using the Dotfiles Environment
