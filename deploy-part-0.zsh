@@ -178,10 +178,6 @@ report_progress 'Installing winbox wine snap'
     sudo ufw allow 5678/udp
     sudo ufw reload
 report_done
-report_progress 'Install Plexamp flatpak'
-    flatpak install -y flathub com.plexamp.Plexamp
-report_done
-
 # os-specific lines
 cur_os=$(get_os)
 if [[ ${cur_os} == 'ubuntu' || ${cur_os} == 'osx' ]];
@@ -194,6 +190,9 @@ if [[ ${cur_os} == 'ubuntu' ]];
 then
     report_progress 'Installing workrave, a reminder app to take screenbreaks'
         sudo apt-get install workrave -y
+    report_done
+    report_progress 'Install Plexamp flatpak'
+        flatpak install -y flathub com.plexamp.Plexamp
     report_done
 fi
 if [[ ${cur_os} == 'windows' ]];
