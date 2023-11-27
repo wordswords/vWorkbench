@@ -39,6 +39,13 @@ report_done
 report_progress 'Upgrade all packages/distro to latest version'
     sudo apt-get update -y && sudo apt-get dist-upgrade -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y
 report_done
+report_progress 'Check for Ubuntu release upgrade'
+    sudo do-release-upgrade -c
+report_done
+report_progress 'Download compile and install VIM9 on Ubuntu'
+    sudo apt install libncurses-dev -y
+    ~/.dotfiles/bin/make-and-install-vim.sh
+report_done
 report_progress 'Download compile and install VIM9 on Ubuntu'
     sudo apt install libncurses-dev -y
     ~/.dotfiles/bin/make-and-install-vim.sh
