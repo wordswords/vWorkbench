@@ -6,6 +6,9 @@ source ./deploy-common.sh
 
 report_heading 'Deploy Prerequisites: Part 0'
 
+## We want to take that risk
+alias pip3="pip3 --break-system-packages"
+
 # Must go before everything else
 report_progress 'Checking locale'
      locale | grep -q LANG=en_GB.UTF-8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
@@ -40,7 +43,7 @@ report_progress 'Upgrade all packages/distro to latest version'
     sudo apt-get update -y && sudo apt-get dist-upgrade -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y
 report_done
 report_progress 'Check for Ubuntu release upgrade'
-    sudo do-release-upgrade -c
+    sudo do-release-upgrade -c || echo 'No release upgraded needed.'
 report_done
 report_progress 'Download compile and install VIM9 on Ubuntu'
     sudo apt install libncurses-dev -y
