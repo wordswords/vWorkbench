@@ -11,9 +11,8 @@ source ./deploy-common.sh
 # Load in vimz config variables
 source ~/.dotfiles/SECRETS/vimz_config.sh
 
-# only needed because fnm has just been installed..
-#export PATH="/home/${VIMZ_USER}/.local/share/fnm:$PATH"
-#eval "`fnm env`"
+## We want to take that risk
+export PIP_BREAK_SYSTEM_PACKAGES=1
 
 report_heading 'Deploy Dotfiles: Part 2'
 report_progress 'Testing Github access'

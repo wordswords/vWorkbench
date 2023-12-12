@@ -7,7 +7,7 @@ source ./deploy-common.sh
 report_heading 'Deploy Prerequisites: Part 0'
 
 ## We want to take that risk
-alias pip3="pip3 --break-system-packages"
+export PIP_BREAK_SYSTEM_PACKAGES=1
 
 # Must go before everything else
 report_progress 'Checking locale'
@@ -52,9 +52,6 @@ report_done
 report_progress 'Download compile and install VIM9 on Ubuntu'
     sudo apt install libncurses-dev -y
     ~/.dotfiles/bin/make-and-install-vim.sh
-report_done
-report_progress 'Install Speedtest from ookla for testing network speed'
-    pip install speedtest-cli
 report_done
 report_progress 'Install Python used for vim plugins'
     sudo apt-get install python3 -y
@@ -108,7 +105,7 @@ report_progress 'Install Nmap for Network admin'
     sudo apt-get install nmap -y
 report_done
 report_progress 'Install asciicinema for screencasts'
-    sudo pip3 install asciinema
+    pip3 install asciinema
 report_done
 report_progress 'Install shfmt for shell script formatting'
     sudo apt-get install shfmt -y
