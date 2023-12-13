@@ -5,7 +5,7 @@ set -x
 
 # Install node via Nodesource
 
-if unset "$1"; then
+if [ $# -eq 0 ]; then
     echo "Usage: $0 <node major version>"
     exit 1
 fi

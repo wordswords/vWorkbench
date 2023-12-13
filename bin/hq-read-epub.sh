@@ -4,8 +4,8 @@
 
 set -e
 
-if unset "$1"; then
-    echo "Usage: $0 <search terms>"
+if [ $# -eq 0 ]; then
+    >&2 echo "Usage: $0 <search terms>"
     exit 1
 fi
 

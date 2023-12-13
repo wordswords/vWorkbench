@@ -1,9 +1,8 @@
 #!/bin/bash
 
 set -e
-
-if unset "$1"; then
-    echo "Usage: $0 <directory>"
+if [ $# -eq 0 ]; then
+    >&2 echo "Usage: $0 <directory>"
     exit 1
 fi
 
