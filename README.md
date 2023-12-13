@@ -61,7 +61,8 @@
    * [Remote Connection](#remote-connection)
    * [24 bit colour](#24-bit-colour)
    * [External Scripts](#external-scripts)
-      * [search-ebooks.sh &lt;term&gt;](#search-ebookssh-term)
+      * [search-ebooks.sh &lt;search terms&gt;](#search-ebookssh-search-terms)
+      * [hq-read-epub.sh &lt;search terms&gt;](#hq-read-epubsh-search-terms)
       * [delete-all-docker-content.sh](#delete-all-docker-contentsh)
       * [ai-files-purpose.zsh](#ai-files-purposezsh)
       * [ai-dir-purpose.zsh](#ai-dir-purposezsh)
@@ -851,7 +852,7 @@ reddit
 $ `gg why are cornflakes crunchy` - this will open a web browser with the query and search
 google
 
-### `search-ebooks.sh <term>`
+### `search-ebooks.sh <search terms>`
 
 This searches my ThinkSation server for epub books according to a wildcard.
 It then displays the results as a sorted list so they can be opened by
@@ -896,6 +897,12 @@ Displays on the commandline a visual representation of the current weather in Ma
 ### `secure-home-dir-perms.sh`
 
 Sets the permissions of all the files in the current user's home directory to secure defaults.
+
+### `hq-read-epub.sh <search terms>`
+
+This remotely connects to my Linux server and searches my library of epub
+books stored there with search terms, allows you to select one to open,
+and then opens it in the command-line epy epub reader.
 
 ### `delete-all-docker-content.sh`
 
