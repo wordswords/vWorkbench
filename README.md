@@ -849,11 +849,17 @@ and copy the result to the clipboard
 $ `re why are cornflakes crunchy` - this will open a web browser with the query and search
 reddit
 
-### `search-ebooks.sh <term>`
+### `search-ebooks.sh <search terms>`
 
 This searches my ThinkSation server for epub books according to a wildcard.
 It then displays the results as a sorted list so they can be opened by
 epy which is a command-line epub reader.
+
+### `hq-read-epub.sh <search terms>`
+
+This remotely connects to my Linux server and searches my library of epub
+books stored there with search terms, allows you to select one to open,
+and then opens it in the command-line epy epub reader.
 
 ### `delete-all-docker-content.sh`
 
