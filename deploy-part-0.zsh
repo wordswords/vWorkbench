@@ -38,6 +38,27 @@ report_progress 'Clone hqconfig repository for server configuration'
     git clone git@github.com:wordswords/hqconfig.git ~/.hqconfig
     ln -s ~/.hqconfig ~/.dotfiles/hqconfig
 report_done
+# Backup and clean
+report_progress 'Backing up existing dotfiles to ~/.olddotfiles'
+    rm -rf ~/.olddotfiles
+    mkdir -p ~/.olddotfiles
+
+    cp -RL ~/.vim ~/.olddotfiles/.vim || echo "INFO: Could not backup .vim dir, does it exist?"
+    cp -RL ~/.zsh* ~/.olddotfiles/ || echo "INFO: Could not backup .zsh*, do they exist?"
+    cp -RL ~/.bash* ~/.olddotfiles/ || echo "INFO: Could not backup .bash*, do they exist?"
+    cp -RL ~/.oh-my-zsh ~/.olddotfiles/ || echo "INFO: Could not backup .oh-my-zsh directory, does it exist?"
+    cp -L ~/.bash_aliases ~/.olddotfiles/.bash_aliases || echo "INFO: Could not backup .bash_aliases, does it exist?"
+    cp -L ~/.bash_profile ~/.olddotfiles/.bash_profile || echo "INFO: Could not backup .bash_profile, does it exist?"
+    cp -L ~/.vimrc ~/.olddotfiles/.vimrc || echo "INFO: Could not backup .vimrc, does it exist?"
+report_done
+report_progress 'Removing existing zsh config'
+    rm -f ~/.zshrc
+    rm -f ~/.zshenv
+    rm -rf ~/.oh-my-zsh
+report_done
+report_progress 'Removing existing vim config'
+    rm -rf ~/.vim
+report_done
 # Main lines
 report_progress 'Upgrade all packages/distro to latest version'
     sudo apt-get update -y && sudo apt-get dist-upgrade -y && sudo apt-get upgrade -y && sudo apt-get autoremove -y
