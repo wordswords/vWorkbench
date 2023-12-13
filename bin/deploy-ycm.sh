@@ -5,11 +5,11 @@ set -x
 
 # Install Cmake 3.28.0
 
-#sudo apt-get install build-essential python3-dev libssl-dev
-#wget https://github.com/Kitware/CMake/releases/download/v3.28.0/cmake-3.28.0.tar.gz
-#tar xzf cmake-3.28.0.tar.gz
-#cd ./cmake-3.28.0
-#./bootstrap && make && sudo make install
+sudo apt-get install build-essential python3-dev libssl-dev
+wget https://github.com/Kitware/CMake/releases/download/v3.28.0/cmake-3.28.0.tar.gz
+tar xzf cmake-3.28.0.tar.gz
+cd ./cmake-3.28.0
+./bootstrap && make && sudo make install
 
 # Assumes node is already installed - Installs all other prereqs for YCM
 
