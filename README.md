@@ -21,7 +21,6 @@
       * [Tmux pane resize shortcuts:](#tmux-pane-resize-shortcuts)
       * [Gnome shortcuts:](#gnome-shortcuts)
       * [Gnome window resize shortcuts:](#gnome-window-resize-shortcuts)
-      * [Firefox Shortcuts](#firefox-shortcuts)
    * [VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)](#vim-spellcheckinggrammar-checkingproofreading-commands-also-joplin-notes)
    * [VIM9 Leader Search Functions](#vim9-leader-search-functions)
    * [Git Fugitive Workflow](#git-fugitive-workflow)
