@@ -47,11 +47,7 @@ report_progress 'Check for Ubuntu release upgrade'
 report_done
 report_progress 'Download compile and install VIM9 on Ubuntu'
     sudo apt install libncurses-dev -y
-    ~/.dotfiles/bin/make-and-install-vim.sh
-report_done
-report_progress 'Download compile and install VIM9 on Ubuntu'
-    sudo apt install libncurses-dev -y
-    ~/.dotfiles/bin/make-and-install-vim.sh
+    ~/.dotfiles/bin/make-and-install-vim.sh 9.0
 report_done
 report_progress 'Install Python used for vim plugins'
     sudo apt-get install python3 -y
