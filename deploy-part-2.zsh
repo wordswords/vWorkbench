@@ -88,36 +88,8 @@ report_progress 'Creating vim backup file directory structure'
 mkdir -p ~/.backup/vim/swap || echo "INFO: Swapfile backup directory seems to be already there."
 mkdir ~/.backup/vim/undos || echo "INFO: Undofile backup directory seems to be already there."
 report_done
-report_progress 'Installing/updating vim plugins to latest version'
-rm -rf ~/.dotfiles/.vim/pack/plugins/start || true
-mkdir -p ~/.dotfiles/.vim/pack/plugins/start
-cd ~/.dotfiles/.vim/pack/plugins/start/ || exit 1
-
-git clone git@github.com:Shougo/denite.nvim.git
-git clone git@github.com:Xuyuanp/nerdtree-git-plugin.git
-git clone git@github.com:dpelle/vim-LanguageTool
-git clone git@github.com:elixir-editors/vim-elixir.git
-git clone git@github.com:jelera/vim-javascript-syntax.git
-git clone git@github.com:junegunn/goyo.vim
-git clone git@github.com:junegunn/limelight.vim
-git clone git@github.com:kana/vim-textobj-user
-git clone git@github.com:liuchengxu/vista.vim.git
-git clone git@github.com:madox2/vim-ai.git
-git clone git@github.com:reedes/vim-lexical
-git clone git@github.com:reedes/vim-litecorrect
-git clone git@github.com:reedes/vim-pencil
-git clone git@github.com:reedes/vim-textobj-quote
-git clone git@github.com:reedes/vim-textobj-sentence
-git clone git@github.com:reedes/vim-wordy.git
-git clone git@github.com:roxma/nvim-yarp.git
-git clone git@github.com:roxma/vim-hug-neovim-rpc
-git clone git@github.com:ryanoasis/vim-devicons.git
-git clone git@github.com:scrooloose/nerdtree.git
-git clone git@github.com:tomasr/molokai.git
-git clone git@github.com:tpope/vim-bundler.git
-git clone git@github.com:tpope/vim-fugitive.git
-git clone git@github.com:tpope/vim-git
-git clone git@github.com:vim-airline/vim-airline
+report_progress 'Download, install and compile YouCompleteMe for VIM9'
+~/.dotfiles/bin/deploy-ycm.sh
 report_done
 report_progress 'Installing Github Copilot VIM9 plugin'
 rm -rf ~/.vim/pack/github/start/copilot.vim
@@ -138,33 +110,6 @@ git clone git@github.com:shannonmoeller/vim-monokai256.git ./colorscheme
 mkdir -p ~/.vim/colors/
 mv ./colorscheme/colors/* ~/.vim/colors/
 rm -rf ./colorscheme
-report_done
-report_progress 'Installing vim9/coc'
-mkdir -p ~/.vim/pack/coc/start
-cd ~/.vim/pack/coc/start
-curl --fail -L https://github.com/neoclide/coc.nvim/archive/release.tar.gz | tar xzfv -
-report_done
-report_progress 'Installing vim9/coc extensions'
-mkdir -p ~/.config
-sudo chown -R "${USER}" ~/.config
-mkdir -p ~/.config/coc/extensions
-cd ~/.config/coc/extensions
-echo '{"dependencies":{}}' >package.json
-
-# Change extension names to the extensions you need
-npm install \
-	coc-css \
-	coc-html \
-	coc-json \
-	coc-phpls \
-	coc-prettier \
-	coc-pyright \
-	coc-sh \
-	coc-diagnostic \
-	coc-tsserver \
-	coc-vimlsp \
-	--global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-sudo npm install -g vim-language-server
 report_done
 report_progress 'Installing pynvim for python integration with vim'
 pip3 install --user pynvim
@@ -200,7 +145,8 @@ sudo gem install openai_pipe
 report_done
 report_progress 'Running vim local commands for plugins'
 echo '''
-    :CocUpdateSync
+    :PluginClean
+    :PluginInstall
     :sleep 4
     :Copilot setup
     :sleep 4
