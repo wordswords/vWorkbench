@@ -2,6 +2,11 @@
 
 set -x
 set -e
+
+if unset "$1"; then
+    echo "Usage: $0 <Vim verison on https://mirrorservice.org/pub/vim/unix/>"
+    exit 1
+fi
 VERSION=$1
 
 TMP_DIR=$(mktemp -d)

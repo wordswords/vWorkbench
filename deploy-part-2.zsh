@@ -135,9 +135,7 @@ sudo rm -rf /usr/share/games/fortunes/* || true
 sudo tar xzf ~/.dotfiles/gaiman-fortunes.tgz -C /usr/share/games/fortunes/
 report_done
 report_progress 'Stop unwanted changes dirtying up the dotfiles commit tracking'
-set +e
-find ~/.dotfiles/.vim/pack/plugins/start/ -name '.git' -type d -exec rm -rf {} \;
-set -e
+~/bin/clean-git-checkout.sh ~/.dotfiles/.vim/pack/plugins/start/ || true
 git restore --staged ~/.vim || true
 report_done
 report_progress "Install chatGPT CLI AI"

@@ -5,6 +5,11 @@ set -x
 
 # Install node via Nodesource
 
+if unset "$1"; then
+    echo "Usage: $0 <node major version>"
+    exit 1
+fi
+
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg
 sudo mkdir -p /etc/apt/keyrings
