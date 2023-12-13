@@ -17,6 +17,9 @@ deleteAllDockerContent() {
         fi
     done
     docker system prune
+    docker network prune -f
+    docker image prune -a -f
+
     sudo service dockerd start || true
     sudo /etc/init.d/docker start || true
 }

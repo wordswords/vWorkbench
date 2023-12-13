@@ -848,6 +848,8 @@ $ `ai why are cornflakes crunchy` - this will output on the terminal the answer 
 and copy the result to the clipboard
 $ `re why are cornflakes crunchy` - this will open a web browser with the query and search
 reddit
+$ `gg why are cornflakes crunchy` - this will open a web browser with the query and search
+google
 
 ### `search-ebooks.sh <term>`
 
@@ -855,9 +857,49 @@ This searches my ThinkSation server for epub books according to a wildcard.
 It then displays the results as a sorted list so they can be opened by
 epy which is a command-line epub reader.
 
+### `clean-git-checkout.sh <path>`
+
+This will find and delete all '.git' dirs under the <path>, which effectively
+strips completely git from the checkout.
+
+### `install-node.sh <major version>`
+
+Installs nodejs via the Debian 'nodesource' repo, with a supplied <major version>
+(for example, 20). This is the recommended way to install node.
+
+### `make-and-install-vim.sh <version>`
+
+Downloads and compiles a version matching `<version>` of VIM from:
+https://www.mirrorservice.org/pub/vim/unix/
+
+It makes sure it compiles it with Python3 support.
+
+### `update-joplin-cli.sh`
+
+Fetches and installs the latest verison of the Joplin CLI notetaking app.
+
+### `fix-whitespace-problems.sh <path>`
+
+When given a `<path>` it does the following to all files under that path:
+1) Removes all newlines from the start of a file, and end of a file.
+2) Removes all trailing whitespace from all lines of each file.
+
+### `mlnx_tune`
+
+Displays some diagnosic information about the ancient Mellonex SFP fibreoptic network
+card in my server.
+
+### `get-weather.sh`
+
+Displays on the commandline a visual representation of the current weather in Manchester, UK.
+
+### `secure-home-dir-perms.sh`
+
+Sets the permissions of all the files in the current user's home directory to secure defaults.
+
 ### `delete-all-docker-content.sh`
 
-This will clean the local install of all docker containers and images. This
+This will clean the local install of all docker containers, networks and images. This
 is non-destructive as it doesn't actually uninstall docker, and you can just
 docker pull them all again.
 

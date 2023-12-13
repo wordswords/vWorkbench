@@ -2,7 +2,7 @@
 
 set -x
 set -e
-VERSION="9.0"
+VERSION=$1
 
 TMP_DIR=$(mktemp -d)
 cd "${TMP_DIR}"
