@@ -124,7 +124,7 @@ report_progress 'Nuke current node install'
     sudo rm -f /usr/local/bin/nodejs
 report_done
 report_progress 'Installing node'
-    ~/bin/install-node.sh 20
+    ~/.dotfiles/bin/install-node.sh 20
     sudo chown -R root:users /usr/lib/node_modules
     sudo chmod -R 775 /usr/lib/node_modules
 report_done
