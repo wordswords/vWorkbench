@@ -99,12 +99,6 @@ report_progress 'Installing air-line molokai theme'
 mkdir -p ~/.vim/autoload/airline/themes
 cp ~/.dotfiles/molokai.vim ~/.vim/autoload/airline/themes
 report_done
-report_progress 'Patching NerdTree to remove deprecated error'
-cp ~/.dotfiles/nerdtree_plugin_fix.diff ~/.vim/pack/plugins/start/nerdtree-git-plugin/nerdtree_plugin
-cd ~/.vim/pack/plugins/start/nerdtree-git-plugin/nerdtree_plugin
-patch -p1 < nerdtree_plugin_fix.diff
-cd -
-report_done
 report_progress 'Installing vim colorscheme'
 git clone git@github.com:shannonmoeller/vim-monokai256.git ./colorscheme
 mkdir -p ~/.vim/colors/
