@@ -6,7 +6,7 @@ set -x
 # Install node via Nodesource
 
 if [ $# -eq 0 ]; then
-    echo "Usage: $0 <node major version>"
+    >&2 echo "Usage: $0 <node major version>"
     exit 1
 fi
 

@@ -2,7 +2,7 @@
 
 set -e
 if [ $# -eq 0 ]; then
-    echo "Usage: $0 <epub library search terms>"
+    >&2 echo "Usage: $0 <epub library search terms>"
     exit 1
 fi
 
