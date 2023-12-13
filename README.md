@@ -23,8 +23,6 @@
       * [Gnome window resize shortcuts:](#gnome-window-resize-shortcuts)
       * [Firefox Shortcuts](#firefox-shortcuts)
    * [VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)](#vim-spellcheckinggrammar-checkingproofreading-commands-also-joplin-notes)
-   * [Coc.vim Basics](#cocvim-basics)
-   * [Coc.vim Shortcuts on large software projects](#cocvim-shortcuts-on-large-software-projects)
    * [VIM9 Leader Search Functions](#vim9-leader-search-functions)
    * [Git Fugitive Workflow](#git-fugitive-workflow)
    * [Git Fugitive Blame Window](#git-fugitive-blame-window)
@@ -167,7 +165,7 @@ then you are highly recommended to install the alacritty terminal emulator befor
 It will install my VIM9 development environment and anything else I use
 in my work. It includes:
 
-* Install my heavily customised version of VIM9 with coc.vim and other plugins
+* Install my heavily customised version of VIM9 with plugins
 * Install latest version of Oh-my-ZSH and set your default shell to ZSH
 * Install Joplin the command-line open source Evernote replacement, and secure
 it with encryption, and download all my notes (presuming you are me).
@@ -194,7 +192,7 @@ However, if you are keen to try this out as it is:
 1. `git clone git@github.com:/wordswords/dotfiles ~/.dotfiles`
 2. `cd ~/.dotfiles/`
 3. Prepare all config you need to prepare in ~/.dotfiles/SECRETS. There are
-templates of what is required in ~/.dotfiles/SECRETS_TEMPLATES 
+templates of what is required in ~/.dotfiles/SECRETS_TEMPLATES
 4. `./deploy.sh`
 5. It will also attempt by default to log in to my Joplin account, which will
 not succeed without my credentials. You probably want to change that.
@@ -379,27 +377,6 @@ It behaves like Windows 10/11 window resize shortcuts. For example:
 4. `<Windows Key-DOWN>` take the current window and un-full screen it, move it into a
 window in the centre of the desktop
 
-### Firefox Shortcuts
-
-I install Vinium-C on Firefox which allows you to use the VIM shortcuts on most pages
-
-1. `?` for a keymap
-2. `<alt>-<f4>` to close
-3. `<alt>-<enter>` to toggle fullscreen or not
-4.  `<h> <j> <k> <l>` to scroll as normal in vim.
-5.  `f` to go into 'link mode'. All links are highlighted. Press the key sequence of the
-link you want to visit. Press `<esc>` to close.
-6. `gg` to go to the top of the page
-7. `G` to go to the bottom of the page
-8. `d` to scroll down half a page
-9. `u` to scroll up half a page
-10. `t` to open a new tab
-11. `T` to search through your open tabs
-12. On Ubuntu only: `<Control>-<Alt>-v` while focused on an input element to open gVIM. When you write and save
-the buffer in gVIM it will copy it to the clipboard and focus on the box you have left,
-then you can quickly insert it in the text input on the browser.
-13. `<Control>-l` move the focus to the url box so you can type in a url
-
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
 
 1. `<LEFT>`       - prev text error
@@ -419,39 +396,6 @@ replaced word in the current window
 13. `<F12>`       - Toggle 'Goyo' distraction-free mode.
 
 [![asciicast](https://asciinema.org/a/518234.svg)](https://asciinema.org/a/518234)
-
-## Coc.vim Basics
-
-1. Use `:CocUpdateSync` to update all Coc.vim plugins to the latest version. This
-is done for you on deploy anyway.
-2. `<spacebar>` is the leader key for a lot of advanced Coc functionality.
-3. `<spacebar>-a` brings up the 'CocDiagnostics' window which is similar to the
-VIM9 quickfix window but with LSP errors. Press `<Esc>` to close this window.
-4. Navigate through the CocDiagnostic errors using `<LEFT>` and `<RIGHT>` while
-in a document supported by a Coc LSP.
-5. `K` for documentation on the language feature under the cursorr.
-6. To scroll popups that appear, use `<Control-j>` to scroll down, and `<Control-k>`
-for up.
-
-## Coc.vim Shortcuts on large software projects
-
-Coc.vim (stands for Conquerer of Completion.. I know) is meant to provide an
-approximate mapping for Visual Studio Code's plugins and IntelliSense features
-onto VIM9 and Neovim. It does this with various degrees of compatibility. Often
-these features are not currently documented and require prior knowledge of how
-the Code editor does things. This URL is the documentation for the Code editor:
-[https://docs.microsoft.com/en-us/visualstudio/ide/navigating-code?view=vs-2022](https://docs.microsoft.com/en-us/visualstudio/ide/navigating-code?view=vs-2022)
-
-This is an excellent introduction to Coc.vim's objectives: [https://samroeca.com/coc-plugin.html](https://samroeca.com/coc-plugin.html)
-
-1. `:CocRename` for language server assisted refactoring by renaming a constant,
-e.g. method, variable etc.
-2. `gd` to jump to the definition of the language object under the cursor.
-3. `gy` to jump to the type definition of the language object under cursor.
-4. `gi` to jump to the implementation of the language object under cursor.
-5. `gr` to show all references to the language object under cursor.
-documentation for that feature.
-6. `:help coc-nvim` for the complete reference documentation for Coc.vim
 
 ## VIM9 Leader Search Functions
 
@@ -617,11 +561,11 @@ and also output on the pipe
 
 ## Vista Plugin
 
-Vista is used for coc.vim or ctags specific function lists for quickly jumping
+Vista is used for language server specific function lists for quickly jumping
 around large projects.
 
 1. `:Vista` to load up the right sidebar
-2. `:Vista coc` to use coc.vim to provide the tags list
+2. `:Vista vim_lsp` to use vim's LSP support to provide the tags list
 3. `:Vista ctags`to use ctags to provide the tags list
 4. `:help vista-commands` and `:help vista-options` for help
 
@@ -633,7 +577,7 @@ around large projects.
 2. For a great tutorial [https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/](https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)
 3. For a vertical split `<CTRL>-a SHIFT |`
 4. For a horizontal split `<CTRL>-a SHIFT -`
-5. For standard keybindings,`cht tmux`
+5. For standard keybindings,`cht tmux
 6. To rotate panes in the current layout `<CTRL>-a <SPACE>`
 7. To start my standard development tmux session `tmuxinator development`
 

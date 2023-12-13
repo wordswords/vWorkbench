@@ -1,337 +1,232 @@
-" /- - - - - - - - - - - - - - - - - - - - - -\
-" |  https://github.com/wordswords/dotfiles   |
-" \- - - - - - - - - - - - - - - - - - - - - -/
-"
-" vim: foldmethod=marker foldmarker=[START],[END]
+vim9script
+# /- - - - - - - - - - - - - - - - - - - - - -\
+# |  https://github.com/wordswords/dotfiles   |
+# \- - - - - - - - - - - - - - - - - - - - - -/
+#
+# vim: foldmethod=marker foldmarker=[START],[END]
 
-" [START] General CONFIG
+# [START] Vundle CONFIG
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+# [END] Vundle CONFIG
+
+# [START] Plugins CONFIG
+Plugin 'Shougo/denite.nvim'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'dpelle/vim-LanguageTool'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'kana/vim-textobj-user'
+Plugin 'liuchengxu/vista.vim'
+Plugin 'madox2/vim-ai'
+Plugin 'reedes/vim-lexical'
+Plugin 'reedes/vim-litecorrect'
+Plugin 'reedes/vim-pencil'
+Plugin 'reedes/vim-textobj-quote'
+Plugin 'reedes/vim-textobj-sentence'
+Plugin 'reedes/vim-wordy'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'vim-airline/vim-airline'
+Plugin 'ycm-core/YouCompleteMe'
+# [END] Plugins CONFIG
+
+# [START] Vundle END CONFIG
+call vundle#end()            # required
+filetype plugin indent on    # required
+# [END] Vundle END CONFIG
+
+# [START] General CONFIG
 syntax enable
-set autoindent                     " Automatically indent code
-set background=dark                " Dark background, light foreground
-set backspace=2                    " Backspace back up a line
-set backupdir=~/.backup/vim        " Directory to drop backup files
-set bk                             " Backup files
-set colorcolumn=+1                 " Enable coloured column after textwidth line
-set cursorline                     " Highlight current line
-set dir=~/.backup/vim/swap         " Directory to drop swap files
-set encoding=utf8                  " Enforce UTF8 encoding
-set expandtab                      " Always expand tabs
-set history=1000                   " 1000 previous commands remembered
-set hlsearch                       " Highlight searches
-set ignorecase                     " Ignore case when searching
-set incsearch                      " Do incremental searching
-set laststatus=2                   " Show non-printable characters e.g. tab, \n
-set list                           " Use the following list characters:
+set autoindent                     # Automatically indent code
+set background=dark                # Dark background, light foreground
+set backspace=2                    # Backspace back up a line
+set backupdir=~/.backup/vim        # Directory to drop backup files
+set bk                             # Backup files
+set colorcolumn=+1                 # Enable coloured column after textwidth line
+set cursorline                     # Highlight current line
+set dir=~/.backup/vim/swap         # Directory to drop swap files
+set encoding=utf8                  # Enforce UTF8 encoding
+set expandtab                      # Always expand tabs
+set history=1000                   # 1000 previous commands remembered
+set hlsearch                       # Highlight searches
+set ignorecase                     # Ignore case when searching
+set incsearch                      # Do incremental searching
+set laststatus=2                   # Show non-printable characters e.g. tab, \n
+set list                           # Use the following list characters:
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
-set ls=2                           " Always show status line
-set number                         " Show line numbers
-set relativenumber                 " Set numbering from current line
-set ruler                          " Show the cursor position all the time
-set scrolloff=3                    " Keep 3 lines when scrolling
-set shiftwidth=4                   " With indentation shifts, use 4 space tabs
-set showcmd                        " Display incomplete commands
-set softtabstop=4                  " With tab key, use 4 space tabs
-set spelllang=en_gb                " Set dictionary to be UK spelling
-set splitbelow                     " Opens new windows below, not above
-set splitright                     " Open new vertical split windows to the right
-set t_Co=256                       " Force 256 colour mode
-set ts=4                           " Each tab is four spaces
-set ttyfast                        " Smoother changes
-set undodir=~/.backup/vim/undos    " Directory to drop undo files
-set undofile                       " Drop undo files
-set wildmenu                       " Allow for menu based file navigation
+set ls=2                           # Always show status line
+set number                         # Show line numbers
+set relativenumber                 # Set numbering from current line
+set ruler                          # Show the cursor position all the time
+set scrolloff=3                    # Keep 3 lines when scrolling
+set shiftwidth=4                   # With indentation shifts, use 4 space tabs
+set showcmd                        # Display incomplete commands
+set softtabstop=4                  # With tab key, use 4 space tabs
+set spelllang=en_gb                # Set dictionary to be UK spelling
+set splitbelow                     # Opens new windows below, not above
+set splitright                     # Open new vertical split windows to the right
+set t_Co=256                       # Force 256 colour mode
+set ts=4                           # Each tab is four spaces
+set ttyfast                        # Smoother changes
+set undodir=~/.backup/vim/undos    # Directory to drop undo files
+set undofile                       # Drop undo files
+set wildmenu                       # Allow for menu based file navigation
 set wildmode=list:longest,full
 
-" no bells, ever
+# Generate vim helpfiles
+:helptags ALL
+
+# no bells, ever
 set noerrorbells novisualbell t_vb=
 set belloff=all
 
-" map the <leader> character to comma
-let mapleader=","
+# map the <leader> character to comma
+g:mapleader = ','
 
-" Paste from system clipboard
-function! s:PasteFromSystemClipboard()
-read ! ~/bin/xclip.sh -o 2>/dev/null
-endfunction
+# Paste from system clipboard
+def PasteFromSystemClipboard(): void
+    read ! ~/bin/xclip.sh -o 2>/dev/null
+enddef
 nnoremap <C-v> :call <SID>PasteFromSystemClipboard()<CR>
 
-" Google Search the selected text
-function! s:GoogleSearch()
-normal! gv"zy
-redir! > /tmp/googlesearchvim
-echo getreg('z')
-redir END
-silent !~/bin/gg.sh
-redraw!
-endfunction
+# Google Search the selected text
+def GoogleSearch(): void
+    normal! gv"zy
+    redir! > /tmp/googlesearchvim
+    echo getreg('z')
+    redir END
+    silent !~/bin/gg.sh
+    redraw!
+enddef
 vnoremap <leader>g :<c-u>call <SID>GoogleSearch()<CR>
 
-" Format file for code Reddit markdown post
-function! s:FormatForReddit()
-normal! gv"xy
-redir! > /tmp/formatforredditvim
-silent! echo getreg('x')
-redir END
-sp /tmp/formatforredditvim
-%s/^/     /g
-endfunction
+# Format file for code Reddit markdown post
+def FormatForReddit(): void
+    normal! gv"xy
+    redir! > /tmp/formatforredditvim
+    silent! echo getreg('x')
+    redir END
+    sp /tmp/formatforredditvim
+    %s/^/     /g
+enddef
 vnoremap <leader>p :<c-u>call <SID>FormatForReddit()<CR>
 
-" Yank whole file into clipboard
-function! s:YankFile()
-%yank+
-endfunction
+# Yank whole file into clipboard
+def YankFile(): void
+    %yank+
+enddef
 nnoremap <leader>y :call <SID>YankFile()<CR>
 
-" Foot pedal
+# Foot pedal
 nnoremap <F6> i
 imap <F6> <Esc>
 
-" Dotfiles help toggle
-nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
-function! s:BringUpDotfilesReadme()
-:sp ~/.dotfiles/README.md
-:Vista!!
-nnoremap <leader>h :call <SID>CloseDotfilesReadme()<CR>
-endfunction
+def g:CloseDotfilesReadme(): void
+    :windo if expand('%:t') == 'README.md' | q! | endif
+    nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
+enddef
 
-function! s:CloseDotfilesReadme()
-:Vista!!
-:windo if expand('%:t') == 'README.md' | q! | endif
-nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
-endfunction
+# Dotfiles help toggle
+def g:BringUpDotfilesReadme(): void
+    :sp ~/.dotfiles/README.md
+    nnoremap <leader>h :call CloseDotfilesReadme()<CR>
+enddef
+nnoremap <leader>h call BringUpDotfilesReadme()<CR>
 
-" Git Copilot toggle
+# Git Copilot toggle
+def g:ToggleCopilotOff(): void
+    :Copilot disable
+    :Copilot status
+    nnoremap <silent><leader>c :call <SID>ToggleCopilotOn()<CR>
+enddef
 nnoremap <silent><leader>c :call <SID>ToggleCopilotOff()<CR>
-function! s:ToggleCopilotOff()
-:Copilot disable
-:Copilot status
-nnoremap <silent><leader>c :call <SID>ToggleCopilotOn()<CR>
-endfunction
 
-function! s:ToggleCopilotOn()
-:Copilot enable
-:Copilot status
-nnoremap <silent><leader>c :call <SID>ToggleCopilotOff()<CR>
-endfunction
+def ToggleCopilotOn(): void
+    :Copilot enable
+    :Copilot status
+    nnoremap <silent><leader>c :call <SID>ToggleCopilotOff()<CR>
+enddef
 
-" Run language tool
+# Run language tool
 nnoremap <silent><leader>l :call <SID>RunLanguageToolCheck()<CR>
-function! s:RunLanguageToolCheck()
-:LanguageToolCheck
-endfunction
+def RunLanguageToolCheck(): void
+    :LanguageToolCheck
+enddef
 
-" Set gVIM settings to be the same as the terminal
+# Set gVIM settings to be the same as the terminal
 set t_Co=256
 
-" Stop <> marks being inserted on all filetypes from lh-brackets plugin
-let g:cb_no_default_brackets = 1
+# Stop <> marks being inserted on all filetypes from lh-brackets plugin
+g:cb_no_default_brackets = 1
 
-" Turn off macro recording
+# Turn off macro recording
 noremap q <Nop>
 
-" Disable F1 help launcher
+# Disable F1 help launcher
 nmap <F1> :echo<CR>
 nmap <F1> <c-o>:echo<CR>
-" Vim fonts for gVIM
+# Vim fonts for gVIM
 set guifont=DroidSansMono\ Nerd\ Font\ 18
 
-" Highlighted ruler for extra focus
+# Highlighted ruler for extra focus
 highlight CursorLine term=bold cterm=bold guibg=Grey40
 highlight CursorColumn term=bold cterm=bold guibg=Grey40
 set cursorline cursorcolumn
 
-" [END] General CONFIG
+# [END] General CONFIG
 
-" [START] Visual selection search options CONFIG
-" Search visual selection via stackoverflow
+
+# [START] YCM CONFIG
+g:ycm_enable_inlay_hints = 1
+g:ycm_auto_trigger = 1
+g:ycm_auto_trigger = 1
+g:ycm_enable_semantic_highlighting = 1
+imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
+nmap <C-f> <Plug>(YCMFindSymbolInWorkspace)
+# [END] YCM CONFIG
+
+# [START] Third Party Language Serverfs for use with YCM
+g:ycm_language_server = [{ name: 'vim',
+       filetypes: [ 'vim' ],
+       cmdline: ['vim-language-server --stdio' ],
+     }]
+# [END] Third Party Language Serverfs for use with YCM
+
+# [START] Visual selection search options CONFIG
+# Search visual selection via stackoverflow
 vnoremap <leader>s y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> so.sh 2>/dev/null<CR><CR>
 
-" Send visual selection to OpenAI and output the result
+# Send visual selection to OpenAI and output the result
 vnoremap <leader>o y:read !echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> ai.sh 2>/dev/null<CR><CR>
-" [END] Visual selection search options CONFIG
+# [END] Visual selection search options CONFIG
 
-" [START] Clipboard synchronisation hackery CONFIG
+# [START] Clipboard synchronisation hackery CONFIG
 vnoremap <C-c> "+y
-" [END] Clipboard synchronisation hackery CONFIG
+# [END] Clipboard synchronisation hackery CONFIG
 
-" [START] COC.vim CONFIG
+# [START] GUI CONFIG
+g:prettier#autoformat = 1 # Prettier code formatter automatically files
+g:rehash256 = 1 # Ensure 256 colour mode
+# [END] GUI config
 
-autocmd BufRead,BufNewFile *.zsh set filetype=bash
-
-" May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
-" utf-8 byte sequence
-set encoding=utf-8
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
-" delays and poor user experience
-set updatetime=300
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate
-" NOTE: There's always complete item selected by default, you may want to enable
-" no select by `"suggest.noselect": true` in your configuration file
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config
-inoremap <silent><expr> <TAB>
-  \ coc#pum#visible() ? coc#pum#next(1) :
-  \ CheckBackspace() ? "\<Tab>" :
-  \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion
-if has('nvim')
-inoremap <silent><expr> <c-space> coc#refresh()
-else
-inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-nmap <LEFT> <Plug>(coc-diagnostic-prev)
-nmap <RIGHT> <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
-function! ShowDocumentation()
-if CocAction('hasProvider', 'hover')
-call CocActionAsync('doHover')
-else
-call feedkeys('K', 'in')
-endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-autocmd!
-" Setup formatexpr specified filetype(s)
-autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-" Update signature help on jump placeholder
-autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Applying code actions to the selected code block
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying code actions at the cursor position
-nmap <leader>ac  <Plug>(coc-codeaction-cursor)
-" Remap keys for apply code actions affect whole buffer
-nmap <leader>as  <Plug>(coc-codeaction-source)
-" Apply the most preferred quickfix action to fix diagnostic on the current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Remap keys for applying refactor code actions
-nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
-xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
-nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
-
-" Run the Code Lens action on the current line
-nmap <leader>cl  <Plug>(coc-codelens-action)
-
-" Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
-" Remap <C-j> and <C-k> to scroll float windows/popups
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-nnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
-nnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
-inoremap <silent><nowait><expr> <C-l> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<C-l>"
-inoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<C-h>"
-vnoremap <silent><nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
-vnoremap <silent><nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
-endif
-
-" Use CTRL-S for selections ranges
-" Requires 'textDocument/selectionRange' support of language server
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-
-" Add `:Format` command to format current buffer
-command! -nargs=0 Format :call CocActionAsync('format')
-
-" Add `:Fold` command to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer
-command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Mappings for CoCList
-" Show all diagnostics
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-" [END] COC.vim CONFIG
-
-" [START] GUI CONFIG
-let g:prettier#autoformat = 1 " Prettier code formatter automatically files
-let g:rehash256 = 1 " Ensure 256 colour mode
-" [END] GUI config
-
-" [START] Colourscheme CONFIG
-" You might have to force true color when using regular vim inside tmux as the
-" colorscheme can appear to be grayscale with "termguicolors" option enabled.
+# [START] Colourscheme CONFIG
+# You might have to force true color when using regular vim inside tmux as the
+# colorscheme can appear to be grayscale with "termguicolors" option enabled.
 if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  var &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  var &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
 syntax on
@@ -339,82 +234,82 @@ set termguicolors
 colorscheme molokai
 hi SpecialKey ctermfg=grey guifg=grey70
 hi NonText ctermfg=grey guifg=grey70
-" [END] Colourscheme config
+# [END] Colourscheme config
 
-" [START] Modelines CONFIG
+# [START] Modelines CONFIG
 set modelines=5
 set modeline
-" [END] Modelines config
+# [END] Modelines config
 
-" [START] vim-airline CONFIG
-let g:airline_theme='molokai'
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
-let g:airline_powerline_fonts = 1
-let g:powerline_symbols = 'fancy'
-" [END] vim-airline CONFIG
+# [START] vim-airline CONFIG
+g:airline_theme = 'molokai'
+g:airline#extensions#tabline#enabled = 0
+g:airline#extensions#tabline#fnamemod = ':t' # Show just the filename
+g:airline_powerline_fonts = 1
+g:powerline_symbols = 'fancy'
+# [END] vim-airline CONFIG
 
-" [START] NERDTree CONFIG
-" Start NerdTree when vim is started to edit a directory, except in vimdiff mode
+# [START] NERDTree CONFIG
+# Start NerdTree when vim is started to edit a directory, except in vimdiff mode
 if &diff
-    " Do nothing
+    # Do nothing
 else
-    if (expand("%"))
+    if (len(expand("%")) > 0)
       autocmd VimEnter * silent NERDTree %
     endif
 endif
 autocmd VimEnter * wincmd p
 
-" stop NERDTree buffers being lost by disabling buffer next and buffer previous
+# stop NERDTree buffers being lost by disabling buffer next and buffer previous
 autocmd FileType nerdtree noremap <buffer> <c-h> <nop>
 autocmd FileType nerdtree noremap <buffer> <c-l> <nop>
 
-" if NERDTree is the last window present, i.e: when you've closed all other
-" windows, then close vim
+# if NERDTree is the last window present, i.e: when you've closed all other
+# windows, then close vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")) | q | endif
 
-" make NERDTree look nicer
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+# make NERDTree look nicer
+var NERDTreeMinimalUI = 1
+var NERDTreeDirArrows = 1
 
-" make sure NERDTree shows hidden files/dirs
-let NERDTreeShowHidden = 1
+# make sure NERDTree shows hidden files/dirs
+var NERDTreeShowHidden = 1
 
-"
-" Pressing <UP> cursor toggles NerdTree
-"
+#
+# Pressing <UP> cursor toggles NerdTree
+#
 noremap <UP> :NERDTreeToggle<CR>
-" [END] Nerdtree CONFIG
+# [END] Nerdtree CONFIG
 
-" [START] Filetype formats/autocmd CONFIG
-function SetRestructuredTextOptions()
+# [START] Filetype formats/autocmd CONFIG
+def SetRestructuredTextOptions(): void
   au BufRead,BufNewFile *.rst setlocal textwidth=80
   setlocal spell
-endfunction
+enddef
 
-function! SetTextAndMarkdownOptions()
+def SetTextAndMarkdownOptions(): void
   au BufRead,BufNewFile *.txt *.md call pencil#init()
-                            \ | call lexical#init()
-                            \ | call textobj#quote#init()
-                            \ | call textobj#sentence#init()
-  let g:pencil#joinspaces = 1     " 0=one_space (def), 1=two_spaces
-  let g:pencil#cursorwrap = 1     " 0=disable, 1=enable (def)
+                             | call lexical#init()
+                             | call textobj#quote#init()
+                             | call textobj#sentence#init()
+  g:pencil#joinspaces = 1     # 0=one_space (def), 1=two_spaces
+  g:pencil#cursorwrap = 1     # 0=disable, 1=enable (def)
   setlocal spell
-  setlocal nowrap " this is required for special text wrapping
-  " scroll through spelling/grammar errors
+  setlocal nowrap # this is required for special text wrapping
+  # scroll through spelling/grammar errors
   nmap <LEFT> [s " last spelling/grammar error
   nmap <RIGHT> ]s " next spelling/grammar error
-endfunction
+enddef
 
-function! SetMakefileOptions()
+def SetMakefileOptions(): void
   setlocal noexpandtab
   setlocal tabstop=4
   setlocal shiftwidth=4
   setlocal softtabstop=0
-endfunction
+enddef
 
-function! SetPythonFileOptions()
-  " To meet PEP8
+def SetPythonFileOptions(): void
+  # To meet PEP8
   setlocal textwidth=79
   setlocal shiftwidth=4
   setlocal tabstop=4
@@ -423,18 +318,18 @@ function! SetPythonFileOptions()
   setlocal shiftround
   setlocal autoindent
   setlocal fileformat=unix
-endfunction
+enddef
 
-function! SetGitCommitFileOptions()
-  setlocal colorcolumn+=51 " set additional marker for line wrap
-  setlocal wrap " Enable word wrap
+def SetGitCommitFileOptions(): void
+  setlocal colorcolumn+=51 # set additional marker for line wrap
+  setlocal wrap # Enable word wrap
   setlocal textwidth=70
-  setlocal spell " highlight spelling mistakes
-endfunction
+  setlocal spell # highlight spelling mistakes
+enddef
 
-" remove trailing whitespace on these filetypes only:
-autocmd FileType text,markdown,Makefile,Jenkinsfile,Python,vim,sh autocmd BufWritePre <buffer> %s/\s\+$//e
-" file-type-specific stuff
+# remove trailing whitespace on these filetypes only:
+autocmd FileType text,markdown,Makefile,Jenkinsfile,Python,vim,sh autocmd BufWritePre <buffer> :%s/\s\+$//e
+# file-type-specific stuff
 autocmd BufRead,BufNewFile *.f90 set filetype=Fortran
 autocmd BufRead,BufNewFile *.robot setlocal noexpandtab
 autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
@@ -444,149 +339,138 @@ autocmd BufRead,BufNewFile Makefile call SetMakeFileOptions()
 autocmd BufRead,BufNewFile *.py call SetPythonFileOptions()
 autocmd FileType gitcommit call SetGitCommitFileOptions()
 autocmd FileType plugin indent on " for writing plugins
-" [END] Filetype formats/autocmd CONFIG
+# [END] Filetype formats/autocmd CONFIG
 
-" [START] Goyo CONFIG
+# [START] Goyo CONFIG
 noremap <F12> :Goyo<CR> " this toggles distraction-free mode
-" [END] Goyo CONFIG
+# [END] Goyo CONFIG
 
-" [START] Vista CONFIG
-let g:vista_default_executive = "coc"
+# [START] Vista CONFIG
+g:vista_default_executive = "vim_lsp"
 nmap <silent><DOWN> :Vista!!<ENTER>
 
-" Automatically close vim if vista is the only buffer left
+# Automatically close vim if vista is the only buffer left
 autocmd bufenter * if (winnr("$") == 1 && bufwinnr("__vista__") > 0) | q | endif
-" If only NerdTree and Vista buffers are left, automatically close VIM
+# If only NerdTree and Vista buffers are left, automatically close VIM
 autocmd bufenter * if (winnr("$") == 2 && bufwinnr("__vista__") > 0 && exists("b:NERDTree")) | qa | endif
-" [END] Vista CONFIG
+# [END] Vista CONFIG
 
-" [START] Wordy CONFIG
-" Wordy is only activated when editing text files
-let g:wordy#ring = [
-  \ 'weak',
-  \ ['being', 'passive-voice', ],
-  \ 'business-jargon',
-  \ 'weasel',
-  \ 'puffery',
-  \ ['problematic', 'redundant', ],
-  \ ['colloquial', 'idiomatic', 'similies', ],
-  \ 'art-jargon',
-  \ ['contractions', 'opinion', 'vague-time', 'said-synonyms', ],
-  \ 'adjectives',
-  \ 'adverbs',
-  \ ]
-" [END] Wordy CONFIG
+# [START] Wordy CONFIG
+# Wordy is only activated when editing text files
+g:wordy#ring = [
+   'weak',
+   ['being', 'passive-voice', ],
+   'business-jargon',
+   'weasel',
+   'puffery',
+   ['problematic', 'redundant', ],
+   ['colloquial', 'idiomatic', 'similies', ],
+   'art-jargon',
+   ['contractions', 'opinion', 'vague-time', 'said-synonyms', ],
+   'adjectives',
+   'adverbs',
+   ]
+# [END] Wordy CONFIG
 
-" [START] nerdtree-git-plugin CONFIG
-let g:NERDTreeGitStatusUseNerdFonts = 1 "default: 0
-let g:NERDTreeGitStatusShowClean = 1 "default: 0
-let g:NERDTreeGitStatusUntrackedFilesMode = 'all' "heavy feature default:normal
-let g:NERDTreeGitStatusShowIgnored = 1 "heavy feature may cost time. default: 0
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
-" [END] nerdtree-git-plugin CONFIG
+# [START] nerdtree-git-plugin CONFIG
+g:NERDTreeGitStatusUseNerdFonts = 1 # default: 0
+g:NERDTreeGitStatusShowClean = 1 # default: 0
+g:NERDTreeGitStatusUntrackedFilesMode = 'all' # heavy feature default:normal
+g:NERDTreeGitStatusShowIgnored = 1 # heavy feature may cost time. default: 0
+g:NERDTreeGitStatusIndicatorMapCustom = { Modified: '✹',
+                                          Staged: '✚',
+                                          Untracked: '✭',
+                                          Renamed: '➜',
+                                          Unmerged: '═',
+                                          Deleted: '✖',
+                                          Dirty: '✗',
+                                          Ignored: '☒',
+                                          Clean: '✔︎',
+                                          Unknown: '?', }
+# [END] nerdtree-git-plugin CONFIG
 
-" [START] bash-language-server CONFIG
-if executable('bash-language-server')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'bash-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server START']},
-        \ 'allowlist': ['sh'],
-        \ })
-endif
-" [END] bash-language-server CONFIG
+g:markdown_fenced_languages = ['vim', 'help']
 
-" [START] Scrolling VIM9 popups using keyboard CONFIG
-function! ScrollPopup(nlines)
-    let winids = popup_list()
+# [START] Scrolling VIM9 popups using keyboard CONFIG
+def ScrollPopup(nlines: number): void
+    var winids = popup_list()
     if len(winids) == 0
         return
     endif
 
-    " Ignore hidden popups
-    let prop = popup_getpos(winids[0])
+    # Ignore hidden popups
+    var prop = popup_getpos(winids[0])
     if prop.visible != 1
         return
     endif
 
-    let firstline = prop.firstline + a:nlines
-    let buf_lastline = str2nr(trim(win_execute(winids[0], "echo line('$')")))
-    if firstline < 1
-        let firstline = 1
-    elseif prop.lastline + a:nlines > buf_lastline
-        let firstline = buf_lastline + prop.firstline - prop.lastline
+    var fline = prop.firstline
+    fline = fline + nlines
+    var buf_lastline = str2nr(trim(win_execute(winids[0], "echo line('$')")))
+    if fline < 1
+        fline = 1
+    elseif prop.lastline + nlines > buf_lastline
+        fline = buf_lastline + prop.firstline - prop.lastline
     endif
 
-    call popup_setoptions(winids[0], {'firstline': firstline})
-endfunction
+    call popup_setoptions(winids[0], {firstline: fline})
+enddef
 
-nnoremap <C-j> :call ScrollPopup(3)<CR>
-nnoremap <C-k> :call ScrollPopup(-3)<CR>
-" [END] Scrolling VIM9 popups using keyboard CONFIG
+nnoremap <C-j> :call <SID>ScrollPopup(3)<CR>
+nnoremap <C-k> :call <SID>ScrollPopup(-3)<CR>
+# [END] Scrolling VIM9 popups using keyboard CONFIG
 
-" [START] wikipedia2text lookup CONFIG
-" See: https://github.com/chrisbra/wikipedia2text
-" Assumes you have installed the wikipedia2text script to your path
-" with the filename 'wp2t'
+# [START] wikipedia2text lookup CONFIG
+# See: https://github.com/chrisbra/wikipedia2text
+# Assumes you have installed the wikipedia2text script to your path
+# with the filename 'wp2t'
 
-function! LookupPopup()
+def WikiLookupPopup(): void
     set mouse=a
     var popup_win = printf("wp2t -s %s", expand('<cword>'))
-         ->system()
-         ->split("\n")
-         ->popup_atcursor({ "padding": [1, 1, 1, 1] })
+                  ->system()
+                  ->split("\n")
+                  ->popup_atcursor({ padding: [1, 1, 1, 1] })
+
     call setbufvar(winbufnr(popup_win), '&filetype', 'git')
-endfunction
+enddef
+nnoremap <silent><leader>w :call <SID>WikiLookupPopup()<CR>
+# [END] wikipedia2text lookup CONFIG
 
-
-nnoremap <silent><leader>w :call LookupPopup()<CR>
-" [END] wikipedia2text lookup CONFIG
-
-" [START] JiraIssueLookupPopup lookup CONFIG
-function! JiraIssueLookupPopup()
+# [START] JiraIssueLookupPopup lookup CONFIG
+def JiraIssueLookupPopup(): void
     set mouse=a
     var popup_win = printf("jira view issue --plain %s", expand('<cword>'))
          ->system()
          ->split("\n")
-         ->popup_atcursor({ "padding": [1, 1, 1, 1] })
+         ->popup_atcursor({ padding: [1, 1, 1, 1] })
     call setbufvar(winbufnr(popup_win), '&filetype', 'git')
-endfunction
+enddef
+nnoremap <silent><leader>j :call <SID>JiraIssueLookupPopup()<CR>
+# [END] JiraIssueLookupPopup lookup CONFIG
 
-nnoremap <silent><leader>j :call JiraIssueLookupPopup()<CR>
-" [END] JiraIssueLookupPopup lookup CONFIG
-
-" [START] GitBlaneLine lookup CONFIG
-function! GitBlameLine()
+# [START] GitBlaneLine lookup CONFIG
+def GitBlameLine(): void
     var popup_win = printf("git -C %s blame -s -L %s,%s -- %s | head -c 8", expand('%:h'), line('.'), line('.'), expand('%:p'))
         ->system()
         ->printf("git -C " .. expand('%:h') .. " log --stat -1 %s")
         ->system()
         ->split("\n")
-        ->popup_atcursor({ "padding": [0, 1, 1, 1] })
+        ->popup_atcursor({ padding: [0, 1, 1, 1] })
+
     call setbufvar(winbufnr(popup_win), '&filetype', 'git')
-endfunction
+enddef
+nnoremap <silent><leader>b :call <SID>GitBlameLine()<CR>
+# [END] GitBlaneLine lookup CONFIG
 
-nnoremap <silent><leader>b :call GitBlameLine()<CR>
-" [END] GitBlaneLine lookup CONFIG
+# [START] vim_codex CONFIG
+nnoremap <C-x> :CreateCompletion 100<CR>
+inoremap <C-x> <Esc>li<C-g>u<Esc>l:CreateCompletion 100<CR>
+# [END] vim_codex CONFIG
 
-" [START] vim_codex CONFIG
-nnoremap  <C-x> :CreateCompletion 100<CR>
-inoremap  <C-x> <Esc>li<C-g>u<Esc>l:CreateCompletion 100<CR>
-" [END] vim_codex CONFIG
-
-" [START] LanguageTool grammar checker plugin CONFIG
-let g:languagetool_jar="~/.dotfiles/LanguageTool/languagetool-commandline.jar"
-let g:languagetool_lang="en-GB"
+# [START] LanguageTool grammar checker plugin CONFIG
+g:languagetool_jar = "~/.dotfiles/LanguageTool/languagetool-commandline.jar"
+g:languagetool_lang = "en-GB"
 hi LanguageToolGrammarError  guisp=blue gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=blue term=underline cterm=none
 hi LanguageToolSpellingError guisp=red  gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
-" [END] LanguageTool grammar checker plugin CONFIG
+# [END] LanguageTool grammar checker plugin CONFIG
