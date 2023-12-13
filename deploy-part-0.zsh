@@ -226,7 +226,6 @@ then
         sudo cp ~/.dotfiles/windows-terminal-emulators-config/windows-alacritty.yml  /mnt/c/Users/conta/AppData/Roaming/alacritty/alacritty.yml
     report_done
 fi
-
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades -y
 report_done
