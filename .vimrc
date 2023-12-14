@@ -1,10 +1,9 @@
 vim9script
+# vim: foldmethod=marker foldmarker=[START],[END]
 # /- - - - - - - - - - - - - - - - - - - - - -\
 # |  https://github.com/wordswords/dotfiles   |
 # \- - - - - - - - - - - - - - - - - - - - - -/
 #
-# vim: foldmethod=marker foldmarker=[START],[END]
-
 # [START] Vundle CONFIG
 filetype off
 
@@ -12,7 +11,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 # [END] Vundle CONFIG
-
 # [START] Plugins CONFIG
 Plugin 'Shougo/denite.nvim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -41,12 +39,10 @@ Plugin 'tpope/vim-git'
 Plugin 'vim-airline/vim-airline'
 Plugin 'ycm-core/YouCompleteMe'
 # [END] Plugins CONFIG
-
-# [START] Vundle END CONFIG
+# [START] Vundle end CONFIG
 call vundle#end()            # required
 filetype plugin indent on    # required
-# [END] Vundle END CONFIG
-
+# [END] Vundle end CONFIG
 # [START] General CONFIG
 syntax enable
 set autoindent                     # Automatically indent code
@@ -184,10 +180,8 @@ set guifont=DroidSansMono\ Nerd\ Font\ 18
 highlight CursorLine term=bold cterm=bold guibg=Grey40
 highlight CursorColumn term=bold cterm=bold guibg=Grey40
 set cursorline cursorcolumn
-
+g:markdown_fenced_languages = ['vim', 'help']
 # [END] General CONFIG
-
-
 # [START] YCM CONFIG
 g:ycm_enable_inlay_hints = 1
 g:ycm_auto_trigger = 1
@@ -196,14 +190,12 @@ g:ycm_enable_semantic_highlighting = 1
 imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
 nmap <C-f> <Plug>(YCMFindSymbolInWorkspace)
 # [END] YCM CONFIG
-
 # [START] Third Party Language Serverfs for use with YCM
 g:ycm_language_server = [{ name: 'vim',
        filetypes: [ 'vim' ],
        cmdline: ['vim-language-server --stdio' ],
      }]
 # [END] Third Party Language Serverfs for use with YCM
-
 # [START] Visual selection search options CONFIG
 # Search visual selection via stackoverflow
 vnoremap <leader>s y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> so.sh 2>/dev/null<CR><CR>
@@ -211,16 +203,13 @@ vnoremap <leader>s y:!echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n
 # Send visual selection to OpenAI and output the result
 vnoremap <leader>o y:read !echo <C-r>=escape(substitute(shellescape(getreg('"')), '\n', '\r', 'g'), '%!')<CR> <Bar> ai.sh 2>/dev/null<CR><CR>
 # [END] Visual selection search options CONFIG
-
 # [START] Clipboard synchronisation hackery CONFIG
 vnoremap <C-c> "+y
 # [END] Clipboard synchronisation hackery CONFIG
-
 # [START] GUI CONFIG
 g:prettier#autoformat = 1 # Prettier code formatter automatically files
 g:rehash256 = 1 # Ensure 256 colour mode
 # [END] GUI config
-
 # [START] Colourscheme CONFIG
 # You might have to force true color when using regular vim inside tmux as the
 # colorscheme can appear to be grayscale with "termguicolors" option enabled.
@@ -235,12 +224,10 @@ colorscheme molokai
 hi SpecialKey ctermfg=grey guifg=grey70
 hi NonText ctermfg=grey guifg=grey70
 # [END] Colourscheme config
-
 # [START] Modelines CONFIG
 set modelines=5
 set modeline
 # [END] Modelines config
-
 # [START] vim-airline CONFIG
 g:airline_theme = 'molokai'
 g:airline#extensions#tabline#enabled = 0
@@ -248,7 +235,6 @@ g:airline#extensions#tabline#fnamemod = ':t' # Show just the filename
 g:airline_powerline_fonts = 1
 g:powerline_symbols = 'fancy'
 # [END] vim-airline CONFIG
-
 # [START] NERDTree CONFIG
 # Start NerdTree when vim is started to edit a directory, except in vimdiff mode
 if &diff
@@ -280,7 +266,6 @@ var NERDTreeShowHidden = 1
 #
 noremap <UP> :NERDTreeToggle<CR>
 # [END] Nerdtree CONFIG
-
 # [START] Filetype formats/autocmd CONFIG
 def SetRestructuredTextOptions(): void
   au BufRead,BufNewFile *.rst setlocal textwidth=80
@@ -340,11 +325,9 @@ autocmd BufRead,BufNewFile *.py call SetPythonFileOptions()
 autocmd FileType gitcommit call SetGitCommitFileOptions()
 autocmd FileType plugin indent on " for writing plugins
 # [END] Filetype formats/autocmd CONFIG
-
 # [START] Goyo CONFIG
 noremap <F12> :Goyo<CR> " this toggles distraction-free mode
 # [END] Goyo CONFIG
-
 # [START] Vista CONFIG
 g:vista_default_executive = "vim_lsp"
 nmap <silent><DOWN> :Vista!!<ENTER>
@@ -354,7 +337,6 @@ autocmd bufenter * if (winnr("$") == 1 && bufwinnr("__vista__") > 0) | q | endif
 # If only NerdTree and Vista buffers are left, automatically close VIM
 autocmd bufenter * if (winnr("$") == 2 && bufwinnr("__vista__") > 0 && exists("b:NERDTree")) | qa | endif
 # [END] Vista CONFIG
-
 # [START] Wordy CONFIG
 # Wordy is only activated when editing text files
 g:wordy#ring = [
@@ -371,7 +353,6 @@ g:wordy#ring = [
    'adverbs',
    ]
 # [END] Wordy CONFIG
-
 # [START] nerdtree-git-plugin CONFIG
 g:NERDTreeGitStatusUseNerdFonts = 1 # default: 0
 g:NERDTreeGitStatusShowClean = 1 # default: 0
@@ -388,9 +369,6 @@ g:NERDTreeGitStatusIndicatorMapCustom = { Modified: '✹',
                                           Clean: '✔︎',
                                           Unknown: '?', }
 # [END] nerdtree-git-plugin CONFIG
-
-g:markdown_fenced_languages = ['vim', 'help']
-
 # [START] Scrolling VIM9 popups using keyboard CONFIG
 def ScrollPopup(nlines: number): void
     var winids = popup_list()
@@ -419,7 +397,6 @@ enddef
 nnoremap <C-j> :call <SID>ScrollPopup(3)<CR>
 nnoremap <C-k> :call <SID>ScrollPopup(-3)<CR>
 # [END] Scrolling VIM9 popups using keyboard CONFIG
-
 # [START] wikipedia2text lookup CONFIG
 # See: https://github.com/chrisbra/wikipedia2text
 # Assumes you have installed the wikipedia2text script to your path
@@ -436,7 +413,6 @@ def WikiLookupPopup(): void
 enddef
 nnoremap <silent><leader>w :call <SID>WikiLookupPopup()<CR>
 # [END] wikipedia2text lookup CONFIG
-
 # [START] JiraIssueLookupPopup lookup CONFIG
 def JiraIssueLookupPopup(): void
     set mouse=a
@@ -448,7 +424,6 @@ def JiraIssueLookupPopup(): void
 enddef
 nnoremap <silent><leader>j :call <SID>JiraIssueLookupPopup()<CR>
 # [END] JiraIssueLookupPopup lookup CONFIG
-
 # [START] GitBlaneLine lookup CONFIG
 def GitBlameLine(): void
     var popup_win = printf("git -C %s blame -s -L %s,%s -- %s | head -c 8", expand('%:h'), line('.'), line('.'), expand('%:p'))
@@ -462,12 +437,10 @@ def GitBlameLine(): void
 enddef
 nnoremap <silent><leader>b :call <SID>GitBlameLine()<CR>
 # [END] GitBlaneLine lookup CONFIG
-
 # [START] vim_codex CONFIG
 nnoremap <C-x> :CreateCompletion 100<CR>
 inoremap <C-x> <Esc>li<C-g>u<Esc>l:CreateCompletion 100<CR>
 # [END] vim_codex CONFIG
-
 # [START] LanguageTool grammar checker plugin CONFIG
 g:languagetool_jar = "~/.dotfiles/LanguageTool/languagetool-commandline.jar"
 g:languagetool_lang = "en-GB"
