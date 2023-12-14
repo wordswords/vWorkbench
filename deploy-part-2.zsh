@@ -26,16 +26,10 @@ report_done
 report_progress 'Installing bash-language-server through npm'
 sudo npm install -g bash-language-server
 report_done
-report_progress 'Install LanguageTool grammar checker'
+report_progress 'Install Texidote grammar checker'
 cd ~/.dotfiles
-rm -rf ./LanguageToo*
-wget https://languagetool.org/download/LanguageTool-5.9.zip
-# LanguageTool 5.9 is the last version that works with the vim plugin
-# When the vim plugin gets fixed, then we can use the latest version
-# wget https://languagetool.org/download/LanguageTool-stable.zip
-mkdir -p ./LanguageTool
-unzip -d ./LanguageTool ./LanguageTool-*.zip
-mv ./LanguageTool/*/* ./LanguageTool
+rm -rf ./*.jar
+~/.dotfiles/bin/download-latest-texidote-jar.sh
 cd -
 report_done
 report_progress 'Install wikipedia2text'

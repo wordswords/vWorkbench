@@ -1,7 +1,7 @@
 vim9script
 # vim: foldmethod=marker foldmarker=[START],[END]
 # /- - - - - - - - - - - - - - - - - - - - - -\
-# |  https://github.com/wordswords/dotfiles   |
+#   https://github.com/wordswords/dotfiles
 # \- - - - - - - - - - - - - - - - - - - - - -/
 #
 # [START] Vundle CONFIG
@@ -12,9 +12,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 # [END] Vundle CONFIG
 # [START] Plugins CONFIG
-Plugin 'Shougo/denite.nvim'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'dpelle/vim-LanguageTool'
+# [END] Plugins CONFIG
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'junegunn/goyo.vim'
@@ -32,19 +30,22 @@ Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Shougo/denite.nvim'
 Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 Plugin 'vim-airline/vim-airline'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ycm-core/YouCompleteMe'
-# [END] Plugins CONFIG
+Plugin 'lervag/vimtex'
 # [START] Vundle end CONFIG
-call vundle#end()            # required
-filetype plugin indent on    # required
+call vundle#end()
+filetype plugin indent on
 # [END] Vundle end CONFIG
 # [START] General CONFIG
 syntax enable
+
 set autoindent                     # Automatically indent code
 set background=dark                # Dark background, light foreground
 set backspace=2                    # Backspace back up a line
@@ -53,7 +54,7 @@ set bk                             # Backup files
 set colorcolumn=+1                 # Enable coloured column after textwidth line
 set cursorline                     # Highlight current line
 set dir=~/.backup/vim/swap         # Directory to drop swap files
-set encoding=utf8                  # Enforce UTF8 encoding
+set encoding=utf-8                 # Required for YCM
 set expandtab                      # Always expand tabs
 set history=1000                   # 1000 previous commands remembered
 set hlsearch                       # Highlight searches
@@ -64,7 +65,7 @@ set list                           # Use the following list characters:
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set ls=2                           # Always show status line
 set number                         # Show line numbers
-set relativenumber                 # Set numbering from current line
+set norelativenumber                 # Set numbering from current line
 set ruler                          # Show the cursor position all the time
 set scrolloff=3                    # Keep 3 lines when scrolling
 set shiftwidth=4                   # With indentation shifts, use 4 space tabs
@@ -80,7 +81,6 @@ set undodir=~/.backup/vim/undos    # Directory to drop undo files
 set undofile                       # Drop undo files
 set wildmenu                       # Allow for menu based file navigation
 set wildmode=list:longest,full
-
 # Generate vim helpfiles
 :helptags ALL
 
@@ -128,21 +128,32 @@ nnoremap <leader>y :call <SID>YankFile()<CR>
 # Foot pedal
 nnoremap <F6> i
 imap <F6> <Esc>
+#
+# Dotfiles help toggle
+def BringUpDotfilesReadme(): void
+    :sp ~/.dotfiles/README.md
+    nnoremap <leader>h :call <SID>CloseDotfilesReadme()<CR>
+enddef
+nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 
-def g:CloseDotfilesReadme(): void
+def CloseDotfilesReadme(): void
     :windo if expand('%:t') == 'README.md' | q! | endif
     nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 enddef
 
-# Dotfiles help toggle
-def g:BringUpDotfilesReadme(): void
-    :sp ~/.dotfiles/README.md
-    nnoremap <leader>h :call CloseDotfilesReadme()<CR>
+# Locations list toggle
+def ToggleOnLocationsList(): void
+    :lopen
+    nnoremap <DOWN> :call <SID>ToggleOffLocationsList()<CR>
 enddef
-nnoremap <leader>h call BringUpDotfilesReadme()<CR>
+def ToggleOffLocationsList(): void
+    :lclose
+    nnoremap <DOWN> :call <SID>ToggleOnLocationsList()<CR>
+enddef
+nnoremap <DOWN> :call <SID>ToggleOnLocationsList()<CR>
 
 # Git Copilot toggle
-def g:ToggleCopilotOff(): void
+def ToggleCopilotOff(): void
     :Copilot disable
     :Copilot status
     nnoremap <silent><leader>c :call <SID>ToggleCopilotOn()<CR>
@@ -156,9 +167,9 @@ def ToggleCopilotOn(): void
 enddef
 
 # Run language tool
-nnoremap <silent><leader>l :call <SID>RunLanguageToolCheck()<CR>
-def RunLanguageToolCheck(): void
-    :LanguageToolCheck
+nnoremap <silent><leader>l :call <SID>RunTextidoteToggle()<CR>
+def RunTextidoteToggle(): void
+    compiler textidote|lmake
 enddef
 
 # Set gVIM settings to be the same as the terminal
@@ -187,14 +198,17 @@ g:ycm_enable_inlay_hints = 1
 g:ycm_auto_trigger = 1
 g:ycm_auto_trigger = 1
 g:ycm_enable_semantic_highlighting = 1
+g:ycm_always_populate_location_list = 1
 imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
 nmap <C-f> <Plug>(YCMFindSymbolInWorkspace)
 # [END] YCM CONFIG
 # [START] Third Party Language Serverfs for use with YCM
-g:ycm_language_server = [{ name: 'vim',
-       filetypes: [ 'vim' ],
-       cmdline: ['vim-language-server --stdio' ],
-     }]
+g:ycm_language_server = [
+                        {  'name': 'vim',
+                           'cmdline': ['vim-language-server', '--stdio' ],
+                           'filetypes': [ 'vim' ],
+                         }
+                        ]
 # [END] Third Party Language Serverfs for use with YCM
 # [START] Visual selection search options CONFIG
 # Search visual selection via stackoverflow
@@ -262,9 +276,9 @@ var NERDTreeDirArrows = 1
 var NERDTreeShowHidden = 1
 
 #
-# Pressing <UP> cursor toggles NerdTree
+# Pressing <LEFT> cursor toggles NerdTree
 #
-noremap <UP> :NERDTreeToggle<CR>
+noremap <LEFT> :NERDTreeToggle<CR>
 # [END] Nerdtree CONFIG
 # [START] Filetype formats/autocmd CONFIG
 def SetRestructuredTextOptions(): void
@@ -273,27 +287,39 @@ def SetRestructuredTextOptions(): void
 enddef
 
 def SetTextAndMarkdownOptions(): void
-  au BufRead,BufNewFile *.txt *.md call pencil#init()
-                             | call lexical#init()
-                             | call textobj#quote#init()
-                             | call textobj#sentence#init()
+  call pencil#init()
+  call lexical#init()
+  call textobj#quote#init()
+  call textobj#sentence#init()
+
   g:pencil#joinspaces = 1     # 0=one_space (def), 1=two_spaces
   g:pencil#cursorwrap = 1     # 0=disable, 1=enable (def)
   setlocal spell
   setlocal nowrap # this is required for special text wrapping
   # scroll through spelling/grammar errors
-  nmap <LEFT> [s " last spelling/grammar error
-  nmap <RIGHT> ]s " next spelling/grammar error
+  #nmap <LEFT> [s " last spelling/grammar error
+  #nmap <RIGHT> ]s " next spelling/grammar error
 enddef
 
 def SetMakefileOptions(): void
+  :!ctags -R %
+  :Vista ctags
   setlocal noexpandtab
   setlocal tabstop=4
   setlocal shiftwidth=4
   setlocal softtabstop=0
 enddef
 
+def SetVimFileOptions(): void
+    :!ctags -R %
+    :Vista ctags
+    :sleep 1
+    :wincmd p
+enddef
+
 def SetPythonFileOptions(): void
+  :!ctags -R %
+  :Vista ctags
   # To meet PEP8
   setlocal textwidth=79
   setlocal shiftwidth=4
@@ -318,10 +344,10 @@ autocmd FileType text,markdown,Makefile,Jenkinsfile,Python,vim,sh autocmd BufWri
 autocmd BufRead,BufNewFile *.f90 set filetype=Fortran
 autocmd BufRead,BufNewFile *.robot setlocal noexpandtab
 autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
-autocmd BufRead,BufNewFile *.txt call SetTextAndMarkdownOptions()
-autocmd BufRead,BufNewFile *.md call SetTextAndMarkdownOptions()
+autocmd BufRead,BufNewFile *.txt,*.md call SetTextAndMarkdownOptions()
 autocmd BufRead,BufNewFile Makefile call SetMakeFileOptions()
 autocmd BufRead,BufNewFile *.py call SetPythonFileOptions()
+autocmd BufRead,BufNewFile .vimrc call SetVimFileOptions()
 autocmd FileType gitcommit call SetGitCommitFileOptions()
 autocmd FileType plugin indent on " for writing plugins
 # [END] Filetype formats/autocmd CONFIG
@@ -329,30 +355,14 @@ autocmd FileType plugin indent on " for writing plugins
 noremap <F12> :Goyo<CR> " this toggles distraction-free mode
 # [END] Goyo CONFIG
 # [START] Vista CONFIG
-g:vista_default_executive = "vim_lsp"
-nmap <silent><DOWN> :Vista!!<ENTER>
+g:vista_default_executive = "ctags"
+nmap <silent><RIGHT> :Vista!!<ENTER>
 
 # Automatically close vim if vista is the only buffer left
 autocmd bufenter * if (winnr("$") == 1 && bufwinnr("__vista__") > 0) | q | endif
 # If only NerdTree and Vista buffers are left, automatically close VIM
 autocmd bufenter * if (winnr("$") == 2 && bufwinnr("__vista__") > 0 && exists("b:NERDTree")) | qa | endif
 # [END] Vista CONFIG
-# [START] Wordy CONFIG
-# Wordy is only activated when editing text files
-g:wordy#ring = [
-   'weak',
-   ['being', 'passive-voice', ],
-   'business-jargon',
-   'weasel',
-   'puffery',
-   ['problematic', 'redundant', ],
-   ['colloquial', 'idiomatic', 'similies', ],
-   'art-jargon',
-   ['contractions', 'opinion', 'vague-time', 'said-synonyms', ],
-   'adjectives',
-   'adverbs',
-   ]
-# [END] Wordy CONFIG
 # [START] nerdtree-git-plugin CONFIG
 g:NERDTreeGitStatusUseNerdFonts = 1 # default: 0
 g:NERDTreeGitStatusShowClean = 1 # default: 0
@@ -441,9 +451,9 @@ nnoremap <silent><leader>b :call <SID>GitBlameLine()<CR>
 nnoremap <C-x> :CreateCompletion 100<CR>
 inoremap <C-x> <Esc>li<C-g>u<Esc>l:CreateCompletion 100<CR>
 # [END] vim_codex CONFIG
-# [START] LanguageTool grammar checker plugin CONFIG
-g:languagetool_jar = "~/.dotfiles/LanguageTool/languagetool-commandline.jar"
-g:languagetool_lang = "en-GB"
-hi LanguageToolGrammarError  guisp=blue gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=blue term=underline cterm=none
-hi LanguageToolSpellingError guisp=red  gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
-# [END] LanguageTool grammar checker plugin CONFIG
+# [START] vimtex CONFIG
+g:vimtex_view_method = 'zathura'
+g:vimtex_compiler_method = 'texidote'
+g:vimtex_grammar_textidote = {'jar': '~/.dotfiles/textidote.jar'}
+g:airline#extensions#vimtex#enabled = 1
+# [END] vimtex CONFIG
