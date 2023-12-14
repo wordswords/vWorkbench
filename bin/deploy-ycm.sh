@@ -10,6 +10,8 @@ wget https://github.com/Kitware/CMake/releases/download/v3.28.0/cmake-3.28.0.tar
 tar xzf cmake-3.28.0.tar.gz
 cd ./cmake-3.28.0
 ./bootstrap && make && sudo make install
+cd -
+rm -rf ./cmake-3.28.0
 
 # Assumes node is already installed - Installs all other prereqs for YCM
 
