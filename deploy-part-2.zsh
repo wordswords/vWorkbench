@@ -15,30 +15,13 @@ source ~/.dotfiles/SECRETS/vimz_config.sh
 export PIP_BREAK_SYSTEM_PACKAGES=1
 
 report_heading 'Deploy Dotfiles: Part 2'
+## Prereqs
 report_progress 'Testing Github access'
 ssh -T git@github.com 2>/tmp/githubaccesscheck.txt || echo ""
 grep 'successfully authenticated' /tmp/githubaccesscheck.txt || (echo ERROR: Github acccess not available && exit 1)
 rm /tmp/githubaccesscheck.txt
 report_done
-report_progress 'Running ctags'
-ctags -R ./*
-report_done
-report_progress 'Installing bash-language-server through npm'
-sudo npm install -g bash-language-server
-report_done
-report_progress 'Install Texidote grammar checker'
-cd ~/.dotfiles
-rm -rf ./*.jar
-~/.dotfiles/bin/download-latest-texidote-jar.sh
-cd -
-report_done
-report_progress 'Install wikipedia2text'
-cd ~/.dotfiles
-rm -rf ./wikipedia2text || true
-cd ~/.dotfiles && git clone git@github.com:chrisbra/wikipedia2text.git
-ln -sf ~/.dotfiles/wikipedia2text/wikipedia2text ~/.dotfiles/bin/wp2t
-cd -
-report_done
+## Backup existing config and set links to new
 report_progress 'Removing existing dotfiles'
 rm -rf ~/.vim
 rm -f ~/.vimrc
@@ -74,9 +57,25 @@ ln --force -s ~/.dotfiles/.zshenv ~/.zshenv
 ln --force -s ~/.dotfiles/.zshrc ~/.zshrc
 ln --force -s -n ~/.dotfiles/.vim ~/.vim
 report_done
-report_progress 'Creating vim backup file directory structure'
-mkdir -p ~/.backup/vim/swap || echo "INFO: Swapfile backup directory seems to be already there."
-mkdir ~/.backup/vim/undos || echo "INFO: Undofile backup directory seems to be already there."
+## General Install
+report_progress 'Running ctags'
+ctags -R ./*
+report_done
+report_progress 'Installing bash-language-server through npm'
+sudo npm install -g bash-language-server
+report_done
+report_progress 'Install Texidote grammar checker'
+cd ~/.dotfiles
+rm -rf ./*.jar
+~/.dotfiles/bin/download-latest-texidote-jar.sh
+cd -
+report_done
+report_progress 'Install wikipedia2text'
+cd ~/.dotfiles
+rm -rf ./wikipedia2text || true
+cd ~/.dotfiles && git clone git@github.com:chrisbra/wikipedia2text.git
+ln -sf ~/.dotfiles/wikipedia2text/wikipedia2text ~/.dotfiles/bin/wp2t
+cd -
 report_done
 report_progress 'Installing Powerlevel10k prompt'
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k || true
@@ -152,6 +151,7 @@ report_progress 'Configuring tmuxinator'
 mkdir -p ~/.config/tmuxinator
 ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
 report_done
+## OS specific stuff
 cur_os=$(get_os)
 report_progress 'Running any Windows specific configuration'
 if [[ $cur_os == 'windows' ]] ; then
