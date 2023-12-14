@@ -14,7 +14,7 @@ source ~/.dotfiles/SECRETS/vimz_config.sh
 ## We want to take that risk
 export PIP_BREAK_SYSTEM_PACKAGES=1
 
-report_heading 'Deploy Dotfiles: Part 2'
+eport_heading 'Deploy Dotfiles: Part 2'
 report_progress 'Testing Github access'
 ssh -T git@github.com 2>/tmp/githubaccesscheck.txt || echo ""
 grep 'successfully authenticated' /tmp/githubaccesscheck.txt || (echo ERROR: Github acccess not available && exit 1)
@@ -83,6 +83,8 @@ report_done
 report_progress 'Installing Powerlevel10k prompt'
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k || true
 ln --force -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh || true
+report_progress  'Installing Vundle for vim'
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 report_done
 report_progress 'Creating vim backup file directory structure'
 mkdir -p ~/.backup/vim/swap || echo "INFO: Swapfile backup directory seems to be already there."
@@ -117,8 +119,7 @@ git config --global user.email "${VIMZ_EMAIL}"
 set +x
 report_done
 report_progress 'Installing and configuring Joplin CLI notetaking app'
-NPM_CONFIG_PREFIX=~/.joplin-bin sudo npm install -g joplin
-sudo ln -sf ~/.joplin-bin/bin/joplin /bin/joplin-cli
+~/.dotfiles/bin/update-joplin-cli.sh
 /bin/joplin-cli config --import-file ~/.dotfiles/joplin.config
 report_done
 report_progress 'Changing shell to /bin/zsh.'
@@ -139,13 +140,8 @@ report_progress 'Running vim local commands for plugins'
 echo '''
     :PluginClean
     :PluginInstall
-    :sleep 4
     :Copilot setup
-    :sleep 4
     :helptags ALL
-    :sleep 4
-    :CreateCompletion
-    :sleep 4
     :qa
     ''' >~/.dotfiles/vimscript.vs
 vim -s ~/.dotfiles/vimscript.vs
@@ -181,6 +177,7 @@ if [[ $cur_os == 'windows' ]] ; then
 fi
 report_done
 report_progress 'Running any Linux specific configuration'
+
 if [[ $cur_os == 'linux' ]] ; then
 
     # disable touchpad tap to click
