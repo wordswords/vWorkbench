@@ -16,6 +16,7 @@ rm -rf ./cmake-3.28.0
 sudo apt-get install -y mono-complete golang openjdk-18-jdk openjdk-18-jre
 
 # Install YCM
+chmod -R 700 ~/.vim/bundle/YouCompleteMe/
 rm -rf ~/.vim/bundle/YouCompleteMe/
 git clone git@github.com:ycm-core/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe
 cd ~/.vim/bundle/YouCompleteMe/

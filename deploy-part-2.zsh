@@ -80,7 +80,9 @@ report_done
 report_progress 'Installing Powerlevel10k prompt'
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k || true
 ln --force -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh || true
+report_done
 report_progress  'Installing Vundle for vim'
+rm -rf ~/.vim/bundle/Vundle.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 report_done
 report_progress 'Download, install and compile YouCompleteMe for VIM9'
