@@ -74,15 +74,15 @@ ln --force -s ~/.dotfiles/.zshenv ~/.zshenv
 ln --force -s ~/.dotfiles/.zshrc ~/.zshrc
 ln --force -s -n ~/.dotfiles/.vim ~/.vim
 report_done
+report_progress 'Creating vim backup file directory structure'
+mkdir -p ~/.backup/vim/swap || echo "INFO: Swapfile backup directory seems to be already there."
+mkdir ~/.backup/vim/undos || echo "INFO: Undofile backup directory seems to be already there."
+report_done
 report_progress 'Installing Powerlevel10k prompt'
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k || true
 ln --force -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh || true
 report_progress  'Installing Vundle for vim'
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-report_done
-report_progress 'Creating vim backup file directory structure'
-mkdir -p ~/.backup/vim/swap || echo "INFO: Swapfile backup directory seems to be already there."
-mkdir ~/.backup/vim/undos || echo "INFO: Undofile backup directory seems to be already there."
 report_done
 report_progress 'Download, install and compile YouCompleteMe for VIM9'
 ~/.dotfiles/bin/deploy-ycm.sh
@@ -90,10 +90,6 @@ report_done
 report_progress 'Installing Github Copilot VIM9 plugin'
 rm -rf ~/.vim/pack/github/start/copilot.vim
 git clone git@github.com:github/copilot.vim.git ~/.vim/pack/github/start/copilot.vim
-report_done
-report_progress 'Installing air-line molokai theme'
-mkdir -p ~/.vim/autoload/airline/themes
-cp ~/.dotfiles/molokai.vim ~/.vim/autoload/airline/themes
 report_done
 report_progress 'Installing vim colorscheme'
 git clone git@github.com:shannonmoeller/vim-monokai256.git ./colorscheme
