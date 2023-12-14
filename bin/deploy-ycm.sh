@@ -12,11 +12,7 @@ cd ./cmake-3.28.0
 ./bootstrap && make && sudo make install
 
 # Assumes node is already installed - Installs all other prereqs for YCM
-
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_current.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-sudo apt install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre
+sudo apt install mono-complete golang openjdk-17-jdk openjdk-17-jre
 
 # Install YCM
 
