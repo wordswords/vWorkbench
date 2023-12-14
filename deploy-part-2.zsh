@@ -14,7 +14,7 @@ source ~/.dotfiles/SECRETS/vimz_config.sh
 ## We want to take that risk
 export PIP_BREAK_SYSTEM_PACKAGES=1
 
-eport_heading 'Deploy Dotfiles: Part 2'
+report_heading 'Deploy Dotfiles: Part 2'
 report_progress 'Testing Github access'
 ssh -T git@github.com 2>/tmp/githubaccesscheck.txt || echo ""
 grep 'successfully authenticated' /tmp/githubaccesscheck.txt || (echo ERROR: Github acccess not available && exit 1)
