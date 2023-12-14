@@ -78,7 +78,6 @@
       * [repos.sh](#repossh)
       * [blameline](#blameline)
       * [git logline](#git-logline)
-      * [make-and-install-vim.sh](#make-and-install-vimsh)
 * [Modifying](#modifying)
 <!--te-->
 
@@ -960,16 +959,6 @@ for finding how the contents of a file was created.
 
 A compact summary of commits to a directory or file, e.g. `git logline
 ~/.dotfiles`
-
-### `make-and-install-vim.sh`
-
-This downloads, compiles and installs a version of VIM that you supply.
-
-I use this in the deployment process because I was fed up of third party
-repos breaking on an Ubuntu dist upgrade, and because a custom-compiled
-VIM9 is faster, and you have exact control over what extensions are compiled in.
-
-At the moment it uses all the default extensions, as well as Python3 on top.
 
 # Modifying
 
