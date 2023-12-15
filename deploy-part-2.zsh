@@ -57,6 +57,25 @@ ln --force -s ~/.dotfiles/.zshenv ~/.zshenv
 ln --force -s ~/.dotfiles/.zshrc ~/.zshrc
 ln --force -s -n ~/.dotfiles/.vim ~/.vim
 report_done
+report_progress 'Running ctags'
+ctags -R ./*
+report_done
+report_progress 'Installing bash-language-server through npm'
+sudo npm install -g bash-language-server
+report_done
+report_progress 'Install Texidote grammar checker'
+cd ~/.dotfiles
+rm -rf ./*.jar
+~/.dotfiles/bin/download-latest-texidote-jar.sh
+cd -
+report_done
+report_progress 'Install wikipedia2text'
+cd ~/.dotfiles
+rm -rf ./wikipedia2text || true
+cd ~/.dotfiles && git clone git@github.com:chrisbra/wikipedia2text.git
+ln -sf ~/.dotfiles/wikipedia2text/wikipedia2text ~/.dotfiles/bin/wp2t
+cd -
+report_done
 ## General Install
 report_progress 'Running ctags'
 ctags -R ./*
