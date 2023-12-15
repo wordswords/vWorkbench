@@ -13,7 +13,7 @@ cd -
 rm -rf ./cmake-3.28.0
 
 # Assumes node is already installed - Installs all other prereqs for YCM
-sudo apt-get install -y mono-complete golang openjdk-18-jdk openjdk-18-jre
+sudo apt-get install -y mono-complete golang openjdk-19-jdk openjdk-19-jre
 
 # Install YCM
 chmod -R 700 ~/.vim/bundle/YouCompleteMe/
