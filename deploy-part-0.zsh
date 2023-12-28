@@ -210,6 +210,10 @@ report_done
 cur_os=$(get_os)
 if [[ ${cur_os} == 'ubuntu' || ${cur_os} == 'osx' ]];
 then
+    report_progress 'Installing Todoist Linux app'
+        sudo snap refresh todoist || sudo snap install todoist
+    report_done
+    # os-specific lines
     report_progress 'Installing vim-anywhere for allowing text to be edited on any text input'
         curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
     report_done
