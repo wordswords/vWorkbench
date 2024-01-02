@@ -66,7 +66,7 @@ report_done
 report_progress 'Install Texidote grammar checker'
 cd ~/.dotfiles
 rm -rf ./*.jar
-~/.dotfiles/bin/download-latest-texidote-jar.sh
+#~/.dotfiles/bin/download-latest-texidote-jar.sh
 cd -
 report_done
 report_progress 'Install wikipedia2text'
