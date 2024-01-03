@@ -98,11 +98,11 @@
 
 ![Alt text](https://i.imgur.com/K6fBzSH.png "VIM setup")
 
-### How to Decode the vim-airline Buffer Statusline
+### How to Decode the vim-airline Buffer Status line
 
 Full docs: [https://github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
 
-1. The problems in the file show in the far right. If there are no problems
+1. The problems in the file show in the far right. If there are no issues
 there will be no red or orange expanded sections.
 
 * Orange - Warnings
@@ -163,7 +163,7 @@ how to install it at the end of the dotfile deployment.
   attempt to install the prerequisites under Ubuntu by executing
   `./deploy-part-0.sh`.
 * If you are using Ubuntu for Windows under WSL2, which is my personal favourite configuration
-then you are highly recommended to install the Alacritty terminal emulator before installing.
+then I recommend installing the Alacritty terminal emulator before installing.
 
 ## What It Will Install
 
@@ -171,7 +171,7 @@ It will install my VIM9 development environment and anything else I use
 in my work. It includes:
 
 * Install my heavily customised version of VIM9 with plugins
-* Install latest version of Oh-my-ZSH and set your default shell to ZSH
+* Install the latest version of Oh-my-ZSH and set your default shell to ZSH
 * Install Joplin the command-line open source Evernote replacement, and secure
 it with encryption, and download all my notes (presuming you are me).
 * Ask if you want to install my usual apps - https://Morgen.so : a paid multiplatform
@@ -212,52 +212,51 @@ that directory, no need to type cd.
 3. Type `l` for a long-style ls.
 4. `delta <file1> <file2>` for a nice 2 way diff style interface where you can
 analyse and copy changes between files.
-for then using on a website form.
 5. Use `<tab>` to activate oh-my-zsh's autocomplete plugins. For example `git
 <tab>`
 6. Run `repos.sh` to check the branch name of all git repositories under the
 current directory. Useful when you have a lot of different projects
 that interact with each other and you want to see which repos branches
 you have checked out.
-7. Use `vi` instead of `vim` to load a separate minimal vim config, useful if
-there's problems with the vim config.
-8. Use `notes` to launch Joplin, my note-taking app.
-9. Use `please` after realising that you needed sudo with the last command, to
+7. `vi` instead of `vim` to load a separate minimal vim config, useful if
+there are problems with the vim config.
+8. Type `notes` to launch Joplin, my note-taking app.
+9. `please` after realising that you needed sudo with the last command, to
     repeat the last command with sudo
-10. Use `ports` to list the open ports on the system in a readable way.
-11. Use `tree` for a handy diagram of the full directory tree under the current
+10. `ports` to list the open ports on the system in a readable way.
+11. `tree` for a handy diagram of the full directory tree under the current
 directory.
-12. Use `ref <jira issue number, no prefix>` to open firefox with the details
+12. ref <jira issue number, no prefix>` to open Firefox with the details
 of that issue.
-13. Use `lookup <jira issue number, no prefix>` to print the jira-cli ticket
+13. `lookup <jira issue number, no prefix>` to print the jira-cli ticket
 summary of that issue on the command line.
-14. Use `bat <file>` for a syntax-highlighting quick cat.
-15. Use `hn` to get the top 10 Hacker News Network headlines for the hour.
-16. Use `hn100` to get the top 100 Hacker News Network headlines for the hour.
-17. Use `gg <search query>` from the terminal to open a Firefox browser with the
+14. `bat <file>` for a syntax-highlighting quick cat.
+15. `hn` to get the top 10 Hacker News Network headlines for the hour.
+16. `hn100` to get the top 100 Hacker News Network headlines for the hour.
+17. `gg <search query>` from the terminal to open a Firefox browser with the
 query in the Google.co.uk search engine.
-18. Use `so <search query>` from the terminal to open a Firefox browser,
+18. `so <search query>` from the terminal to open a Firefox browser,
 and search stackoverflow using `<search query>`
-19. Use `pstree` for a nice graph showing all processes and subprocesses running.
-20. Use `<CNTRL-X> <CNTRL-E>` to open up a text editor while in a shell. When you
+19. `pstree` for a nice graph showing all processes and subprocesses running.
+20. `<CTRL-X> <CTRL-E>` to open up a text editor while in a shell. When you
 save the text content, it will copy it back to the shell to execute. You can use
-this method to use Github Copilot and OpenAI Codex in VIM to generate shell commands
+this method to use GitHub Copilot and OpenAI Codex in VIM to generate shell commands
 and then have them execute in the shell.
-21. Use `cht <language> <command>` to consult the chtsht.sh repository of high quality
+21. `cht <language> <command>` to consult the chtsht.sh repository of high quality
 cheatsheets on a lot of subjects.
-22. Use `ai <query>` to ask ChatGPT for some wisdom. Whatever it returns will
+22. `ai <query>` to ask ChatGPT for some wisdom. Whatever it returns will
 be copied to the clipboard.
 
 ## VIM9 shortcuts
 
 The most important VIM shortcut is `<leader> h` which is currently mapped to `, h`.
-This will open up this document, which is usually up to date.
+This will open up this document, which is usually up-to-date.
 
 1. `<TAB>` to activate autocomplete plug ins.
 2. `,` is set to be the `<leader>` key in VIM9, use it to trigger shortcuts.
 3. `<LEFT>` and `<RIGHT>` cursor arrows to move through the syntax errors.
 4. `<UP>` to toggle the file browser/NERDTree buffer.
-5. `<DOWN>` to open the Vista file navigation.
+5. `<DOWN>` to open the Quickfix list of errors.
 6. `>>` and `<<` to adjust indentation.
 7. `set mouse=a` is on, if you have any problems with copying and pasting just
 `:set mouse=` beforehand.
@@ -270,7 +269,7 @@ scroll the info.
 buffers.
 12. Use `u` to go up a root directory on nerdtree.
 13. Use `<F12>` to toggle distraction-free writing mode.
-13. Use `:Format` to format a buffer by the coc language server's prettifier,
+14. Use `:Format` to format a buffer by the coc language server's prettifier,
 where it exists.
 15. Type `:Wordy<space><tab>` to use the Wordy proofreading tool to check for
 poor words while writing.
@@ -387,7 +386,7 @@ window in the centre of the desktop
 
 1. `<LEFT>`       - toggle Nerdtree
 2. `<RIGHT>`      - toggle Vista
-3. `<DOWN>`       - toggle quickfix list
+3. `<DOWN>`       - toggle Quickfix list
 4. `zg`           - Mark as a good word
 5. `zw`           - Like `zg` but mark the word as a wrong (bad) word
 6. `zug`          - Unmark as good word
@@ -408,13 +407,14 @@ First move the cursor over a word or line and then:
 
 1. `<leader> h` to access this help file and to toggle opening and closing
 this file and the outline
-2. `<leader> w` to lookup the current single word on Wikipedia
-3. `<leader> b` to lookup the current line with git blame
-4. `<leader> j` to lookup the current issue number under cursor with jira-cli
+2. `<leader> w` to look up the current single word on Wikipedia
+3. `<leader> b` to look up the current line with git blame
+4. `<leader> j` to look up the current issue number under cursor with jira-cli
 5. `<leader> p` to save the current file as a markdown-formatted code post
-for reddit in the location `~/redditpost.md`
+for Reddit in the location `~/redditpost.md`
 6. `<leader> y` to copy the whole current file to the clipboard
-7. `<leader> l` to run the LanguageToolCheck command on the current file
+7. `<leader> l` to run the LanguageToolCheck command on the current file to check current
+grammar and spelling.
 8. `<leader> c` to toggle Copilot enable/disable on the current file
 
 In visual mode you can also do:
@@ -447,9 +447,9 @@ respectively.
 
 1. Whenever you have a merge conflict, use `git mergetool` to open this.
 2. If you want to just use one entire side, move your cursor to that side with `<Ctrl-W> h`, for example. Then do `:Gwrite!`.
-3. Buffers are setup so `[YOUR local branch (2) | resulting mergefile (1) | THEIR merge in branch (3) ]`
+3. Buffers are set up so `[YOUR local branch (2) | resulting mergefile (1) | THEIR merge in branch (3) ]`
 4. Use `]c` and `[c` to navigate through the conflicts
-5. Use the center pane to navigate. use `d2o` to pull the change from YOUR local branch, use `d3o` to pull the change from THEIR branch.
+5. Use the centre pane to navigate. use `d2o` to pull the change from YOUR local branch, use `d3o` to pull the change from THEIR branch.
 6. OR go to local branch OR merge in branch, select the conflict, and use `dp` to choose that version.
 7. When done, use `:wq`
 
@@ -462,11 +462,11 @@ More info:
 an updating terminal.
 2. It is recommended that if you want an interactive terminal, use a tmux split.
 This is because the paste functionality doesn't work too great while in VIM9 terminal.
-Also it has problems running some terminal applications while run under VIM9 in tmux.
+Also, it has problems running some terminal applications while run under VIM9 in tmux.
 
 ## VIM modelines and folds
 
-Several of my dotfiles, including the main deploy scripts, use modelines to set up
+Several of my dot files, including the main deploy scripts, use modelines to set up
 some fold markers. This allows for much easier organisation and navigation.
 
 Modelines are enabled by default with the security patch.
@@ -501,7 +501,7 @@ python files down from the current path.
 below the current directory, by `:e **/bla.py`. This will search for a file
 'bla.py' recursively from the current directory.  If there is more than one file
 found, it will error.
-3. `help file-search` for more wildcard options
+3. `:help file-search` for more wildcard options
 4. If you want to edit a number of files called bla.py, use `:arg **/bla.py`.
 This will open all the files one by one, use `:next` to edit the next file in
 the list. Use `:prev` to reopen a file previously edited. `:last` and `:first`
@@ -521,47 +521,19 @@ file recursively from the current path, we would do the following:
 `:arg **/*.py`
 `:argdo **/\<animal\>/creature/qa | update`
 
-``**/*.py`` selects all python files down from the current dir recursively
-`:argo` executes a command on all files from current dir recursively.
+`**/*.py` selects all python files down from the current directory recursively
+`:argo` executes a command on all files from current directory recursively.
 `%s/\<animal\>/creature/qa` replaces every occurrence of 'animal' with
 'creature' in every file - `a`, without raising errors if the matches are
 not found - `q` `update` saves the file only if it has been modified
 
-## Github Copilot
+## GitHub Copilot
 
-The Github copilot VIM plugin is installed. It assumes you have a subscription.
+The GitHub copilot VIM plugin is installed. It assumes you have a subscription.
 
 1. `:Copilot enable` to enable autocompletes for the current buffer.
 2. `:Copilot disable` to disable autocompletes for the current buffer.
 3. `<TAB>` to accept current autocomplete.
-
-## OpenAI Codex VIM Plugin
-
-The OpenAI Codex VIM plugin is installed. It assumes you have a subscription to
-OpenAI's services and that you have configured it in ~/.config with your OpenAI
-token.
-
-It works in a lot of languages, but is by far the best when used with Python.
-
-Although OpenAI Codex has been discontinued, the plugin still works with OpenAI
-thanks to a patch I found.
-
-1. Create a new file with the right file extension and a VIM-recognisable type
-for what you want to start working on.
-2. Create a comment explaining what you want to do, e.g. build a function or
-class with all the requirements that you want, in human readable format. The more
-precise you are, the more likely your wish will be fulfilled.
-3. Move the cursor to the line below the comment and press `<C-x> <C-x>`
-4. OpenAI should start writing you some code. Press `<C-x> <C-x>` until it starts
-writing rubbish code.
-5. Edit/fix bugs/extend as you wish.
-
-## ChatGPT OpenAI CLI Plugin
-
-1. You have to configure the plugin first by `mkdir -p ~/.dotfiles/SECRETS/ && echo export OPENAI_ACCESS_TOKEN=<your token> > ~/.dotfiles/SECRETS/openai-access-token.sh`
-2. Then, just use `ai <query>` anywhere in your pipe, for example `cat bla.json | ai 'pretty print this json'` the result will be copied to the clipboard
-and also output on the pipe
-3. Other examples of use can be found at [https://github.com/Aesthetikx/openai_pipe](https://github.com/Aesthetikx/openai_pipe)
 
 ## Vista Plugin
 
@@ -581,7 +553,7 @@ around large projects.
 2. For a great tutorial [https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/](https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)
 3. For a vertical split `<CTRL>-a SHIFT |`
 4. For a horizontal split `<CTRL>-a SHIFT -`
-5. For standard keybindings,`cht tmux
+5. For standard keybindings,`cht tmux`
 6. To rotate panes in the current layout `<CTRL>-a <SPACE>`
 7. To start my standard development tmux session `tmuxinator development`
 
@@ -608,7 +580,7 @@ master/main into your current local branch
 13. When all goes horribly wrong, backup your changed files by manually
 `mv`-ing them out of the repo directory, delete your entire local copy, checkout
 again from master, and rebuild your commit by copying the backed up files in.
-14. Use Github PR's 'changed files' tab for exactly what has changed, but don't
+14. Use GitHub PR's 'changed files' tab for exactly what has changed, but don't
 forget the commits tab, there should only usually be one commit per PR. And
 remember the revert button on Github PRs.
 15. `git logline` for my custom one line per commit log alias which includes
@@ -634,7 +606,7 @@ Check out my simpleton Git workflow here:
 
 ### Creating a simple patch to apply later
 
-1. To generate the patch, run the following command in the same dir
+1. To generate the patch, run the following command in the same directory
 as the file you want to patch `diff -u <file1> <file2> > patch.diff`
 2. Edit the patch file and make sure both filenames mentioned are the
 same filename that you want patched.
@@ -679,7 +651,7 @@ Perl: `find . -name '*.html' -exec perl -i -pe "s/jpg\?/jpg/g" {} \;`
 that you can test things a second time before running a potentially dangerous regex query.
 `echo 'bla.jpg?asdfasdf=asdfasdf' | perl -pe 's/(?<=[?&;]).*//g'`, just take the -i off the
 line for a dry run, and to pick up input from the pipe instead of editing a file.
-4. Remember to backup the files before running 1 too. `cp -r ./dir ./.bak.dir` can save hours.
+4. Remember to back up the files before running 1 too. `cp -r ./dir ./.bak.dir` can save hours.
 
 ## Docker/Docker Compose information I forget
 
@@ -706,12 +678,12 @@ and run it as a daeamon, e.g. in the background.
 11. `docker-compose up` will spin up the docker container(s) using docker-compose
 and run it in the foreground, and output all the logs to the terminal. Useful for
 troubleshooting.
-12. `docker-compose logs -f <container id>` will attach to the container id and tail -f
+12. `docker-compose logs -f <container id>` will attach to the container ID and tail -f
 the logs.
 13. `docker-compose pull` will update all the containers in the docker-compose file with
 the latest versions of the container tags.
 
-Also checkout the notes I took from the Docker Deep Dive book here:
+Also, check out the notes I took from the Docker Deep Dive book here:
 [https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md](https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md)
 
 ## Troubleshooting Disk I/O performance Notes
@@ -754,7 +726,7 @@ Use inbuilt `dd` command for simple sequential I/O performance measurements
 5. `dpkg -L | grep <package>` - list all installed packages, search for
 `<package>`
 6. `dpkg-query -L <package>` - show what files are installed by package
-7. `sudo update-alternatives --config php` - change binary used for php
+7. `sudo update-alternatives --config php` - change binary used for PHP
 
 ## Profiling VIM to find plugin speed problems
 
@@ -783,7 +755,7 @@ culprits
 8. Type `mn` to create a new note.
 9. Type `tm` to toggle metadata - user created time and lots of other metadata.
 10. Write all notes using Markdown so they display optimally across all clients.
-11. Press ```<DEL>``` to delete a selected note.
+11. Press `<DEL>` to delete a selected note.
 
 ## JIRA Go Client
 
@@ -794,7 +766,7 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 
 ## Printing (on Ubuntu)
 
-I have setup my laserjet to print from the commandline via CUPS. This is useful
+I have set up my laserjet to print from the command line via CUPS. This is useful
 when printing out shopping lists etc, quickly.
 
 1. `lp <file>` to print the file.
@@ -835,10 +807,10 @@ I have written a few helper scripts in ~/.dotfiles/bin
 You can pipe multiple lines of text to these scripts. They will look up the
 result in:
 
-`gg.sh` - Google
-`so.sh` - Stack Overflow
-`re.sh` - Reddit
-`ai.sh` - ChatGPT (providing you have an API key)
+`gg <google search>` - Google
+`so <stack overflow search>` - Stack Overflow
+`re <reddit search>` - Reddit
+`ai <chatgpt search>` - ChatGPT (providing you have an API key)
 
 The first three will open a new tab or web browser in Firefox (only works in Ubuntu)
 with your query on those sites.
@@ -847,20 +819,21 @@ The last will output the result of the query to STDOUT, and also save the result
 on your clipboard.
 
 You can also use the three commands WITHOUT the extension to allow for easy `<cmd> <query>`
-use while in a interactive console, for example
+use while in an interactive console, for example
 
-$ `ai why are cornflakes crunchy` - this will output on the terminal the answer to your q
+$ `ai <why are cornflakes crunchy>` - this will output on the terminal the answer to your q
 and copy the result to the clipboard
-$ `re why are cornflakes crunchy` - this will open a web browser with the query and search
+$ `re <why are cornflakes crunchy>` - this will open a web browser with the query and search
 reddit
-$ `gg why are cornflakes crunchy` - this will open a web browser with the query and search
+$ `so <stackoverlow search>` - this will open a web browser with the query and search
+$ `gg <why are cornflakes crunchy>` - this will open a web browser with the query and search
 google
 
 ### `search-ebooks.sh <search terms>`
 
-This searches my ThinkSation server for epub books according to a wildcard.
-It then displays the results as a sorted list so they can be opened by
-epy which is a command-line epub reader.
+This searches my ThinkSation server for EPUB books according to a wildcard.
+It then displays the results as a sorted list, so they can be opened by
+epy which is a command-line EPUB reader.
 
 ### `clean-git-checkout.sh <path>`
 
@@ -959,5 +932,5 @@ A compact summary of commits to a directory or file, e.g. `git logline
 
 # Modifying
 
-If you want, you can fork this repo and base your config on this. If you have
+If you want, you can fork this repo, and base your config on this. If you have
 any problems using these dotfiles please let me know and I can help you.
