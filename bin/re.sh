@@ -2,4 +2,4 @@
 set -e
 shopt -s lastpipe
 read -r input;
-echo "inurl:reddit ${input}" | ~/bin/gg.sh
+~/bin/gg.sh "inurl:reddit.com ${input}"

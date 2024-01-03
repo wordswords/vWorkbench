@@ -54,22 +54,22 @@ tramsprint() {
 autoload -Uz tramsprint
 
 ai() {
-    echo $@ | ai.sh
+    ai.sh "$@"
 }
 autoload -Uz ai
 
 gg() {
-    echo $@ | gg.sh
+    gg.sh "$@" 
 }
 autoload -Uz gg
 
 so() {
-    echo $@ | so.sh
+    echo "$@" | so.sh
 }
 autoload -Uz so
 
 re() {
-    echo $@ | re.sh
+    echo "$@" | re.sh
 }
 autoload -Uz re
 

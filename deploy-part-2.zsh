@@ -83,12 +83,6 @@ report_done
 report_progress 'Installing bash-language-server through npm'
 sudo npm install -g bash-language-server
 report_done
-report_progress 'Install Texidote grammar checker'
-cd ~/.dotfiles
-rm -rf ./*.jar
-~/.dotfiles/bin/download-latest-texidote-jar.sh
-cd -
-report_done
 report_progress 'Install wikipedia2text'
 cd ~/.dotfiles
 rm -rf ./wikipedia2text || true
@@ -104,8 +98,27 @@ report_progress  'Installing Vundle for vim'
 rm -rf ~/.vim/bundle/Vundle.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 report_done
+report_progress 'Running vim local commands for plugins'
+echo '''
+    :PluginClean
+    :PluginInstall
+    :Copilot setup
+    :helptags ALL
+    :qa
+    ''' >~/.dotfiles/vimscript.vs
+vim -s ~/.dotfiles/vimscript.vs
+rm ~/.dotfiles/vimscript.vs
+report_done
 report_progress 'Download, install and compile YouCompleteMe for VIM9'
 ~/.dotfiles/bin/deploy-ycm.sh
+report_done
+report_progress 'Update YCM for Vim9'
+echo '''
+    :PluginInstall
+    :qa
+    ''' >~/.dotfiles/vimscript.vs
+vim -s ~/.dotfiles/vimscript.vs
+rm ~/.dotfiles/vimscript.vs
 report_done
 report_progress 'Installing Github Copilot VIM9 plugin'
 rm -rf ~/.vim/pack/github/start/copilot.vim
@@ -145,17 +158,6 @@ git restore --staged ~/.vim || true
 report_done
 report_progress "Install chatGPT CLI AI"
 sudo gem install openai_pipe
-report_done
-report_progress 'Running vim local commands for plugins'
-echo '''
-    :PluginClean
-    :PluginInstall
-    :Copilot setup
-    :helptags ALL
-    :qa
-    ''' >~/.dotfiles/vimscript.vs
-vim -s ~/.dotfiles/vimscript.vs
-rm ~/.dotfiles/vimscript.vs
 report_done
 report_progress 'Python3 + OpenAI codex development toolset'
 python3 -m pip install --upgrade pip
