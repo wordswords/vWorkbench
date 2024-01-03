@@ -60,7 +60,7 @@ set history=1000                   # 1000 previous commands remembered
 set hlsearch                       # Highlight searches
 set ignorecase                     # Ignore case when searching
 set incsearch                      # Do incremental searching
-set laststatus=2                   # Show non-printable characters e.g. tab, \n
+set laststatus=2                   # Show non-printable characters e.g. tab, \\n
 set list                           # Use the following list characters:
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set ls=2                           # Always show status line
@@ -143,11 +143,11 @@ enddef
 
 # Locations list toggle
 def ToggleOnLocationsList(): void
-    :lopen
+    :copen
     nnoremap <DOWN> :call <SID>ToggleOffLocationsList()<CR>
 enddef
 def ToggleOffLocationsList(): void
-    :lclose
+    :cclose
     nnoremap <DOWN> :call <SID>ToggleOnLocationsList()<CR>
 enddef
 nnoremap <DOWN> :call <SID>ToggleOnLocationsList()<CR>
@@ -169,7 +169,7 @@ enddef
 # Run language tool
 nnoremap <silent><leader>l :call <SID>RunTextidoteToggle()<CR>
 def RunTextidoteToggle(): void
-    compiler textidote|lmake
+    compiler textidote|make
 enddef
 
 # Set gVIM settings to be the same as the terminal
@@ -203,12 +203,10 @@ imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
 nmap <C-f> <Plug>(YCMFindSymbolInWorkspace)
 # [END] YCM CONFIG
 # [START] Third Party Language Serverfs for use with YCM
-g:ycm_language_server = [
-                        {  'name': 'vim',
+g:ycm_language_server = [{ 'name': 'vim',
                            'cmdline': ['vim-language-server', '--stdio' ],
                            'filetypes': [ 'vim' ],
-                         }
-                        ]
+                         }]
 # [END] Third Party Language Serverfs for use with YCM
 # [START] Visual selection search options CONFIG
 # Search visual selection via stackoverflow
@@ -287,10 +285,10 @@ def SetRestructuredTextOptions(): void
 enddef
 
 def SetTextAndMarkdownOptions(): void
-  call pencil#init()
-  call lexical#init()
-  call textobj#quote#init()
-  call textobj#sentence#init()
+  #call pencil#init()
+  #call lexical#init()
+  #call textobj#quote#init()
+  #call textobj#sentence#init()
 
   g:pencil#joinspaces = 1     # 0=one_space (def), 1=two_spaces
   g:pencil#cursorwrap = 1     # 0=disable, 1=enable (def)

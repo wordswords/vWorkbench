@@ -83,12 +83,12 @@
 
 ## What Is This
 
-My development environment setup with heavily custom settings.
-
-I'm testing this on Ubuntu 23.01 and on my W11 box running Ubuntu under WSL2.
-I also test it under the latest Lubuntu LTS.
-I haven't tested it on OSX for ages, and can pretty much guarantee it won't
-run on that without a lot of work.
+* My development environment setup with heavily custom settings.
+* I'm testing this on Ubuntu 23.01 and on my W11 box running Ubuntu under
+  WSL2.
+* I also test it under the latest Lubuntu LTS. I haven't tested it on OSX
+  for ages, and can pretty much guarantee it won't run on that without
+  a lot of work.
 
 ## Demo Video
 
@@ -111,13 +111,10 @@ there will be no red or orange expanded sections.
 2. It will show you the number of warnings or errors there are, and the line number of
 the first one. You should be able to skip between warnings/errors with the
 `<Left>` and `<Right>` keys.
-
 3. When you are searching through the file with `/` then it shows you: your term,
 the number of matches there are of your term, and which one you're on.
-
 4. Other info displayed includes File Format, file type detected, current line of
 code / total lines of code, current column number / total columns, and so on.
-
 5. When it shows 'SPELL' is on, it will highlight text spellings and any
 code related errors. To toggle this, use `:set nospell` or `:set spell`. It
 highlights spelling errors in comments.
@@ -162,10 +159,11 @@ symbol characters for use in vim. This is not a prerequisite, it will show you
 how to install it at the end of the dotfile deployment.
 * You have to have a directory created in ~/.dotfiles/SECRETS with the credentials
 /keys/APIkeys required to use the environment. This is not done for you.
-* There are a lot of software prereqs. You can run a script that will attempt to install
-the prerequisites under Ubuntu by executing `./deploy-part-0.sh`.
+* There are a lot of software pre-reqs. You can run a script that will
+  attempt to install the prerequisites under Ubuntu by executing
+  `./deploy-part-0.sh`.
 * If you are using Ubuntu for Windows under WSL2, which is my personal favourite configuration
-then you are highly recommended to install the alacritty terminal emulator before installing.
+then you are highly recommended to install the Alacritty terminal emulator before installing.
 
 ## What It Will Install
 
@@ -191,7 +189,7 @@ run this setup in a docker container or virtual machine.
 
 ## Install Steps
 
-I am still in the process of seperating my personal configuration from a generic
+I am still in the process of separating my personal configuration from a generic
 configuration which will be useful to everyone.
 
 However, if you are keen to try this out as it is:
@@ -310,10 +308,11 @@ same word that is under the cursor in normal mode.
 
 ## The Clipboard
 
-Under Ubuntu, there are two clipboards, for some crazy reason that I don't understand.
+Under Ubuntu, there are two clipboards, for some crazy reason that I don't
+understand.
 
-As part of the installation of the this environment, Gnome is patched
-via a hook, to synchronise these clipboards.
+As part of the installation of the this environment, Gnome is patched via
+a hook, to synchronise these clipboards.
 
 Under Ubuntu4Windows, the clipboard should also be synced to the Windows clipboard.
 
@@ -386,21 +385,20 @@ window in the centre of the desktop
 
 ## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
 
-1. `<LEFT>`       - prev text error
-2. `<RIGHT>`      - next text error
-3. `<UP>`         - toggle Nerdtree
-4. `<DOWN>`       - toggle Vista
-5. `zg`           - Mark as a good word
-6. `zw`           - Like `zg` but mark the word as a wrong (bad) word
-7. `zug`          - Unmark as good word
-8. `zuw`          - Unmark as wrong (bad) word
-9. `z=`           - For the word under/after the cursor suggest correctly spelled
+1. `<LEFT>`       - toggle Nerdtree
+2. `<RIGHT>`      - toggle Vista
+3. `<DOWN>`       - toggle quickfix list
+4. `zg`           - Mark as a good word
+5. `zw`           - Like `zg` but mark the word as a wrong (bad) word
+6. `zug`          - Unmark as good word
+7. `zuw`          - Unmark as wrong (bad) word
+8. `z=`           - For the word under/after the cursor suggest correctly spelled
 words
-10. `1z=`         - Use the first suggestion, without prompting
-11. `.`           - Redo - repeat last word replacement
-12. `:spellr`     - Repeat the replacement done by `z=` for all matches with the
-replaced word in the current window
-13. `<F12>`       - Toggle 'Goyo' distraction-free mode.
+9. `1z=`         - Use the first suggestion, without prompting
+10. `.`           - Redo - repeat last word replacement
+11. `:spellr`     - Repeat the replacement done by `z=` for all matches
+    with the replaced word in the current window
+12. `<F12>`       - Toggle 'Goyo' distraction-free mode.
 
 [![asciicast](https://asciinema.org/a/518234.svg)](https://asciinema.org/a/518234)
 
@@ -468,7 +466,7 @@ Also it has problems running some terminal applications while run under VIM9 in 
 
 ## VIM modelines and folds
 
-Several of my dotfiles, including the main deploy scripts, use modelines to setup
+Several of my dotfiles, including the main deploy scripts, use modelines to set up
 some fold markers. This allows for much easier organisation and navigation.
 
 Modelines are enabled by default with the security patch.
@@ -509,7 +507,6 @@ This will open all the files one by one, use `:next` to edit the next file in
 the list. Use `:prev` to reopen a file previously edited. `:last` and `:first`
 also work, and `:args` displays the whole list.
 
-
 ## Processing lots of files with `:argdo`
 
 You can process a number of files using arglist in VIM.
@@ -524,11 +521,11 @@ file recursively from the current path, we would do the following:
 `:arg **/*.py`
 `:argdo **/\<animal\>/creature/qa | update`
 
-``**/*.py`` selects all python files down from the current dir recurisvely
-`:argo` executes a command on all files from current dir recurisvely.
-`%s/\<animal\>/creature/qa` replaces every occurance of 'animal' with 'creature'
-in every file - `a`, without raising errors if the matches are not found - `q`
-`update` saves the file only if it has been modified
+``**/*.py`` selects all python files down from the current dir recursively
+`:argo` executes a command on all files from current dir recursively.
+`%s/\<animal\>/creature/qa` replaces every occurrence of 'animal' with
+'creature' in every file - `a`, without raising errors if the matches are
+not found - `q` `update` saves the file only if it has been modified
 
 ## Github Copilot
 
@@ -553,7 +550,7 @@ thanks to a patch I found.
 for what you want to start working on.
 2. Create a comment explaining what you want to do, e.g. build a function or
 class with all the requirements that you want, in human readable format. The more
-precise you are, the more likely your wish will be fufilled.
+precise you are, the more likely your wish will be fulfilled.
 3. Move the cursor to the line below the comment and press `<C-x> <C-x>`
 4. OpenAI should start writing you some code. Press `<C-x> <C-x>` until it starts
 writing rubbish code.
