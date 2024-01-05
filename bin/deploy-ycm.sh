@@ -16,8 +16,8 @@ cd -
 sudo apt-get install -y mono-complete golang openjdk-19-jdk openjdk-19-jre
 
 # Install YCM
+rm -rf ~/.vim/bundle/YouCompleteMe/*
 chmod -R 700 ~/.vim/bundle/YouCompleteMe/ | true
-#rm -rf ~/.vim/bundle/YouCompleteMe/
 git clone git@github.com:ycm-core/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe
 cd ~/.vim/bundle/YouCompleteMe/
 git submodule update --init --recursive
