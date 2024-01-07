@@ -132,12 +132,14 @@ imap <F6> <Esc>
 # Dotfiles help toggle
 def BringUpDotfilesReadme(): void
     :sp ~/.dotfiles/README.md
+    :Vista toc
     nnoremap <leader>h :call <SID>CloseDotfilesReadme()<CR>
 enddef
 nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 
 def CloseDotfilesReadme(): void
     :windo if expand('%:t') == 'README.md' | q! | endif
+    :Vista!
     nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 enddef
 
