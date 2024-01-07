@@ -410,6 +410,8 @@ words
 
 ## VIM9 Leader Search Functions
 
+`<leader>` is currently set to 'commma' e.g. `,`
+
 First move the cursor over a word or line and then:
 
 1. `<leader> h` to access this help file and to toggle opening and closing
@@ -483,8 +485,8 @@ Modelines are enabled by default with the security patch.
 fold column: Click on a '+' to open the closed fold at this row. Click on any other
 non-blank character to close the open fold at this row.
 3. To close a fold `zc` when the cursor is on it
-4. To close ALL folds `zM`
-5. To open ALL folds `zR`
+4. To close ALL folds `zm`
+5. To open ALL folds `zn`
 
 ## VIM Regex
 
