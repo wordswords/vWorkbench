@@ -13,9 +13,8 @@ TMP_DIR=$(mktemp -d)
 cd "${TMP_DIR}"
 sudo apt remove vim vim-gtk3 vim-tiny -y
 sudo apt install libxt-dev libpython3-dev libncurses-dev -y
-wget https://www.mirrorservice.org/pub/vim/unix/vim-${VERSION}.tar.bz2
-bunzip2 vim*bz2
-tar xf vim*tar
+wget https://github.com/vim/vim/archive/refs/tags/v$1.tar.gz
+tar zxf v*gz
 rm ./*tar | true
 rm ./*bz2* | true
 cd ./vim*
