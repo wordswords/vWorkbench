@@ -9,6 +9,7 @@ For a programmer manipulating files of text, that workbench
 is the command shell."
 
 - The Pragmatic Programmer (2020) - David Thomas, Andrew Hunt
+
 ![Alt text](workbench.jpg "Picture of a woodworker workbench")
 
 <!--ts-->
