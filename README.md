@@ -1,5 +1,7 @@
 # My Development Enviroment (dotfiles)
 
+"A bad workman blames his tools. A good software engineer builds his tools."
+
 <!--ts-->
 * [My Development Enviroment (dotfiles)](#my-development-enviroment-dotfiles)
    * [What Is This](#what-is-this)
