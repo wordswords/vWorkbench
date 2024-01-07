@@ -283,7 +283,7 @@ command, for example: `:'<,'> norm i##` after selecting in visual mode to commen
 all lines out with a `##`. For the reverse, to uncomment and delete the first
 character, use `:'<,'> norm x` after selecting in visual mode.
 20. To generate a ctags index for all functions/methods in all languages, run
-this command at the root of the source control repo `!ctags -R *`. Then you can
+this command at the root of the source control repo ``!ctags -R *``. Then you can
 use `gd` to jump to the original definition of the function in any file.
 21. If in some modes the backtick character does not insert, try typing it twice
 that should insert it properly.
@@ -298,7 +298,7 @@ word-wrap)
 code bracket
 28. `:map` to show the keymappings made by your plugins and .vimrc. Note this is
 somewhat difficult to follow.
-29. `*` and `#` will search forward and backward through the file with the exact
+29. ``*`` and ``#`` will search forward and backward through the file with the exact
 same word that is under the cursor in normal mode.
 
 [https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)
@@ -493,7 +493,7 @@ strip a document of all its html tags use this: `:%s/<.\{-}>/\r/g`.
 ## Wildcards for searching and editing files and directories
 
 1. You can search across a bunch of files with the following syntax:
-`:vimgrep /cat/ **/*.py` will search for all instances of 'cat' in all the
+``:vimgrep /cat/ **/*.py`` will search for all instances of 'cat' in all the
 python files down from the current path.
 2. You can open a file without knowing the directory it is in, as long as it is
 below the current directory, by `:e **/bla.py`. This will search for a file
@@ -516,13 +516,13 @@ You can process a number of files using arglist in VIM.
 For example if we wanted to replace all instances of 'animal' in every Python
 file recursively from the current path, we would do the following:
 
-`:arg **/*.py`
-`:argdo **/\<animal\>/creature/qa | update`
+``:arg **/*.py``
+``:argdo **/\<animal\>/creature/qa | update``
 
-`**/*.py` selects all python files down from the current directory recursively
-`:argo` executes a command on all files from current directory recursively.
-`%s/\<animal\>/creature/qa` replaces every occurrence of 'animal' with
-'creature' in every file - `a`, without raising errors if the matches are
+``**/*.py`` selects all python files down from the current directory recursively
+``:argo`` executes a command on all files from current directory recursively.
+``%s/\<animal\>/creature/qa`` replaces every occurrence of 'animal' with
+'creature' in every file - ``a``, without raising errors if the matches are
 not found - `q` `update` saves the file only if it has been modified
 
 ## GitHub Copilot
@@ -642,12 +642,12 @@ on the command line with regex, then just reach for Perl. Even the latest modern
 doesn't support all of the Regex spec that Perl does.
 
 1. Find, exec and regex is a common thing I end up doing. This is how to do it in
-Perl: `find . -name '*.html' -exec perl -i -pe "s/jpg\?/jpg/g" {} \;`
+Perl: ``find . -name '*.html' -exec perl -i -pe "s/jpg\?/jpg/g" {} \;``
 2. Test 1 - BEFORE you do the above, always use an online regex checker such as:
 (https://regexr.com/)[https://regexr.com/] which is very good for perl.
 3. Test 2 - It is also worth echoing/catting data to the perl pipe with a regex so
 that you can test things a second time before running a potentially dangerous regex query.
-`echo 'bla.jpg?asdfasdf=asdfasdf' | perl -pe 's/(?<=[?&;]).*//g'`, just take the -i off the
+``echo 'bla.jpg?asdfasdf=asdfasdf' | perl -pe 's/(?<=[?&;]).*//g'``, just take the -i off the
 line for a dry run, and to pick up input from the pipe instead of editing a file.
 4. Remember to back up the files before running 1 too. `cp -r ./dir ./.bak.dir` can save hours.
 
@@ -732,11 +732,11 @@ Use inbuilt `dd` command for simple sequential I/O performance measurements
 
 Do all of:
 1. `:profile start vim-profile.log` - starts profiling with log file name
-2. `:profile file *` - mask for which vim-script files to profile, in this case
+2. ``:profile file *`` - mask for which vim-script files to profile, in this case
 all of them
-3. `:profile func *` - mask for which vim-script functions to profile, in this
+3. ``:profile func *`` - mask for which vim-script functions to profile, in this
 case all of them
-4. `:e problemfile.php` - edit the problem file to start the profiling process
+4. ``:e problemfile.php`` - edit the problem file to start the profiling process
 5. `:qa` - when done quit vim and look at the log file
 6. Open up `vim-profile.log` and search for 'Total time' to see the biggest
 culprits
