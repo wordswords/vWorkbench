@@ -10,7 +10,7 @@ tar xzf cmake-3.28.0.tar.gz
 cd ./cmake-3.28.0
 ./bootstrap && make && sudo make install
 cd -
-#rm -rf ./cmake-3.28.0
+rm -rf ./cmake*
 
 # Assumes node is already installed - Installs all other prereqs for YCM
 sudo apt-get install -y mono-complete golang openjdk-19-jdk openjdk-19-jre
