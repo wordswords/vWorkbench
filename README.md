@@ -1,11 +1,15 @@
 # My Development Enviroment (dotfiles)
 
-"Every woodworker needs a good, solid, reliable workbench, somewhere to hold work pieces at a convenient height while they're being shaped. The workbench becomes the centre of the woodshop, the maker returning to it time and time again as the piece takes shape.
+"Every woodworker needs a good, solid, reliable workbench, somewhere to
+hold work pieces at a convenient height while they're being shaped.
+The workbench becomes the centre of the woodshop, the maker returning
+to it time and time again as the piece takes shape.
 
-For a programmer manipulating files of text, that workbench is the command shell."
+For a programmer manipulating files of text, that workbench
+is the command shell."
 
-- The Pragmatic Programmer - David Thomas, Andrew Hunt
-
+- The Pragmatic Programmer (2020) - David Thomas, Andrew Hunt
+![Alt text](workbench.jpg "Picture of a woodworker workbench")
 
 <!--ts-->
 * [My Development Enviroment (dotfiles)](#my-development-enviroment-dotfiles)
@@ -164,9 +168,6 @@ symbol characters for use in vim. This is not a prerequisite, it will show you
 how to install it at the end of the dotfile deployment.
 * You have to have a directory created in ~/.dotfiles/SECRETS with the credentials
 /keys/APIkeys required to use the environment. This is not done for you.
-* There are a lot of software pre-reqs. You can run a script that will
-  attempt to install the prerequisites under Ubuntu by executing
-  `./deploy-part-0.sh`.
 * If you are using Ubuntu for Windows under WSL2, which is my personal favourite configuration
 then I recommend installing the Alacritty terminal emulator before installing.
 
