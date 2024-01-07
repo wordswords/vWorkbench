@@ -261,56 +261,69 @@ This will open up this document, which is usually up-to-date.
 
 1. `<TAB>` to activate autocomplete plug ins.
 2. `,` is set to be the `<leader>` key in VIM9, use it to trigger shortcuts.
-3. `<LEFT>` and `<RIGHT>` cursor arrows to move through the syntax errors.
-4. `<UP>` to toggle the file browser/NERDTree buffer.
+3. `<LEFT>` to toggle the file browser/NERDTree buffer.
+4. `<RIGHT>` to toggle Vista, which allows you to quickly jump through files.
 5. `<DOWN>` to open the Quickfix list of errors.
-6. `>>` and `<<` to adjust indentation.
-7. `set mouse=a` is on, if you have any problems with copying and pasting just
+6. `<UP>` to open the Location list of errors.
+7. `>>` and `<<` to adjust indentation.
+8. `set mouse=a` is on, if you have any problems with copying and pasting just
 `:set mouse=` beforehand.
-8. `K` to bring up documentation on the current term and use the mouse wheel to
+9. `K` to bring up documentation on the current term and use the mouse wheel to
 scroll the info.
-9. `gd` to go to the definition of function or class.
-10. `:G <git command>` to run a git command via vim-fugative, for example
+10. `gd` to go to the definition of function or class.
+11. `:G <git command>` to run a git command via vim-fugative, for example
 `git diff`, `git add`.
-11. Use `/` and start typing to quickly jump to a certain term across all open
+12. Use `/` and start typing to quickly jump to a certain term across all open
 buffers.
-12. Use `u` to go up a root directory on nerdtree.
-13. Use `<F12>` to toggle distraction-free writing mode.
-14. Use `:Format` to format a buffer by the coc language server's prettifier,
+13. Use `u` to go up a root directory on nerdtree.
+14. Use `<F12>` to toggle distraction-free writing mode.
+15. Use `:Format` to format a buffer by the coc language server's prettifier,
 where it exists.
-15. Type `:Wordy<space><tab>` to use the Wordy proofreading tool to check for
+16. Type `:Wordy<space><tab>` to use the Wordy proofreading tool to check for
 poor words while writing.
-16. Type `:LanguageToolCheck` to use the command-line grammar and spelling
+17. Type `:LanguageToolCheck` to use the command-line grammar and spelling
 checker (requires Java 8).
-17. To search all instances of `git clone` and replace them with `git submodule
+18. To search all instances of `git clone` and replace them with `git submodule
 add` on a visual block, use `:<','>s/git clone/git submodule add/`.
-18. To feed a visual block through an external command, for example, the NIX
+19. To feed a visual block through an external command, for example, the NIX
 external sort command, `:'<,'>!sort` - this will sort the visual block lines
 alphabetically.
-19. To execute a command on all lines in a visual block, use the norm
+20. To execute a command on all lines in a visual block, use the norm
 command, for example: `:'<,'> norm i##` after selecting in visual mode to comment
 all lines out with a `##`. For the reverse, to uncomment and delete the first
 character, use `:'<,'> norm x` after selecting in visual mode.
-20. To generate a ctags index for all functions/methods in all languages, run
+21. To generate a ctags index for all functions/methods in all languages, run
 this command at the root of the source control repo ``!ctags -R *``. Then you can
 use `gd` to jump to the original definition of the function in any file.
-21. If in some modes the backtick character does not insert, try typing it twice
+22. If in some modes the backtick character does not insert, try typing it twice
 that should insert it properly.
-22. To open the URL under the cursor in the default browser use `gx` <- handy!
-23. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
-24. To run Prettier on language servers that support this VS Code prettier,
+23. To open the URL under the cursor in the default browser use `gx` <- handy!
+24. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
+25. To run Prettier on language servers that support this VS Code prettier,
 use `:Prettier`
-25. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
+26. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
 word-wrap)
-26. `%` when positioned over a code bracket to skip to the next code bracket
-27. `>i{` when positioned over a code bracket to ident the code up to the next
+27. `%` when positioned over a code bracket to skip to the next code bracket
+28. `>i{` when positioned over a code bracket to ident the code up to the next
 code bracket
-28. `:map` to show the keymappings made by your plugins and .vimrc. Note this is
+29. `:map` to show the keymappings made by your plugins and .vimrc. Note this is
 somewhat difficult to follow.
-29. ``*`` and ``#`` will search forward and backward through the file with the exact
+30. ``*`` and ``#`` will search forward and backward through the file with the exact
 same word that is under the cursor in normal mode.
 
 [https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)
+
+## YouCompleteMe
+
+I have moved away from Coc.vim to use YouCompleteMe. It has completion options for
+all the major languages and supports language servers.
+
+The main difference is that the errors are now in the locationlist.
+
+So it's the quickfix list for spelling/grammatical errors, and the locationlist
+for coding errors.
+
+I might combine the two sometime in the future.
 
 ## The Clipboard
 
