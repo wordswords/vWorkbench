@@ -143,17 +143,28 @@ def CloseDotfilesReadme(): void
     nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 enddef
 
-# Locations list toggle
+# Quickfix list toggle
 :autocmd FileType qf wincmd J
-def ToggleOnLocationsList(): void
+def ToggleOnQuickfixList(): void
     :copen
-    nnoremap <DOWN> :call <SID>ToggleOffLocationsList()<CR>
+    nnoremap <DOWN> :call <SID>ToggleOffQuickfixList()<CR>
 enddef
-def ToggleOffLocationsList(): void
+def ToggleOffQuickfixList(): void
     :cclose
-    nnoremap <DOWN> :call <SID>ToggleOnLocationsList()<CR>
+    nnoremap <DOWN> :call <SID>ToggleOnQuickfixList()<CR>
 enddef
-nnoremap <DOWN> :call <SID>ToggleOnLocationsList()<CR>
+nnoremap <DOWN> :call <SID>ToggleOnQuickfixList()<CR>
+
+# Location list toggle
+def ToggleOnLocationList(): void
+    :lopen
+    nnoremap <UP> :call <SID>ToggleOffLocationList()<CR>
+enddef
+def ToggleOffLocationList(): void
+    :cclose
+    nnoremap <UP> :call <SID>ToggleOnLocationList()<CR>
+enddef
+nnoremap <UP> :call <SID>ToggleOnLocationList()<CR>
 
 # Git Copilot toggle
 def ToggleCopilotOff(): void
@@ -199,17 +210,13 @@ g:markdown_fenced_languages = ['vim', 'help']
 # [START] YCM CONFIG
 g:ycm_enable_inlay_hints = 1
 g:ycm_auto_trigger = 1
-g:ycm_auto_trigger = 1
 g:ycm_enable_semantic_highlighting = 1
 g:ycm_always_populate_location_list = 1
 imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
 nmap <C-f> <Plug>(YCMFindSymbolInWorkspace)
 # [END] YCM CONFIG
 # [START] Third Party Language Serverfs for use with YCM
-g:ycm_language_server = [{ 'name': 'vim',
-                           'cmdline': ['vim-language-server', '--stdio' ],
-                           'filetypes': [ 'vim' ],
-                         }]
+g:ycm_language_server = [{ name: 'vim', cmdline: ['vim-language-server', '--stdio' ], filetypes: [ 'vim' ]}]
 # [END] Third Party Language Serverfs for use with YCM
 # [START] Visual selection search options CONFIG
 # Search visual selection via stackoverflow
