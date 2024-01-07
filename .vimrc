@@ -14,7 +14,6 @@ Plugin 'VundleVim/Vundle.vim'
 # [START] Plugins CONFIG
 # [END] Plugins CONFIG
 Plugin 'elixir-editors/vim-elixir'
-Plugin 'github/copilot'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'

@@ -518,7 +518,6 @@ file recursively from the current path, we would do the following:
 
 ``:arg **/*.py``
 ``:argdo **/\<animal\>/creature/qa | update``
-
 ``**/*.py`` selects all python files down from the current directory recursively
 ``:argo`` executes a command on all files from current directory recursively.
 ``%s/\<animal\>/creature/qa`` replaces every occurrence of 'animal' with
