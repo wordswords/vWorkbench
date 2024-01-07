@@ -14,10 +14,12 @@ Plugin 'VundleVim/Vundle.vim'
 # [START] Plugins CONFIG
 # [END] Plugins CONFIG
 Plugin 'elixir-editors/vim-elixir'
+Plugin 'github/copilot'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'kana/vim-textobj-user'
+Plugin 'lervag/vimtex'
 Plugin 'liuchengxu/vista.vim'
 Plugin 'madox2/vim-ai'
 Plugin 'reedes/vim-lexical'
@@ -38,7 +40,6 @@ Plugin 'tpope/vim-git'
 Plugin 'vim-airline/vim-airline'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'lervag/vimtex'
 # [START] Vundle end CONFIG
 call vundle#end()
 filetype plugin indent on
