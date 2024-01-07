@@ -1,6 +1,11 @@
 # My Development Enviroment (dotfiles)
 
-"A bad workman blames his tools. A good software engineer builds his tools, and documents them."
+"Every woodworker needs a good, solid, reliable workbench, somewhere to hold work pieces at a convenient height while they're being shaped. The workbench becomes the centre of the woodshop, the maker returning to it time and time again as the piece takes shape.
+
+For a programmer manipulating files of text, that workbench is the command shell."
+
+- The Pragmatic Programmer - David Thomas, Andrew Hunt
+
 
 <!--ts-->
 * [My Development Enviroment (dotfiles)](#my-development-enviroment-dotfiles)
