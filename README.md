@@ -27,6 +27,7 @@ is the command shell."
 * [Using the Dotfiles Environment](#using-the-dotfiles-environment)
    * [Shell shortcuts](#shell-shortcuts)
    * [VIM9 shortcuts](#vim9-shortcuts)
+   * [YouCompleteMe](#youcompleteme)
    * [The Clipboard](#the-clipboard)
    * [Productivity Shortcuts](#productivity-shortcuts)
       * [Tmux shortcuts:](#tmux-shortcuts)
