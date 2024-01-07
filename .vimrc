@@ -144,6 +144,7 @@ def CloseDotfilesReadme(): void
 enddef
 
 # Locations list toggle
+:autocmd FileType qf wincmd J
 def ToggleOnLocationsList(): void
     :copen
     nnoremap <DOWN> :call <SID>ToggleOffLocationsList()<CR>
