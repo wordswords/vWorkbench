@@ -553,9 +553,8 @@ not found - `q` `update` saves the file only if it has been modified
 
 The GitHub copilot VIM plugin is installed. It assumes you have a subscription.
 
-1. `:Copilot enable` to enable autocompletes for the current buffer.
-2. `:Copilot disable` to disable autocompletes for the current buffer.
-3. `<TAB>` to accept current autocomplete.
+1. `<leader> c` to toggle copilot on and off for the current buffer. 
+2. `<TAB>` to accept current autocomplete.
 
 ## Vista Plugin
 
