@@ -89,7 +89,8 @@ report_done
 report_progress 'Install zsh the best shell (so far)'
     sudo apt-get install zsh -y
 report_done
-report_progress 'Install Ctags used for vim-fugitive'
+report_progress 'Install right type of Ctags used for vim plugins'
+    sudo apt-get remove exuberant-ctags -y | true
     sudo apt-get install universal-ctags -y
 report_done
 report_progress 'Install net-tools used for network diagnostics'
