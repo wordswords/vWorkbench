@@ -54,7 +54,7 @@ tramsprint() {
 autoload -Uz tramsprint
 
 ai() {
-    ai.sh "$@"
+    echo "$@" | ai.sh
 }
 autoload -Uz ai
 
