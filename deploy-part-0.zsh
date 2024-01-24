@@ -180,6 +180,9 @@ report_progress 'Install MozillaVPN for VPN privacy'
     sudo apt-get update -y
     sudo apt-get install mozillavpn -y
 report_done
+report_progress 'Install chatgpt-cli comamnd line ChatGPT client'
+    pip install git+https://github.com/marcolardera/chatgpt-cli
+report_done
 
 # custom installation lines
 report_progress 'Installing McFly, a zsh Control-R replacement'
