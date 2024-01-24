@@ -191,7 +191,7 @@ navigating JIRA boards less painful.
 * Setup 'fortune' with random Neil Gaiman quotes displayed on login.
 
 You may well have to customise, mix and match, and edit these individual
-settings because  you won't have the authentication required for this whole
+settings because you won't have the authentication required for this whole
 process to work. If you are serious about reusing what I've done, you should
 run this setup in a docker container or virtual machine.
 
@@ -407,18 +407,19 @@ window in the centre of the desktop
 
 1. `<LEFT>`       - toggle Nerdtree
 2. `<RIGHT>`      - toggle Vista
-3. `<DOWN>`       - toggle Quickfix list
-4. `zg`           - Mark as a good word
-5. `zw`           - Like `zg` but mark the word as a wrong (bad) word
-6. `zug`          - Unmark as good word
-7. `zuw`          - Unmark as wrong (bad) word
-8. `z=`           - For the word under/after the cursor suggest correctly spelled
+3. `<DOWN>`       - to open the Quickfix list of errors.
+4. `<UP>`         - to open the Location list of errors.
+5. `zg`           - Mark as a good word
+6. `zw`           - Like `zg` but mark the word as a wrong (bad) word
+7. `zug`          - Unmark as good word
+8. `zuw`          - Unmark as wrong (bad) word
+9. `z=`           - For the word under/after the cursor suggest correctly spelled
 words
-9. `1z=`         - Use the first suggestion, without prompting
-10. `.`           - Redo - repeat last word replacement
-11. `:spellr`     - Repeat the replacement done by `z=` for all matches
+10. `1z=`         - Use the first suggestion, without prompting
+11. `.`           - Redo - repeat last word replacement
+12. `:spellr`     - Repeat the replacement done by `z=` for all matches
     with the replaced word in the current window
-12. `<F12>`       - Toggle 'Goyo' distraction-free mode.
+13. `<F12>`       - Toggle 'Goyo' distraction-free mode.
 
 [![asciicast](https://asciinema.org/a/518234.svg)](https://asciinema.org/a/518234)
 
@@ -521,22 +522,22 @@ strip a document of all its html tags use this: `:%s/<.\{-}>/\r/g`.
 ``:vimgrep /cat/ **/*.py`` will search for all instances of 'cat' in all the
 python files down from the current path.
 2. You can open a file without knowing the directory it is in, as long as it is
-below the current directory, by `:e **/bla.py`. This will search for a file
-'bla.py' recursively from the current directory.  If there is more than one file
+below the current directory, by ``:e **/bla.py``. This will search for a file
+``bla.py`` recursively from the current directory.  If there is more than one file
 found, it will error.
-3. `:help file-search` for more wildcard options
-4. If you want to edit a number of files called bla.py, use `:arg **/bla.py`.
-This will open all the files one by one, use `:next` to edit the next file in
-the list. Use `:prev` to reopen a file previously edited. `:last` and `:first`
-also work, and `:args` displays the whole list.
+3. ``:help file-search`` for more wildcard options
+4. If you want to edit a number of files called ``bla.py``, use ``:arg **/bla.py``.
+This will open all the files one by one, use ``:next`` to edit the next file in
+the list. Use ``:prev`` to reopen a file previously edited. ``:last`` and ``:first``
+also work, and ``:args`` displays the whole list.
 
-## Processing lots of files with `:argdo`
+## Processing lots of files with ``:argdo``
 
 You can process a number of files using arglist in VIM.
 
-1. `:arg` defines the arglist
-2. `:argdo` allows you to execute a command on all the files in the arglist
-3. `:args` describes the list of files in the arglist
+1. ``:arg`` defines the arglist
+2. ``:argdo`` allows you to execute a command on all the files in the arglist
+3. ``:args`` describes the list of files in the arglist
 
 For example if we wanted to replace all instances of 'animal' in every Python
 file recursively from the current path, we would do the following:
@@ -547,7 +548,7 @@ file recursively from the current path, we would do the following:
 ``:argo`` executes a command on all files from current directory recursively.
 ``%s/\<animal\>/creature/qa`` replaces every occurrence of 'animal' with
 'creature' in every file - ``a``, without raising errors if the matches are
-not found - `q` `update` saves the file only if it has been modified
+not found - ``q`` ``update`` saves the file only if it has been modified
 
 ## GitHub Copilot
 
@@ -776,7 +777,7 @@ culprits
 8. Type `mn` to create a new note.
 9. Type `tm` to toggle metadata - user created time and lots of other metadata.
 10. Write all notes using Markdown so they display optimally across all clients.
-11. Press `<DEL>` to delete a selected note.
+11. Press ``<DEL>`` to delete a selected note.
 
 ## JIRA Go Client
 

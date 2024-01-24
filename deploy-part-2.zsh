@@ -155,13 +155,6 @@ report_progress 'Stop unwanted changes dirtying up the dotfiles commit tracking'
 ~/bin/clean-git-checkout.sh ~/.dotfiles/.vim/pack/plugins/start/ || true
 git restore --staged ~/.vim || true
 report_done
-report_progress "Install chatGPT CLI AI"
-sudo gem install openai_pipe
-report_done
-report_progress 'Python3 + OpenAI codex development toolset'
-python3 -m pip install --upgrade pip
-python3 -m pip install --upgrade --force-reinstall aiohttp openai
-report_done
 report_progress 'Installing tmux plugin manager'
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || cd ~/.tmux/plugins/tpm && git pull && cd -
 report_done
