@@ -420,8 +420,8 @@ words
 12. `:spellr`     - Repeat the replacement done by `z=` for all matches
     with the replaced word in the current window
 13. `<F12>`       - Toggle 'Goyo' distraction-free mode.
-
-[![asciicast](https://asciinema.org/a/518234.svg)](https://asciinema.org/a/518234)
+14. 
+[![asciicast](https://asciinema.org/a/636023.svg)](https://asciinema.org/a/636023)
 
 ## VIM9 Leader Search Functions
 
