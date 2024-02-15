@@ -141,6 +141,7 @@ updatedotfiles
 fortuneprint
 ttyprint
 tmuxsessionsprint
+screensessionsprint
 extipprint
 echo "\n"
 checkbackup

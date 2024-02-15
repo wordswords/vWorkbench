@@ -33,7 +33,6 @@ ttyprint() {
 }
 autoload -Uz ttyprint
 
-
 extipprint() {
     echo "[-- External IP location:"
     curl https://ifconfig.co/json 2>/dev/null | grep zip_code
@@ -47,6 +46,40 @@ tmuxsessionsprint() {
 }
 autoload -Uz tmuxsessionsprint
 
+screensessionsprint() {
+    echo "[-- Screen sessions: \e[0;35m$(screen -ls 2>&1)\e[0m --]\n"
+}
+autoload -Uz screensessionsprint
+
+tramsprint() {
+    echo "\nTram times:\n"
+    ~/.dotfiles/bin/trams display BRT
+}
+autoload -Uz tramsprint
+
+ai() {
+    echo "$@" | ai.sh
+}
+autoload -Uz ai
+
+gg() {
+    gg.sh "$@" 
+}
+autoload -Uz gg
+
+so() {
+    echo "$@" | so.sh
+}
+autoload -Uz so
+
+re() {
+    echo "$@" | re.sh
+}
+autoload -Uz re
+
+() {
+    echo "$@" | re.sh
+}
 tramsprint() {
     echo "\nTram times:\n"
     ~/.dotfiles/bin/trams display BRT
