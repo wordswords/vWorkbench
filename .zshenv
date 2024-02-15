@@ -77,9 +77,6 @@ re() {
 }
 autoload -Uz re
 
-() {
-    echo "$@" | re.sh
-}
 tramsprint() {
     echo "\nTram times:\n"
     ~/.dotfiles/bin/trams display BRT
