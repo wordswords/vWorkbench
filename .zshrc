@@ -118,6 +118,7 @@ alias pbpaste='xclip -selection clipboard -o'
 alias please='sudo $(fc -ln -1)'
 alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
 alias vi="vim -u NONE"
+alias top="htop"
 alias zshconfig="vim ~/.dotfiles/.zshrc && ~/.dotfiles/bin/deploy-zshrc.sh"
 ## [-- ALIASES --]
 ## [++ Required for Golang install syntax ++]
