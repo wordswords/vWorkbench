@@ -12,7 +12,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 # [END] Vundle CONFIG
 # [START] Plugins CONFIG
-# [END] Plugins CONFIG
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'junegunn/goyo.vim'
@@ -40,6 +39,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ycm-core/YouCompleteMe'
+# [END] Plugins CONFIG
 # [START] Vundle end CONFIG
 call vundle#end()
 filetype plugin indent on
@@ -266,6 +266,8 @@ g:airline_theme = 'molokai'
 g:airline#extensions#tabline#enabled = 0
 g:airline#extensions#tabline#fnamemod = ':t' # Show just the filename
 g:airline_powerline_fonts = 1
+# hack to stop airline from being initalised twice
+g:airline#extensions#disable_rtp_load = 1
 g:powerline_symbols = 'fancy'
 # [END] vim-airline CONFIG
 # [START] NERDTree CONFIG
