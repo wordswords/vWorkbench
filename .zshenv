@@ -47,7 +47,7 @@ tmuxsessionsprint() {
 autoload -Uz tmuxsessionsprint
 
 screensessionsprint() {
-    echo "[-- Screen sessions: \e[0;35m$(screen -ls 2>&1)\e[0m --]\n"
+    echo "[-- Screen sessions: \e[0;35m$(screen -ls)\e[0m --]\n"
 }
 autoload -Uz screensessionsprint
 
