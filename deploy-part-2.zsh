@@ -108,10 +108,18 @@ echo '''
 vim -s ~/.dotfiles/vimscript.vs
 rm ~/.dotfiles/vimscript.vs
 report_done
-report_progress 'Download, install and compile YouCompleteMe for VIM9'
-~/.dotfiles/bin/deploy-ycm.sh
+read -rp "Do you want to install/update YouCompleteMe for VIM9 (takes a long time on slower systems) (y/yes/N)? " YCMINSTALL
+case "$YCMINSTALL" in
+    Y|y|yes)
+        report_progress 'Download, install and compile YouCompleteMe for VIM9'
+        ~/.dotfiles/bin/deploy-ycm.sh
+    ;;
+    *)
+        echo ''
+    ;;
+esac
 report_done
-report_progress 'Update YCM for Vim9'
+report_progress 'Update YCM Plugin Install for Vim9'
 echo '''
     :PluginInstall
     :qa
