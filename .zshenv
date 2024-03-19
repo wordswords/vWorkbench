@@ -3,12 +3,12 @@
 export USE_HARD_LINKS=false
 
 syncnotes() {
-    joplin-cli sync
+    ~/bin/joplin-cli sync
 }
 autoload -Uz syncnotes
 
 notes() {
-    joplin-cli
+    ~/bin/joplin-cli
 }
 autoload -Uz notes
 
