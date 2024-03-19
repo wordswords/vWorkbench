@@ -185,6 +185,9 @@ report_done
 report_progress 'Install speedtest from Okla'
     ~/.dotfiles/bin/download-speedtest.sh
 report_done
+report_progress 'Install fnm node.js version manager'
+    ~/.dotfiles/bin/install-fnm.sh
+report_done
 
 # custom installation lines
 report_progress 'Installing McFly, a zsh Control-R replacement'
