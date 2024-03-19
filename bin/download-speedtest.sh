@@ -8,6 +8,6 @@ tmpdir=$(mktemp -d)
 cd "${tmpdir}"
 wget https://install.speedtest.net/app/cli/ookla-speedtest-${speedtestver}-linux-x86_64.tgz
 tar xzf ookla-speedtest-*.tgz
-mv speedtest ~/bin/
+mv "${tmpdir}"/speedtest ~/bin
 rm -rf "${tmpdir}"
 

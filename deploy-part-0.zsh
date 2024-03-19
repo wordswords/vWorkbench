@@ -13,10 +13,6 @@ export PIP_BREAK_SYSTEM_PACKAGES=1
 report_progress 'Checking locale'
      locale | grep -q LANG=en_GB.UTF-8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
 report_done
-report_progress 'Restoring last modified dates for .dotfiles'
-    sudo apt-get install git-restore-mtime
-    sudo git restore-mtime
-report_done
 report_progress 'Checking for existence of SECRETS directory'
 if [[ ! -d ~/.dotfiles/SECRETS ]] ; then
     echo "SECRETS directory does not exist.  Please create it and put your secrets in it. Running config tool:"
@@ -32,6 +28,9 @@ report_progress 'Ensure home directory permissions are set securely'
 report_done
 report_progress 'Install Git'
     sudo apt-get install git -y
+report_done
+report_progress 'Install Make and g++'
+    sudo apt-get install make g++ -y
 report_done
 report_progress 'Clone hqconfig repository for server configuration'
     rm -rf ~/.hqconfig
@@ -197,10 +196,8 @@ report_progress 'Installing Delta, a git diff viewer'
     rm git-delta_0.15.1_amd64.deb
 report_done
 report_progress 'Installing cht.sh a command line help client'
-    PATH_DIR="$HOME/bin"  # or another directory on your $PATH
-    mkdir -p "$PATH_DIR"
-    curl https://cht.sh/:cht.sh > "$PATH_DIR/cht.sh"
-    chmod +x "$PATH_DIR/cht.sh"
+    curl https://cht.sh/cht.sh > ~/.dotfiles/bin/cht.sh
+    chmod +x ~/.dotfiles/bin/cht.sh
 report_done
 report_progress 'Installing surfraw a command line google search client'
     sudo apt-get install surfraw surfraw-extra -y
