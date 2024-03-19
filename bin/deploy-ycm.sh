@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Install Cmake 3.28.0
-sudo apt-get install build-essential python3-dev libssl-dev
+sudo apt-get install build-essential python3-dev libssl-dev -y
 wget https://github.com/Kitware/CMake/releases/download/v3.28.0/cmake-3.28.0.tar.gz
 tar xzf cmake-3.28.0.tar.gz
 cd ./cmake-3.28.0
