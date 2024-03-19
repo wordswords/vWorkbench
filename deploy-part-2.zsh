@@ -119,7 +119,6 @@ case "$YCMINSTALL" in
         echo ''
     ;;
 esac
-report_done
 report_progress 'Update YCM Plugin Install for Vim9'
 echo '''
     :PluginInstall
