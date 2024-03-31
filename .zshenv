@@ -3,12 +3,12 @@
 export USE_HARD_LINKS=false
 
 syncnotes() {
-    joplin-cli sync
+    ~/bin/joplin-cli sync
 }
 autoload -Uz syncnotes
 
 notes() {
-    joplin-cli
+    ~/bin/joplin-cli
 }
 autoload -Uz notes
 
@@ -33,7 +33,6 @@ ttyprint() {
 }
 autoload -Uz ttyprint
 
-
 extipprint() {
     echo "[-- External IP location:"
     curl https://ifconfig.co/json 2>/dev/null | grep zip_code
@@ -46,6 +45,37 @@ tmuxsessionsprint() {
     echo "[-- Tmux sessions: \e[0;35m$(tmux ls 2>&1)\e[0m --]"
 }
 autoload -Uz tmuxsessionsprint
+
+screensessionsprint() {
+    echo "[-- Screen sessions: \e[0;35m$(screen -ls)\e[0m --]\n"
+}
+autoload -Uz screensessionsprint
+
+tramsprint() {
+    echo "\nTram times:\n"
+    ~/.dotfiles/bin/trams display BRT
+}
+autoload -Uz tramsprint
+
+ai() {
+    echo "$@" | ai.sh
+}
+autoload -Uz ai
+
+gg() {
+    gg.sh "$@" 
+}
+autoload -Uz gg
+
+so() {
+    echo "$@" | so.sh
+}
+autoload -Uz so
+
+re() {
+    echo "$@" | re.sh
+}
+autoload -Uz re
 
 tramsprint() {
     echo "\nTram times:\n"

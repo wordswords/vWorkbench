@@ -12,7 +12,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 # [END] Vundle CONFIG
 # [START] Plugins CONFIG
-# [END] Plugins CONFIG
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'junegunn/goyo.vim'
@@ -37,8 +36,10 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ycm-core/YouCompleteMe'
+# [END] Plugins CONFIG
 # [START] Vundle end CONFIG
 call vundle#end()
 filetype plugin indent on
@@ -214,6 +215,16 @@ g:ycm_enable_semantic_highlighting = 1
 g:ycm_always_populate_location_list = 1
 imap <silent> <C-l> <Plug>(YCMToggleSignatureHelp)
 nmap <C-f> <Plug>(YCMFindSymbolInWorkspace)
+g:ycm_filetype_blacklist = { tagbar: '1',
+    infolog: '1',
+    leaderf: '1',
+    mail: '1',
+    netrw: '1',
+    notes: '1',
+    pandoc: '1',
+    text: '1',
+    unite: '1',
+    vimwiki: '1', }
 # [END] YCM CONFIG
 # [START] Third Party Language Serverfs for use with YCM
 g:ycm_language_server = [{ name: 'vim', cmdline: ['vim-language-server', '--stdio' ], filetypes: [ 'vim' ]}]
@@ -255,6 +266,8 @@ g:airline_theme = 'molokai'
 g:airline#extensions#tabline#enabled = 0
 g:airline#extensions#tabline#fnamemod = ':t' # Show just the filename
 g:airline_powerline_fonts = 1
+# hack to stop airline from being initalised twice
+g:airline#extensions#disable_rtp_load = 1
 g:powerline_symbols = 'fancy'
 # [END] vim-airline CONFIG
 # [START] NERDTree CONFIG
@@ -349,7 +362,8 @@ autocmd FileType text,markdown,Makefile,Jenkinsfile,Python,vim,sh autocmd BufWri
 autocmd BufRead,BufNewFile *.f90 set filetype=Fortran
 autocmd BufRead,BufNewFile *.robot setlocal noexpandtab
 autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
-autocmd BufRead,BufNewFile *.txt,*.md call SetTextAndMarkdownOptions()
+autocmd BufRead,BufNewFile *.txt call SetTextAndMarkdownOptions()
+autocmd BufRead,BufNewFile *.md call SetTextAndMarkdownOptions()
 autocmd BufRead,BufNewFile Makefile call SetMakeFileOptions()
 autocmd BufRead,BufNewFile *.py call SetPythonFileOptions()
 autocmd BufRead,BufNewFile .vimrc call SetVimFileOptions()
