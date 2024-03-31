@@ -3,7 +3,6 @@
 
 set -e
 source ./deploy-common.sh
-
 report_heading 'Deploy Prerequisites: Part 0'
 
 ## We want to take that risk
@@ -42,7 +41,6 @@ report_done
 report_progress 'Backing up existing dotfiles to ~/.olddotfiles'
     rm -rf ~/.olddotfiles
     mkdir -p ~/.olddotfiles
-
     cp -RL ~/.vim ~/.olddotfiles/.vim || echo "INFO: Could not backup .vim dir, does it exist?"
     cp -RL ~/.zsh* ~/.olddotfiles/ || echo "INFO: Could not backup .zsh*, do they exist?"
     cp -RL ~/.bash* ~/.olddotfiles/ || echo "INFO: Could not backup .bash*, do they exist?"
@@ -210,6 +208,7 @@ report_progress 'Installing winbox wine snap'
     sudo ufw allow 5678/udp
     sudo ufw reload
 report_done
+
 # os-specific lines
 cur_os=$(get_os)
 if [[ ${cur_os} == 'ubuntu' || ${cur_os} == 'osx' ]];
@@ -241,6 +240,4 @@ fi
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades -y
 report_done
-
 report_finished 'Deploy Prerequisites: Part 0 Complete'
-
