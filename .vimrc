@@ -18,7 +18,6 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'lervag/vimtex'
-Plugin 'liuchengxu/vista.vim'
 Plugin 'madox2/vim-ai'
 Plugin 'reedes/vim-lexical'
 Plugin 'reedes/vim-litecorrect'
@@ -39,6 +38,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'craigemery/vim-autotag'
+Plugin 'preservim/tagbar'
 # [END] Plugins CONFIG
 # [START] Vundle end CONFIG
 call vundle#end()
@@ -84,6 +85,30 @@ set wildmenu                       # Allow for menu based file navigation
 set wildmode=list:longest,full
 # Generate vim helpfiles
 :helptags ALL
+g:tagbar_type_typescriptreact = { ctagstype: 'typescript',
+ kinds: [
+   "c:class",
+   "n:namespace",
+   "f:function",
+   "G:generator",
+   "v:variable",
+   "m:method",
+   "p:property",
+   "i:interface",
+   "g:enum",
+   "t:type",
+   "a:alias"],
+   sro: '.',
+   kind2scope: {
+       c: 'class',
+       n: 'namespace',
+       i: 'interface',
+       f: 'function',
+       G: 'generator',
+       m: 'method',
+       p: 'property',
+      },
+ }
 
 # no bells, ever
 set noerrorbells novisualbell t_vb=
@@ -133,14 +158,13 @@ imap <F6> <Esc>
 # Dotfiles help toggle
 def BringUpDotfilesReadme(): void
     :sp ~/.dotfiles/README.md
-    :Vista toc
     nnoremap <leader>h :call <SID>CloseDotfilesReadme()<CR>
 enddef
 nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 
 def CloseDotfilesReadme(): void
     :windo if expand('%:t') == 'README.md' | q! | endif
-    :Vista!
+    :TagbarToogle!
     nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 enddef
 
@@ -300,6 +324,7 @@ var NERDTreeShowHidden = 1
 # Pressing <LEFT> cursor toggles NerdTree
 #
 noremap <LEFT> :NERDTreeToggle<CR>
+noremap <RIGHT> :TagbarToggle<CR>
 # [END] Nerdtree CONFIG
 # [START] Filetype formats/autocmd CONFIG
 def SetRestructuredTextOptions(): void
@@ -320,8 +345,6 @@ def SetTextAndMarkdownOptions(): void
 enddef
 
 def SetMakefileOptions(): void
-  :!ctags -R %
-  :Vista ctags
   setlocal noexpandtab
   setlocal tabstop=4
   setlocal shiftwidth=4
@@ -329,15 +352,11 @@ def SetMakefileOptions(): void
 enddef
 
 def SetVimFileOptions(): void
-    :!ctags -R %
-    :Vista ctags
     :sleep 1
     :wincmd p
 enddef
 
 def SetPythonFileOptions(): void
-  :!ctags -R %
-  :Vista ctags
   # To meet PEP8
   setlocal textwidth=79
   setlocal shiftwidth=4
@@ -356,6 +375,7 @@ def SetGitCommitFileOptions(): void
   setlocal spell # highlight spelling mistakes
 enddef
 
+autocmd BufRead,BufNewFile :!ctags -R % # generate tags file for current file
 # remove trailing whitespace on these filetypes only:
 autocmd FileType text,markdown,Makefile,Jenkinsfile,Python,vim,sh autocmd BufWritePre <buffer> :%s/\s\+$//e
 # file-type-specific stuff
@@ -373,15 +393,6 @@ autocmd FileType plugin indent on " for writing plugins
 # [START] Goyo CONFIG
 noremap <F12> :Goyo<CR> " this toggles distraction-free mode
 # [END] Goyo CONFIG
-# [START] Vista CONFIG
-g:vista_default_executive = "ctags"
-nmap <silent><RIGHT> :Vista!!<ENTER>
-
-# Automatically close vim if vista is the only buffer left
-autocmd bufenter * if (winnr("$") == 1 && bufwinnr("__vista__") > 0) | q | endif
-# If only NerdTree and Vista buffers are left, automatically close VIM
-autocmd bufenter * if (winnr("$") == 2 && bufwinnr("__vista__") > 0 && exists("b:NERDTree")) | qa | endif
-# [END] Vista CONFIG
 # [START] nerdtree-git-plugin CONFIG
 g:NERDTreeGitStatusUseNerdFonts = 1 # default: 0
 g:NERDTreeGitStatusShowClean = 1 # default: 0
@@ -475,4 +486,5 @@ g:vimtex_view_method = 'zathura'
 g:vimtex_compiler_method = 'texidote'
 g:vimtex_grammar_textidote = {'jar': '~/.dotfiles/textidote.jar'}
 g:airline#extensions#vimtex#enabled = 1
+g:clap_start_server_on_startup = 1
 # [END] vimtex CONFIG
