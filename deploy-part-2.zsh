@@ -174,6 +174,7 @@ report_progress 'Configuring tmuxinator'
 mkdir -p ~/.config/tmuxinator
 ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
 report_done
+
 ## OS specific stuff
 cur_os=$(get_os)
 report_progress 'Running any Windows specific configuration'
