@@ -1,0 +1,29 @@
+[window]
+startup_mode = "Maximized"
+title = "Ubuntu Linux WSL2"
+dynamic_title = true
+
+[scrolling]
+history = 100_000
+
+[font]
+size = 18
+
+  [font.normal]
+  family = "DroidSansM Nerd Font Mono"
+
+[shell]
+args = ["--cd ~"]
+program = 'C:\Windows\System32\wsl.exe'
+
+[cursor.style]
+shape = "Underline"
+blinking = "On"
+
+[mouse]
+bindings = [
+    { mouse = "Right", action = "Paste" },
+]
+
+[selection]
+save_to_clipboard = true
