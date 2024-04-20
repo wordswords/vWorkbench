@@ -96,6 +96,9 @@ set -o extendedglob
 for f (~/.dotfiles/SECRETS/**/^*("~"|dpkg-(dist|old|new)|.(tmp|back|bak))(N.))  . $f 2>/dev/null
 set +o extendedglob
 ## [-- SOURCE EMPLOYER-SPECIFIC SETTINGS --]
+## [++ ALACRITTY CONFIG PATH ++]
+export XDG_CONFIG_HOME="${HOME}/.config"
+## [-- ALACRITTY CONFIG PATH --]
 ## [++ ALIASES ++]
 ( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
 alias bat="batcat"

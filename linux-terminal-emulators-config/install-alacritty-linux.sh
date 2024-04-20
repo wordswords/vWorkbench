@@ -3,7 +3,7 @@
 set -x
 set -e
 
-sudo apt install alacritty -y
+sudo snap install --classic alacritty
 mkdir -p $HOME/.config/alacritty/
-cp ~/.dotfiles/linux-terminal-emulators-config/linux-alacritty.yml $HOME/.config/alacritty/alacritty.toml
+cp ~/.dotfiles/linux-terminal-emulators-config/linux-alacritty.toml $HOME/.config/alacritty/alacritty.toml
 
