@@ -194,6 +194,8 @@ report_progress 'Running any Linux specific configuration'
 
 if [[ $cur_os == 'linux' ]] ; then
 
+    # install alacritty
+    ~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
     # disable touchpad tap to click
 	gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 	gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
@@ -244,6 +246,8 @@ here: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSan
 
 After this, you will have to set your terminal emulator to use
 said font.
+
+Alacritty is installed and configured and it is the recommended terminal emulator, so do whatever it is needed to change your usual terminal shortcut to point to it.
 '''
 report_done
 report_heading 'All Done.'

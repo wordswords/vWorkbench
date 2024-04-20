@@ -420,7 +420,7 @@ words
 12. `:spellr`     - Repeat the replacement done by `z=` for all matches
     with the replaced word in the current window
 13. `<F12>`       - Toggle 'Goyo' distraction-free mode.
-14. 
+14.
 [![asciicast](https://asciinema.org/a/636023.svg)](https://asciinema.org/a/636023)
 
 ## VIM9 Leader Search Functions
@@ -554,7 +554,7 @@ not found - ``q`` ``update`` saves the file only if it has been modified
 
 The GitHub copilot VIM plugin is installed. It assumes you have a subscription.
 
-1. `<leader> c` to toggle copilot on and off for the current buffer. 
+1. `<leader> c` to toggle copilot on and off for the current buffer.
 2. `<TAB>` to accept current autocomplete.
 
 ## Vista Plugin
