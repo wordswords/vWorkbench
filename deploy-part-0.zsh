@@ -211,6 +211,9 @@ report_progress 'Installing winbox wine snap'
     sudo ufw allow 5678/udp
     sudo ufw reload
 report_done
+report_progress 'Installing AWS CLI'
+    ~/.dotfiles/bin/install-aws-cli.sh
+report_done
 
 # os-specific lines
 cur_os=$(get_os)
