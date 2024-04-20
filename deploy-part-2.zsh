@@ -180,7 +180,7 @@ cur_os=$(get_os)
 report_progress 'Running any Windows specific configuration'
 if [[ $cur_os == 'windows' ]] ; then
     # install alacritty
-    ~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
+    ~/.dotfiles/windows-terminal-emulators-config/install-alacritty-windows.sh
 
     cd ~/.dotfiles
     mkdir -p win32yank
