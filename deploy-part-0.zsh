@@ -233,13 +233,6 @@ then
         flatpak install -y flathub com.plexamp.Plexamp
     report_done
 fi
-if [[ ${cur_os} == 'windows' ]];
-then
-    report_progress 'Copying alacritty terminal emulator config to windows profile location for Windows user conta.. change if this is not your windows username'
-        sudo mkdir -p /mnt/c/Users/conta/AppData/Roaming/alacritty
-        sudo cp ~/.dotfiles/windows-terminal-emulators-config/windows-alacritty.yml  /mnt/c/Users/conta/AppData/Roaming/alacritty/alacritty.yml
-    report_done
-fi
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades -y
 report_done
