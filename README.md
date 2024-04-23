@@ -821,11 +821,6 @@ When given a `<path>` it does the following to all files under that path:
 1) Removes all newlines from the start of a file, and end of a file.
 2) Removes all trailing whitespace from all lines of each file.
 
-### `mlnx_tune`
-
-Displays some diagnosic information about the ancient Mellonex SFP fibreoptic network
-card in my server.
-
 ### `get-weather.sh`
 
 Displays on the commandline a visual representation of the current weather in Manchester, UK.
