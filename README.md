@@ -771,7 +771,7 @@ use while in an interactive console, for example
 and copy the result to the clipboard
 * `$ re <why are cornflakes crunchy>` - this will open a web browser with the query and search
 reddit
-* `$ so <stackoverlow search>` - this will open a web browser with the query and search
+* `$ so <stackoverlow search>` - this will open a web browser with the query and search stackoverflow
 * `$ gg <why are cornflakes crunchy>` - this will open a web browser with the query and search
 google
 
