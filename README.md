@@ -79,6 +79,13 @@ of the current Git repo.
 
 https://github.com/romkatv/powerlevel10k
 
+## Alacritty
+
+This setup uses Alacritty, which is currently the best terminal emulator I've found.
+
+As part of the installation, it will install and configure Alacritty on Ubuntu and
+WSL2 Ubuntu setups.
+
 # Installation / Updating
 
 The same scripts either install from nothing OR update the current
