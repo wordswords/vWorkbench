@@ -876,6 +876,10 @@ for finding how the contents of a file was created.
 A compact summary of commits to a directory or file, e.g. `git logline
 ~/.dotfiles`
 
+### DevOps Scripts
+
+If you want some excellent scripts to spin up containers etc then check out [https://github.com/HariSekhon/DevOps-Bash-tools](https://github.com/HariSekhon/DevOps-Bash-tools)
+
 # Modifying
 
 If you want, you can fork this repo, and base your config on this. If you have
