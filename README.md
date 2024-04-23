@@ -79,6 +79,13 @@ of the current Git repo.
 
 https://github.com/romkatv/powerlevel10k
 
+## Alacritty
+
+This setup uses Alacritty, which is currently the best terminal emulator I've found.
+
+As part of the installation, it will install and configure Alacritty on Ubuntu and
+WSL2 Ubuntu setups.
+
 # Installation / Updating
 
 The same scripts either install from nothing OR update the current
@@ -666,7 +673,7 @@ Use inbuilt `dd` command for simple sequential I/O performance measurements
 
 ## Troubleshooting Network utilisation Notes
 
-1. Can use `speedtest` which is already installed
+1. Use `iperf3` which is already installed
 
 ## Ubuntu Package information
 
@@ -772,13 +779,14 @@ on your clipboard.
 You can also use the three commands WITHOUT the extension to allow for easy `<cmd> <query>`
 use while in an interactive console, for example
 
-$ `ai <why are cornflakes crunchy>` - this will output on the terminal the answer to your q
-and copy the result to the clipboard
-$ `re <why are cornflakes crunchy>` - this will open a web browser with the query and search
-reddit
-$ `so <stackoverlow search>` - this will open a web browser with the query and search
-$ `gg <why are cornflakes crunchy>` - this will open a web browser with the query and search
-google
+* `$ ai <why are cornflakes crunchy>` - this consult ChatGPT and ask it 'why are conflakes crunchy'
+and will output on the terminal the answer to your question and copy the result to the clipboard
+* `$ re <why are cornflakes crunchy>` - this will open a web browser with the query and search
+reddit for the phrase 'why are conflakes crunchy'
+* `$ so <why are cornflakes crunchy>` - this will open a web browser with the query and search
+stackoverflow for the phrase 'why are conflakes crunchy'
+* `$ gg <why are cornflakes crunchy>` - this will open a web browser with the query and search
+google for the phrase 'why are conflakes crunchy'
 
 ### `search-ebooks.sh <search terms>`
 
@@ -880,6 +888,10 @@ for finding how the contents of a file was created.
 
 A compact summary of commits to a directory or file, e.g. `git logline
 ~/.dotfiles`
+
+### DevOps Scripts
+
+If you want some excellent scripts to spin up containers etc then check out [https://github.com/HariSekhon/DevOps-Bash-tools](https://github.com/HariSekhon/DevOps-Bash-tools)
 
 # Modifying
 
