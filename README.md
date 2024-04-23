@@ -767,12 +767,12 @@ on your clipboard.
 You can also use the three commands WITHOUT the extension to allow for easy `<cmd> <query>`
 use while in an interactive console, for example
 
-$ `ai <why are cornflakes crunchy>` - this will output on the terminal the answer to your q
+* `$ ai <why are cornflakes crunchy>` - this will output on the terminal the answer to your q
 and copy the result to the clipboard
-$ `re <why are cornflakes crunchy>` - this will open a web browser with the query and search
+* `$ re <why are cornflakes crunchy>` - this will open a web browser with the query and search
 reddit
-$ `so <stackoverlow search>` - this will open a web browser with the query and search
-$ `gg <why are cornflakes crunchy>` - this will open a web browser with the query and search
+* `$ so <stackoverlow search>` - this will open a web browser with the query and search
+* `$ gg <why are cornflakes crunchy>` - this will open a web browser with the query and search
 google
 
 ### `search-ebooks.sh <search terms>`
