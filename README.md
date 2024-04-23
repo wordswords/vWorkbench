@@ -481,15 +481,20 @@ The GitHub copilot VIM plugin is installed. It assumes you have a subscription.
 1. `<leader> c` to toggle copilot on and off for the current buffer.
 2. `<TAB>` to accept current autocomplete.
 
-## Vista Plugin
+## Tagbar Plugin
 
-Vista is used for language server specific function lists for quickly jumping
-around large projects.
+I have currently moved away from Coc.Vim/Vista to use ctags, YCM and Tagbar.
 
-1. `:Vista` to load up the right sidebar
-2. `:Vista vim_lsp` to use vim's LSP support to provide the tags list
-3. `:Vista ctags`to use ctags to provide the tags list
-4. `:help vista-commands` and `:help vista-options` for help
+Ctags is currently run on EVERY file opened.
+
+I am not 100% sure whether this is the best approach, because it doesn't
+really play nice with Node.js/React/TS projects, whereas Coc.vim did.
+
+However it is what it is for now.
+
+1. `<RIGHT>` to load up the right sidebar and Tagbar
+2. Navigate through the tags and select them to jump to the language feature.
+
 
 # Additional Notes
 
