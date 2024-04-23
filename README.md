@@ -661,7 +661,7 @@ Use inbuilt `dd` command for simple sequential I/O performance measurements
 
 ## Troubleshooting Network utilisation Notes
 
-1. Can use `speedtest` which is already installed
+1. Use `iperf3` which is already installed
 
 ## Ubuntu Package information
 
