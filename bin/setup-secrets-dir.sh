@@ -20,9 +20,9 @@ echo "Mozilla VPN Token: ${VIMZ_MOZ_VPN_TOKEN}"
 echo "OpenAI Access Token: ${VIMZ_OPENAI_ACCESS_TOKEN}"
 echo
 
-read -rp "Write this config? (Y/Yes/n/no)" CONFIGWRITE
+read -rp "Write this config? (y/yes/No)" CONFIGWRITE
 case "$CONFIGWRITE" in
-    Y|y|yes)
+    Y|y|Yes|yes)
     for f in ~/.dotfiles/SECRETS_TEMPLATE_PROC/*
     do
         sed -i "s/__VIMZ_BORG_PASSPHRASE__/${VIMZ_BORG_PASSPHRASE}/g" "${f}"
