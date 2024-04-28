@@ -765,10 +765,10 @@ I have written a few helper scripts in ~/.dotfiles/bin
 You can pipe multiple lines of text to these scripts. They will look up the
 result in:
 
-`gg <google search>` - Google
-`so <stack overflow search>` - Stack Overflow
-`re <reddit search>` - Reddit
-`ai <chatgpt search>` - ChatGPT (providing you have an API key)
+* `gg <google search>` - Google
+* `so <stack overflow search>` - Stack Overflow
+* `re <reddit search>` - Reddit
+* `ai <chatgpt search>` - ChatGPT (providing you have an API key)
 
 The first three will open a new tab or web browser in Firefox (only works in Ubuntu)
 with your query on those sites.
