@@ -57,8 +57,8 @@ report_progress 'Removing existing vim config'
     rm -rf ~/.vim
 report_done
 report_progress 'Creating vim backup file directory structure'
-mkdir -p ~/.backup/vim/swap || echo "INFO: Swapfile backup directory seems to be already there."
-mkdir ~/.backup/vim/undos || echo "INFO: Undofile backup directory seems to be already there."
+    mkdir -p ~/.backup/vim/swap || echo "INFO: Swapfile backup directory seems to be already there."
+    mkdir ~/.backup/vim/undos || echo "INFO: Undofile backup directory seems to be already there."
 report_done
 # Main lines
 report_progress 'Upgrade all packages/distro to latest version'
