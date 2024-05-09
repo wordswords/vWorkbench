@@ -179,18 +179,14 @@ report_done
 cur_os=$(get_os)
 report_progress 'Running any Windows specific configuration'
 if [[ $cur_os == 'windows' ]] ; then
-    # install alacritty
-    ~/.dotfiles/windows-terminal-emulators-config/install-alacritty-windows.sh
+    # install windows tools
+    git clone git@github.com:wordswords/windows-tools.git ~/.dotfiles/windows-tools
 
-    cd ~/.dotfiles
-    mkdir -p win32yank
-    cd win32yank
-    wget https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip
-    unzip win32yank-x64.zip
-    cp win32yank.exe ~/bin
-    chmod u+x ~/bin/win32yank.exe
-    cd -
-    rm -rf ~/.dotfiles/win32yank/
+    # install alacritty
+    ~/.dotfiles/windows-tools/install-alacritty-windows.sh
+
+    # install win32yank
+    cp ~/.dotfiles/windows-tools/windows-clipboard/win32yank.exe ~/.bin
 fi
 report_done
 report_progress 'Running any Linux specific configuration'
