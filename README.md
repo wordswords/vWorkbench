@@ -181,9 +181,8 @@ and search stackoverflow using `<search query>`
 save the text content, it will copy it back to the shell to execute. You can use
 this method to use GitHub Copilot and OpenAI Codex in VIM to generate shell commands
 and then have them execute in the shell.
-21. `cht <language> <command>` to consult the chtsht.sh repository of high quality
 cheatsheets on a lot of subjects.
-22. `ai <query>` to ask ChatGPT for some wisdom. Whatever it returns will
+21. `ai <query>` to ask ChatGPT for some wisdom. Whatever it returns will
 be copied to the clipboard.
 
 ## VIM9 shortcuts
@@ -511,9 +510,8 @@ However it is what it is for now.
 2. For a great tutorial [https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/](https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)
 3. For a vertical split `<CTRL>-a SHIFT |`
 4. For a horizontal split `<CTRL>-a SHIFT -`
-5. For standard keybindings,`cht tmux`
-6. To rotate panes in the current layout `<CTRL>-a <SPACE>`
-7. To start my standard development tmux session `tmuxinator development`
+5. To rotate panes in the current layout `<CTRL>-a <SPACE>`
+6. To start my standard development tmux session `tmuxinator development`
 
 ## Git information I keep forgetting
 
