@@ -180,6 +180,7 @@ cur_os=$(get_os)
 report_progress 'Running any Windows specific configuration'
 if [[ $cur_os == 'windows' ]] ; then
     # install windows tools
+    rm -rf ~/.dotfiles/windows-tools
     git clone git@github.com:wordswords/windows-tools.git ~/.dotfiles/windows-tools
 
     # install alacritty
