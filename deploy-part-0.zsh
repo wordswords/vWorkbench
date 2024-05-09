@@ -193,10 +193,6 @@ report_progress 'Installing Delta, a git diff viewer'
     sudo dpkg -i git-delta_0.15.1_amd64.deb
     rm git-delta_0.15.1_amd64.deb
 report_done
-report_progress 'Installing cht.sh a command line help client'
-    curl https://cht.sh/cht.sh > ~/.dotfiles/bin/cht.sh
-    chmod +x ~/.dotfiles/bin/cht.sh
-report_done
 report_progress 'Installing surfraw a command line google search client'
     sudo apt-get install surfraw surfraw-extra -y
 report_done
