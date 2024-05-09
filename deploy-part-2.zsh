@@ -183,7 +183,7 @@ if [[ $cur_os == 'windows' ]] ; then
     git clone git@github.com:wordswords/windows-tools.git ~/.dotfiles/windows-tools
 
     # install alacritty
-    ~/.dotfiles/windows-tools/install-alacritty-windows.sh
+    ~/.dotfiles/windows-tools/windows-terminal-emulators-config/install-alacritty-windows.sh
 
     # install win32yank
     cp ~/.dotfiles/windows-tools/windows-clipboard/win32yank.exe ~/.bin
