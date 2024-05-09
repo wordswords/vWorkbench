@@ -211,6 +211,16 @@ if [[ $cur_os == 'linux' ]] ; then
 	echo "-- OPTIONAL EXTRAS -- "
 	echo
 
+    read -rp "Do you want to benchmark your computer with hardinfo2 (equiv to Speccy)? (y/yes/N)? " HB2INSTALL
+    case "$HB2INSTALL" in
+        Y|y|yes)
+            ~/.dotfiles/bin/install-hardinfo2.sh
+        ;;
+        *)
+            true
+        ;;
+    esac
+
     read -rp "Do you want to install/update JIRA-CLI Go client? (y/yes/N)? " JIRAINSTALL
     case "$JIRAINSTALL" in
         Y|y|yes)
