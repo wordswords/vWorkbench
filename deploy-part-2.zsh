@@ -195,7 +195,7 @@ report_progress 'Running any Linux specific configuration'
 if [[ $cur_os == 'linux' ]] ; then
 
     # install alacritty
-    ~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
+    #~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
 
     # disable touchpad tap to click
 	gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false

@@ -172,11 +172,11 @@ report_progress 'Install Manchester Metrolink Commandline App for Tram times'
     mv trams-linux-amd64 trams
     chmod u+x trams
 report_done
-report_progress 'Install MozillaVPN for VPN privacy'
-    sudo add-apt-repository ppa:mozillacorp/mozillavpn -y
-    sudo apt-get update -y
-    sudo apt-get install mozillavpn -y
-report_done
+#report_progress 'Install MozillaVPN for VPN privacy'
+#    sudo add-apt-repository ppa:mozillacorp/mozillavpn -y
+#    sudo apt-get update -y
+#    sudo apt-get install mozillavpn -y
+#report_done
 report_progress 'Install chatgpt-cli comamnd line ChatGPT client'
     pip install git+https://github.com/marcolardera/chatgpt-cli
 report_done
@@ -199,11 +199,11 @@ report_done
 report_progress 'Installing epy a command line epub reader'
     pip3 install git+https://github.com/wustho/epy
 report_done
-report_progress 'Installing winbox wine snap'
-    sudo snap refresh winbox || sudo snap install winbox
-    sudo ufw allow 5678/udp
-    sudo ufw reload
-report_done
+#report_progress 'Installing winbox wine snap'
+ #   sudo snap refresh winbox || sudo snap install winbox
+ #   sudo ufw allow 5678/udp
+ #   sudo ufw reload
+#report_done
 report_progress 'Installing AWS CLI'
     ~/.dotfiles/bin/install-aws-cli.sh
 report_done

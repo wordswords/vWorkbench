@@ -19,7 +19,7 @@ is the command shell."
 ## What Is This
 
 * My development environment setup with heavily custom settings.
-* I'm testing this on Ubuntu 23.01 and on my W11 box running Ubuntu under
+* I'm testing this on Kali Linux and on my W11 box running Ubuntu under
   WSL2.
 * I also test it under the latest Lubuntu LTS. I haven't tested it on OSX
   for ages, and can pretty much guarantee it won't run on that without

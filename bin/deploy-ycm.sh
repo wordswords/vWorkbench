@@ -14,7 +14,7 @@ if [ ! -d ./cmake-3.28.0 ] ; then
 fi
 
 # Assumes node is already installed - Installs all other prereqs for YCM
-sudo apt-get install -y mono-complete golang openjdk-19-jdk openjdk-19-jre
+sudo apt-get install -y mono-complete golang openjdk-23-jdk openjdk-23-jre
 
 # Install YCM
 sudo rm -rf ~/.vim/bundle/YouCompleteMe | true
