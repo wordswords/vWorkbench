@@ -242,9 +242,9 @@ with `Control-D`.
 Firewalls can be configured to restrict access of data traffic by port to a host. For
 example with `ufw` on Ubuntu to manipulate the firewall rules table:
 
-`ufw allow 80/tcp` - allows port 80 tcp through the firewall 
-`ufw allow 777/udp` - allows port 777 udp through the firewall
-`ufw allow 1337` - allows BOTH tcp and udp on port 1337 through the firewall
+* `ufw allow 80/tcp` - allows port 80 tcp through the firewall 
+* `ufw allow 777/udp` - allows port 777 udp through the firewall
+* `ufw allow 1337` - allows BOTH tcp and udp on port 1337 through the firewall
 
 Once you have finished with adding/removing rules:
 
