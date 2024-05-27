@@ -81,6 +81,10 @@ This is how traffic is handled on the internet, through routers passing on the
 traffic to their default route until there is a relevant entry in the routing table,
 or the maximum number of hops is reached.
 
+To display the routing table of device:
+* `route.exe`  on the commandline
+* `sudo route` in a shell
+
 ## Traceroute
 
 To trace the life of a connection, you can use the network tool traceroute to
@@ -274,5 +278,25 @@ These routers will usually be acting on the rules within their route tables, and
 * curl can be used to send a crafted HTTP POST request to an API endpoint, in much the same way as postman is commonly used for now. This means you can send HTTP post requests in bash scripts etc.
 
 * wget is usually used to sent a HTTP GET request to retrieve a file, such as a web page. It can also be used in 'spider' mode to download all available webpages and recursively go through all the links on those web pages and download those too - as long as they exist on a specific host.
+
+# Transferring large amounts of data
+
+If you want to transfer large amounts of data, either locally across two folders or directories, or remotely to other computers and devices, use one of these. 
+
+## Linux
+
+### rsync
+
+If you are on Linux and want to transfer large amounts of data, just use rsync. There is nothing it cannot do in this area, and it has the advantage that it can resume transfers if interuptted, so if you have a large transfer and your internet connection goes down, you can resume it without losing progress.
+
+### rclone
+
+If you want to store data in cloud-based data storage services such as AWS or Google Drive, use rclone. It allows you to skip any tedious and unreliable web-based upload access, and use similar capabilities of rsync, and can be included in bash scripts etc.
+
+## Windows
+
+### robocopy.exe
+
+Robocopy is the windows answer to rsync. Avoid using rsync on windows, and use robocopy instead. It is more 'native' and has a better understanding of windows filesystems and other windows considerations.
 
 
