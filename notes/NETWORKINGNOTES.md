@@ -237,8 +237,35 @@ If you are watching both machines, type something on each machine and you will s
 send between each machine (assuming the connection works). Terminate the connection from either side
 with `Control-D`.
 
-
 ## Firewalls
 
 Firewalls can be configured to restrict access of data traffic by port to a host. For
-example with `ufw` on Ubuntu:
+example with `ufw` on Ubuntu to manipulate the firewall rules table:
+
+`ufw allow 80/tcp` - allows port 80 tcp through the firewall 
+`ufw allow 777/udp` - allows port 777 udp through the firewall
+`ufw allow 1337` - allows BOTH tcp and udp on port 1337 through the firewall
+
+Once you have finished with adding/removing rules:
+
+`ufw reload` 
+
+Will reload the firewall rules table and make your rules live.
+
+## iperf3
+
+iperf3 can be used to measure maximum connection speed between a iperf3 server and a iperf3 client
+
+`iperf3 -S` - server mode
+`iperf3 192.168.0.1` - client mode, connect to the server at 192.168.0.1 on the default port, and test bandwidth
+
+## traceroute
+
+Under linux use the `tracepath` commaned for traceroute. Under windows it is `tracert.exe`
+
+This will show the traceroute path a connection takes to a host from your computer. 
+
+It will show the different stages taken. Each step is a different router that forwards your connection on to the next 'hop'.
+
+These routers will usually be acting on the rules within their route tables, and firewall rules based on the incoming IP address, but might also be doing deep packet inspection, IDS etc etc.
+
