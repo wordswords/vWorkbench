@@ -269,3 +269,10 @@ It will show the different stages taken. Each step is a different router that fo
 
 These routers will usually be acting on the rules within their route tables, and firewall rules based on the incoming IP address, but might also be doing deep packet inspection, IDS etc etc.
 
+## curl and wget
+
+Curl can be used to send a crafted HTTP POST request to an API endpoint, in much the same way as postman is commonly used for now. This means you can send HTTP post requests in bash scripts etc.
+
+wget is usually used to sent a HTTP GET request to retrieve a file, such as a web page. It can also be used in 'spider' mode to download all available webpages and recursively go through all the links on those web pages and download those too - as long as they exist on a specific host.
+
+
