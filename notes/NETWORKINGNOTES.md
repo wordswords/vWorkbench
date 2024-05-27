@@ -256,8 +256,8 @@ Will reload the firewall rules table and make your rules live.
 
 iperf3 can be used to measure maximum connection speed between a iperf3 server and a iperf3 client
 
-`iperf3 -S` - server mode
-`iperf3 192.168.0.1` - client mode, connect to the server at 192.168.0.1 on the default port, and test bandwidth
+* `iperf3 -S` - server mode
+* `iperf3 192.168.0.1` - client mode, connect to the server at 192.168.0.1 on the default port, and test bandwidth
 
 ## traceroute
 
@@ -271,8 +271,8 @@ These routers will usually be acting on the rules within their route tables, and
 
 ## curl and wget
 
-Curl can be used to send a crafted HTTP POST request to an API endpoint, in much the same way as postman is commonly used for now. This means you can send HTTP post requests in bash scripts etc.
+* curl can be used to send a crafted HTTP POST request to an API endpoint, in much the same way as postman is commonly used for now. This means you can send HTTP post requests in bash scripts etc.
 
-wget is usually used to sent a HTTP GET request to retrieve a file, such as a web page. It can also be used in 'spider' mode to download all available webpages and recursively go through all the links on those web pages and download those too - as long as they exist on a specific host.
+* wget is usually used to sent a HTTP GET request to retrieve a file, such as a web page. It can also be used in 'spider' mode to download all available webpages and recursively go through all the links on those web pages and download those too - as long as they exist on a specific host.
 
 
