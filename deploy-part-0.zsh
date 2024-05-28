@@ -67,6 +67,10 @@ report_done
 report_progress 'Check for Ubuntu release upgrade'
     sudo do-release-upgrade -c || echo 'No release upgraded needed.'
 report_done
+report_progress 'Installing snap'
+    sudo apt install snapd
+    sudo systemctl enable --now snapd apparmor
+report_done
 report_progress 'Download compile and install VIM9 on Ubuntu'
     sudo apt install libncurses-dev -y
     ~/.dotfiles/bin/make-and-install-vim.sh 9.1.0

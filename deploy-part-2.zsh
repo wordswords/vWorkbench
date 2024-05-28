@@ -65,8 +65,9 @@ sudo npm install -g bash-language-server
 report_done
 report_progress 'Install Texidote grammar checker'
 cd ~/.dotfiles
-rm -rf ./*.jar
-~/.dotfiles/bin/download-latest-texidote-jar.sh
+if ! test -f ~/.dotfiles/texidote.jar; then
+    ~/.dotfiles/bin/download-latest-texidote-jar.sh
+fi
 cd -
 report_done
 report_progress 'Install wikipedia2text'
@@ -150,7 +151,7 @@ set +x
 report_done
 report_progress 'Installing and configuring Joplin CLI notetaking app'
 ~/.dotfiles/bin/update-joplin-cli.sh
-joplin-cli config --import-file ~/.dotfiles/joplin.config
+~/bin/joplin config --import-file ~/.dotfiles/joplin.config
 report_done
 report_progress 'Changing shell to /bin/zsh.'
 sudo chsh -s "$(which zsh)" "$(whoami)"
@@ -231,11 +232,12 @@ if [[ $cur_os == 'linux' ]] ; then
         ;;
     esac
 
-	read -rp "Do you want to install/update the Ubuntu snap images of Morgen and Firefox? (y/yes/N)? " SNAPINSTALL
+	read -rp "Do you want to install/update the Ubuntu snap images of Morgen, Todoist and Firefox? (y/yes/N)? " SNAPINSTALL
     case "$SNAPINSTALL" in
         Y|y|yes)
             sudo snap install morgen 2>/dev/null || sudo snap refresh morgen
             sudo snap install firefox 2>/dev/null || sudo snap refresh firefox
+            sudo snap install todoist 2>/dev/null || sudo snap refresh todoist
         ;;
         *)
             true
