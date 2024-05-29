@@ -195,8 +195,23 @@ report_progress 'Running any Linux specific configuration'
 
 if [[ $cur_os == 'linux' ]] ; then
 
-    # install alacritty
-    #~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
+    # os-specific lines
+    report_progress 'Installing vim-anywhere for allowing text to be edited on any text input'
+        curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
+    report_done
+    report_progress 'Installing workrave, a reminder app to take screenbreaks'
+        sudo apt-get install workrave -y
+    report_done
+    report_progress 'Installing xsane for flatbed scanning'
+        sudo apt install xsane -y
+    report_done 
+
+    #report_progress 'Install Plexamp flatpak'
+    #    flatpak install -y flathub com.plexamp.Plexamp
+    #report_done
+    
+     install alacritty
+    ~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
 
     # disable touchpad tap to click
 	gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
