@@ -197,6 +197,7 @@ if [[ $cur_os == 'linux' ]] ; then
 
     # os-specific lines
     report_progress 'Installing vim-anywhere for allowing text to be edited on any text input'
+        sudo apt install gvim -y
         curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
     report_done
     report_progress 'Installing workrave, a reminder app to take screenbreaks'
