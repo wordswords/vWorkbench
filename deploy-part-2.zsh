@@ -197,11 +197,11 @@ if [[ $cur_os == 'linux' ]] ; then
 
     # os-specific lines
     report_progress 'Installing vim-anywhere for allowing text to be edited on any text input'
-        sudo apt install gvim -y
+        sudo apt install 'vim-gt*' -y
         curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
     report_done
     report_progress 'Installing workrave, a reminder app to take screenbreaks'
-        sudo apt-get install workrave -y
+        sudo apt-get install workrave -y || echo ''
     report_done
     report_progress 'Installing xsane for flatbed scanning'
         sudo apt install xsane -y
@@ -251,6 +251,8 @@ if [[ $cur_os == 'linux' ]] ; then
 	read -rp "Do you want to install/update the Ubuntu snap images of Morgen, Todoist, Spotify and Firefox? (y/yes/N)? " SNAPINSTALL
     case "$SNAPINSTALL" in
         Y|y|yes)
+            sudo service snapd.apparmor start
+            sudo systemctl enable snapd.apparmor
             sudo snap install morgen 2>/dev/null || sudo snap refresh morgen
             sudo snap install firefox 2>/dev/null || sudo snap refresh firefox
             sudo snap install todoist 2>/dev/null || sudo snap refresh todoist
