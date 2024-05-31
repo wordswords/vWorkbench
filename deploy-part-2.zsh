@@ -65,8 +65,9 @@ sudo npm install -g bash-language-server
 report_done
 report_progress 'Install Texidote grammar checker'
 cd ~/.dotfiles
-rm -rf ./*.jar
-~/.dotfiles/bin/download-latest-texidote-jar.sh
+if ! test -f ~/.dotfiles/texidote.jar; then
+    ~/.dotfiles/bin/download-latest-texidote-jar.sh
+fi
 cd -
 report_done
 report_progress 'Install wikipedia2text'
@@ -150,7 +151,7 @@ set +x
 report_done
 report_progress 'Installing and configuring Joplin CLI notetaking app'
 ~/.dotfiles/bin/update-joplin-cli.sh
-joplin config --import-file ~/.dotfiles/joplin.config
+~/bin/joplin config --import-file ~/.dotfiles/joplin.config
 report_done
 report_progress 'Changing shell to /bin/zsh.'
 sudo chsh -s "$(which zsh)" "$(whoami)"
@@ -194,8 +195,24 @@ report_progress 'Running any Linux specific configuration'
 
 if [[ $cur_os == 'linux' ]] ; then
 
-    # install alacritty
-    #~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
+    # os-specific lines
+    report_progress 'Installing vim-anywhere for allowing text to be edited on any text input'
+        sudo apt install 'vim-gt*' -y
+        curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
+    report_done
+    report_progress 'Installing workrave, a reminder app to take screenbreaks'
+        sudo apt-get install workrave -y || echo ''
+    report_done
+    report_progress 'Installing xsane for flatbed scanning'
+        sudo apt install xsane -y
+    report_done 
+
+    #report_progress 'Install Plexamp flatpak'
+    #    flatpak install -y flathub com.plexamp.Plexamp
+    #report_done
+    
+     install alacritty
+    ~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
 
     # disable touchpad tap to click
 	gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
@@ -231,11 +248,15 @@ if [[ $cur_os == 'linux' ]] ; then
         ;;
     esac
 
-	read -rp "Do you want to install/update the Ubuntu snap images of Morgen and Firefox? (y/yes/N)? " SNAPINSTALL
+	read -rp "Do you want to install/update the Ubuntu snap images of Morgen, Todoist, Spotify and Firefox? (y/yes/N)? " SNAPINSTALL
     case "$SNAPINSTALL" in
         Y|y|yes)
+            sudo service snapd.apparmor start
+            sudo systemctl enable snapd.apparmor
             sudo snap install morgen 2>/dev/null || sudo snap refresh morgen
             sudo snap install firefox 2>/dev/null || sudo snap refresh firefox
+            sudo snap install todoist 2>/dev/null || sudo snap refresh todoist
+            sudo snap install spotify 2>/dev/null || sudo snap refresh spotify
         ;;
         *)
             true

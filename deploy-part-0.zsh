@@ -67,6 +67,10 @@ report_done
 report_progress 'Check for Ubuntu release upgrade'
     sudo do-release-upgrade -c || echo 'No release upgraded needed.'
 report_done
+report_progress 'Installing snap'
+    sudo apt install snapd
+    sudo systemctl enable --now snapd apparmor
+report_done
 report_progress 'Download compile and install VIM9 on Ubuntu'
     sudo apt install libncurses-dev -y
     ~/.dotfiles/bin/make-and-install-vim.sh 9.1.0
@@ -208,27 +212,6 @@ report_progress 'Installing AWS CLI'
     ~/.dotfiles/bin/install-aws-cli.sh
 report_done
 
-# os-specific lines
-cur_os=$(get_os)
-if [[ ${cur_os} == 'ubuntu' || ${cur_os} == 'osx' ]];
-then
-    report_progress 'Installing Todoist Linux app'
-        sudo snap refresh todoist || sudo snap install todoist
-    report_done
-    # os-specific lines
-    report_progress 'Installing vim-anywhere for allowing text to be edited on any text input'
-        curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
-    report_done
-fi
-if [[ ${cur_os} == 'ubuntu' ]];
-then
-    report_progress 'Installing workrave, a reminder app to take screenbreaks'
-        sudo apt-get install workrave -y
-    report_done
-    report_progress 'Install Plexamp flatpak'
-        flatpak install -y flathub com.plexamp.Plexamp
-    report_done
-fi
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades -y
 report_done
