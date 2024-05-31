@@ -150,7 +150,7 @@ set +x
 report_done
 report_progress 'Installing and configuring Joplin CLI notetaking app'
 ~/.dotfiles/bin/update-joplin-cli.sh
-joplin-cli config --import-file ~/.dotfiles/joplin.config
+joplin config --import-file ~/.dotfiles/joplin.config
 report_done
 report_progress 'Changing shell to /bin/zsh.'
 sudo chsh -s "$(which zsh)" "$(whoami)"
