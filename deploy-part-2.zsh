@@ -151,6 +151,7 @@ set +x
 report_done
 report_progress 'Installing and configuring Joplin CLI notetaking app'
 ~/.dotfiles/bin/update-joplin-cli.sh
+ln -f -s ~/.joplin-bin/bin/joplin ~/bin/joplin
 ~/bin/joplin config --import-file ~/.dotfiles/joplin.config
 report_done
 report_progress 'Changing shell to /bin/zsh.'
