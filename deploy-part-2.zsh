@@ -5,7 +5,6 @@
 
 # Load in status message printing functions
 set -e
-set -x
 source ./deploy-common.sh
 
 # Load in vimz config variables
@@ -211,8 +210,6 @@ if [[ $cur_os == 'linux' ]] ; then
     #report_progress 'Install Plexamp flatpak'
     #    flatpak install -y flathub com.plexamp.Plexamp
     #report_done
-    
-     install alacritty
     ~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
 
     # disable touchpad tap to click
