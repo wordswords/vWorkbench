@@ -219,6 +219,9 @@ if [[ $cur_os == 'linux' ]] ; then
     # sync clipboards on ubuntu
     python3 ~/.dotfiles/bin/sync-clipboards-ubuntu.py
 
+    # disable sleep, suspend, hibernate and hybrid-sleep
+    sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
 	echo
 	echo "-- OPTIONAL EXTRAS -- "
 	echo
