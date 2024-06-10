@@ -207,6 +207,10 @@ if [[ $cur_os == 'linux' ]] ; then
         sudo apt install xsane -y
     report_done 
 
+    report_progress 'Install zerotier for VPN'
+        curl -s https://install.zerotier.com | sudo bash
+    report_done
+
     #report_progress 'Install Plexamp flatpak'
     #    flatpak install -y flathub com.plexamp.Plexamp
     #report_done
