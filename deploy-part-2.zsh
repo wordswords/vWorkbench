@@ -206,11 +206,12 @@ if [[ $cur_os == 'linux' ]] ; then
     report_progress 'Installing xsane for flatbed scanning'
         sudo apt install xsane -y
     report_done 
-
     report_progress 'Install zerotier for VPN'
         curl -s https://install.zerotier.com | sudo bash
     report_done
-
+    report_progress 'Install htop for CPU/RAM/process monitoring'
+        sudo apt install htop -y
+    report_done
     #report_progress 'Install Plexamp flatpak'
     #    flatpak install -y flathub com.plexamp.Plexamp
     #report_done
