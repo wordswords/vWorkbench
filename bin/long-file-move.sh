@@ -3,5 +3,9 @@
 set -e
 set -x
 
-sudo rsync -avzh --remove-source-files --progress "${SOURCE}" "${DESTINATION}" && sudo find "${DESTINATION}" -type d -empty -delete
+SOURCE="$1"
+DESTINATION="$2"
+
+#sudo rsync -avzh --remove-source-files --progress "${SOURCE}" "${DESTINATION}"
+sudo find "${SOURCE}" -type d -empty -delete
 
