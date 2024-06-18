@@ -144,7 +144,6 @@ report_done
 report_progress 'Setting default git config..'
 rm ~/.gitconfig
 cp ~/.dotfiles/.gitconfig ~/.gitconfig
-set -x
 git config --global user.email "${VIMZ_EMAIL}"
 set +x
 report_done
