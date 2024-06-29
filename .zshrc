@@ -1,5 +1,3 @@
-# vim: foldmethod=marker foldmarker=++],--]
-#zmodload zsh/zprof
 ## [++ OMZ Config ++]
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -88,7 +86,7 @@ zstyle ':completion:*' menu select
 source ~/.oh-my-zsh/plugins/z/z.plugin.zsh
 ## [-- OMZ Config --]
 ## [++ PATHS ++]
-export PATH="/usr/local/bin:/bin:/usr/bin:${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:/usr/games"
+export PATH="/usr/local/bin:/bin:/usr/bin:${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:/usr/games:${HOME}/miniconda3/bin:/home/david/.cargo/bin"
 export SECURE_DIR="${HOME}/.secure"
 ## [-- PATHS --]
 ## [++ SOURCE EMPLOYER-SPECIFIC SETTINGS ++]

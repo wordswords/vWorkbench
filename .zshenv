@@ -104,7 +104,7 @@ re() {
 autoload -Uz re
 
 checkbackup() {
-    if [ "$(hostname)" = "thinkstation.local" ]; then
+    if [ "$(hostname)" = "hq" ]; then
         cat /home/david/.hqconfig/backup/.last_successful_backup_dump 2>/dev/null || true
         cat /home/david/.hqconfig/backup/.last_successful_backup_transfer 2>/dev/null || true
         cat /home/david/.hqconfig/music-organisation/.last_successful_music_import 2>/dev/null || true
