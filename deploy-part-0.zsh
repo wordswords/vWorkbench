@@ -81,6 +81,9 @@ report_progress 'Install Python used for vim plugins'
     pip install --upgrade pip # upgrade python2 (!) pip
     pip3 install --upgrade pip # upgrade python3
 report_done
+report_progress 'Install Rust and Cargo'
+    curl https://sh.rustup.rs -sSf | sh
+report_done
 report_progress 'Install latest open JDK used for LanguageTool'
     sudo apt-get install default-jdk -y
 report_done
