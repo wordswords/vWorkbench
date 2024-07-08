@@ -106,7 +106,7 @@ autoload -Uz re
 checkdiskspace() {
     if [ "$(hostname)" = "hq" ]; then
         df -h | grep '.*/$' 2>/dev/null || true
-        df -h | grep '/mnt' 2>/dev/null || true
+        df -h | grep '/mnt' 2>/dev/null | sort -h || true
     fi
     echo "\n"
 }
