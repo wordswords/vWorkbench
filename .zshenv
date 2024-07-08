@@ -103,6 +103,13 @@ re() {
 }
 autoload -Uz re
 
+checkdiskspace() {
+    if [ "$(hostname)" = "hq" ]; then
+        df -h | grep '.*/$' 2>/dev/null || true
+        df -h | grep '/mnt' 2>/dev/null || true
+    fi
+    echo "\n"
+}
 checkbackup() {
     if [ "$(hostname)" = "hq" ]; then
         cat /home/david/.hqconfig/backup/.last_successful_backup_dump 2>/dev/null || true

@@ -147,6 +147,7 @@ screensessionsprint
 extipprint
 echo "\n"
 checkbackup
+checkdiskspace
 getweather
 tramsprint
 echo '' # BLANK LINE
