@@ -190,6 +190,9 @@ report_done
 report_progress 'Install fnm node.js version manager'
     ~/.dotfiles/bin/install-fnm.sh
 report_done
+report_progress 'Install Joplin GUI desktop for integration with Browser plugin'
+    wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | sudo bash
+report_done
 
 # custom installation lines
 report_progress 'Installing McFly, a zsh Control-R replacement'
