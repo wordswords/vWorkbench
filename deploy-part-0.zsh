@@ -82,7 +82,7 @@ report_progress 'Install Python used for vim plugins'
     pip3 install --upgrade pip # upgrade python3
 report_done
 report_progress 'Install Rust and Cargo'
-    curl https://sh.rustup.rs -sSf | sh
+    curl https://sh.rustup.rs -sSfy | sh 
 report_done
 report_progress 'Install latest open JDK used for LanguageTool'
     sudo apt-get install default-jdk -y
@@ -191,7 +191,7 @@ report_progress 'Install fnm node.js version manager'
     ~/.dotfiles/bin/install-fnm.sh
 report_done
 report_progress 'Install Joplin GUI desktop for integration with Browser plugin'
-    wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | sudo bash
+    wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
 report_done
 
 # custom installation lines
