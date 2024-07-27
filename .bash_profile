@@ -22,3 +22,4 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;30m\]\u@\h\[\033[00m\]:\[\033[0
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 export PATH="~/bin/:$PATH"
 export GIT_EDITOR=vim
+. "$HOME/.cargo/env"
