@@ -50,7 +50,23 @@ HIST_STAMPS="dd.mm.yyyy"
 # export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
+# [START] lang CONFIG
 export LANG=en_GB.UTF-8
+export LANGUAGE=
+export LC_CTYPE="en_GB.UTF-8"
+export LC_NUMERIC="en_GB.UTF-8"
+export LC_TIME="en_GB.UTF-8"
+export LC_COLLATE="en_GB.UTF-8"
+export LC_MONETARY="en_GB.UTF-8"
+export LC_MESSAGES="en_GB.UTF-8"
+export LC_PAPER="en_GB.UTF-8"
+export LC_NAME="en_GB.UTF-8"
+export LC_ADDRESS="en_GB.UTF-8"
+export LC_TELEPHONE="en_GB.UTF-8"
+export LC_MEASUREMENT="en_GB.UTF-8"
+export LC_IDENTIFICATION="en_GB.UTF-8"
+export LC_ALL=
+# [END] lang CONFIG
 # Preferred editor for local and remote sessions
 export EDITOR=vim
 export GIT_EDITOR=vim
@@ -105,8 +121,6 @@ alias colours='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f 
 alias externalip="curl https://ifconfig.co/json ; echo"
 alias firefox="/snap/bin/firefox"
 alias grep="grep --color"
-alias hn100="curl 'hkkr.in/h-n100-f2'"
-alias hn="curl 'hkkr.in/h-n10-f2'"
 alias hq="ssh -p 608 hq.local"
 alias iostat="iostat -mxz 15"
 alias l='ls -CF'
