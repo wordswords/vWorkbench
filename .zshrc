@@ -164,3 +164,4 @@ echo '' # BLANK LINE
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 #zprof #- Uncomment this to profile zsh startup
 
+export TERM=xterm-256color
