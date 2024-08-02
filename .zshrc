@@ -144,11 +144,6 @@ export GO111MODULE=on
 export MCFLY_KEY_SCHEME=vim
 (&>/dev/null eval "$(mcfly init zsh)" 2> /dev/null &)
 ## [-- McFly Initialization --]
-## [++ cht.sh Initialization ++]
-mkdir -p ~/.zsh.d/
-(&>/dev/null curl https://cheat.sh/:zsh > ~/.zsh.d/_cht 2>/dev/null &)
-alias cht='cht.sh'
-## [-- cht.sh Initialization --]
 ## [++ Powerlevel10k prompt configuration ++]
 source ~/.p10k.zsh
 fpath=(~/.zsh.d/ $fpath)
