@@ -341,7 +341,7 @@ def SetTextAndMarkdownOptions(): void
   g:pencil#joinspaces = 1     # 0=one_space (def), 1=two_spaces
   g:pencil#cursorwrap = 1     # 0=disable, 1=enable (def)
   setlocal spell
-  setlocal nowrap # this is required for special text wrapping
+  setlocal wrap # this is required for special text wrapping
 enddef
 
 def SetMakefileOptions(): void
