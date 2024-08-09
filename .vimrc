@@ -277,7 +277,7 @@ endif
 
 syntax on
 set termguicolors
-colorscheme molokai
+colorscheme desert
 hi SpecialKey ctermfg=grey guifg=grey70
 hi NonText ctermfg=grey guifg=grey70
 # [END] Colourscheme config

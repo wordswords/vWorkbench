@@ -170,20 +170,20 @@ of that issue.
 13. `lookup <jira issue number, no prefix>` to print the jira-cli ticket
 summary of that issue on the command line.
 14. `bat <file>` for a syntax-highlighting quick cat.
-15. `hn` to get the top 10 Hacker News Network headlines for the hour.
-16. `hn100` to get the top 100 Hacker News Network headlines for the hour.
-17. `gg <search query>` from the terminal to open a Firefox browser with the
+15. `gg <search query>` from the terminal to open a Firefox browser with the
 query in the Google.co.uk search engine.
-18. `so <search query>` from the terminal to open a Firefox browser,
+16. `so <search query>` from the terminal to open a Firefox browser,
 and search stackoverflow using `<search query>`
-19. `pstree` for a nice graph showing all processes and subprocesses running.
-20. `<CTRL-X> <CTRL-E>` to open up a text editor while in a shell. When you
+17. `pstree` for a nice graph showing all processes and subprocesses running.
+18. `<CTRL-X> <CTRL-E>` to open up a text editor while in a shell. When you
 save the text content, it will copy it back to the shell to execute. You can use
 this method to use GitHub Copilot and OpenAI Codex in VIM to generate shell commands
 and then have them execute in the shell.
 cheatsheets on a lot of subjects.
-21. `ai <query>` to ask ChatGPT for some wisdom. Whatever it returns will
+19. `ai <query>` to ask ChatGPT for some wisdom. Whatever it returns will
 be copied to the clipboard.
+20. `notes` to open Joplin CLI and view my notes.
+21. `todo` to open my todoist todo list, and pipe it through less.
 
 ## VIM9 shortcuts
 
