@@ -722,14 +722,14 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 
 ## NIX Internals Books
 
-1. ![Lets Learn Tcpdump](notes/Lets Learn Tcpdump - Unknown.pdf)
-2. ![Linux Debugging Tools](notes/Linux Debugging Tools - Unknown.pdf)
-3. ![Networking ACK](notes/Networking Ack - Unknown.pdf)
-4. ![Strace Book](notes/Spying Programs Strace -Unknown.pdf)
-5. ![Profiling Tracing Perf](notes/Profiling Tracing Perf - Unknown.pdf)
-6. ![So You Want To Be A Wizard])(notes/So You Want To Be A Wizard - Unknown.pdf)
-7. ![Bite Size Linux](notes/Bite Size Linux - Unknown.pdf)
-
+1. ![Lets Learn Tcpdump](https://github.com/wordswords/dotfiles/blob/master/notes/Lets%20Learn%20Tcpdump%20-%20Unknown.pdf)
+2. ![Linux Debugging Tools](https://github.com/wordswords/dotfiles/blob/master/notes/Linux%20Debugging%20Tools%20-%20Unknown.pdf))
+3. ![Networking ACK]((https://github.com/wordswords/dotfiles/blob/master/notes/Networking%20Ack%20-%20Unknown.pdf))
+4. ![Strace Book](https://github.com/wordswords/dotfiles/blob/master/notes/Spying%20Programs%20Strace%20-%20Unknown.pdf)
+5. ![Profiling Tracing Perf](https://github.com/wordswords/dotfiles/blob/master/notes/Profiling%20Tracing%20Perf%20-%20Unknown.pdf)
+6. ![So You Want To Be A Wizard](https://github.com/wordswords/dotfiles/blob/master/notes/So%20You%20Want%20To%20Be%20A%20Wizard%20-%20Unknown.pdf)
+7. ![Bite Size Linux](https://github.com/wordswords/dotfiles/blob/master/notes/Bite%20Size%20Linux%20-%20Unknown.pdf)
+   
 ## Printing (on Ubuntu)
 
 I have set up my laserjet to print from the command line via CUPS. This is useful
