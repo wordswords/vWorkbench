@@ -721,13 +721,14 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 3. `board` to show the current JIRA board.
 
 ## NIX Internals Books
-![./notes/Lets Learn Tcpdump - Unknown.pdf](Lets Learn Tcpdump)
-![./notes/Linux Debugging Tools - Unknown.pdf](Linux Debugging Tools)
-![./notes/Networking Ack - Unknown.pdf](Networking ACK)
-![./notes/Spying Programs Strace -Unknown.pdf](Strace Book)
-![./notes/Profiling Tracing Perf - Unknown.pdf](Profiling Tracing Perf)
-![./notes/So You Want To Be A Wizard - Unknown.pdf](So You Want To Be A Wizard)
-![./notes/Bite Size Linux - Unknown.pdf](Bite Size Linux)
+
+1. ![Lets Learn Tcpdump](notes/Lets Learn Tcpdump - Unknown.pdf)
+2. ![Linux Debugging Tools](notes/Linux Debugging Tools - Unknown.pdf)
+3. ![Networking ACK](notes/Networking Ack - Unknown.pdf)
+4. ![Strace Book](notes/Spying Programs Strace -Unknown.pdf)
+5. ![Profiling Tracing Perf](notes/Profiling Tracing Perf - Unknown.pdf)
+6. ![So You Want To Be A Wizard])(notes/So You Want To Be A Wizard - Unknown.pdf)
+7. ![Bite Size Linux](notes/Bite Size Linux - Unknown.pdf)
 
 ## Printing (on Ubuntu)
 
