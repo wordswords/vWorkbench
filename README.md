@@ -720,6 +720,15 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 2. `issues` to show open issues allocated to you.
 3. `board` to show the current JIRA board.
 
+## NIX Internals Books
+![./notes/Lets Learn Tcpdump - Unknown.pdf](Lets Learn Tcpdump)
+![./notes/Linux Debugging Tools - Unknown.pdf](Linux Debugging Tools)
+![./notes/Networking Ack - Unknown.pdf](Networking ACK)
+![./notes/Spying Programs Strace -Unknown.pdf](Strace Book)
+![./notes/Profiling Tracing Perf - Unknown.pdf](Profiling Tracing Perf)
+![./notes/So You Want To Be A Wizard - Unknown.pdf](So You Want To Be A Wizard)
+![./notes/Bite Size Linux - Unknown.pdf](Bite Size Linux)
+
 ## Printing (on Ubuntu)
 
 I have set up my laserjet to print from the command line via CUPS. This is useful
