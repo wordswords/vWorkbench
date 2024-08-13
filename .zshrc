@@ -156,7 +156,7 @@ tmuxsessionsprint
 screensessionsprint
 extipprint
 echo "\n"
-checkbackup
+checkruns
 checkdiskspace
 getweather
 tramsprint

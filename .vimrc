@@ -116,6 +116,8 @@ set belloff=all
 
 # map the <leader> character to comma
 g:mapleader = ','
+# map tilda key to escape so that I can use the usb pedal
+map ~ <ESC>
 
 # Paste from system clipboard
 def PasteFromSystemClipboard(): void
