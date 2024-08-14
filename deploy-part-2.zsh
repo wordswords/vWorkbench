@@ -243,6 +243,16 @@ if [[ $cur_os == 'linux' ]] ; then
 	echo "-- OPTIONAL EXTRAS -- "
 	echo
 
+    read -rp "Do you want to enable Unattended Upgrades on Debian - recommended for computers that will be usually on - (y/yes/N)? " UNATTENDED_UPGRADES
+    case "$UNATTENDED_UPGRADES" in
+        Y|y|yes)
+            ~/.dotfiles/bin/enable-debian-unattended-upgrades.sh
+        ;;
+        *)
+            true
+        ;;
+    esac
+
     read -rp "Do you want to benchmark your computer with hardinfo2 (equiv to Speccy)? (y/yes/N)? " HB2INSTALL
     case "$HB2INSTALL" in
         Y|y|yes)
