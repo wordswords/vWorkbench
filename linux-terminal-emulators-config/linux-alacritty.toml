@@ -10,7 +10,7 @@ history = 100_000
 size = 18
 
   [font.normal]
-  family = "DroidSansMono Nerd Font"
+  family = "DroidSansM Nerd Font"
 
 [cursor.style]
 shape = "Underline"

@@ -31,11 +31,6 @@ report_done
 report_progress 'Install Make and g++'
     sudo apt-get install make g++ -y
 report_done
-report_progress 'Clone hqconfig repository for server configuration'
-    rm -rf ~/.hqconfig
-    git clone git@github.com:wordswords/hqconfig.git ~/.hqconfig
-    ln -s ~/.hqconfig ~/.dotfiles/hqconfig
-report_done
 # Backup and clean
 report_progress 'Backing up existing dotfiles to ~/.olddotfiles'
     rm -rf ~/.olddotfiles
