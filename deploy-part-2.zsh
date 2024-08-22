@@ -299,14 +299,7 @@ echo
 echo "-- NEXT STEPS -- "
 echo
 echo '''
-You will have to install your nerdfont manually, download
-DroidSansNerdFontMono from https://github.com/ryanoasis/nerd-fonts
-here: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono/complete
-
-After this, you will have to set your terminal emulator to use
-said font.
-
-Alacritty is installed and configured and it is the recommended terminal emulator, so do whatever it is needed to change your usual terminal shortcut to point to it.
+Now just make sure that alacritty and the DroidSansM nerdfont are installed on your system.
 '''
 report_done
 report_heading 'All Done.'
