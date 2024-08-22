@@ -4,5 +4,5 @@ set -e
 set -x
 
 mkdir -p ~/.fonts
-cp -r ~/.dotfiles/fonts/* ~/.fonts
+cp -r ~/.dotfiles/.fonts/* ~/.fonts
 
