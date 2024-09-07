@@ -102,7 +102,7 @@ zstyle ':completion:*' menu select
 source ~/.oh-my-zsh/plugins/z/z.plugin.zsh
 ## [-- OMZ Config --]
 ## [++ PATHS ++]
-export PATH="/usr/local/bin:/bin:/usr/bin:${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:/usr/games:${HOME}/miniconda3/bin:/home/david/.cargo/bin"
+export PATH="/usr/local/bin:/bin:/usr/bin:${HOME}/bin:${HOME}/.local/bin:${HOME}/go/bin:/usr/games:/home/david/.cargo/bin:/snap/bin"
 export SECURE_DIR="${HOME}/.secure"
 ## [-- PATHS --]
 ## [++ SOURCE EMPLOYER-SPECIFIC SETTINGS ++]
@@ -132,7 +132,7 @@ alias path="echo \"$PATH\" | tr \":\" \"\n\" | nl"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias please='sudo $(fc -ln -1)'
-alias ports="sudo netstat -tlpn | sort -t: -k2 -n"
+alias ports="sudo netstat -tlpun | sort -t: -k2 -n"
 alias vi="vim -u NONE"
 alias top="htop"
 alias zshconfig="vim ~/.dotfiles/.zshrc && ~/.dotfiles/bin/deploy-zshrc.sh"
