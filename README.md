@@ -165,7 +165,7 @@ there are problems with the vim config.
 10. `ports` to list the open ports on the system in a readable way.
 11. `tree` for a handy diagram of the full directory tree under the current
 directory.
-12. ref <jira issue number, no prefix>` to open Firefox with the details
+12. `ref <jira issue number, no prefix>` to open Firefox with the details
 of that issue.
 13. `lookup <jira issue number, no prefix>` to print the jira-cli ticket
 summary of that issue on the command line.
