@@ -3,6 +3,7 @@
 
 set -e
 source ./deploy-common.sh
+cur_os=$(get_os)
 report_heading 'Deploy Prerequisites: Part 0'
 
 ## We want to take that risk
@@ -138,7 +139,13 @@ report_progress 'Install docker-compose'
     sudo apt-get install docker-compose  -y
 report_done
 report_progress 'Installing node'
+if [[ $cur_os == 'windows' ]] ; then
+    sudo apt-get install nodejs -y
+fi
+if [[ $cur_os == 'linux' ]] ; then
+    # for kali linux only
     sudo apt-get install npm -y
+fi
 report_done
 report_progress 'Install vint for vim script linting'
     pip3 install vint
@@ -173,9 +180,10 @@ report_progress 'Install fnm node.js version manager'
     ~/.dotfiles/bin/install-fnm.sh
 report_done
 report_progress 'Install Joplin GUI desktop for integration with Browser plugin'
-    wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
+    if [[ $cur_os == 'linux' ]] ; then
+      wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
+    fi
 report_done
-
 # custom installation lines
 report_progress 'Installing McFly, a zsh Control-R replacement'
     curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --force --git cantino/mcfly
@@ -199,7 +207,9 @@ report_done
 report_progress 'Installing AWS CLI'
     ~/.dotfiles/bin/install-aws-cli.sh
 report_done
-
+report_progress 'Installing Rust and Cargo'
+    sudo apt-get install cargo -y
+report_done
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades -y
 report_done
