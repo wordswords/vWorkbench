@@ -157,7 +157,7 @@ git config --global user.email "${VIMZ_EMAIL}"
 set +x
 report_done
 report_progress 'Installing and configuring Joplin CLI notetaking app'
-~/.dotfiles/bin/update-joplin-cli.sh
+~/bin/update-joplin-cli.sh
 ln -f -s ~/.joplin-bin/bin/joplin ~/bin/joplin
 ~/bin/joplin config --import-file ~/.dotfiles/joplin.config
 . ~/.dotfiles/SECRETS/vimz_config.sh

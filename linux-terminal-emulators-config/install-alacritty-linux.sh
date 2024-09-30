@@ -3,7 +3,7 @@
 set -x
 set -e
 
-sudo snap install --classic alacritty
+sudo snap install --classic alacritty || sudo snap update --classic alacritty
 mkdir -p $HOME/.config/alacritty/
 cp ~/.dotfiles/linux-terminal-emulators-config/linux-alacritty.toml $HOME/.config/alacritty/alacritty.toml
 ~/.dotfiles/linux-terminal-emulators-config/install-nerdfont-linux.sh

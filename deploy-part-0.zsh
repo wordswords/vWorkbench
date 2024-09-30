@@ -68,7 +68,7 @@ report_progress 'Installing snap'
 report_done
 report_progress 'Download compile and install VIM9 on Ubuntu'
     sudo apt install libncurses-dev -y
-    ~/.dotfiles/bin/make-and-install-vim.sh 9.1.0
+    ~/.dotfiles/bin/make-and-install-vim.sh 9.1.0748 
 report_done
 report_progress 'Install Python used for vim plugins'
     sudo apt-get install python3 -y
@@ -137,21 +137,8 @@ report_done
 report_progress 'Install docker-compose'
     sudo apt-get install docker-compose  -y
 report_done
-report_progress 'Nuke current node install'
-    sudo apt remove nodejs -y
-    sudo apt remove npm -y
-    sudo rm -rf /usr/lib/node_modules
-    sudo rm -f /bin/node
-    sudo rm -f /bin/npm
-    sudo rm -f /bin/nodejs
-    sudo rm -f /usr/local/bin/node
-    sudo rm -f /usr/local/bin/npm
-    sudo rm -f /usr/local/bin/nodejs
-report_done
 report_progress 'Installing node'
-    ~/.dotfiles/bin/install-node.sh 20
-    sudo chown -R root:users /usr/lib/node_modules
-    sudo chmod -R 775 /usr/lib/node_modules
+    sudo apt-get install npm -y
 report_done
 report_progress 'Install vint for vim script linting'
     pip3 install vint
