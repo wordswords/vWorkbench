@@ -137,6 +137,7 @@ alias vi="vim -u NONE"
 alias top="htop"
 alias zshconfig="vim ~/.dotfiles/.zshrc && ~/.dotfiles/bin/deploy-zshrc.sh"
 alias todo="tod list view --project Important | less"
+alias gissues="gh issue list"
 ## [-- ALIASES --]
 ## [++ Required for Golang install syntax ++]
 export GO111MODULE=on
