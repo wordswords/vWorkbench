@@ -33,6 +33,11 @@ ttyprint() {
 }
 autoload -Uz ttyprint
 
+gissueview() {
+    gh issue view "$@"
+}
+autoload -Uz gissueview
+
 extipprint() {
     echo "[-- External IP location:"
     curl https://ifconfig.co/json 2>/dev/null | grep zip_code
