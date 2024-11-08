@@ -729,7 +729,7 @@ the documentation - https://github.com/ankitpokhrel/jira-cli
 5. ![Profiling Tracing Perf](https://github.com/wordswords/dotfiles/blob/master/notes/Profiling%20Tracing%20Perf%20-%20Unknown.pdf)
 6. ![So You Want To Be A Wizard](https://github.com/wordswords/dotfiles/blob/master/notes/So%20You%20Want%20To%20Be%20A%20Wizard%20-%20Unknown.pdf)
 7. ![Bite Size Linux](https://github.com/wordswords/dotfiles/blob/master/notes/Bite%20Size%20Linux%20-%20Unknown.pdf)
-   
+
 ## Printing (on Ubuntu)
 
 I have set up my laserjet to print from the command line via CUPS. This is useful
@@ -737,6 +737,16 @@ when printing out shopping lists etc, quickly.
 
 1. `lp <file>` to print the file.
 2. `echo bla | lp --` to print the pipe.
+
+## PCP - Performance Co-Pilot
+
+PCP is a great way to analyse performance problems on Linux.
+
+1. `~/bin/install-pcp.sh` - to install PCP on Debian barebones Linux only (not LTS2)
+2. `pcp atop` - to run an interactive performance dashboard
+3. `pcp iostat` - to run an interactive iostat
+
+There are lots of different other commands, see: For more info see: [https://blogs.oracle.com/linux/post/performance-analysis-using-pcp](https://blogs.oracle.com/linux/post/performance-analysis-using-pcp)
 
 ## fzf
 
