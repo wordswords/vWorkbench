@@ -140,11 +140,11 @@ report_progress 'Install docker-compose'
 report_done
 report_progress 'Installing node'
 if [[ $cur_os == 'windows' ]] ; then
-    sudo apt-get install nodejs -y
+    ~/.dotfiles/bin/install-node.sh
 fi
 if [[ $cur_os == 'linux' ]] ; then
     # for kali linux only
-    sudo apt-get install npm -y
+    ~/.dotfiles/bin/install-node.sh
 fi
 report_done
 report_progress 'Install vint for vim script linting'
