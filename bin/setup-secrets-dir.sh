@@ -14,11 +14,12 @@ read -rp "Enter OpenAI Access Token:" VIMZ_OPENAI_ACCESS_TOKEN
 read -rp "Enter Ubuntu username for user you want to install Vimz to:" VIMZ_USERNAME
 read -rp "Enter email address for your Github account:" VIMZ_GITHUB_EMAIL
 read -rp "Enter the Joplin Cloud sync password:" VIMZ_JOPLIN_SYNC_PASSWORD
+read -rp "Enter your OpenAPI Project API Key:" VIMZ_OPENAI_ACCESS_TOKEN
 echo
 echo "About to write the following configuration.."
 echo "BORG Backup Passphrase: ${VIMZ_BORG_PASSPHRASE}"
 echo "Mozilla VPN Token: ${VIMZ_MOZ_VPN_TOKEN}"
-echo "OpenAI Access Token: ${VIMZ_OPENAI_ACCESS_TOKEN}"
+echo "OpenAI Project API Key: ${VIMZ_OPENAI_ACCESS_TOKEN}"
 echo "Ubuntu username: ${VIMZ_USERNAME}"
 echo "Github email address: ${VIMZ_GITHUB_EMAIL}"
 echo "Joplin Cloud sync password:: ${VIMZ_JOPLIN_SYNC_PASSWORD}"
