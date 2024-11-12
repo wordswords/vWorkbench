@@ -174,7 +174,7 @@ report_done
 #    sudo apt-get install mozillavpn -y
 #report_done
 report_progress 'Install chatgpt-cli comamnd line ChatGPT client'
-    pip install git+https://github.com/marcolardera/chatgpt-cli
+    curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/latest/download/chatgpt-linux-amd64 && chmod +x chatgpt && sudo mv chatgpt /usr/local/bin/
 report_done
 report_progress 'Install fnm node.js version manager'
     ~/.dotfiles/bin/install-fnm.sh
