@@ -138,7 +138,9 @@ alias top="htop"
 alias zshconfig="vim ~/.dotfiles/.zshrc && ~/.dotfiles/bin/deploy-zshrc.sh"
 alias todo="tod list view --project Important | less"
 alias gissues="gh issue list"
-alias glogin="gh auth login"
+alias glogin="gh auth login"4
+alias quicknmap="nmap -vv --min-rate 5000 -p- "
+
 ## [-- ALIASES --]
 ## [++ Required for Golang install syntax ++]
 export GO111MODULE=on
