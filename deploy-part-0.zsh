@@ -11,7 +11,7 @@ export PIP_BREAK_SYSTEM_PACKAGES=1
 
 # Must go before everything else
 report_progress 'Checking locale'
-     locale | grep -q LANG=en_GB.UTF-8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
+     locale | grep -q LANG=en_GB.utf8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
 report_done
 report_progress 'Checking for existence of SECRETS directory'
 if [[ ! -d ~/.dotfiles/SECRETS ]] ; then
@@ -135,9 +135,12 @@ report_done
 report_progress 'Install shellcheck for shell script formatting'
     sudo apt-get install shellcheck -y
 report_done
-report_progress 'Install docker-compose'
-    sudo apt-get install docker-compose  -y
+report_progress 'Install ChatGPT CLI client'
+    curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/latest/download/chatgpt-linux-amd64 && chmod +x chatgpt && sudo mv chatgpt /usr/local/bin/
 report_done
+#report_progress 'Install docker-compose'
+#    sudo apt-get install docker-compose  -y
+#report_done
 report_progress 'Installing node'
 if [[ $cur_os == 'windows' ]] ; then
     ~/.dotfiles/bin/install-node.sh
@@ -173,9 +176,6 @@ report_done
 #    sudo apt-get update -y
 #    sudo apt-get install mozillavpn -y
 #report_done
-report_progress 'Install chatgpt-cli comamnd line ChatGPT client'
-    curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/latest/download/chatgpt-linux-amd64 && chmod +x chatgpt && sudo mv chatgpt /usr/local/bin/
-report_done
 report_progress 'Install fnm node.js version manager'
     ~/.dotfiles/bin/install-fnm.sh
 report_done
