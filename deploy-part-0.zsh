@@ -11,7 +11,7 @@ export PIP_BREAK_SYSTEM_PACKAGES=1
 
 # Must go before everything else
 report_progress 'Checking locale'
-     locale | grep -q LANG=en_GB.UTF-8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
+     locale | grep -q LANG=en_GB.utf8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
 report_done
 report_progress 'Upgrade all packages/distro to latest version'
     sudo apt-get update --allow-downgrades -y && sudo apt-get dist-upgrade --allow-downgrades -y && sudo apt-get upgrade --allow-downgrades -y && sudo apt-get autoremove --allow-downgrades -y
@@ -137,6 +137,9 @@ report_done
 report_progress 'Install shellcheck for shell script formatting'
     sudo apt-get install shellcheck=0.8.0-2 --allow-downgrades -y
 report_done
+report_progress 'Install ChatGPT CLI client'
+    curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/latest/download/chatgpt-linux-amd64 && chmod +x chatgpt && sudo mv chatgpt /usr/local/bin/
+report_done
 report_progress 'Install docker-compose'
     sudo apt-get install docker-compose=1.29.2-1 --allow-downgrades -y
 report_done
@@ -169,9 +172,6 @@ report_progress 'Install Manchester Metrolink Commandline App for Tram times'
     wget https://github.com/ayubmalik/trams/releases/download/v1.2.0/trams-linux-amd64
     mv trams-linux-amd64 trams
     chmod u+x trams
-report_done
-report_progress 'Install chatgpt-cli comamnd line ChatGPT client'
-    curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/latest/download/chatgpt-linux-amd64 && chmod +x chatgpt && sudo mv chatgpt /usr/local/bin/
 report_done
 report_progress 'Install fnm node.js version manager'
     ~/.dotfiles/bin/install-fnm.sh
