@@ -133,7 +133,7 @@ configuration which will be useful to everyone.
 
 However, if you are keen to try this out as it is:
 
-1. `git clone git@github.com:/wordswords/dotfiles ~/.dotfiles`
+1. `git clone git@github.com:/wordswords/vWorkbench ~/.dotfiles`
 2. `cd ~/.dotfiles/`
 3. Prepare all config you need to prepare in ~/.dotfiles/SECRETS. There are
 templates of what is required in ~/.dotfiles/SECRETS_TEMPLATES
