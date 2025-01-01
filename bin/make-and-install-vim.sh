@@ -12,7 +12,9 @@ VERSION=$1
 TMP_DIR=$(mktemp -d)
 cd "${TMP_DIR}"
 sudo apt remove vim vim-gtk3 vim-tiny -y
-sudo apt install libxt-dev libpython3-dev libncurses-dev -y
+sudo apt install libxt-dev=1:1.2.1-1 --allow-downgrades -y
+sudo apt install libpython3-dev=3.10.6-1~22.04.1 --allow-downgrades -y
+sudo apt install libncurses-dev=6.3-2ubuntu0.1 --allow-downgrades -y
 wget https://github.com/vim/vim/archive/refs/tags/v$1.tar.gz
 tar zxf v*gz
 rm ./*tar | true
