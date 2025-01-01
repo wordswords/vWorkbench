@@ -185,10 +185,6 @@ report_progress 'Install ChatGPT CLI client'
     curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/latest/download/chatgpt-linux-amd64 && chmod +x chatgpt && sudo mv chatgpt /usr/local/bin/
 report_done
 
-report_progress 'Install docker-compose'
-    sudo apt-get install docker-compose --allow-downgrades -y
-report_done
-
 report_progress 'Installing node'
 if [[ $cur_os == 'windows' ]] ; then
     ~/.dotfiles/bin/install-node.sh

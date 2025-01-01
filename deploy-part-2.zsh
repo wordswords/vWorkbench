@@ -248,16 +248,9 @@ report_progress 'Running any Linux specific configuration'
 if [[ $cur_os == 'linux' ]] ; then
 
     # os-specific lines
-    report_progress 'Installing vim-anywhere for allowing text to be edited on any text input'
-        sudo apt install 'vim-gt*' -y
-        curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
-    report_done
     report_progress 'Installing workrave, a reminder app to take screenbreaks'
         sudo apt-get install workrave -y || echo ''
     report_done
-    report_progress 'Installing xsane for flatbed scanning'
-        sudo apt install xsane -y
-    report_done 
     report_progress 'Install zerotier for VPN'
         curl -s https://install.zerotier.com | sudo bash
     report_done
@@ -268,13 +261,6 @@ if [[ $cur_os == 'linux' ]] ; then
         sudo ~/.dotfiles/bin/install-pcp.sh
     report_done
     ~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
-
-    # disable touchpad tap to click
-	gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
-	gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
-
-    # sync clipboards on ubuntu
-    python3 ~/.dotfiles/bin/sync-clipboards-ubuntu.py
 
     # disable sleep, suspend, hibernate and hybrid-sleep
     sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
@@ -296,7 +282,7 @@ if [[ $cur_os == 'linux' ]] ; then
     read -rp "Do you want to benchmark your computer with hardinfo2 (equiv to Speccy)? (y/yes/N)? " HB2INSTALL
     case "$HB2INSTALL" in
         Y|y|yes)
-            ~/.dotfiles/bin/install-hardinfo2.sh
+            sudo apt install hardinfo -y
         ;;
         *)
             true

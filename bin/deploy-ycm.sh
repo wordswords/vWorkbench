@@ -25,5 +25,5 @@ cd ~/.vim/bundle/YouCompleteMe/
 git clone git@github.com:ycm-core/YouCompleteMe.git ./
 cd ~/.vim/bundle/YouCompleteMe/
 git submodule update --init --recursive
-python3 install.py --cs-completer --java-completer --ts-completer
+python3 install.py --all
 
