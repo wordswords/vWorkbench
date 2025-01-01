@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # vim: foldmethod=marker foldmarker=report_progress,report_done
+#
+# This script is intended to do whatever is necessary to setup a
+# working oh-my-zsh environment with the p10k correct prompt.
 
 set -e
 
