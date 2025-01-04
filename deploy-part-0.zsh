@@ -260,6 +260,11 @@ report_progress 'Installing Rust and Cargo'
     sudo apt-get install cargo --allow-downgrades -y
 report_done
 
+report_progress 'Installing Cmake for compiling YCM'
+    sudo apt-get install cmake --allow-downgrades -y
+report_done
+
+
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades --allow-downgrades -y
 report_done
