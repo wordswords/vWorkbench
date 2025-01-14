@@ -203,6 +203,8 @@ report_done
 report_progress 'Customising Fortune random quoter'
 sudo rm -rf /usr/share/games/fortunes/* || true
 sudo tar xzf ~/.dotfiles/moore.txt.tgz -C /usr/share/games/fortunes/
+sudo mv /usr/share/games/fortunes/moore.txt /usr/share/games/fortunes/moore
+sudo strfile -c % /user/share/games/fortunes/moore moore.dat
 report_done
 
 report_progress 'Stop unwanted changes dirtying up the dotfiles commit tracking'
