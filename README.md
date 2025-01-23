@@ -1,6 +1,7 @@
 # My Development Environment (dotfiles)
 
-This repository contains my customized development environment setup, designed to enhance productivity and streamline workflows for software development. It is primarily tested on Kali Linux, Ubuntu under WSL2 on Windows 11, and the latest Lubuntu LTS. Note: Compatibility with OSX is not guaranteed without significant modifications.
+This repository contains my customized development environment setup, designed to enhance productivity and streamline workflows for software development. It is primarily tested on Kali Linux rolling, and the latest version of Ubuntu under WSL2 on Windows 11. Compatibility with all other platforms is not guaranteed without significant modification.
+
 
 ![Workbench](workbench.jpg "Picture of a woodworker workbench")
 
@@ -31,7 +32,8 @@ This setup includes a variety of tools and configurations tailored for efficient
 
 ### Prerequisites
 
-- **Nerd Font**: Required for enhanced symbol support in VIM.
+- **Git** authenticated with Github
+- **Locale set to `en_GB.UTF-8`** - hack this out yourself if you're not in the UK.
 - **Secrets Directory**: Create `~/.dotfiles/SECRETS` with necessary credentials and API keys.
 - **Alacritty**: Recommended for WSL2 users before installation.
 
@@ -44,12 +46,13 @@ This setup includes a variety of tools and configurations tailored for efficient
 
 ### What It Installs
 
-- Customized VIM9 with plugins
+- Customized VIM9 with lots of plugins including Github Copilot
 - Oh-my-ZSH with ZSH as the default shell
 - Joplin CLI for note-taking (requires personal credentials)
 - Optional applications like Morgen calendar and Golang JIRA CLI
 - Elixir development environment
-- Fortune with Neil Gaiman quotes
+- Aider with ChatGPT for AI assistance
+- Fortune with Alan Moore quotes
 
 Note: Customization may be required for full functionality. Consider using a Docker container or VM for testing.
 
@@ -122,6 +125,10 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - `pbcopy`/`pbpaste`: Use in terminal pipes.
 - `xclip.sh`: Alternative clipboard command.
 
+## Aider
+
+- `aider`: Start interactive ChatGPT AI code assistant.
+
 ## Productivity Shortcuts
 
 ### Tmux Shortcuts
@@ -139,25 +146,6 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - `<Control-a> <Control-UP>`: Extend pane up.
 - `<Control-a> <Control-LEFT>`: Extend pane to the left.
 - `<Control-a> <SPACE>`: Switch pane arrangements.
-
-### Gnome Shortcuts
-
-- `<Control-Shift-n>`: Open new terminal window.
-- `<Windows Key>`: Toggle ArcMenu.
-- `<Windows Key-Tab>`: Switch to next application.
-- `<Windows Key-Shift-Tab>`: Switch to previous application.
-- `<Windows Key-l>`: Lock session.
-- `<Print Screen>`: Take screenshot.
-- `<Control-Alt-Home>`: Open new Firefox tab.
-- `<Control>-Left Click`: Open URL in browser.
-- `<Windows Key-d>`: Minimize all applications.
-
-### Gnome Window Resize
-
-- `<Windows Key-RIGHT>`: Move window to right half.
-- `<Windows Key-LEFT>`: Move window to left half.
-- `<Windows Key-UP>`: Fullscreen window.
-- `<Windows Key-DOWN>`: Restore window to center.
 
 ## VIM Spellchecking and Grammar Checking
 
@@ -231,7 +219,7 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 
 ## VIM Regex
 
-- Use `\v` for "very magic mode".
+- Use `\v` for "very magic mode" for when you need less escaping.
 - `:help ordinary-atom` for regex syntax.
 - Use `\1`, `\2` for capture groups.
 - `.\{-}` for non-greedy match.
@@ -258,7 +246,6 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 
 - `<RIGHT>`: Load Tagbar.
 - Navigate tags to jump to features.
-
 
 # Additional Notes
 
@@ -313,8 +300,8 @@ For more, see the [Git Book](https://git-scm.com/book/en/v2) and [Git Workflow](
 
 ## Docker/Docker Compose
 
-- `docker system prune -a`: Clean unused images.
-- `docker-compose --rm <service>`: Execute service.
+- `~/bin/delete-all-docker-content.sh`: Clean Docker content.
+- `docker-compose --rm <service>`: Execute service defined in compose file.
 - `docker ps`: List running containers.
 - `docker-compose ps`: List services.
 - `docker-compose run <service> <command>`: Run command in service.
@@ -330,6 +317,8 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 - Disk I/O: Use `iostat`, `fio`, `dd`, `bonnie++`.
 - CPU: Use `htop`.
 - Network: Use `iperf3`.
+- `ports`- List open ports in sorted order.
+- `sudo ufw status`- Check firewall status.
 
 ## Ubuntu Package Management
 
@@ -339,7 +328,7 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 - `dpkg -i <deb>`: Install deb file.
 - `dpkg-query -L <package>`: List package files.
 
-## Profiling VIM
+## Profiling VIM for speed problems
 
 - Start profiling: `:profile start vim-profile.log`
 - Profile files: `:profile file *`
@@ -372,14 +361,14 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 
 ## Printing on Ubuntu
 
-- Print file: `lp <file>`
-- Print from pipe: `echo <text> | lp --`
+- Print file: `lp <file>`.
+- Print from pipe: `echo <text> | lp --`.
 
-## PCP - Performance Co-Pilot
+## PCP - System Performance Co-Pilot
 
-- Install: `~/bin/install-pcp.sh`
-- Run dashboard: `pcp atop`
-- Run iostat: `pcp iostat`
+- Install: `~/bin/install-pcp.sh`.
+- Run dashboard: `pcp atop`.
+- Run iostat: `pcp iostat`.
 
 ## fzf
 
@@ -387,7 +376,8 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 
 ## Remote Connection
 
-- SSH to home server: `hq`
+- SSH to home server from local network: `hq`.
+- SSH to home server from remote network: `rhq`.
 
 ## 24-bit Colour
 
@@ -395,6 +385,8 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 - Test script: `~/.dotfiles/bin/24-bit-color.sh`
 
 ## External Scripts
+
+These are installed in `~/bin`:
 
 - `gg.sh`, `so.sh`, `ai.sh`, `re.sh`: Search scripts for Google, Stack Overflow, Reddit, ChatGPT.
 - `search-ebooks.sh`: Search EPUB books.
