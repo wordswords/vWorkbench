@@ -43,7 +43,7 @@ report_progress 'Creating ~/.secure directory'
 report_done
 
 report_progress 'Ensure home directory permissions are set securely'
-   ~/.dotfiles/bin/secure-home-dir-perms.sh
+   #~/.dotfiles/bin/secure-home-dir-perms.sh
 report_done
 
 report_progress 'Install Git'
@@ -265,7 +265,7 @@ report_progress 'Installing Cmake for compiling YCM'
 report_done
 
 report_progress 'Installing aider for AI coding assistance'
-    curl -LsSf https://aider.chat/install.sh | sudo sh
+    curl -LsSf https://aider.chat/install.sh | sh
 report_done
 
 report_progress 'We will now attempt to enable automated unattended-upgrades'
