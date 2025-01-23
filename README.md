@@ -1,912 +1,419 @@
-# My Development Enviroment (dotfiles)
+# My Development Environment (dotfiles)
 
-"Every woodworker needs a good, solid, reliable workbench, somewhere to
-hold work pieces at a convenient height while they're being shaped.
-The workbench becomes the centre of the woodshop, the maker returning
-to it time and time again as the piece takes shape.
+This repository contains my customized development environment setup, designed to enhance productivity and streamline workflows for software development. It is primarily tested on Kali Linux, Ubuntu under WSL2 on Windows 11, and the latest Lubuntu LTS. Note: Compatibility with OSX is not guaranteed without significant modifications.
 
-For a programmer manipulating files of text, that workbench
-is the command shell."
+![Workbench](workbench.jpg "Picture of a woodworker workbench")
 
-- The Pragmatic Programmer (2020) - David Thomas, Andrew Hunt
+## Overview
 
-![Alt text](workbench.jpg "Picture of a woodworker workbench")
+This setup includes a variety of tools and configurations tailored for efficient development, including a customized VIM setup, ZSH with Powerlevel10k, and the Alacritty terminal emulator. It also integrates various productivity tools and shortcuts to optimize your workflow.
 
-<!--ts-->
+## Features
 
-<!--te-->
+### VIM Setup
 
-## What Is This
+![VIM Setup](https://i.imgur.com/K6fBzSH.png "VIM setup")
 
-* My development environment setup with heavily custom settings.
-* I'm testing this on Kali Linux and on my W11 box running Ubuntu under
-  WSL2.
-* I also test it under the latest Lubuntu LTS. I haven't tested it on OSX
-  for ages, and can pretty much guarantee it won't run on that without
-  a lot of work.
+- **vim-airline**: Displays file issues, warnings, and errors. Navigate between them using `<Left>` and `<Right>`.
+- **NERDTree**: Visualizes git status with symbols for modified, staged, untracked, and more.
 
-## Demo Video
+### ZSH Configuration
 
-[![Watch the video](https://img.youtube.com/vi/X91F5WvubPs/0.jpg)](https://www.youtube.com/watch?v=X91F5WvubPs)
+![ZSH Setup](https://i.imgur.com/oZmTLND.png "My zsh setup")
 
-## VIM
+- **oh-my-zsh with Powerlevel10k**: Provides fast auto-completion and displays Git repo status. More details at [Powerlevel10k](https://github.com/romkatv/powerlevel10k).
 
-![Alt text](https://i.imgur.com/K6fBzSH.png "VIM setup")
+### Alacritty Terminal
 
-### How to Decode the vim-airline Buffer Status line
+- A high-performance terminal emulator configured for Ubuntu and WSL2 environments.
 
-Full docs: [https://github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
+## Installation and Updates
 
-1. The problems in the file show in the far right. If there are no issues
-there will be no red or orange expanded sections.
+### Prerequisites
 
-* Orange - Warnings
-* Red - Errors
+- **Nerd Font**: Required for enhanced symbol support in VIM.
+- **Secrets Directory**: Create `~/.dotfiles/SECRETS` with necessary credentials and API keys.
+- **Alacritty**: Recommended for WSL2 users before installation.
 
-2. It will show you the number of warnings or errors there are, and the line number of
-the first one. You should be able to skip between warnings/errors with the
-`<Left>` and `<Right>` keys.
-3. When you are searching through the file with `/` then it shows you: your term,
-the number of matches there are of your term, and which one you're on.
-4. Other info displayed includes File Format, file type detected, current line of
-code / total lines of code, current column number / total columns, and so on.
-5. When it shows 'SPELL' is on, it will highlight text spellings and any
-code related errors. To toggle this, use `:set nospell` or `:set spell`. It
-highlights spelling errors in comments.
+### Installation Steps
 
-### How to Decode the Nerdtree file status symbols
+1. Clone the repository: `git clone git@github.com:/wordswords/vWorkbench ~/.dotfiles`
+2. Navigate to the directory: `cd ~/.dotfiles/`
+3. Prepare configuration in `~/.dotfiles/SECRETS` using templates from `~/.dotfiles/SECRETS_TEMPLATES`.
+4. Run the deployment script: `./deploy.sh`
 
-They correspond to the git status of the file in the repo.
+### What It Installs
 
-* 'Modified'  :`✹`
-* 'Staged'    :`✚`
-* 'Untracked' :`✭`
-* 'Renamed'   :`➜`
-* 'Unmerged'  :`═`
-* 'Deleted'   :`✖`
-* 'Dirty'     :`✗`
-* 'Ignored'   :`☒`
-* 'Clean'     :`✔︎`
-* 'Unknown'   :`?`
+- Customized VIM9 with plugins
+- Oh-my-ZSH with ZSH as the default shell
+- Joplin CLI for note-taking (requires personal credentials)
+- Optional applications like Morgen calendar and Golang JIRA CLI
+- Elixir development environment
+- Fortune with Neil Gaiman quotes
 
-## ZSH
+Note: Customization may be required for full functionality. Consider using a Docker container or VM for testing.
 
-![Alt text](https://i.imgur.com/oZmTLND.png "My zsh setup")
+## Usage
 
-ZSH uses oh-my-zsh in Powerlevel10k mode, which provides fast and responsive
-auto-complete options. Use `<TAB>` to autocomplete. It will also show the status
-of the current Git repo.
+### Shell Shortcuts
 
-https://github.com/romkatv/powerlevel10k
+- `<CTRL>-<R>`: Search previous commands with McFly.
+- `z <directory>`: Change to a directory without typing `cd`.
+- `l`: Long-style `ls`.
+- `delta <file1> <file2>`: Two-way diff interface.
+- `<tab>`: Activate oh-my-zsh autocomplete.
+- `repos.sh`: Check branch names of all git repositories.
+- `vi`: Load minimal VIM config.
+- `notes`: Launch Joplin CLI.
+- `please`: Repeat last command with `sudo`.
+- `ports`: List open ports.
+- `tree`: Display directory tree.
+- `ref <jira issue>`: Open JIRA issue in Firefox.
+- `lookup <jira issue>`: Print JIRA CLI ticket summary.
+- `bat <file>`: Syntax-highlighted `cat`.
+- `gg <query>`: Google search in Firefox.
+- `so <query>`: Stack Overflow search in Firefox.
+- `pstree`: Display process tree.
+- `<CTRL-X> <CTRL-E>`: Open text editor in shell.
+- `ai <query>`: Query ChatGPT and copy result to clipboard.
+- `todo`: Open Todoist list.
 
-## Alacritty
+## VIM9 Shortcuts
 
-This setup uses Alacritty, which is currently the best terminal emulator I've found.
+- `<leader> h`: Open this help document.
+- `<TAB>`: Activate autocomplete plugins.
+- `,`: Leader key for shortcuts.
+- `<LEFT>`: Toggle NERDTree.
+- `<RIGHT>`: Toggle Vista.
+- `<DOWN>`: Open Quickfix list.
+- `<UP>`: Open Location list.
+- `>>`/`<<`: Adjust indentation.
+- `set mouse=a`: Enable mouse support.
+- `K`: View documentation for current term.
+- `gd`: Go to definition.
+- `:G <git command>`: Run git commands via vim-fugitive.
+- `/`: Search across buffers.
+- `u`: Move up a directory in NERDTree.
+- `<F12>`: Toggle distraction-free mode.
+- `:Format`: Format buffer with coc language server.
+- `:Wordy<space><tab>`: Use Wordy proofreading tool.
+- `:LanguageToolCheck`: Grammar and spelling check.
+- `:<','>s/git clone/git submodule add/`: Replace `git clone` with `git submodule add`.
+- `:'<,'>!sort`: Sort visual block lines.
+- `:'<,'> norm i##`: Comment lines with `##`.
+- `!ctags -R *`: Generate ctags index.
+- `gx`: Open URL under cursor.
+- `:%s/\s\+$//e`: Remove trailing whitespace.
+- `:Prettier`: Run Prettier formatter.
+- `%`: Skip to next code bracket.
+- `>i{`: Indent code block.
+- `:map`: Show key mappings.
 
-As part of the installation, it will install and configure Alacritty on Ubuntu and
-WSL2 Ubuntu setups.
+For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md).
 
-# Installation / Updating
+## Clipboard Management
 
-The same scripts either install from nothing OR update the current
-version. When you install my .dotfiles every time you log into a console, it
-will fetch down the latest master from this repo. If there are any changes, you
-should rerun the scripts in 'Install Steps' below to keep your copy
-up-to-date.
-
-## Installation Requirements for .dotfiles
-
-* You have to use a ‘Nerd font’ - this is a specially patched font with extra
-symbol characters for use in vim. This is not a prerequisite, it will show you
-how to install it at the end of the dotfile deployment.
-* You have to have a directory created in ~/.dotfiles/SECRETS with the credentials
-/keys/APIkeys required to use the environment. This is not done for you.
-* If you are using Ubuntu for Windows under WSL2, which is my personal favourite configuration
-then I recommend installing the Alacritty terminal emulator before installing.
-
-## What It Will Install
-
-It will install my VIM9 development environment and anything else I use
-in my work. It includes:
-
-* Install my heavily customised version of VIM9 with plugins
-* Install the latest version of Oh-my-ZSH and set your default shell to ZSH
-* Install Joplin the command-line open source Evernote replacement, and secure
-it with encryption, and download all my notes (presuming you are me).
-* Ask if you want to install my usual apps - https://Morgen.so : a paid multiplatform
-calendar app that I use with Google Calendar. This is updated
-via the snap installation process.
-* Ask if you want to install the superb Golang JIRA CLI client which makes
-navigating JIRA boards less painful.
-* Setup a development environment for Elixir.
-* Setup 'fortune' with random Neil Gaiman quotes displayed on login.
-
-You may well have to customise, mix and match, and edit these individual
-settings because you won't have the authentication required for this whole
-process to work. If you are serious about reusing what I've done, you should
-run this setup in a docker container or virtual machine.
-
-## Install Steps
-
-I am still in the process of separating my personal configuration from a generic
-configuration which will be useful to everyone.
-
-However, if you are keen to try this out as it is:
-
-1. `git clone git@github.com:/wordswords/vWorkbench ~/.dotfiles`
-2. `cd ~/.dotfiles/`
-3. Prepare all config you need to prepare in ~/.dotfiles/SECRETS. There are
-templates of what is required in ~/.dotfiles/SECRETS_TEMPLATES
-4. `./deploy.sh`
-5. It will also attempt by default to log in to my Joplin account, which will
-not succeed without my credentials. You probably want to change that.
-
-# Using the Dotfiles Environment
-
-## Shell shortcuts
-
-1. `<CTRL>-<R>` for an intelligent search through previous commands using McFly.
-2. Type `z` and a directory name accessible from your current directory to cd to
-that directory, no need to type cd.
-3. Type `l` for a long-style ls.
-4. `delta <file1> <file2>` for a nice 2 way diff style interface where you can
-analyse and copy changes between files.
-5. Use `<tab>` to activate oh-my-zsh's autocomplete plugins. For example `git
-<tab>`
-6. Run `repos.sh` to check the branch name of all git repositories under the
-current directory. Useful when you have a lot of different projects
-that interact with each other and you want to see which repos branches
-you have checked out.
-7. `vi` instead of `vim` to load a separate minimal vim config, useful if
-there are problems with the vim config.
-8. Type `notes` to launch Joplin, my note-taking app.
-9. `please` after realising that you needed sudo with the last command, to
-    repeat the last command with sudo
-10. `ports` to list the open ports on the system in a readable way.
-11. `tree` for a handy diagram of the full directory tree under the current
-directory.
-12. `ref <jira issue number, no prefix>` to open Firefox with the details
-of that issue.
-13. `lookup <jira issue number, no prefix>` to print the jira-cli ticket
-summary of that issue on the command line.
-14. `bat <file>` for a syntax-highlighting quick cat.
-15. `gg <search query>` from the terminal to open a Firefox browser with the
-query in the Google.co.uk search engine.
-16. `so <search query>` from the terminal to open a Firefox browser,
-and search stackoverflow using `<search query>`
-17. `pstree` for a nice graph showing all processes and subprocesses running.
-18. `<CTRL-X> <CTRL-E>` to open up a text editor while in a shell. When you
-save the text content, it will copy it back to the shell to execute. You can use
-this method to use GitHub Copilot and OpenAI Codex in VIM to generate shell commands
-and then have them execute in the shell.
-cheatsheets on a lot of subjects.
-19. `ai <query>` to ask ChatGPT for some wisdom. Whatever it returns will
-be copied to the clipboard.
-20. `notes` to open Joplin CLI and view my notes.
-21. `todo` to open my todoist todo list, and pipe it through less.
-
-## VIM9 shortcuts
-
-The most important VIM shortcut is `<leader> h` which is currently mapped to `, h`.
-This will open up this document, which is usually up-to-date.
-
-1. `<TAB>` to activate autocomplete plug ins.
-2. `,` is set to be the `<leader>` key in VIM9, use it to trigger shortcuts.
-3. `<LEFT>` to toggle the file browser/NERDTree buffer.
-4. `<RIGHT>` to toggle Vista, which allows you to quickly jump through files.
-5. `<DOWN>` to open the Quickfix list of errors.
-6. `<UP>` to open the Location list of errors.
-7. `>>` and `<<` to adjust indentation.
-8. `set mouse=a` is on, if you have any problems with copying and pasting just
-`:set mouse=` beforehand.
-9. `K` to bring up documentation on the current term and use the mouse wheel to
-scroll the info.
-10. `gd` to go to the definition of function or class.
-11. `:G <git command>` to run a git command via vim-fugative, for example
-`git diff`, `git add`.
-12. Use `/` and start typing to quickly jump to a certain term across all open
-buffers.
-13. Use `u` to go up a root directory on nerdtree.
-14. Use `<F12>` to toggle distraction-free writing mode.
-15. Use `:Format` to format a buffer by the coc language server's prettifier,
-where it exists.
-16. Type `:Wordy<space><tab>` to use the Wordy proofreading tool to check for
-poor words while writing.
-17. Type `:LanguageToolCheck` to use the command-line grammar and spelling
-checker (requires Java 8).
-18. To search all instances of `git clone` and replace them with `git submodule
-add` on a visual block, use `:<','>s/git clone/git submodule add/`.
-19. To feed a visual block through an external command, for example, the NIX
-external sort command, `:'<,'>!sort` - this will sort the visual block lines
-alphabetically.
-20. To execute a command on all lines in a visual block, use the norm
-command, for example: `:'<,'> norm i##` after selecting in visual mode to comment
-all lines out with a `##`. For the reverse, to uncomment and delete the first
-character, use `:'<,'> norm x` after selecting in visual mode.
-21. To generate a ctags index for all functions/methods in all languages, run
-this command at the root of the source control repo ``!ctags -R *``. Then you can
-use `gd` to jump to the original definition of the function in any file.
-22. If in some modes the backtick character does not insert, try typing it twice
-that should insert it properly.
-23. To open the URL under the cursor in the default browser use `gx` <- handy!
-24. To remove all trailing white space from a file, use `:%s/\s\+$//e` <- handy!
-25. To run Prettier on language servers that support this VS Code prettier,
-use `:Prettier`
-26. ``:%norm vipJ`` to unwrap all the text in the document (opposite to
-word-wrap)
-27. `%` when positioned over a code bracket to skip to the next code bracket
-28. `>i{` when positioned over a code bracket to ident the code up to the next
-code bracket
-29. `:map` to show the keymappings made by your plugins and .vimrc. Note this is
-somewhat difficult to follow.
-30. ``*`` and ``#`` will search forward and backward through the file with the exact
-same word that is under the cursor in normal mode.
-
-[https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md)
-
-## YouCompleteMe
-
-I have moved away from Coc.vim to use YouCompleteMe. It has completion options for
-all the major languages and supports language servers.
-
-The main difference is that the errors are now in the locationlist.
-
-So it's the quickfix list for spelling/grammatical errors, and the locationlist
-for coding errors.
-
-I might combine the two sometime in the future.
-
-## The Clipboard
-
-Under Ubuntu, there are two clipboards, for some crazy reason that I don't
-understand.
-
-As part of the installation of the this environment, Gnome is patched via
-a hook, to synchronise these clipboards.
-
-Under Ubuntu4Windows, the clipboard should also be synced to the Windows clipboard.
-
-These shortcuts should therefore work for all clipboard contents, across Gnome, your
-web browser, Tmux, VIM9, VIM9 terminal and gVIM.
-
-1. `<Control-c>` copies text in Gnome applications including the web browser, after
-being selected by the mouse. Also 'copy' using the right click will copy.
-2. `<Control-v>` should paste in all Gnome applications, except for the
-terminal, including the web browser. Also you can use right click -> 'paste'.
-3. While in the Gnome terminal, or in the Gnome terminal in tmux,
-`<Control-Shift-v>` will paste to the terminal.
-4. While in tmux, `<Control-a-{>` will enter clipboard mode which is similar to VIM's
-visual mode. Scroll using VIM keybindings, page up, page down, or the mouse, and
-press `v` to start the selection copy, and `y` to copy it onto the clipboard.
-5. While in VIM, `<Control-v>` will switch into insert mode, switch into paste mode,
-paste the text, and then switch out of paste mode.
-6. While in VIM, using `y` will yank straight to the clipboard. Usually I use visual
-mode to copy things while in VIM.
-7. While in any terminal, you can use the `pbcopy` or `pbpaste` aliases in a pipe.
-For example `echo This will be copied to the clipboard | pbcopy` and `pbpaste | sort`
-8. If you want to, you can also do `echo This will be copied to the clipboard | xclip.sh`
+- `<Control-c>`: Copy in Gnome applications.
+- `<Control-v>`: Paste in Gnome applications.
+- `<Control-Shift-v>`: Paste in Gnome terminal.
+- `<Control-a-{>`: Enter clipboard mode in tmux.
+- `<Control-v>`: Paste in VIM.
+- `y`: Yank to clipboard in VIM.
+- `pbcopy`/`pbpaste`: Use in terminal pipes.
+- `xclip.sh`: Alternative clipboard command.
 
 ## Productivity Shortcuts
 
-The more you can use the keyboard and not a pointing device, the faster you will be,
-and the less ergonomic problems you will have.
+### Tmux Shortcuts
 
-### Tmux shortcuts:
+- `<Control-a> <RIGHT>`: Move to the right pane.
+- `<Control-a> <DOWN>`: Move to the down pane.
+- `<Control-a> <UP>`: Move to the up pane.
+- `<Control-a> <LEFT>`: Move to the left pane.
+- `<Control-a> r`: Reload config file.
 
-1. `<Control-a> <RIGHT>` move to the right pane from the cursor.
-2. `<Control-a> <DOWN>` move to the down pane from the cursor.
-3. `<Control-a> <UP>` move to the up pane from the cursor.
-4. `<Control-a> <LEFT>` move to the left pane from the cursor.
-5. `<Control-a> r` reload current config file.
+### Tmux Pane Resize
 
-### Tmux pane resize shortcuts:
+- `<Control-a> <Control-RIGHT>`: Extend pane to the right.
+- `<Control-a> <Control-DOWN>`: Extend pane down.
+- `<Control-a> <Control-UP>`: Extend pane up.
+- `<Control-a> <Control-LEFT>`: Extend pane to the left.
+- `<Control-a> <SPACE>`: Switch pane arrangements.
 
-1. `<Control-a> <Control-RIGHT>` Extend current pane to the right
-2. `<Control-a> <Control-DOWN>` Extend current pane down
-3. `<Control-a> <Control-UP>` Extend current pane up
-4. `<Control-a> <Control-LEFT>` Extend current pane to the left
-5. `<Control-a> <SPACE>` Switch through different pane arrangements. Also useful for clearing
-any problems with a garbled terminal.
+### Gnome Shortcuts
 
-### Gnome shortcuts:
+- `<Control-Shift-n>`: Open new terminal window.
+- `<Windows Key>`: Toggle ArcMenu.
+- `<Windows Key-Tab>`: Switch to next application.
+- `<Windows Key-Shift-Tab>`: Switch to previous application.
+- `<Windows Key-l>`: Lock session.
+- `<Print Screen>`: Take screenshot.
+- `<Control-Alt-Home>`: Open new Firefox tab.
+- `<Control>-Left Click`: Open URL in browser.
+- `<Windows Key-d>`: Minimize all applications.
 
-1. `<Control-Shift-n>` open a new terminal window from anywhere on the gnome desktop.
-2. `<Windows Key>` toggle ArcMenu. Start typing to search for an application to run.
-3. `<Windows Key-Tab>` switch to next application (better than alt-tab)
-4. `<Windows Key-Shift-Tab>` switch to previous application (better than alt-shift-tab)
-5. `<Windows Key-l>` lock the Gnome session so it requires a pwd to get back in
-6. `<Print Screen>` take a screenshot using Gnome internal screen shot tool. Very useful.
-7. `<Control-Alt-Home>` OR `<Control-WEB>` (on Kinesis keyboard) - open a new tab in Firefox
-and move the focus to it. This is a custom shortcut that I implemented from here:
-[https://askubuntu.com/questions/831135/shortcut-to-open-new-browser](https://askubuntu.com/questions/831135/shortcut-to-open-new-browser)
-8. Select a valid URL in Gnome terminal and then `<Control>-Left Click` to open it in a web
-browser
-9. `<Windows Key-d>` minimise all applications and show a blank desktop.
+### Gnome Window Resize
 
-### Gnome window resize shortcuts:
+- `<Windows Key-RIGHT>`: Move window to right half.
+- `<Windows Key-LEFT>`: Move window to left half.
+- `<Windows Key-UP>`: Fullscreen window.
+- `<Windows Key-DOWN>`: Restore window to center.
 
-It behaves like Windows 10/11 window resize shortcuts. For example:
+## VIM Spellchecking and Grammar Checking
 
-1. `<Windows Key-RIGHT>` take the current window and move it to 50% right of screen
-2. `<Windows Key-LEFT>` take the current window and move it to 50% left of screen
-3. `<Windows Key-UP>` take the current window and full screen it
-4. `<Windows Key-DOWN>` take the current window and un-full screen it, move it into a
-window in the centre of the desktop
-
-## VIM Spellchecking/Grammar checking/Proofreading commands (also Joplin notes)
-
-1. `<LEFT>`       - toggle Nerdtree
-2. `<RIGHT>`      - toggle Vista
-3. `<DOWN>`       - to open the Quickfix list of errors.
-4. `<UP>`         - to open the Location list of errors.
-5. `zg`           - Mark as a good word
-6. `zw`           - Like `zg` but mark the word as a wrong (bad) word
-7. `zug`          - Unmark as good word
-8. `zuw`          - Unmark as wrong (bad) word
-9. `z=`           - For the word under/after the cursor suggest correctly spelled
-words
-10. `1z=`         - Use the first suggestion, without prompting
-11. `.`           - Redo - repeat last word replacement
-12. `:spellr`     - Repeat the replacement done by `z=` for all matches
-    with the replaced word in the current window
-13. `<F12>`       - Toggle 'Goyo' distraction-free mode.
-14.
-[![asciicast](https://asciinema.org/a/636023.svg)](https://asciinema.org/a/636023)
+- `<LEFT>`: Toggle NERDTree.
+- `<RIGHT>`: Toggle Vista.
+- `<DOWN>`: Open Quickfix list.
+- `<UP>`: Open Location list.
+- `zg`: Mark word as correct.
+- `zw`: Mark word as incorrect.
+- `zug`: Unmark correct word.
+- `zuw`: Unmark incorrect word.
+- `z=`: Suggest correct spelling.
+- `1z=`: Use first suggestion.
+- `.`: Redo last replacement.
+- `:spellr`: Repeat replacement for all matches.
+- `<F12>`: Toggle 'Goyo' mode.
 
 ## VIM9 Leader Search Functions
 
-`<leader>` is currently set to 'commma' e.g. `,`
+- `<leader> h`: Access help file.
+- `<leader> w`: Wikipedia lookup.
+- `<leader> b`: Git blame lookup.
+- `<leader> j`: JIRA issue lookup.
+- `<leader> p`: Save file as Reddit post.
+- `<leader> y`: Copy file to clipboard.
+- `<leader> l`: Run LanguageToolCheck.
+- `<leader> c`: Toggle Copilot.
 
-First move the cursor over a word or line and then:
+### Visual Mode
 
-1. `<leader> h` to access this help file and to toggle opening and closing
-this file and the outline
-2. `<leader> w` to look up the current single word on Wikipedia
-3. `<leader> b` to look up the current line with git blame
-4. `<leader> j` to look up the current issue number under cursor with jira-cli
-5. `<leader> p` to save the current file as a markdown-formatted code post
-for Reddit in the location `~/redditpost.md`
-6. `<leader> y` to copy the whole current file to the clipboard
-7. `<leader> l` to run the LanguageToolCheck command on the current file to check current
-grammar and spelling.
-8. `<leader> c` to toggle Copilot enable/disable on the current file
-
-In visual mode you can also do:
-
-1. `<leader> g` to open a Firefox window with the google results of the lines in the visual
-selection
-2. `<leader> s` to open a Firefox window with the Stackoverflow results of the lines in the
-visual selection
+- `<leader> g`: Google search selection.
+- `<leader> s`: Stack Overflow search selection.
 
 ## Git Fugitive Workflow
 
-1. `:Git` to bring up the interactive git status message while on a changed track file.
-2. `a` to stage or `d` to unstage a file
-3. `:Git commit` will commit the staged files
-4. `:Git push` will push the commit
-5. `:Git diff` will open a diff
-6. `g?` displays help with more commands.
-7. `:q` to close the status window, you never need to write changes.
+- `:Git`: Interactive git status.
+- `a`: Stage file.
+- `d`: Unstage file.
+- `:Git commit`: Commit staged files.
+- `:Git push`: Push commit.
+- `:Git diff`: Open diff.
+- `g?`: Display help.
+- `:q`: Close status window.
 
 ## Git Fugitive Blame Window
 
-1. `:Git blame` for line-by-line git blame on current file, select a commit
-and press 'o' to open the commit diff with the commit message in a new window.
-2. `Enter` to open a diff of the chosen commit in current window
-3. `C` `A` and `D` resize the blame window up until the commit, author and date
-respectively.
-4. `g?` displays help with more commands.
+- `:Git blame`: Line-by-line blame.
+- `Enter`: Open commit diff.
+- `C`, `A`, `D`: Resize blame window.
+- `g?`: Display help.
 
 ## Git Fugitive Mergetool
 
-1. Whenever you have a merge conflict, use `git mergetool` to open this.
-2. If you want to just use one entire side, move your cursor to that side with `<Ctrl-W> h`, for example. Then do `:Gwrite!`.
-3. Buffers are set up so `[YOUR local branch (2) | resulting mergefile (1) | THEIR merge in branch (3) ]`
-4. Use `]c` and `[c` to navigate through the conflicts
-5. Use the centre pane to navigate. use `d2o` to pull the change from YOUR local branch, use `d3o` to pull the change from THEIR branch.
-6. OR go to local branch OR merge in branch, select the conflict, and use `dp` to choose that version.
-7. When done, use `:wq`
+- Use `git mergetool` for conflicts.
+- Navigate conflicts with `]c` and `[c`.
+- Use `d2o` or `d3o` to resolve conflicts.
+- Use `:wq` to save and exit.
 
-More info:
-[https://www.youtube.com/watch?v=iPk4nOLj8w4](https://www.youtube.com/watch?v=iPk4nOLj8w4)
+## VIM's Inbuilt Terminal
 
-## VIM's inbuilt terminal
+- Run commands with `:term`.
+- Use tmux for interactive terminals.
 
-1. You can run arbitrary commands such as ``:term ls -al`` and see the results in
-an updating terminal.
-2. It is recommended that if you want an interactive terminal, use a tmux split.
-This is because the paste functionality doesn't work too great while in VIM9 terminal.
-Also, it has problems running some terminal applications while run under VIM9 in tmux.
+## VIM Modelines and Folds
 
-## VIM modelines and folds
-
-Several of my dot files, including the main deploy scripts, use modelines to set up
-some fold markers. This allows for much easier organisation and navigation.
-
-Modelines are enabled by default with the security patch.
-
-1. To expand a fold, press 'l' when on the fold.
-2. The mouse can also be used to open and close folds by clicking in the
-fold column: Click on a '+' to open the closed fold at this row. Click on any other
-non-blank character to close the open fold at this row.
-3. To close a fold `zc` when the cursor is on it
-4. To close ALL folds `zm`
-5. To open ALL folds `zn`
+- Expand fold with 'l'.
+- Use mouse to open/close folds.
+- `zc`: Close fold.
+- `zm`: Close all folds.
+- `zn`: Open all folds.
 
 ## VIM Regex
 
-1. Turn on "Very magic mode" for VIM when you have to enter a regex that
-includes a lot of special characters. `:s/\(cat \) hunting \(mice\)/\2 hunting
-\1` then becomes `:s/\v(cat) hunting (mice)/\2 hunting \1`. Trigger 'very magic
-mode' by prefixing the regex with `\v`.
-2. Find a full table of VIM regex syntax with `:help ordinary-atom`
-3. Use group marks `\1` `\2` etc to identify characters captured by a capture
-group, e.g. surrounded by `(` and `)`. For example, `:s/v(cat) hunting (mice)/\2
-hunting \1` replaces 'cat' hunting 'mice' with 'mice' hunting 'cat.
-4. Vim has a weird non-greedy regex match `.\{-}` which means `.+?`. So to
-strip a document of all its html tags use this: `:%s/<.\{-}>/\r/g`.
+- Use `\v` for "very magic mode".
+- `:help ordinary-atom` for regex syntax.
+- Use `\1`, `\2` for capture groups.
+- `.\{-}` for non-greedy match.
 
-## Wildcards for searching and editing files and directories
+## Wildcards for Searching and Editing
 
-1. You can search across a bunch of files with the following syntax:
-``:vimgrep /cat/ **/*.py`` will search for all instances of 'cat' in all the
-python files down from the current path.
-2. You can open a file without knowing the directory it is in, as long as it is
-below the current directory, by ``:e **/bla.py``. This will search for a file
-``bla.py`` recursively from the current directory.  If there is more than one file
-found, it will error.
-3. ``:help file-search`` for more wildcard options
-4. If you want to edit a number of files called ``bla.py``, use ``:arg **/bla.py``.
-This will open all the files one by one, use ``:next`` to edit the next file in
-the list. Use ``:prev`` to reopen a file previously edited. ``:last`` and ``:first``
-also work, and ``:args`` displays the whole list.
+- `:vimgrep /cat/ **/*.py`: Search files.
+- `:e **/bla.py`: Open file.
+- `:arg **/bla.py`: Edit multiple files.
+- `:args`: Display arglist.
 
-## Processing lots of files with ``:argdo``
+## Processing Files with `:argdo`
 
-You can process a number of files using arglist in VIM.
-
-1. ``:arg`` defines the arglist
-2. ``:argdo`` allows you to execute a command on all the files in the arglist
-3. ``:args`` describes the list of files in the arglist
-
-For example if we wanted to replace all instances of 'animal' in every Python
-file recursively from the current path, we would do the following:
-
-``:arg **/*.py``
-``:argdo **/\<animal\>/creature/qa | update``
-``**/*.py`` selects all python files down from the current directory recursively
-``:argo`` executes a command on all files from current directory recursively.
-``%s/\<animal\>/creature/qa`` replaces every occurrence of 'animal' with
-'creature' in every file - ``a``, without raising errors if the matches are
-not found - ``q`` ``update`` saves the file only if it has been modified
+- `:arg`: Define arglist.
+- `:argdo`: Execute command on arglist.
+- `:args`: Describe arglist.
 
 ## GitHub Copilot
 
-The GitHub copilot VIM plugin is installed. It assumes you have a subscription.
-
-1. `<leader> c` to toggle copilot on and off for the current buffer.
-2. `<TAB>` to accept current autocomplete.
+- `<leader> c`: Toggle Copilot.
+- `<TAB>`: Accept autocomplete.
 
 ## Tagbar Plugin
 
-I have currently moved away from Coc.Vim/Vista to use ctags, YCM and Tagbar.
-
-Ctags is currently run on EVERY file opened.
-
-I am not 100% sure whether this is the best approach, because it doesn't
-really play nice with Node.js/React/TS projects, whereas Coc.vim did.
-
-However it is what it is for now.
-
-1. `<RIGHT>` to load up the right sidebar and Tagbar
-2. Navigate through the tags and select them to jump to the language feature.
+- `<RIGHT>`: Load Tagbar.
+- Navigate tags to jump to features.
 
 
 # Additional Notes
 
 ## Tmux
 
-1. Config file is at `~/.tmux.conf`
-2. For a great tutorial [https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/](https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)
-3. For a vertical split `<CTRL>-a SHIFT |`
-4. For a horizontal split `<CTRL>-a SHIFT -`
-5. To rotate panes in the current layout `<CTRL>-a <SPACE>`
-6. To start my standard development tmux session `tmuxinator development`
+- Config file: `~/.tmux.conf`
+- Tutorial: [Gentle Guide to Tmux](https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)
+- Vertical split: `<CTRL>-a SHIFT |`
+- Horizontal split: `<CTRL>-a SHIFT -`
+- Rotate panes: `<CTRL>-a <SPACE>`
+- Start session: `tmuxinator development`
 
-## Git information I keep forgetting
+## Git Tips
 
-1. `git status` - will tell you what branch you're on and what files have
-changed. Use this all the time.
-2. `git commit --amend` and `git rebase -i HEAD~2` - roll the current commit
-into the previous one and edit the previous commit message. Use the rebase to
-squash the commit.
-3. `git branch` - show the current branches on your local copy
-4. `git stash push` - push to the stash, puts all non-committed files on the
-stash
-5. `git stash pop` - pop whatever is on to stash to the local copy.
-6. `git checkout -b <new branch name>` - create a new branch and switch to it
-7. `git rebase -i HEAD~3` - perform an interactive rebase on the last _2_
-commits.. e.g: you always want to +1 to the number. Be careful with this.
-8. `git pull origin master` or `git pull origin main` - pull and merge
-master/main into your current local branch
-9. Use 'main' instead of 'master' for all future repos - everyone is doing it.
-10. `git difftool` - use wherever you would use git diff - it's much more useful.
-11. `git mergetool` - use whenever you have merges to make, see above.
-12. `blameline` - shell script for line-by-line blame with commit summary.
-13. When all goes horribly wrong, backup your changed files by manually
-`mv`-ing them out of the repo directory, delete your entire local copy, checkout
-again from master, and rebuild your commit by copying the backed up files in.
-14. Use GitHub PR's 'changed files' tab for exactly what has changed, but don't
-forget the commits tab, there should only usually be one commit per PR. And
-remember the revert button on Github PRs.
-15. `git logline` for my custom one line per commit log alias which includes
-useful extra information, see: https://ma.ttias.be/pretty-git-log-in-one-line/
-16. `git checkout -- <filepath>` - this will overwrite your local changes to
-the file at <filepath> and restore the version in the latest commit on your
-branch.
-17. `git checkout <hash> <filepath>` - this will checkout a previous version of
-the file from the <hash> commit. A useful technique for restoring a change from
-a previous commit is to `cp <filepath> <filepath.bak>`, use `git logline` to
-find the right hash and then, `git checkout <hash> <filepath>`, then use
-`vimdiff <filepath> <filepath.bak>` to copy a change over from the previous
-commit to `<filepath.bak>`, and then `rm <filepath>` and then
-`mv <filepath.bak> <filepath>`.
+- `git status`: Check branch and changes.
+- `git commit --amend`: Amend last commit.
+- `git rebase -i HEAD~2`: Interactive rebase.
+- `git branch`: List branches.
+- `git stash push`: Stash changes.
+- `git stash pop`: Apply stashed changes.
+- `git checkout -b <branch>`: Create and switch branch.
+- `git pull origin main`: Pull and merge main.
+- `git difftool`: Use instead of `git diff`.
+- `git mergetool`: Resolve merge conflicts.
+- `blameline`: Line-by-line blame script.
+- `git logline`: Custom log alias.
+- `git checkout -- <file>`: Discard changes.
+- `git checkout <hash> <file>`: Restore file from commit.
 
-Git Book:
-[https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2)
+For more, see the [Git Book](https://git-scm.com/book/en/v2) and [Git Workflow](https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md).
 
-Check out my simpleton Git workflow here:
-[https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md](https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md)
+## GNU Diff/Patch
 
-## GNU diff/patching information I forget
+- Create patch: `diff -u <file1> <file2> > patch.diff`
+- Apply patch: `patch -p1 < patch.diff`
 
-### Creating a simple patch to apply later
+## Python 3 Tips
 
-1. To generate the patch, run the following command in the same directory
-as the file you want to patch `diff -u <file1> <file2> > patch.diff`
-2. Edit the patch file and make sure both filenames mentioned are the
-same filename that you want patched.
-
-### Applying the simple patch
-
-1. Copy the patch.diff into the directory of the file needing to be patched
-2. Run `patch -p1 < patch.diff`
-
-## Python 3 information I forget
-
-1. Use `ipython` for interactive REPL Python 3 information.
-2. Add `import ipdb;ipdb.set_trace()` anywhere in your code to open up
-an interactive debugger using ipython when the code hits that line.
-3. Add `import IPython; IPython.embed()` to open up IPython when the execution
-hits this point.
+- Use `ipython` for REPL.
+- Debug with `import ipdb; ipdb.set_trace()`.
+- Embed IPython with `import IPython; IPython.embed()`.
 
 ## Using Strace
 
-You can use `strace` to find out what a Linux binary is exactly doing.
-It will list all the system calls made by that binary.
-
-For example:
-
-`strace python follow.py`
-
-Different flags you can use include: `-f` - follow child processes as they are
-created by the original program, and there is a flag that will strace a particular
-PID, so it will attach itself to an already running program.
+- `strace <command>`: Trace system calls.
+- `-f`: Follow child processes.
 
 ## Regular Expressions
 
-Lots of languages support regular expressions, but if you want to do complex things
-on the command line with regex, then just reach for Perl. Even the latest modern sed
-doesn't support all of the Regex spec that Perl does.
+- Use Perl for complex regex: `find . -name '*.html' -exec perl -i -pe "s/jpg\?/jpg/g" {} \;`
+- Test regex online: [regexr.com](https://regexr.com/)
 
-1. Find, exec and regex is a common thing I end up doing. This is how to do it in
-Perl: ``find . -name '*.html' -exec perl -i -pe "s/jpg\?/jpg/g" {} \;``
-2. Test 1 - BEFORE you do the above, always use an online regex checker such as:
-(https://regexr.com/)[https://regexr.com/] which is very good for perl.
-3. Test 2 - It is also worth echoing/catting data to the perl pipe with a regex so
-that you can test things a second time before running a potentially dangerous regex query.
-``echo 'bla.jpg?asdfasdf=asdfasdf' | perl -pe 's/(?<=[?&;]).*//g'``, just take the -i off the
-line for a dry run, and to pick up input from the pipe instead of editing a file.
-4. Remember to back up the files before running 1 too. `cp -r ./dir ./.bak.dir` can save hours.
+## Docker/Docker Compose
 
-## Docker/Docker Compose information I forget
+- `docker system prune -a`: Clean unused images.
+- `docker-compose --rm <service>`: Execute service.
+- `docker ps`: List running containers.
+- `docker-compose ps`: List services.
+- `docker-compose run <service> <command>`: Run command in service.
+- `docker logs <service>`: View logs.
+- `docker build .`: Build container.
+- `docker-compose up -d`: Start containers in background.
+- `docker-compose logs -f <container>`: Tail logs.
 
-1. `docker system prune -a` - remove all unused Docker container images.
-This is essential to do occasionally to reclaim disk space.
-2. `docker-compose --rm <service>` - execute <service> providing there is a
-docker-compose.yml file in the current directory describing `<service>`.
-3. `docker ps` - status information on all running docker containers.
-4. `docker-compose ps` - status information on all running docker-compose
-services.
-5. `docker-compose run <service> <bash_command>` - run a quick bash command.
-`<service>` must be a valid docker-compose service. For example `docker-compose
-run wordpress cat /etc/issue`.
-6. `docker logs <service>` - output the logs for a service. This is the
-`<service>` name from `docker-compose ps`.
-7. `docker build .` - builds the container described in the `Dockerfile` from
-the local directory.
-8. `docker-compose network ls` and `docker-compose network inspect <network id>` will get info
-on the networks defined in docker compose.
-9. For more examples on docker-compose networks and files, check out my server setup
-here: [https://github.com/wordswords/dotfiles/blob/master/hqconfig/](https://github.com/wordswords/dotfiles/blob/master/hqconfig/)
-10. `docker-compose up -d` will spin up the docker container(s) using docker-compose
-and run it as a daeamon, e.g. in the background.
-11. `docker-compose up` will spin up the docker container(s) using docker-compose
-and run it in the foreground, and output all the logs to the terminal. Useful for
-troubleshooting.
-12. `docker-compose logs -f <container id>` will attach to the container ID and tail -f
-the logs.
-13. `docker-compose pull` will update all the containers in the docker-compose file with
-the latest versions of the container tags.
+For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md).
 
-Also, check out the notes I took from the Docker Deep Dive book here:
-[https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md](https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md)
+## Troubleshooting
 
-## Troubleshooting Disk I/O performance Notes
+- Disk I/O: Use `iostat`, `fio`, `dd`, `bonnie++`.
+- CPU: Use `htop`.
+- Network: Use `iperf3`.
 
-### Iostat
+## Ubuntu Package Management
 
-1. https://coderwall.com/p/utc42q/understanding-iostat
-2. https://www.igvita.com/2009/06/23/measuring-optimizing-io-performance/
+- `sudo apt install <package>`: Install package.
+- `sudo apt remove <package>`: Remove package.
+- `sudo apt-cache search <package>`: Search packages.
+- `dpkg -i <deb>`: Install deb file.
+- `dpkg-query -L <package>`: List package files.
 
-### Fio
+## Profiling VIM
 
-1. https://tobert.github.io/post/2014-04-28-getting-started-with-fio.html
-2. https://tobert.github.io/post/2014-04-17-fio-output-explained.html
-3. http://serverfault.com/questions/677340/poor-iscsi-performance-with-ssd-disks-and-10-gbe-network
+- Start profiling: `:profile start vim-profile.log`
+- Profile files: `:profile file *`
+- Profile functions: `:profile func *`
+- Edit file: `:e <file>`
+- Quit and view log: `:qa`
 
-### DD
+## Joplin CLI
 
-Use inbuilt `dd` command for simple sequential I/O performance measurements
-
-### Bonnie++
-
-1. For random tests
-2. Attention: bonnie++ creates an enourmous read and write queue thus the load average will increase to 15+
-3. https://www.jamescoyle.net/how-to/599-benchmark-disk-io-with-dd-and-bonnie
-
-## Troubleshooting CPU utilisation Notes
-
-1. Use `htop` which will already be installed
-
-## Troubleshooting Network utilisation Notes
-
-1. Use `iperf3` which is already installed
-
-## Ubuntu Package information
-
-1. `sudo apt install <package>` - install package
-2. `sudo apt remove <package>` - remove package
-3. `sudo apt-cache search <package>` - search for package description
-4. `dpkg -i <deb package>` - install deb file
-5. `dpkg -L | grep <package>` - list all installed packages, search for
-`<package>`
-6. `dpkg-query -L <package>` - show what files are installed by package
-7. `sudo update-alternatives --config php` - change binary used for PHP
-
-## Profiling VIM to find plugin speed problems
-
-[https://thoughtbot.com/blog/profiling-vim](https://thoughtbot.com/blog/profiling-vim)
-
-Do all of:
-1. `:profile start vim-profile.log` - starts profiling with log file name
-2. ``:profile file *`` - mask for which vim-script files to profile, in this case
-all of them
-3. ``:profile func *`` - mask for which vim-script functions to profile, in this
-case all of them
-4. ``:e problemfile.php`` - edit the problem file to start the profiling process
-5. `:qa` - when done quit vim and look at the log file
-6. Open up `vim-profile.log` and search for 'Total time' to see the biggest
-culprits
-
-## Joplin commandline
-
-1. Use the alias `notes` to open Joplin.
-2. Navigate the panes using `<TAB>` key
-3. Press enter on an existing note to open it in an editor
-4. Type `tc` without `:` to toggle the maximisation levels of the console.
-5. Type `:help` for basic help.
-6. Type `:help keymap` for hotkeys.
-7. Type `/<search term>` to search.
-8. Type `mn` to create a new note.
-9. Type `tm` to toggle metadata - user created time and lots of other metadata.
-10. Write all notes using Markdown so they display optimally across all clients.
-11. Press ``<DEL>`` to delete a selected note.
+- Open Joplin: `notes`
+- Navigate with `<TAB>`.
+- Create note: `mn`.
+- Toggle metadata: `tm`.
 
 ## JIRA Go Client
 
-1. First you must setup the JIRA Go client with the API key as specified in
-the documentation - https://github.com/ankitpokhrel/jira-cli
-2. `issues` to show open issues allocated to you.
-3. `board` to show the current JIRA board.
+- Setup with API key: [JIRA CLI](https://github.com/ankitpokhrel/jira-cli)
+- Show issues: `issues`.
+- Show board: `board`.
 
 ## NIX Internals Books
 
-1. ![Lets Learn Tcpdump](https://github.com/wordswords/dotfiles/blob/master/notes/Lets%20Learn%20Tcpdump%20-%20Unknown.pdf)
-2. ![Linux Debugging Tools](https://github.com/wordswords/dotfiles/blob/master/notes/Linux%20Debugging%20Tools%20-%20Unknown.pdf)
-3. ![Networking ACK](https://github.com/wordswords/dotfiles/blob/master/notes/Networking%20Ack%20-%20Unknown.pdf)
-4. ![Strace Book](https://github.com/wordswords/dotfiles/blob/master/notes/Spying%20Programs%20Strace%20-%20Unknown.pdf)
-5. ![Profiling Tracing Perf](https://github.com/wordswords/dotfiles/blob/master/notes/Profiling%20Tracing%20Perf%20-%20Unknown.pdf)
-6. ![So You Want To Be A Wizard](https://github.com/wordswords/dotfiles/blob/master/notes/So%20You%20Want%20To%20Be%20A%20Wizard%20-%20Unknown.pdf)
-7. ![Bite Size Linux](https://github.com/wordswords/dotfiles/blob/master/notes/Bite%20Size%20Linux%20-%20Unknown.pdf)
+- [Lets Learn Tcpdump](https://github.com/wordswords/dotfiles/blob/master/notes/Lets%20Learn%20Tcpdump%20-%20Unknown.pdf)
+- [Linux Debugging Tools](https://github.com/wordswords/dotfiles/blob/master/notes/Linux%20Debugging%20Tools%20-%20Unknown.pdf)
+- [Networking ACK](https://github.com/wordswords/dotfiles/blob/master/notes/Networking%20Ack%20-%20Unknown.pdf)
+- [Strace Book](https://github.com/wordswords/dotfiles/blob/master/notes/Spying%20Programs%20Strace%20-%20Unknown.pdf)
+- [Profiling Tracing Perf](https://github.com/wordswords/dotfiles/blob/master/notes/Profiling%20Tracing%20Perf%20-%20Unknown.pdf)
+- [So You Want To Be A Wizard](https://github.com/wordswords/dotfiles/blob/master/notes/So%20You%20Want%20To%20Be%20A%20Wizard%20-%20Unknown.pdf)
+- [Bite Size Linux](https://github.com/wordswords/dotfiles/blob/master/notes/Bite%20Size%20Linux%20-%20Unknown.pdf)
 
-## Printing (on Ubuntu)
+## Printing on Ubuntu
 
-I have set up my laserjet to print from the command line via CUPS. This is useful
-when printing out shopping lists etc, quickly.
-
-1. `lp <file>` to print the file.
-2. `echo bla | lp --` to print the pipe.
+- Print file: `lp <file>`
+- Print from pipe: `echo <text> | lp --`
 
 ## PCP - Performance Co-Pilot
 
-PCP is a great way to analyse performance problems on Linux.
-
-1. `~/bin/install-pcp.sh` - to install PCP on Debian barebones Linux only (not LTS2)
-2. `pcp atop` - to run an interactive performance dashboard
-3. `pcp iostat` - to run an interactive iostat
-
-There are lots of different other commands, see: For more info see: [https://blogs.oracle.com/linux/post/performance-analysis-using-pcp](https://blogs.oracle.com/linux/post/performance-analysis-using-pcp)
+- Install: `~/bin/install-pcp.sh`
+- Run dashboard: `pcp atop`
+- Run iostat: `pcp iostat`
 
 ## fzf
 
-`fzf` is installed. There are many things you can do with it. Here is a good source:
-
-`https://andrew-quinn.me/fzf/`
+- Installed for fuzzy finding. See [fzf guide](https://andrew-quinn.me/fzf/).
 
 ## Remote Connection
 
-To remotely SSH via preshared key SSH to my home server, assuming you have authentication
-use the alias `hq`
+- SSH to home server: `hq`
 
-## 24 bit colour
+## 24-bit Colour
 
-THIS is the best guide to enabling 24 bit colour on all terminal emulators
-and tmux, that I've found:
-
-[https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6](https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6)
-
-To test whether you have got a proper 24 bit colour setup, use this:
-
-`~/.dotfiles/bin/24-bit-color.sh`
-
-You should see colour fades with NO stepping, just a complete blend.
-
-This script is run for you when you run the second deploy script.
+- Guide: [24-bit Colour Setup](https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6)
+- Test script: `~/.dotfiles/bin/24-bit-color.sh`
 
 ## External Scripts
 
-I have written a few helper scripts in ~/.dotfiles/bin
+- `gg.sh`, `so.sh`, `ai.sh`, `re.sh`: Search scripts for Google, Stack Overflow, Reddit, ChatGPT.
+- `search-ebooks.sh`: Search EPUB books.
+- `clean-git-checkout.sh`: Remove `.git` directories.
+- `install-node.sh`: Install Node.js.
+- `make-and-install-vim.sh`: Compile VIM.
+- `update-joplin-cli.sh`: Update Joplin CLI.
+- `fix-whitespace-problems.sh`: Fix whitespace issues.
+- `get-weather.sh`: Display weather.
+- `secure-home-dir-perms.sh`: Secure home directory permissions.
+- `hq-read-epub.sh`: Read EPUB books.
+- `delete-all-docker-content.sh`: Clean Docker content.
+- `ai-files-purpose.zsh`: Guess file purposes.
+- `ai-dir-purpose.zsh`: Guess directory purpose.
+- `osx.zsh`: Setup virtualized OSX.
+- `repos.sh`: Show Git branches.
+- `blameline`: Line-by-line git blame.
+- `git logline`: Compact commit summary.
 
-### `gg.sh`,`so.sh`, `ai.sh`, `re.sh`, `gg`, `so`, `ai`, `re`
+## Modifying
 
-You can pipe multiple lines of text to these scripts. They will look up the
-result in:
-
-* `gg <google search>` - Google
-* `so <stack overflow search>` - Stack Overflow
-* `re <reddit search>` - Reddit
-* `ai <chatgpt search>` - ChatGPT (providing you have an API key)
-
-The first three will open a new tab or web browser in Firefox (only works in Ubuntu)
-with your query on those sites.
-
-The last will output the result of the query to STDOUT, and also save the result
-on your clipboard.
-
-You can also use the three commands WITHOUT the extension to allow for easy `<cmd> <query>`
-use while in an interactive console, for example
-
-* `$ ai <why are cornflakes crunchy>` - this consult ChatGPT and ask it 'why are conflakes crunchy'
-and will output on the terminal the answer to your question and copy the result to the clipboard
-* `$ re <why are cornflakes crunchy>` - this will open a web browser with the query and search
-reddit for the phrase 'why are conflakes crunchy'
-* `$ so <why are cornflakes crunchy>` - this will open a web browser with the query and search
-stackoverflow for the phrase 'why are conflakes crunchy'
-* `$ gg <why are cornflakes crunchy>` - this will open a web browser with the query and search
-google for the phrase 'why are conflakes crunchy'
-
-### `search-ebooks.sh <search terms>`
-
-This searches my ThinkSation server for EPUB books according to a wildcard.
-It then displays the results as a sorted list, so they can be opened by
-epy which is a command-line EPUB reader.
-
-### `clean-git-checkout.sh <path>`
-
-This will find and delete all '.git' dirs under the <path>, which effectively
-strips completely git from the checkout.
-
-### `install-node.sh <major version>`
-
-Installs nodejs via the Debian 'nodesource' repo, with a supplied <major version>
-(for example, 20). This is the recommended way to install node.
-
-### `make-and-install-vim.sh <version>`
-
-Downloads and compiles a version matching `<version>` of VIM from:
-https://www.mirrorservice.org/pub/vim/unix/
-
-It makes sure it compiles it with Python3 support.
-
-### `update-joplin-cli.sh`
-
-Fetches and installs the latest verison of the Joplin CLI notetaking app.
-
-### `fix-whitespace-problems.sh <path>`
-
-When given a `<path>` it does the following to all files under that path:
-1) Removes all newlines from the start of a file, and end of a file.
-2) Removes all trailing whitespace from all lines of each file.
-
-### `get-weather.sh`
-
-Displays on the commandline a visual representation of the current weather in Manchester, UK.
-
-### `secure-home-dir-perms.sh`
-
-Sets the permissions of all the files in the current user's home directory to secure defaults.
-
-### `hq-read-epub.sh <search terms>`
-
-This remotely connects to my Linux server and searches my library of epub
-books stored there with search terms, allows you to select one to open,
-and then opens it in the command-line epy epub reader.
-
-### `delete-all-docker-content.sh`
-
-This will clean the local install of all docker containers, networks and images. This
-is non-destructive as it doesn't actually uninstall docker, and you can just
-docker pull them all again.
-
-### `ai-files-purpose.zsh`
-
-This will ask OpenAI to have a guess at the contents of each file in the current
-directory based on their naming and some AI magic, and tell its guess for each
-file. Often it is accurate but not always. Run it again for another guess.
-
-### `ai-dir-purpose.zsh`
-
-This will ask OpenAI to have a guess at the purpose of the current directory based
-on the naming of the files in it, and some AI magic. Often it is accurate but not
-always. Run it again for another guess.
-
-### `osx.zsh`
-
-Running this should get a virtualised OSX setup up and running, providing
-you have about 50GB free, and a CPU that supports KVM virtualisation.
-
-### `repos.sh`
-
-![Alt text](https://i.imgur.com/U0h7a8F.png "repos.sh")
-
-This is like the 'tree' command, it will descend downwards into the current
-directory and show which branches the Git repositories under the current
-directory are on.
-
-It is useful for getting a general overview of a complex codebase and its
-current checkout state.
-
-### `blameline`
-
-![Alt text](https://i.imgur.com/7kfUGNQ.png "blameline")
-
-This shows a line-by-line git blame on a particular file, e.g. `blameline README.md`
-showing the origin commit and a snippet of the commit message. Very useful
-for finding how the contents of a file was created.
-
-### `git logline`
-
-![Alt text](https://i.imgur.com/iimaagl.png "git logline")
-
-A compact summary of commits to a directory or file, e.g. `git logline
-~/.dotfiles`
-
-### DevOps Scripts
-
-If you want some excellent scripts to spin up containers etc then check out [https://github.com/HariSekhon/DevOps-Bash-tools](https://github.com/HariSekhon/DevOps-Bash-tools)
-
-# Modifying
-
-If you want, you can fork this repo, and base your config on this. If you have
-any problems using these dotfiles please let me know and I can help you.
+Feel free to fork this repo and customize it. If you encounter any issues, please reach out for assistance.
