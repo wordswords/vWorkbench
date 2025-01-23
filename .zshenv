@@ -40,8 +40,8 @@ autoload -Uz gissueview
 
 extipprint() {
     echo "[-- External IP location:"
-    curl https://ifconfig.co/json 2>/dev/null | grep zip_code
-    curl https://ifconfig.co/json 2>/dev/null | grep city
+    curl https://ifconfig.co/json 2>/dev/null | grep country_iso
+    curl https://ifconfig.co/json 2>/dev/null | grep asn_org
     echo " --]"
 }
 autoload -Uz extipprint
