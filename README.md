@@ -4,6 +4,10 @@ Welcome to my customized development environment setup, crafted to enhance produ
 
 ![Workbench](workbench.jpg "Picture of a woodworker's workbench")
 
+## Asciicinema Latest Demo
+
+[![asciicast](https://asciinema.org/a/699666.svg)](https://asciinema.org/a/699666)
+
 ## Table of Contents
 
 - [Overview](#overview)
