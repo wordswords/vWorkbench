@@ -62,6 +62,11 @@ tramsprint() {
 }
 autoload -Uz tramsprint
 
+dev() {
+    echo "$1" | dev.sh
+}
+autoload -Uz dev
+
 ai() {
     echo "$@" | ai.sh
 }

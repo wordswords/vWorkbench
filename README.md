@@ -130,13 +130,18 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - `aider`: Start interactive ChatGPT AI code assistant.
 
 ## Productivity Shortcuts
+### Tmux
 
-### Tmux Shortcuts
+#### Tmuxinator
 
-- `<Control-a> <RIGHT>`: Move to the right pane.
-- `<Control-a> <DOWN>`: Move to the down pane.
-- `<Control-a> <UP>`: Move to the up pane.
-- `<Control-a> <LEFT>`: Move to the left pane.
+Tmuxinator is a session manager for tmux
+
+- Start session: `tmuxinator development`
+
+#### Tmux Shortcuts
+
+- To scroll within a pane, just use `<Control-a>` and afterwards use the arrow keys or pageup/pagedown.
+- To move up/down/left/right between panes, just use VIM9 shortcuts, they will just 'work'.
 - `<Control-a> r`: Reload config file.
 - `<Control-a> -`: Create a new horizontal pane.
 - `<Control-a> |`: Create a new vertical pane.
@@ -255,13 +260,6 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 # Additional Notes
 
 ## Tmux
-
-- Config file: `~/.tmux.conf`
-- Tutorial: [Gentle Guide to Tmux](https://pragmaticpineapple.com/gentle-guide-to-get-started-with-tmux/)
-- Vertical split: `<CTRL>-a SHIFT |`
-- Horizontal split: `<CTRL>-a SHIFT -`
-- Rotate panes: `<CTRL>-a <SPACE>`
-- Start session: `tmuxinator development`
 
 ## Git Tips
 

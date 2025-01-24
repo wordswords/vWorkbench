@@ -1,7 +1,6 @@
 # ~/.config/tmuxinator/development.yml
 
 name: development
-root: ~/workspace
 socket_name: development
 tmux_detached: false
 windows:
@@ -9,7 +8,7 @@ windows:
         layout: main-vertical
         panes:
             - vim
-            - hn
+            - ai-pair
 startup_window: editor
     
 
