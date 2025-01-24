@@ -36,7 +36,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
 
 ## Overview
 
-This setup includes a variety of tools and configurations tailored for efficient development, such as a customized VIM setup, ZSH with Powerlevel10k, and the Alacritty terminal emulator. It integrates various productivity tools and shortcuts to optimize your workflow.
+This setup includes a variety of tools and configurations tailored for efficient development, such as a customized VIM setup, ZSH with Powerlevel10k, tmux, and the Alacritty terminal emulator. It integrates various productivity tools and shortcuts to optimize your workflow.
 
 ## Features
 
@@ -44,7 +44,7 @@ This setup includes a variety of tools and configurations tailored for efficient
 
 ![VIM Setup](https://i.imgur.com/K6fBzSH.png "VIM setup")
 
-- **vim-airline**: Displays file issues, warnings, and errors. Navigate between them using `<Left>` and `<Right>`.
+- **vim-airline**: Displays file issues, warnings, and errors.
 - **NERDTree**: Visualizes git status with symbols for modified, staged, untracked, and more.
 
 ### ZSH Configuration
@@ -52,10 +52,6 @@ This setup includes a variety of tools and configurations tailored for efficient
 ![ZSH Setup](https://i.imgur.com/oZmTLND.png "My zsh setup")
 
 - **oh-my-zsh with Powerlevel10k**: Provides fast auto-completion and displays Git repo status. More details at [Powerlevel10k](https://github.com/romkatv/powerlevel10k).
-
-### Alacritty Terminal
-
-- A high-performance terminal emulator configured for Ubuntu and WSL2 environments.
 
 ## Installation and Updates
 
@@ -248,8 +244,6 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 
 ## VIM Modelines and Folds
 
-- Expand fold with 'l'.
-- Use mouse to open/close folds.
 - `zc`: Close fold.
 - `zm`: Close all folds.
 - `zn`: Open all folds.
