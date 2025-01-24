@@ -138,7 +138,11 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - `<Control-a> <UP>`: Move to the up pane.
 - `<Control-a> <LEFT>`: Move to the left pane.
 - `<Control-a> r`: Reload config file.
-- `<Control-a> -`: Create a new pane in split mode.
+- `<Control-a> -`: Create a new horizontal pane.
+- `<Control-a> |`: Create a new vertical pane.
+- `<Control-a> c`: Create a new window.
+- `<Control-a> %`: Split the current pane vertically.
+- `<Control-a> "`: Split the current pane horizontally.
 
 ### Tmux Pane Resize
 
