@@ -57,7 +57,7 @@ report_done
 
 # Backup and clean
 report_progress 'Backing up existing dotfiles to ~/.olddotfiles'
-    rm -rf ~/.olddotfiles
+    sudo rm -rf ~/.olddotfiles
     mkdir -p ~/.olddotfiles
     cp -RL ~/.vim ~/.olddotfiles/.vim || echo "INFO: Could not backup .vim dir, does it exist?"
     cp -RL ~/.zsh* ~/.olddotfiles/ || echo "INFO: Could not backup .zsh*, do they exist?"
@@ -162,6 +162,8 @@ report_done
 
 report_progress 'Install tmux terminal multiplexer and dev session config'
     sudo gem install tmuxinator
+    rm -rf ~/.config/tmuxinator/
+    mkdir -p ~/.config/tmuxinator 
     cp ~/.dotfiles/.tmuxinator.development.yml ~/.config/tmuxinator/development.yml
 report_done
 report_progress 'Install Elixir for Elixir development'
