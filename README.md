@@ -1,13 +1,42 @@
-# My Development Environment (dotfiles)
+# My Development Environment (Dotfiles)
 
-This repository contains my customized development environment setup, designed to enhance productivity and streamline workflows for software development. It is primarily tested on Kali Linux rolling, and the latest version of Ubuntu under WSL2 on Windows 11. Compatibility with all other platforms is not guaranteed without significant modification.
+Welcome to my customized development environment setup, crafted to enhance productivity and streamline workflows for software development. This setup is primarily tested on Kali Linux rolling and the latest version of Ubuntu under WSL2 on Windows 11. Compatibility with other platforms may require significant modifications.
 
+![Workbench](workbench.jpg "Picture of a woodworker's workbench")
 
-![Workbench](workbench.jpg "Picture of a woodworker workbench")
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+  - [VIM Setup](#vim-setup)
+  - [ZSH Configuration](#zsh-configuration)
+  - [Alacritty Terminal](#alacritty-terminal)
+- [Installation and Updates](#installation-and-updates)
+  - [Prerequisites](#prerequisites)
+  - [Installation Steps](#installation-steps)
+- [Usage](#usage)
+  - [Shell Shortcuts](#shell-shortcuts)
+  - [VIM9 Shortcuts](#vim9-shortcuts)
+- [Additional Notes](#additional-notes)
+  - [Clipboard Management](#clipboard-management)
+  - [Aider](#aider)
+  - [Productivity Shortcuts](#productivity-shortcuts)
+  - [Git Fugitive Workflow](#git-fugitive-workflow)
+  - [Git Tips](#git-tips)
+  - [Troubleshooting](#troubleshooting)
+  - [Ubuntu Package Management](#ubuntu-package-management)
+  - [Joplin CLI](#joplin-cli)
+  - [JIRA Go Client](#jira-go-client)
+  - [NIX Internals Books](#nix-internals-books)
+  - [Printing on Ubuntu](#printing-on-ubuntu)
+  - [PCP - System Performance Co-Pilot](#pcp-system-performance-co-pilot)
+  - [Remote Connection](#remote-connection)
+  - [External Scripts](#external-scripts)
+  - [Modifying](#modifying)
 
 ## Overview
 
-This setup includes a variety of tools and configurations tailored for efficient development, including a customized VIM setup, ZSH with Powerlevel10k, and the Alacritty terminal emulator. It also integrates various productivity tools and shortcuts to optimize your workflow.
+This setup includes a variety of tools and configurations tailored for efficient development, such as a customized VIM setup, ZSH with Powerlevel10k, and the Alacritty terminal emulator. It integrates various productivity tools and shortcuts to optimize your workflow.
 
 ## Features
 
@@ -32,8 +61,8 @@ This setup includes a variety of tools and configurations tailored for efficient
 
 ### Prerequisites
 
-- **Git** authenticated with Github
-- **Locale set to `en_GB.UTF-8`** - hack this out yourself if you're not in the UK.
+- **Git** authenticated with GitHub.
+- **Locale set to `en_GB.UTF-8`** - adjust as needed if you're outside the UK.
 - **Secrets Directory**: Create `~/.dotfiles/SECRETS` with necessary credentials and API keys.
 - **Alacritty**: Recommended for WSL2 users before installation.
 
@@ -46,13 +75,13 @@ This setup includes a variety of tools and configurations tailored for efficient
 
 ### What It Installs
 
-- Customized VIM9 with lots of plugins including Github Copilot
-- Oh-my-ZSH with ZSH as the default shell
-- Joplin CLI for note-taking (requires personal credentials)
-- Optional applications like Morgen calendar and Golang JIRA CLI
-- Elixir development environment
-- Aider with ChatGPT for AI assistance
-- Fortune with Alan Moore quotes
+- Customized VIM9 with numerous plugins, including GitHub Copilot.
+- Oh-my-ZSH with ZSH as the default shell.
+- Joplin CLI for note-taking (requires personal credentials).
+- Optional applications like Morgen calendar and Golang JIRA CLI.
+- Elixir development environment.
+- Aider with ChatGPT for AI assistance.
+- Fortune with Alan Moore quotes.
 
 Note: Customization may be required for full functionality. Consider using a Docker container or VM for testing.
 
@@ -81,7 +110,7 @@ Note: Customization may be required for full functionality. Consider using a Doc
 - `ai <query>`: Query ChatGPT and copy result to clipboard.
 - `todo`: Open Todoist list.
 
-## VIM9 Shortcuts
+### VIM9 Shortcuts
 
 - `<leader> h`: Open this help document.
 - `<TAB>`: Activate autocomplete plugins.
