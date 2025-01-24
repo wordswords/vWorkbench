@@ -1,4 +1,4 @@
-## [++ CUSTOM ZSH FUNCTIONS ++]
+#[++ CUSTOM ZSH FUNCTIONS ++]
 
 export USE_HARD_LINKS=false
 
@@ -62,11 +62,6 @@ tramsprint() {
 }
 autoload -Uz tramsprint
 
-dev() {
-    echo "$1" | dev.sh
-}
-autoload -Uz dev
-
 ai() {
     echo "$@" | ai.sh
 }
@@ -102,6 +97,11 @@ gg() {
     gg.sh "$@" 
 }
 autoload -Uz gg
+
+hack() {
+    cd $1 && tmuxinator start development
+}
+autoload -Uz hack
 
 so() {
     echo "$@" | so.sh

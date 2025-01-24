@@ -162,8 +162,7 @@ report_done
 
 report_progress 'Install tmux terminal multiplexer and dev session config'
     sudo gem install tmuxinator
-    mkdir -p ~/.tmuxinator
-    cp ~/.dotfiles/.tmuxinator.development.yml ~/.tmuxinator/development.yml
+    cp ~/.dotfiles/.tmuxinator.development.yml ~/.config/tmuxinator/development.yml
 report_done
 report_progress 'Install Elixir for Elixir development'
     sudo apt-get install elixir --allow-downgrades -y
