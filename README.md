@@ -132,11 +132,9 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 ## Productivity Shortcuts
 ### Tmux
 
-#### Tmuxinator
+#### Preconfigured Tmuxinator 'Hack' session
 
-Tmuxinator is a session manager for tmux
-
-- Start session: `tmuxinator development`
+- `hack <github project root directory>` will start up my default tmux configuration with Vim9 and Aider running in seperate panes.
 
 #### Tmux Shortcuts
 
