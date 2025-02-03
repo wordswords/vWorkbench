@@ -120,6 +120,8 @@ checkdiskspace() {
     fi
     echo "\n"
 }
+autoload -Uz checkdiskspace
+
 checkruns() {
     if [ "$(hostname)" = "hq" ]; then
         cat /home/david/.hqconfig/backup/.last_successful_backup_dump 2>/dev/null || true
