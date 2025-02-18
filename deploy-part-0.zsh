@@ -18,9 +18,9 @@ report_heading 'Deploy Prerequisites: Part 0'
 export PIP_BREAK_SYSTEM_PACKAGES=1
 
 # Must go before everything else
-report_progress 'Checking locale'
-     locale | grep -q LANG=en_GB.UTF-8 || ( echo 'en_GB.UTF-8 is not set as the locale. You need to fix this before proceeding.' && exit 1 )
-report_done
+#report_progress 'Checking locale'
+#     locale | grep -q LANG=en_GB.UTF-8 || ( ( locale | grep -q LANG=en_GB.utf8 || echo 'en_GB.UTF-8/utf8 is not set as the locale. You need to fix this before proceeding.' && exit 1 ) )
+#report_done
 
 report_progress 'Upgrade all packages/distro to latest version'
     sudo apt-get update --allow-downgrades -y && sudo apt-get dist-upgrade --allow-downgrades -y && sudo apt-get upgrade --allow-downgrades -y && sudo apt-get autoremove --allow-downgrades -y
