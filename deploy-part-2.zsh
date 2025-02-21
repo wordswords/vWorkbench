@@ -227,6 +227,7 @@ ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
 report_done
 
 report_progress 'Installing/Updating tod - Todoist commandline app'
+rustup update
 tod config check-version || cargo install tod --force
 report_done
 
