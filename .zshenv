@@ -140,3 +140,4 @@ autoload -Uz getweather
 
 ## [-- CUSTOM ZSH FUNCTIONS --]
 
+. "$HOME/.cargo/env"
