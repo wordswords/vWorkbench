@@ -102,10 +102,6 @@ report_progress 'Install Python used for vim plugins'
     pip3 install --upgrade pip # upgrade python3
 report_done
 
-report_progress 'Install Rust and Cargo'
-    curl https://sh.rustup.rs -sSfy | sh 
-report_done
-
 report_progress 'Install latest open JDK used for LanguageTool'
     sudo apt-get install default-jdk --allow-downgrades -y
 report_done

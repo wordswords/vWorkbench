@@ -227,8 +227,9 @@ ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
 report_done
 
 report_progress 'Installing/Updating tod - Todoist commandline app'
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
-tod config check-version || cargo install tod --force
+cargo install tod --force
 report_done
 
 ## OS specific stuff
