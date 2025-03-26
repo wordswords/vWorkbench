@@ -226,11 +226,11 @@ mkdir -p ~/.config/tmuxinator
 ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
 report_done
 
-report_progress 'Installing/Updating tod - Todoist commandline app'
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#report_progress 'Installing/Updating tod - Todoist commandline app'
+#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
-cargo install tod --force
-report_done
+#cargo install tod --force
+#report_done
 
 ## OS specific stuff
 cur_os=$(get_os)
