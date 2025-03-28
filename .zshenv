@@ -93,6 +93,11 @@ ai() {
 }
 autoload -Uz ai
 
+aisesh() {
+    /usr/local/bin/chatgpt -i
+}
+autoload -Uz aisesh
+
 gg() {
     gg.sh "$@" 
 }
