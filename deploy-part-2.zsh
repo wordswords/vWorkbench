@@ -226,6 +226,10 @@ mkdir -p ~/.config/tmuxinator
 ln --force -s ~/.dotfiles/development.yml ~/.config/tmuxinator/development.yml
 report_done
 
+report_progress 'Installing pandoc'
+~/.dotfiles/bin/install-pandoc.sh
+report_done
+
 #report_progress 'Installing/Updating tod - Todoist commandline app'
 #curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
