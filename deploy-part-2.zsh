@@ -232,7 +232,7 @@ report_done
 
 #report_progress 'Installing/Updating tod - Todoist commandline app'
 #curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup update
+#rustup update
 #cargo install tod --force
 #report_done
 
