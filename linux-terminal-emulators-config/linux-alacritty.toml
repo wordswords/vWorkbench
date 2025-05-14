@@ -1,6 +1,5 @@
 [window]
 startup_mode = "Maximized"
-title = "Ubuntu Linux WSL2"
 dynamic_title = true
 
 [scrolling]
@@ -11,9 +10,6 @@ size = 18
 
 [font.normal]
 family = "DroidSansM Nerd Font Mono"
-
-[terminal]
-shell = { program = 'C:\Windows\System32\wsl.exe', args = ["--cd ~"] }
 
 [cursor.style]
 shape = "Underline"
