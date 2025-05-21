@@ -26,8 +26,9 @@ report_progress 'Upgrade all packages/distro to latest version'
     sudo apt-get update --allow-downgrades -y && sudo apt-get dist-upgrade --allow-downgrades -y && sudo apt-get upgrade --allow-downgrades -y && sudo apt-get autoremove --allow-downgrades -y
 report_done
 
-report_progress 'Check for Ubuntu release upgrade'
-    sudo do-release-upgrade -c || echo 'No release upgraded needed.'
+report_progress 'Upgrading to a new LTS2 ubuntu release if available'
+    sudo apt install ubuntu-release-upgrader-core -y
+    sudo do-release-upgrade -d || echo 'There is no new LTS release available at present.'
 report_done
 
 report_progress 'Checking for existence of SECRETS directory'
