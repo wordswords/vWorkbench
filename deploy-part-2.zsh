@@ -235,7 +235,7 @@ cur_os=$(get_os)
 report_progress 'Running any Windows specific configuration'
 if [[ $cur_os == 'windows' ]] ; then
     # install windows tools
-    rm -rf ~/.dotfiles/windows-tools
+    rm -rf ~/windows-tools
     git clone git@github.com:wordswords/windows-tools.git ~/windows-tools
 
     # install alacritty
@@ -245,7 +245,7 @@ if [[ $cur_os == 'windows' ]] ; then
     cp ~/windows-tools/windows-clipboard/win32yank.exe ~/.bin
 
     # move mapped drives batch file to startup
-    sudo cp ~/windows-tools/map-network-drives/map-network-drives.bat /mnt/c/Users/conta/AppData/Roaming/Microsoft/Start\ Menu/Programs/Startup/
+    sudo cp ~/windows-tools/map-network-drives/map-network-drives.bat /mnt/c/Users/conta/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/
 fi
 report_done
 
