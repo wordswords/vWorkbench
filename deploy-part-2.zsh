@@ -230,31 +230,27 @@ report_progress 'Installing pandoc'
 ~/.dotfiles/bin/install-pandoc.sh
 report_done
 
-#report_progress 'Installing/Updating tod - Todoist commandline app'
-#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-#rustup update
-#cargo install tod --force
-#report_done
-
 ## OS specific stuff
 cur_os=$(get_os)
 report_progress 'Running any Windows specific configuration'
 if [[ $cur_os == 'windows' ]] ; then
     # install windows tools
     rm -rf ~/.dotfiles/windows-tools
-    git clone git@github.com:wordswords/windows-tools.git ~/.dotfiles/windows-tools
+    git clone git@github.com:wordswords/windows-tools.git ~/windows-tools
 
     # install alacritty
-    ~/.dotfiles/windows-tools/windows-terminal-emulators-config/install-alacritty-windows.sh
+    ~/windows-tools/windows-terminal-emulators-config/install-alacritty-windows.sh
 
     # install win32yank
-    cp ~/.dotfiles/windows-tools/windows-clipboard/win32yank.exe ~/.bin
+    cp ~/windows-tools/windows-clipboard/win32yank.exe ~/.bin
+
+    # move mapped drives batch file to startup
+    sudo cp ~/windows-tools/map-network-drives/map-network-drives.bat /mnt/c/Users/conta/AppData/Roaming/Microsoft/Start\ Menu/Programs/Startup/
 fi
 report_done
 
 report_progress 'Running any Linux specific configuration'
 if [[ $cur_os == 'linux' ]] ; then
-
     # os-specific lines
     report_progress 'Installing workrave, a reminder app to take screenbreaks'
         sudo apt-get install workrave -y || echo ''
