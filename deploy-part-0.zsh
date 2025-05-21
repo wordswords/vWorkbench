@@ -270,6 +270,10 @@ report_progress 'Installing aider for AI coding assistance'
     curl -LsSf https://aider.chat/install.sh | sh
 report_done
 
+report_progress 'Install calibre for mobi to PDF conversation'
+    sudo apt-get install calibre --allow-downgrades -y
+report_done
+
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades --allow-downgrades -y
 report_done
