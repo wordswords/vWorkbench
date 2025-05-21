@@ -246,6 +246,9 @@ if [[ $cur_os == 'windows' ]] ; then
 
     # move mapped drives batch file to startup
     sudo cp ~/windows-tools/map-network-drives/map-network-drives.bat /mnt/c/Users/conta/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/
+
+    # move dns reset batch file to startup
+    sudo cp "~/windows-tools/vpn-dns-bat-files/hq.local DNS to internal network = RUN AS ADMIN.bat" /mnt/c/Users/conta/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/
 fi
 report_done
 
