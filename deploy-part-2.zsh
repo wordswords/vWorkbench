@@ -267,6 +267,9 @@ if [[ $cur_os == 'linux' ]] ; then
     report_progress 'Install PCP for detailed monitoring'
         sudo ~/.dotfiles/bin/install-pcp.sh
     report_done
+    report_progress 'Install Libreoffice for opening office documents'
+        sudo apt install libreoffice -y
+    report_done
     ~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
 
     # disable sleep, suspend, hibernate and hybrid-sleep
