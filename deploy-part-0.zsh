@@ -185,7 +185,7 @@ report_progress 'Install shellcheck for shell script formatting'
 report_done
 
 report_progress 'Install ChatGPT CLI client'
-    curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/latest/download/chatgpt-linux-amd64 && chmod +x chatgpt && sudo mv chatgpt /usr/local/bin/
+    pip install shell-gpt --break-system-packages
 report_done
 
 report_progress 'Installing node'
