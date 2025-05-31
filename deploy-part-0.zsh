@@ -26,10 +26,12 @@ report_progress 'Upgrade all packages/distro to latest version'
     sudo apt-get update --allow-downgrades -y && sudo apt-get dist-upgrade --allow-downgrades -y && sudo apt-get upgrade --allow-downgrades -y && sudo apt-get autoremove --allow-downgrades -y
 report_done
 
-report_progress 'Upgrading to a new LTS2 ubuntu release if available'
-    sudo apt install ubuntu-release-upgrader-core -y
-    sudo do-release-upgrade -d || echo 'There is no new LTS release available at present.'
-report_done
+if [[ $cur_os == 'windows' ]] ; then
+    report_progress 'Upgrading to a new LTS2 ubuntu release if available'
+        sudo apt install ubuntu-release-upgrader-core -y
+        sudo do-release-upgrade -d || echo 'There is no new LTS release available at present.'
+    report_done
+fi
 
 report_progress 'Checking for existence of SECRETS directory'
 if [[ ! -d ~/.dotfiles/SECRETS ]] ; then
