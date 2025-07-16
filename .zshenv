@@ -15,8 +15,6 @@ autoload -Uz notes
 updatedotfiles() {
     cd ~/.dotfiles >/dev/null 2>/dev/null
     git pull >/dev/null 2>/dev/null | echo ''
-    git restore-mtime --force ~/.dotfiles/backup/.last_successful_backup_dump >/dev/null 2>/dev/null
-    git restore-mtime --force ~/.dotfiles/backup/.last_successful_backup_transfer >/dev/null 2>/dev/null
     cd - >/dev/null 2>/dev/null
 }
 autoload -Uz updatedotfiles
@@ -133,6 +131,7 @@ checkruns() {
         cat /home/david/.hqconfig/backup/.last_successful_backup_transfer 2>/dev/null || true
         cat /home/david/.hqconfig/music-organisation/.last_successful_music_import 2>/dev/null || true
         cat /home/david/.hqconfig/thor/.*thor* 2>/dev/null || true
+        cat /home/david/.hqconfig/.last_successful_update_run 2>/dev/null || true
     fi
     echo "\n"
 }
