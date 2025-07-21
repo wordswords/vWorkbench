@@ -3,15 +3,12 @@ userprompt="$1"
 pdf="$2"
 outputfile="notes-on-$pdf.md"
 rm -f "$outputfile" || ''
-echo "prompt = $prompt"
-prompt="I am in the process of feeding you number of 1000-line chunks of a text file. Please process the prompt on the 1000-line chunks as you go. The prompt is: $userprompt, the current chunk is provided as a context input"
 echo "pdf = $pdf"
-~/bin/convert-pdf-to-text.sh "$pdf"
 promptfile=$(mktemp)
 echo "$prompt" > "$promptfile"
 rm chunk_*
 # Split the input file into 1000-line chunks
-split -l 1000 -d "$pdf.txt" chunk_
+split -l 1000 -d "$pdf" chunk_
 #
 # Loop through each chunk file
 for file in $(ls -h chunk_*)

@@ -136,7 +136,6 @@ report_progress 'Running vim local commands for plugins'
 echo '''
     :PluginClean
     :PluginInstall
-    :Copilot setup
     :helptags ALL
     :qa
     ''' >~/.dotfiles/vimscript.vs
@@ -162,11 +161,6 @@ echo '''
     ''' >~/.dotfiles/vimscript.vs
 vim -s ~/.dotfiles/vimscript.vs
 rm ~/.dotfiles/vimscript.vs
-report_done
-
-report_progress 'Installing Github Copilot VIM9 plugin'
-rm -rf ~/.vim/pack/github/start/copilot.vim
-git clone git@github.com:github/copilot.vim.git ~/.vim/pack/github/start/copilot.vim
 report_done
 
 report_progress 'Installing vim colorscheme'
