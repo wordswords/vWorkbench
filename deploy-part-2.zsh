@@ -306,7 +306,7 @@ if [[ $cur_os == 'linux' ]] ; then
         ;;
     esac
 
-	read -rp "Do you want to install/update the Ubuntu snap images of Morgen, Todoist, Spotify and Firefox? (y/yes/N)? " SNAPINSTALL
+	read -rp "Do you want to install/update the Ubuntu snap images of Morgen, Todoist, Spotify and Firefox and create Kali Linux launchers? (y/yes/N)? " SNAPINSTALL
     case "$SNAPINSTALL" in
         Y|y|yes)
             sudo service snapd.apparmor start
@@ -315,6 +315,9 @@ if [[ $cur_os == 'linux' ]] ; then
             sudo snap install firefox 2>/dev/null || sudo snap refresh firefox
             sudo snap install todoist 2>/dev/null || sudo snap refresh todoist
             sudo snap install spotify 2>/dev/null || sudo snap refresh spotify
+            cp ~/.dotfiles/launchers.desktop.tgz ~/Desktop
+            cd ~/Desktop
+            tar --strip-components=1 xzf *.tgz
         ;;
         *)
             true
