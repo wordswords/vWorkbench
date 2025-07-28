@@ -317,7 +317,7 @@ if [[ $cur_os == 'linux' ]] ; then
             sudo snap install spotify 2>/dev/null || sudo snap refresh spotify
             cp ~/.dotfiles/launchers.desktop.tgz ~/Desktop
             cd ~/Desktop
-            tar --strip-components=1 xzf *.tgz
+            tar xzf "*.tgz"
         ;;
         *)
             true
