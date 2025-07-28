@@ -315,7 +315,8 @@ if [[ $cur_os == 'linux' ]] ; then
             sudo snap install firefox 2>/dev/null || sudo snap refresh firefox
             sudo snap install todoist 2>/dev/null || sudo snap refresh todoist
             sudo snap install spotify 2>/dev/null || sudo snap refresh spotify
-            tar xzf "~/.dotfiles/launchers.desktop.tgz" ~/Desktop
+            cp ~/.dotfiles/launchers.desktop.tgz ~/Desktop
+            tar xzf ~/Desktop/launchers.desktop.tgz ~/Desktop
         ;;
         *)
             true
