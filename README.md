@@ -156,10 +156,12 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 
 ## Aider
 
+1.
 - `aider`: Start interactive ChatGPT AI code assistant.
-- When using tmuxinator's 'hack' project, Aider will watch the project directory for changes and provide assistance.
+- When typing `hack <dir>` from the shell, Aider will watch the project directory for changes and provide assistance.
 
-- When Aider is watching the project directory:
+2.
+- While Aider is watching the project directory:
 - Writing a comment with `AI` at the end is an instruction for aider.
 - Writing a comment with `AI!` at the end triggers aider to read all AI comments and make changes to your code.
 - Writing a comment with `AI?` triggers aider to answer your question.
