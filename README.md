@@ -373,9 +373,10 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 ## Joplin CLI
 
 - Open Joplin: `notes`
-- Navigate with `<TAB>`.
-- Create note: `mn`.
-- Toggle metadata: `tm`.
+- Toggle console: `tc`
+- Navigate with `<TAB>`
+- Create note: `mn`
+- Toggle metadata: `tm`
 
 ## JIRA Go Client
 
