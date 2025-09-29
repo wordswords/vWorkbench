@@ -277,8 +277,17 @@ report_progress 'Install calibre for mobi to PDF conversation'
     sudo apt-get install calibre --allow-downgrades -y
 report_done
 
+report_progress 'Install Fabric for AI unixy prompt commands'
+    curl -fsSL https://raw.githubusercontent.com/danielmiessler/fabric/main/scripts/installer/install.sh | bash
+report_done
+
+report_progress 'Install yt-clip for downloading youtube videos'
+    ~/.dotfiles/bin/install-yt-clip.sh
+report_done
+
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades --allow-downgrades -y
 report_done
+
 
 report_finished 'Deploy Prerequisites: Part 0 Complete'
