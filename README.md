@@ -154,6 +154,12 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - `pbcopy`/`pbpaste`: Use in terminal pipes.
 - `xclip.sh`: Alternative clipboard command.
 
+## Command line GenAI Stuff
+
+- `aisesh` - this opens an interactive prompt with the default model
+- `ai '<prompt>'` - asks ChatGPT a question
+- `fabric` - an advanced way of interacting with preset prompts
+
 ## Aider
 
 1.

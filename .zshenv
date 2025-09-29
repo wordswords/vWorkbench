@@ -92,7 +92,7 @@ ai() {
 autoload -Uz ai
 
 aisesh() {
-    /usr/local/bin/chatgpt -i
+    sgpt --repl ' '
 }
 autoload -Uz aisesh
 
