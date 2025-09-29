@@ -411,6 +411,11 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 
 - Installed for fuzzy finding. See [fzf guide](https://andrew-quinn.me/fzf/).
 
+## GNU Parallel
+
+- `echo <stream> | run-command-in-parellel <command>` can be used to parellelise jobs, eg:
+- `echo Bla bla bla | run-command-in-parellel echo`
+
 ## Format Conversion
 
 There are a much of scripts that take the hard work out of converting documents from one format to another, and also can be used to summarise youtube videos. They use 'Fabric' which is a set of maintained prompts that use GenAI models to summarise and convert data.
