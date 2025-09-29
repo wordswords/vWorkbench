@@ -3,7 +3,7 @@
 set -x
 set -e
 
-filename=$1
+filename="$1"
 
 printHelp()
 {
