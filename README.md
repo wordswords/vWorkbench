@@ -413,7 +413,7 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 
 ## Format Conversion
 
-There are a much of scripts that take the hard work out of converting documents from one format to another, and also can be used to summarise youtube videos. They use 'Fabric' which is a set of maintained prompts that use GenAI models to summarise and convert data.
+There are a bunch of scripts that take the hard work out of converting documents from one format to another, and also can be used to summarise youtube videos. They use 'Fabric' which is a set of maintained prompts that use GenAI models to summarise and convert data.
 
 In the `~/.dotfiles/bin/` directory:
 
