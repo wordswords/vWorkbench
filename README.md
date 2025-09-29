@@ -415,17 +415,26 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 
 There are a much of scripts that take the hard work out of converting documents from one format to another, and also can be used to summarise youtube videos. They use 'Fabric' which is a set of maintained prompts that use GenAI models to summarise and convert data.
 
-In the ~/.dotfiles/bin/ directory:
+In the `~/.dotfiles/bin/` directory:
 
-- ./convert-epub-to-pdf.sh
-- ./convert-mobi-to-pdf.sh
-- ./convert-pdf-to-text.sh
-- ./convert-text-to-markdown.sh
-- ./fabric-clip-url-to-markdown.sh
-- ./fabric-summarise-youtube-video-with-no-subtitles.sh
-- ./fabric-summarise-youtube-video.sh
+- `convert-epub-to-pdf.sh`
+- `convert-mobi-to-pdf.sh`
+- `convert-pdf-to-text.sh`
+- `convert-text-to-markdown.sh`
+- `fabric-clip-url-to-markdown.sh`
+- `fabric-summarise-youtube-video-with-no-subtitles.sh`
+- `fabric-summarise-youtube-video.sh`
 
 All do roughly what you might expect.
+
+## Common Grep Scripts
+
+Scripts for common content you will want to grep from files:
+
+- `grep-for-emailadds-in-file.sh <file>`
+- `grep-for-ipadds-in-file.sh <file>`
+- `grep-for-urls-in-file.sh <file>`
+
 
 ## Remote Connection
 
