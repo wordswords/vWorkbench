@@ -255,6 +255,10 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - Use `d2o` or `d3o` to resolve conflicts.
 - Use `:wq` to save and exit.
 
+## Massren - Mass rename
+
+- Use `massren` to rename large numbers of files easily using VIM
+
 ## VIM's Inbuilt Terminal
 
 - Run commands with `:term`.
