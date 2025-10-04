@@ -283,8 +283,7 @@ report_done
 
 report_progress 'Install mass rename tool'
     go install github.com/laurent22/massren@latest
-    sudo ln -s $GOPATH/bin/massren /usr/bin/massren 
-    /usr/bin/massren --config editor vim
+    massren --config editor vim
 report_done
 
 report_progress 'Install yt-clip for downloading youtube videos'
