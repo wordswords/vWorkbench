@@ -9,6 +9,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
 [![asciicast](https://asciinema.org/a/699666.svg)](https://asciinema.org/a/699666)
 
 ## Table of Contents
+<!-- toc -->
 
 - [Overview](#overview)
 - [Features](#features)
@@ -37,6 +38,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
   - [Remote Connection](#remote-connection)
   - [External Scripts](#external-scripts)
   - [Modifying](#modifying)
+<!-- tocstop -->
 
 ## Overview
 
