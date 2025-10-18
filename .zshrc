@@ -165,7 +165,6 @@ echo "\n"
 checkruns
 checkdiskspace
 getweather
-tramsprint
 echo '' # BLANK LINE
 ## [-- VISIBLE COMMANDS RUN ON EVERY INTERACTIVE SHELL --]
 #zprof #- Uncomment this to profile zsh startup
