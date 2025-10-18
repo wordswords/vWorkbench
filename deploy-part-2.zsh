@@ -332,7 +332,7 @@ echo
 echo "-- NEXT STEPS -- "
 echo
 echo '''
-Now just make sure that alacritty and the DroidSansM nerdfont are installed on your system.
+echo Now just make sure that alacritty and the DroidSansM nerdfont are installed on your system.
 '''
 report_done
 
