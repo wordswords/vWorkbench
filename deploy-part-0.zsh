@@ -220,13 +220,6 @@ report_progress 'Install jq'
     sudo apt install jq --allow-downgrades -y
 report_done
 
-report_progress 'Install Manchester Metrolink Commandline App for Tram times'
-    cd ~/.dotfiles/bin
-    wget https://github.com/ayubmalik/trams/releases/download/v1.2.0/trams-linux-amd64
-    mv trams-linux-amd64 trams
-    chmod u+x trams
-report_done
-
 report_progress 'Install fnm node.js version manager'
     ~/.dotfiles/bin/install-fnm.sh
 report_done
