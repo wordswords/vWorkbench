@@ -81,7 +81,7 @@ This setup includes a variety of tools and configurations tailored for efficient
 - Optional applications like Morgen calendar and Golang JIRA CLI.
 - Elixir development environment.
 - Aider with ChatGPT for AI assistance.
-- Fortune with Alan Moore quotes.
+- Fortune with Software Engineering Koan quotes.
 
 Note: Customization may be required for full functionality. Consider using a Docker container or VM for testing.
 

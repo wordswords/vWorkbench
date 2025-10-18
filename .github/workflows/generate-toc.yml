@@ -2,7 +2,7 @@ name: Update README table of contents
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ master ]
     paths:
       - README.md
   workflow_dispatch:
