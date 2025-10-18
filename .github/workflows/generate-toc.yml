@@ -1,20 +1,25 @@
+name: Update README table of contents
+
 on:
   push:
-    branches: [master]
-    paths: ['README.md']
+    branches: [ main, master ]
+    paths:
+      - README.md
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          curl https://raw.githubusercontent.com/ekalinin/github-markdown-toc/0.8.0/gh-md-toc -o gh-md-toc
-          chmod a+x gh-md-toc
-          ./gh-md-toc --insert --no-backup --hide-footer README.md
-          rm gh-md-toc
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Auto update markdown TOC
+      - name: Check out repo
+        uses: actions/checkout@v2
+      - name: Update TOC in README.md
+        run: npx markdown-toc -i README.md
+      - name: Commit and push if README changed
+        run: |
+          git diff
+          git config --global user.email "toc-bot@davidcraddock.net"
+          git config --global user.name "toc-bot"
+          git diff --quiet || (git add README.md && git commit -m "Updated README TOC")
+          git push
 
