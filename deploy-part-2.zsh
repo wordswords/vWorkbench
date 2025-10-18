@@ -194,11 +194,8 @@ report_progress 'Changing shell to /bin/zsh.'
 sudo chsh -s "$(which zsh)" "$(whoami)"
 report_done
 
-report_progress 'Customising Fortune random quoter'
-sudo rm -rf /usr/share/games/fortunes/* || true
-sudo tar xzf ~/.dotfiles/moore.txt.tgz -C /usr/share/games/fortunes/
-sudo mv /usr/share/games/fortunes/moore.txt /usr/share/games/fortunes/moore
-sudo strfile -c % /usr/share/games/fortunes/moore /usr/share/games/fortunes/moore.dat
+report_progress 'Customising Fortune random quoter
+~/bin/codelesscode-to-fortune.sh
 report_done
 
 report_progress 'Stop unwanted changes dirtying up the dotfiles commit tracking'
