@@ -194,7 +194,7 @@ report_progress 'Changing shell to /bin/zsh.'
 sudo chsh -s "$(which zsh)" "$(whoami)"
 report_done
 
-report_progress 'Customising Fortune random quoter
+report_progress 'Customising Fortune random quoter'
 ~/bin/codelesscode-to-fortune.sh
 report_done
 

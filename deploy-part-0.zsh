@@ -9,7 +9,7 @@
 # ALL apt installs in this file, some are in deploy-part-2.sh as well, 
 # but ideally all should live in this file.
 
-set -e
+#set -e
 source ./deploy-common.sh
 cur_os=$(get_os)
 report_heading 'Deploy Prerequisites: Part 0'

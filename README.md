@@ -96,9 +96,7 @@ This setup includes a variety of tools and configurations tailored for efficient
 ### Prerequisites
 
 - **Git** authenticated with GitHub.
-- **Locale set to `en_GB.UTF-8`** - adjust as needed if you're outside the UK.
-- **Secrets Directory**: Create `~/.dotfiles/SECRETS` with necessary credentials and API keys.
-- **Alacritty**: Recommended for WSL2 users before installation.
+- **Locale set to `en_GB.UTF-8`** - `~/.dotfiles/bin/fix-locale.sh` may be needed to run manually, adjust as needed if you're outside the UK.
 
 ### Installation Steps
 
