@@ -203,6 +203,12 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - `ai '<prompt>'` - asks ChatGPT a question
 - `fabric` - an advanced way of interacting with preset prompts
 
+## Fabric
+
+- You must setup Fabric completely in addition to the normal automated setup process. The command to do this is `fabric -S`. You need to input GenAI keys and other keys such as Youtube API keys.
+- You need to install ffmpeg and yt-clip for video summaries
+- Once setup, you can use the scripts such as `fabric-summarise-youtube-video.sh <complete youtube url>` to summarise video content, for example
+
 ## Aider
 
 1.
