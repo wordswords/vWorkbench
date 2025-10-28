@@ -26,6 +26,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
     + [VIM9 Shortcuts](#vim9-shortcuts)
   * [Clipboard Management](#clipboard-management)
   * [Command line GenAI Stuff](#command-line-genai-stuff)
+  * [Fabric](#fabric)
   * [Aider](#aider)
   * [Productivity Shortcuts](#productivity-shortcuts)
     + [Tmux](#tmux)
