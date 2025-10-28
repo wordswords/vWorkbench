@@ -83,7 +83,7 @@ At the moment, I'm using a 'rolling' release schedule, which means the many inco
 
 This means that when you check out this repository, there may be inconsistencies and bugs between the different components that are a result of the current versions of the components being separate to the ones I am currently using.
 
-In the future, I might look to making more measured, self-contained releases. It is difficult though, as it requires me to isolate all the dependencies and statically snapshot them. I definitely think this is the way forward, but it's a lot of work.
+In the future, I might look to making more measured, self-contained releases. It is difficult though, as it requires me to isolate all the dependencies and statically snapshot them. I definitely think this is the way forward, but it's a lot of work, and in doing so it makes it less useful to me, because I wouldn't be able to rapidly get new updates and features in and use them for my own use. So I have held back on doing this.
 
 If you do end up using this setup, or basing your setup in any way on this setup, I would appreciate any pull-requests you can make in an effort to make the repository more stable and less buggy.
 
