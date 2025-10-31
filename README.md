@@ -482,6 +482,7 @@ There are a bunch of scripts that take the hard work out of converting documents
 
 In the `~/.dotfiles/bin/` directory:
 
+- `ocr.sh` - OCRs text in an image file and outputs the text on the pipe
 - `convert-epub-to-pdf.sh`
 - `convert-mobi-to-pdf.sh`
 - `convert-pdf-to-text.sh`
