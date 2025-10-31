@@ -17,4 +17,5 @@ then
  printHelp
 fi
 
-fabric -y $youtubeurl --stream --pattern extract_wisdom
+fabric -y "${youtubeurl}" --stream --pattern extract_wisdom_agents
+
