@@ -15,6 +15,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
   * [Overview](#overview)
   * [Maintenance](#maintenance)
   * [Why not Neovim?](#why-not-neovim)
+  * [Configuration](#configuration)
   * [Features](#features)
     + [VIM Setup](#vim-setup)
     + [ZSH Configuration](#zsh-configuration)
