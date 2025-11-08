@@ -92,6 +92,18 @@ If you do end up using this setup, or basing your setup in any way on this setup
 
 Although I previously had decided to stick with Vim, with Bram's death, and the continued impressive evolution of Neovim, some time in the future I intend to move everything across to Neovim. But not right now, as it is a lot of work.
 
+## Configuration
+
+`~/.dotfiles` - is where the repo lives on your system
+`~/.dotfiles/SECRETS/*` - is a number of scripts to export environment variables that are loaded on every interactive terminal session. These include all configuration options such as API keys etc. The deploy scripts attempts to make an effort to set this up for you on first run, but if you need to edit anything then change the files here. The whole directory is gitignored so that you won't accidentally commit private credentials to github.
+`~/.dotfiles/SECRETS_TEMPLATE/*` - is the template structure used for config files, WITHOUT the secret credentials. This is committed and maintained in github.
+`~/.vimrc` && `~/.vim` - this is where the vim config lives. Automatically setup for you.
+`~/.zshrc` && `~/.zshenv` - this is where the zsh config lives. Automatically setup for you.
+`~/bin` && `~/.dotfiles/bin` - this is the same directory, and is included in your path file. This is where the useful shell scripts live.
+`~/.dotfiles/README.md` - this is this file you are currently reading - the docs for this project.
+
+There are many other dotfiles that are located in `~/.*` which you will find installed as part of the deploy, but the above are the main ones to be aware of.
+
 ## Features
 
 ### VIM Setup
