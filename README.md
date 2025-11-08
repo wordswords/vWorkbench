@@ -13,7 +13,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
 <!-- toc -->
 
   * [Overview](#overview)
-  * [Maintaince](#maintaince)
+  * [Maintenance](#maintenance)
   * [Features](#features)
     + [VIM Setup](#vim-setup)
     + [ZSH Configuration](#zsh-configuration)
