@@ -131,9 +131,8 @@ There are many other dotfiles that are located in `~/.*` which you will find ins
 ### Installation Steps
 
 1. Clone the repository: `git clone git@github.com:/wordswords/vWorkbench ~/.dotfiles`
-2. Navigate to the directory: `cd ~/.dotfiles/`
-3. OPTIONALLY - Prepare configuration in `~/.dotfiles/SECRETS` using templates from `~/.dotfiles/SECRETS_TEMPLATES`. Otherwise the setup will interactively set this up for you.
-4. Run the deployment script: `cd ~/.dotfiles && ~/.dotfiles/deploy.sh`
+2. OPTIONALLY - Prepare configuration in `~/.dotfiles/SECRETS` using templates from `~/.dotfiles/SECRETS_TEMPLATES`. Otherwise the setup will interactively set this up for you.
+3. Run the deployment script: `cd ~/.dotfiles && ~/.dotfiles/deploy.sh`
 
 ### What It Installs
 
