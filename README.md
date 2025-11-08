@@ -88,6 +88,10 @@ In the future, I might look to making more measured, self-contained releases. It
 
 If you do end up using this setup, or basing your setup in any way on this setup, I would appreciate any pull-requests you can make in an effort to make the repository more stable and less buggy.
 
+## Why not Neovim?
+
+Although I previously had decided to stick with Vim, with Bram's death, and the continued impressive evolution of Neovim, some time in the future I intend to move everything across to Neovim. But not right now, as it is a lot of work.
+
 ## Features
 
 ### VIM Setup
