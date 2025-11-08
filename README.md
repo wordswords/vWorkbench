@@ -78,7 +78,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
 
 This setup includes a variety of tools and configurations tailored for efficient development, such as a customized VIM setup, ZSH with Powerlevel10k, tmux, and the Alacritty terminal emulator. It integrates various productivity tools and shortcuts to optimize your workflow.
 
-## Maintaince
+## Maintenance
 
 At the moment, I'm using a 'rolling' release schedule, which means the many incompatibilities between different components of this setup are identified whenever I attempt to run the deploy script which updates the setup, and fixed and committed to trunk.
 
