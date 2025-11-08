@@ -386,7 +386,7 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - `blameline`: Line-by-line blame script.
 - `git logline`: Custom log alias.
 - `git checkout -- <file>`: Discard changes.
-- `git checkout <hash> <file>`: Restore file from commit.
+- `git checkout <hash> -- <file>`: Restore file from commit.
 
 For more, see the [Git Book](https://git-scm.com/book/en/v2) and [Git Workflow](https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md).
 
