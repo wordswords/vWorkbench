@@ -255,9 +255,9 @@ if [[ $cur_os == 'linux' ]] ; then
     report_progress 'Install htop for CPU/RAM/process monitoring'
         sudo apt install htop -y
     report_done
-    report_progress 'Install PCP for detailed monitoring'
-        sudo ~/.dotfiles/bin/install-pcp.sh
-    report_done
+    #report_progress 'Install PCP for detailed monitoring'
+    #    sudo ~/.dotfiles/bin/install-pcp.sh
+    #report_done
     report_progress 'Install Libreoffice for opening office documents'
         sudo apt install libreoffice -y
     report_done
