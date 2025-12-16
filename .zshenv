@@ -117,7 +117,7 @@ checkruns() {
     if [ "$(hostname)" = "hq" ]; then
         cat /home/david/.hqconfig/backup/.last_successful_backup_dump 2>/dev/null || true
         cat /home/david/.hqconfig/backup/.last_successful_backup_transfer 2>/dev/null || true
-        cat /home/david/.hqconfig/.last_successful_thor_run 2>/dev/null || true
+        cat /home/david/.hqconfig/thor/.last_successful_thor_scan 2>/dev/null || true
         cat /home/david/.hqconfig/.last_successful_update_run 2>/dev/null || true
     fi
     echo "\n"
