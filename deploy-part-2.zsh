@@ -221,6 +221,11 @@ report_progress 'Installing pandoc'
 ~/.dotfiles/bin/install-pandoc.sh
 report_done
 
+report_progress 'Install Cloudflare CLI speedtester'
+curl -fsSL https://raw.githubusercontent.com/kavehtehrani/cloudflare-speed-cli/main/install.sh | sh
+sudo mv ${VIMZ_USER}/.local/bin/cloudflare-speed-cli /usr/local/bin
+report_done
+
 ## OS specific stuff
 cur_os=$(get_os)
 report_progress 'Running any Windows specific configuration'
