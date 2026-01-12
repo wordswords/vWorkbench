@@ -223,7 +223,7 @@ report_done
 
 report_progress 'Install Cloudflare CLI speedtester'
 curl -fsSL https://raw.githubusercontent.com/kavehtehrani/cloudflare-speed-cli/main/install.sh | sh
-sudo mv ~${VIMZ_USER}/.local/bin/cloudflare-speed-cli /usr/local/bin
+sudo mv /home/${VIMZ_USER}/.local/bin/cloudflare-speed-cli /usr/local/bin
 report_done
 
 ## OS specific stuff
