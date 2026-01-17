@@ -125,7 +125,8 @@ checkruns() {
 autoload -Uz checkbackup
 
 getweather() {
-    ~/.dotfiles/bin/get-weather.sh
+    # weather too slow for now
+   # ~/.dotfiles/bin/get-weather.sh
 }
 autoload -Uz getweather
 
