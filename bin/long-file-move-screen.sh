@@ -21,7 +21,6 @@ if [ ! -d "$DESTINATION" ] ; then
     exit 1
 fi
 
-#/bin/nohup /bin/screen -dm bash -c 
-sudo /home/david/.dotfiles/bin/long-file-move.sh "$SOURCE" "$DESTINATION"
+/bin/nohup /bin/screen -dm bash -c sudo /home/david/.dotfiles/bin/long-file-move.sh "$SOURCE" "$DESTINATION"
 
 
