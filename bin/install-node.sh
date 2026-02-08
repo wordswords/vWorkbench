@@ -18,4 +18,4 @@ sudo cat /etc/apt/sources.list.d/nodesource.list | sort -u | sudo tee /etc/apt/s
 sudo mv /etc/apt/sources.list.d/nodesource.list.dedupe /etc/apt/sources.list.d/nodesource.list
 
 sudo apt-get update
-sudo apt-get install nodejs -y
+sudo apt-get install nodejs node-corepack -y
