@@ -9,4 +9,4 @@ if [ "$#" -eq 0 ]; then
 fi
 
 cd /home/incominggames
-wget -m -np -c -e robots=off -R index.html* "$1"
+wget -m -np -c -e --waitretry=60 robots=off -R index.html* "$1"

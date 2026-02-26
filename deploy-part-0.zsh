@@ -23,7 +23,7 @@ export PIP_BREAK_SYSTEM_PACKAGES=1
 #report_done
 
 report_progress 'Upgrade all packages/distro to latest version'
-    sudo apt-get update --allow-downgrades -y && sudo apt-get dist-upgrade --allow-downgrades -y && sudo apt-get upgrade --allow-downgrades -y && sudo apt-get autoremove --allow-downgrades -y
+    sudo /home/${VIMZ_USER}/.dotfiles/bin/update-all-packages-locally.sh
 report_done
 
 if [[ $cur_os == 'windows' ]] ; then
