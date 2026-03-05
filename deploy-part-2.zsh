@@ -247,7 +247,8 @@ if [[ $cur_os == 'windows' ]] ; then
     sudo cp ~/windows-tools/vpn-dns-bat-files/hq.local\ DNS\ to\ internal\ network\ \=\ RUN\ AS\ ADMIN.bat /mnt/c/Users/conta/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup/
 
     # install Windows11Debloat and set it to run at startup
-    ~/windows-tools/win11debloatsettings/install-debloat.sh
+    cd ~/windows-tools/win11debloatsettings
+    ./install-debloat.sh
 fi
 report_done
 
