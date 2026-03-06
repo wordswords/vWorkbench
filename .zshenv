@@ -13,9 +13,9 @@ notes() {
 autoload -Uz notes
 
 updatedotfiles() {
-    cd ~/.dotfiles >/dev/null 2>/dev/null
-    git pull >/dev/null 2>/dev/null | echo ''
-    cd - >/dev/null 2>/dev/null
+    #cd ~/.dotfiles >/dev/null 2>/dev/null
+    #git pull >/dev/null 2>/dev/null | echo ''
+    #cd - >/dev/null 2>/dev/null
 }
 autoload -Uz updatedotfiles
 
