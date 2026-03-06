@@ -11,6 +11,10 @@ set -e
 ## such as downloading files when exactly the same version of
 ## the file already exists.
 
+cd ~/.dotfiles
+git pull
+cd -
+
 ./deploy-part-0.zsh # pre requisite packages install
 ./deploy-part-1.sh # oh my zsh install
 ./deploy-part-2.zsh # all other customisations
