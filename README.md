@@ -478,11 +478,10 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 - Print file: `lp <file>`.
 - Print from pipe: `echo <text> | lp --`.
 
-## PCP - System Performance Co-Pilot
+## System load
 
-- Install: `~/bin/install-pcp.sh`.
-- Run dashboard: `pcp atop`.
-- Run iostat: `pcp iostat`.
+- `htop` - run as default for a good overview of resources)
+- `sudo iotop -ao` - for a good overview of the heaviest io users
 
 ## fzf
 
