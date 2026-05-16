@@ -122,7 +122,7 @@ alias externalip="curl https://ifconfig.co/json ; echo"
 alias firefox="/snap/bin/firefox"
 alias grep="grep --color"
 alias hq="ssh -p608 david@hq.local"
-alias rhq="ssh -p608 david@63.135.74.199"
+alias rhq="ssh -p608 david@192.168.100.200"
 alias iostat="pcp iostat"
 alias l='ls -CF'
 alias la='ls -A'
@@ -170,3 +170,6 @@ echo '' # BLANK LINE
 #zprof #- Uncomment this to profile zsh startup
 
 export TERM=xterm-256color
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
