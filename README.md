@@ -64,7 +64,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
   * [JIRA Go Client](#jira-go-client)
   * [NIX Internals Books](#nix-internals-books)
   * [Printing on Ubuntu](#printing-on-ubuntu)
-  * [PCP - System Performance Co-Pilot](#pcp---system-performance-co-pilot)
+  * [System load](#system-load)
   * [fzf](#fzf)
   * [GNU Parallel](#gnu-parallel)
   * [Format Conversion](#format-conversion)
