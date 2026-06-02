@@ -283,6 +283,10 @@ report_progress 'Install yt-clip for downloading youtube videos'
     ~/.dotfiles/bin/install-yt-clip.sh
 report_done
 
+report_progress 'Install iotop for io load monitoring'
+    sudo apt-get install iotop --allow-downgrades -y
+report_done
+
 report_progress 'We will now attempt to enable automated unattended-upgrades'
     sudo apt-get install unattended-upgrades --allow-downgrades -y
 report_done

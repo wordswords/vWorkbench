@@ -64,7 +64,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
   * [JIRA Go Client](#jira-go-client)
   * [NIX Internals Books](#nix-internals-books)
   * [Printing on Ubuntu](#printing-on-ubuntu)
-  * [PCP - System Performance Co-Pilot](#pcp---system-performance-co-pilot)
+  * [System load](#system-load)
   * [fzf](#fzf)
   * [GNU Parallel](#gnu-parallel)
   * [Format Conversion](#format-conversion)
@@ -478,11 +478,10 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 - Print file: `lp <file>`.
 - Print from pipe: `echo <text> | lp --`.
 
-## PCP - System Performance Co-Pilot
+## System load
 
-- Install: `~/bin/install-pcp.sh`.
-- Run dashboard: `pcp atop`.
-- Run iostat: `pcp iostat`.
+- `htop` - run as default for a good overview of resources)
+- `sudo iotop -ao` - for a good overview of the heaviest io users
 
 ## fzf
 
