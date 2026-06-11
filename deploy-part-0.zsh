@@ -95,7 +95,7 @@ report_done
 
 report_progress 'Download compile and install VIM9 on Ubuntu'
     sudo apt install libncurses-dev --allow-downgrades -y
-    ~/.dotfiles/bin/make-and-install-vim.sh 9.1.0821 
+    ~/.dotfiles/bin/make-and-install-vim.sh 9.2.0272
 report_done
 
 report_progress 'Install Python used for vim plugins'
@@ -281,6 +281,10 @@ report_done
 
 report_progress 'Install yt-clip for downloading youtube videos'
     ~/.dotfiles/bin/install-yt-clip.sh
+report_done
+
+report_progress 'Install iotop for io load monitoring'
+    sudo apt-get install iotop --allow-downgrades -y
 report_done
 
 report_progress 'We will now attempt to enable automated unattended-upgrades'
