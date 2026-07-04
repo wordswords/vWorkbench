@@ -1,25 +1,47 @@
 #!/bin/bash
 # vim: foldmethod=marker foldmarker=report_progress,report_done
 
-# This script is meant to do the 'heavy lifting' of the install.
+# This script handles the core installation and configuration of system tools,
+# development environments and user applications.
 
-# Wherever possible particularly heavy and/or repeatable tasks
-# such as the YCM compilation, should be moved to their own ~/bin/
-# script file and be called from here.
-#
-# This file should ideally NOT contain any apt package installs, they
-# should be mostly moved to deploy-part-0.sh, but sometimes it makes
-# sense to leave them here or in the ~/bin/ scripts for readability.
+set -eo pipefail
 
-# Load in status message printing functions
-set -e
 source ./deploy-common.sh
-
-# Load in vimz config variables
 source ~/.dotfiles/SECRETS/vimz_config.sh
 
-## We want to take that risk
+# Environment variables
 export PIP_BREAK_SYSTEM_PACKAGES=1
+
+# Common task functions
+function install_github_repository() {
+    local repo_url="$1"
+    local dest_dir="${2:-$(basename "$repo_url")}"
+    
+    if [[ -d "${dest_dir}" ]]; then
+        echo "Repository already exists at ${dest_dir}, pulling latest changes..."
+        git -C "${dest_dir}" pull
+    else
+        echo "Cloning repository ${repo_url} to ${dest_dir}"
+        git clone --depth 1 "${repo_url}" "${dest_dir}"
+    fi
+}
+
+function create_symbolic_link() {
+    local source_path="$1"
+    local target_path="$2"
+    
+    if [[ -e "$target_path" ]]; then
+        echo "Removing existing file/directory at ${target_path}"
+        rm -rf "$target_path"
+    fi
+    
+    echo "Creating symlink from ${source_path} to ${target_path}"
+    ln -sf "$source_path" "$target_path"
+}
+
+function install_node_packages() {
+    npm install -g "$@"
+}
 
 report_heading 'Deploy Dotfiles: Part 2'
 
