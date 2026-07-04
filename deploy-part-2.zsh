@@ -45,18 +45,47 @@ function install_node_packages() {
 
 report_heading 'Deploy Dotfiles: Part 2'
 
-report_progress 'Testing Github access'
-ssh -T git@github.com 2>/tmp/githubaccesscheck.txt || echo ""
-grep 'successfully authenticated' /tmp/githubaccesscheck.txt || (echo ERROR: Github acccess not available && exit 1)
-rm /tmp/githubaccesscheck.txt
+# Verify GitHub access before proceeding
+function verify_github_access() {
+    local check_file="/tmp/githubaccesscheck.txt"
+    
+    echo "Testing SSH connection to GitHub..."
+    ssh -T git@github.com 2>"$check_file" || true
+    
+    if grep -q 'successfully authenticated' "$check_file"; then
+        echo "GitHub access verified."
+        rm "$check_file"
+        return 0
+    else
+        echo "ERROR: Unable to authenticate with GitHub. Please check your SSH keys."
+        rm "$check_file"
+        exit 1
+    fi
+}
+
+report_progress 'Verifying GitHub access'
+verify_github_access
 report_done
 
-## Backup existing config and set links to new
+# Remove existing dotfiles to prevent conflicts
 report_progress 'Removing existing dotfiles'
-rm -rf ~/.vim
-rm -f ~/.vimrc
-rm -f ~/.bash_profile
-rm -f ~/.vim/coc-settings.json
+remove_existing_dotfiles() {
+    local files=(
+        '~/.vim'
+        '~/.vimrc'
+        '~/.bash_profile'
+        '~/.vim/coc-settings.json'
+    )
+    
+    for file in "${files[@]}"; do
+        if [[ -e "$file" ]]; then
+            echo "Removing ${file}"
+            rm -rf "$file"
+        fi
+    done
+}
+
+remove_existing_dotfiles
 report_done
 
 report_progress 'Installing oh-my-zsh plugins'
