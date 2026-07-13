@@ -1,40 +1,91 @@
 #!/bin/bash
 # vim: foldmethod=marker foldmarker=report_progress,report_done
 
-# This script is meant to do the 'heavy lifting' of the install.
+# This script handles the core installation and configuration of system tools,
+# development environments and user applications.
 
-# Wherever possible particularly heavy and/or repeatable tasks
-# such as the YCM compilation, should be moved to their own ~/bin/
-# script file and be called from here.
-#
-# This file should ideally NOT contain any apt package installs, they
-# should be mostly moved to deploy-part-0.sh, but sometimes it makes
-# sense to leave them here or in the ~/bin/ scripts for readability.
+set -eo pipefail
 
-# Load in status message printing functions
-set -e
 source ./deploy-common.sh
-
-# Load in vimz config variables
 source ~/.dotfiles/SECRETS/vimz_config.sh
 
-## We want to take that risk
+# Environment variables
 export PIP_BREAK_SYSTEM_PACKAGES=1
+
+# Common task functions
+function install_github_repository() {
+    local repo_url="$1"
+    local dest_dir="${2:-$(basename "$repo_url")}"
+    
+    if [[ -d "${dest_dir}" ]]; then
+        echo "Repository already exists at ${dest_dir}, pulling latest changes..."
+        git -C "${dest_dir}" pull
+    else
+        echo "Cloning repository ${repo_url} to ${dest_dir}"
+        git clone --depth 1 "${repo_url}" "${dest_dir}"
+    fi
+}
+
+function create_symbolic_link() {
+    local source_path="$1"
+    local target_path="$2"
+    
+    if [[ -e "$target_path" ]]; then
+        echo "Removing existing file/directory at ${target_path}"
+        rm -rf "$target_path"
+    fi
+    
+    echo "Creating symlink from ${source_path} to ${target_path}"
+    ln -sf "$source_path" "$target_path"
+}
+
+function install_node_packages() {
+    npm install -g "$@"
+}
 
 report_heading 'Deploy Dotfiles: Part 2'
 
-report_progress 'Testing Github access'
-ssh -T git@github.com 2>/tmp/githubaccesscheck.txt || echo ""
-grep 'successfully authenticated' /tmp/githubaccesscheck.txt || (echo ERROR: Github acccess not available && exit 1)
-rm /tmp/githubaccesscheck.txt
+# Verify GitHub access before proceeding
+function verify_github_access() {
+    local check_file="/tmp/githubaccesscheck.txt"
+    
+    echo "Testing SSH connection to GitHub..."
+    ssh -T git@github.com 2>"$check_file" || true
+    
+    if grep -q 'successfully authenticated' "$check_file"; then
+        echo "GitHub access verified."
+        rm "$check_file"
+        return 0
+    else
+        echo "ERROR: Unable to authenticate with GitHub. Please check your SSH keys."
+        rm "$check_file"
+        exit 1
+    fi
+}
+
+report_progress 'Verifying GitHub access'
+verify_github_access
 report_done
 
-## Backup existing config and set links to new
+# Remove existing dotfiles to prevent conflicts
 report_progress 'Removing existing dotfiles'
-rm -rf ~/.vim
-rm -f ~/.vimrc
-rm -f ~/.bash_profile
-rm -f ~/.vim/coc-settings.json
+remove_existing_dotfiles() {
+    local files=(
+        '~/.vim'
+        '~/.vimrc'
+        '~/.bash_profile'
+        '~/.vim/coc-settings.json'
+    )
+    
+    for file in "${files[@]}"; do
+        if [[ -e "$file" ]]; then
+            echo "Removing ${file}"
+            rm -rf "$file"
+        fi
+    done
+}
+
+remove_existing_dotfiles
 report_done
 
 report_progress 'Installing oh-my-zsh plugins'
