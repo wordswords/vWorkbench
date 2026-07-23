@@ -40,6 +40,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'craigemery/vim-autotag'
 Plugin 'preservim/tagbar'
+Plugin 'github/copilot.vim'
 # [END] Plugins CONFIG
 # [START] Vundle end CONFIG
 call vundle#end()
@@ -125,50 +126,23 @@ def PasteFromSystemClipboard(): void
 enddef
 nnoremap <C-v> :call <SID>PasteFromSystemClipboard()<CR>
 
-# Google Search the selected text
-def GoogleSearch(): void
-    normal! gv"zy
-    redir! > /tmp/googlesearchvim
-    echo getreg('z')
-    redir END
-    silent !~/bin/gg.sh
-    redraw!
-enddef
-vnoremap <leader>g :<c-u>call <SID>GoogleSearch()<CR>
-
-# Format file for code Reddit markdown post
-def FormatForReddit(): void
-    normal! gv"xy
-    redir! > /tmp/formatforredditvim
-    silent! echo getreg('x')
-    redir END
-    sp /tmp/formatforredditvim
-    %s/^/     /g
-enddef
-vnoremap <leader>p :<c-u>call <SID>FormatForReddit()<CR>
-
 # Yank whole file into clipboard
 def YankFile(): void
     %yank+
 enddef
 nnoremap <leader>y :call <SID>YankFile()<CR>
 
-# Foot pedal
-nnoremap <F6> i
-imap <F6> <Esc>
-#
 # Dotfiles help toggle
+def CloseDotfilesReadme(): void
+    :windo if expand('%:t') == 'README.md' | q! | endif
+    nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
+enddef
 def BringUpDotfilesReadme(): void
     :sp ~/.dotfiles/README.md
     nnoremap <leader>h :call <SID>CloseDotfilesReadme()<CR>
 enddef
 nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
 
-def CloseDotfilesReadme(): void
-    :windo if expand('%:t') == 'README.md' | q! | endif
-    :TagbarToogle!
-    nnoremap <leader>h :call <SID>BringUpDotfilesReadme()<CR>
-enddef
 
 # Quickfix list toggle
 :autocmd FileType qf wincmd J
@@ -200,6 +174,7 @@ def ToggleCopilotOff(): void
     nnoremap <silent><leader>c :call <SID>ToggleCopilotOn()<CR>
 enddef
 nnoremap <silent><leader>c :call <SID>ToggleCopilotOff()<CR>
+
 
 def ToggleCopilotOn(): void
     :Copilot enable
@@ -279,7 +254,7 @@ endif
 
 syntax on
 set termguicolors
-colorscheme desert
+colorscheme monokai256
 hi SpecialKey ctermfg=grey guifg=grey70
 hi NonText ctermfg=grey guifg=grey70
 # [END] Colourscheme config
@@ -439,50 +414,6 @@ enddef
 nnoremap <C-j> :call <SID>ScrollPopup(3)<CR>
 nnoremap <C-k> :call <SID>ScrollPopup(-3)<CR>
 # [END] Scrolling VIM9 popups using keyboard CONFIG
-# [START] wikipedia2text lookup CONFIG
-# See: https://github.com/chrisbra/wikipedia2text
-# Assumes you have installed the wikipedia2text script to your path
-# with the filename 'wp2t'
-
-def WikiLookupPopup(): void
-    set mouse=a
-    var popup_win = printf("wp2t -s %s", expand('<cword>'))
-                  ->system()
-                  ->split("\n")
-                  ->popup_atcursor({ padding: [1, 1, 1, 1] })
-
-    call setbufvar(winbufnr(popup_win), '&filetype', 'git')
-enddef
-nnoremap <silent><leader>w :call <SID>WikiLookupPopup()<CR>
-# [END] wikipedia2text lookup CONFIG
-# [START] JiraIssueLookupPopup lookup CONFIG
-def JiraIssueLookupPopup(): void
-    set mouse=a
-    var popup_win = printf("jira view issue --plain %s", expand('<cword>'))
-         ->system()
-         ->split("\n")
-         ->popup_atcursor({ padding: [1, 1, 1, 1] })
-    call setbufvar(winbufnr(popup_win), '&filetype', 'git')
-enddef
-nnoremap <silent><leader>j :call <SID>JiraIssueLookupPopup()<CR>
-# [END] JiraIssueLookupPopup lookup CONFIG
-# [START] GitBlaneLine lookup CONFIG
-def GitBlameLine(): void
-    var popup_win = printf("git -C %s blame -s -L %s,%s -- %s | head -c 8", expand('%:h'), line('.'), line('.'), expand('%:p'))
-        ->system()
-        ->printf("git -C " .. expand('%:h') .. " log --stat -1 %s")
-        ->system()
-        ->split("\n")
-        ->popup_atcursor({ padding: [0, 1, 1, 1] })
-
-    call setbufvar(winbufnr(popup_win), '&filetype', 'git')
-enddef
-nnoremap <silent><leader>b :call <SID>GitBlameLine()<CR>
-# [END] GitBlaneLine lookup CONFIG
-# [START] vim_codex CONFIG
-nnoremap <C-x> :CreateCompletion 100<CR>
-inoremap <C-x> <Esc>li<C-g>u<Esc>l:CreateCompletion 100<CR>
-# [END] vim_codex CONFIG
 # [START] vimtex CONFIG
 g:vimtex_view_method = 'zathura'
 g:vimtex_compiler_method = 'texidote'
