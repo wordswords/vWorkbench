@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 # Install ADOM - Ancient Domains of Mystery - my 'desert island' game
 
-sudo apt install libncurses5 -y
+sudo dnf install -y ncurses-libs
 wget https://www.adom.de/home/download/current/adom_linux_ubuntu_64_3.3.3.tar.gz
 tar xzf adom* ./adom
 cp ./adom*/adom ~/bin

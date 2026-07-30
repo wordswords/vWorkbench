@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 # Install Cmake 3.28.0
 #if [ ! -d ./cmake-3.28.0 ] ; then
-#    sudo apt-get install build-essential python3-dev libssl-dev -y
+#    sudo dnf install -y gcc gcc-c++ make python3-devel openssl-devel
 #    wget https://github.com/Kitware/CMake/releases/download/v3.28.0/cmake-3.28.0.tar.gz
 #    tar xzf cmake-3.28.0.tar.gz
 #    cd ./cmake-3.28.0
@@ -13,8 +13,8 @@ IFS=$'\n\t'
 #fi
 
 # Assumes node is already installed - Installs all other prereqs for YCM
-sudo apt install -y mono-complete golang
-sudo apt install -y openjdk-jdk openjdk-23-jre || sudo apt-get install default-jdk default-jre
+sudo dnf install -y mono-complete golang
+sudo dnf install -y java-latest-openjdk java-latest-openjdk-devel
 
 # Install YCM
 sudo rm -rf ~/.vim/bundle/YouCompleteMe || true

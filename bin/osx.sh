@@ -5,7 +5,7 @@ IFS=$'\n\t'
 # For when you want to use osx
 # Needs 40GB or so free
 
-sudo apt install qemu qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager libguestfs-tools -y
+sudo dnf install -y qemu-kvm libvirt virt-manager libguestfs-tools
 
 docker pull sickcodes/docker-osx:auto
 docker run -it --device /dev/kvm \

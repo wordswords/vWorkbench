@@ -2,12 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-sudo install -d -m 0755 /etc/apt/keyrings
-wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
-gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3") print "\nThe key fingerprint matches ("$0").\n"; else print "\nVerification failed: the fingerprint ("$0") does not match the expected one.\n"}'
-printf '%s\n' "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
-printf '%s\n' 'Package: *
-Pin: origin packages.mozilla.org
-Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla > /dev/null
-sudo apt-get update && sudo apt-get install firefox
+# Install Firefox on AlmaLinux via RPM Fusion
+sudo dnf install -y epel-release
+sudo dnf install -y --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm
+sudo dnf install -y firefox
 

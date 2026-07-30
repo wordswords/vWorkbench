@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 echo "Installing openssh-server and screen on the local machine.."
-sudo apt update && sudo apt install -y screen openssh-server
+sudo dnf install -y screen openssh-server
 echo ""
 
 echo "Setting permissions of local screen binary to allow multiuser sharing.."
