@@ -3,4 +3,3 @@ set -euo pipefail
 IFS=$'\n\t'
 
 cp ~/.dotfiles/.zshrc ~/.zshrc
-
