@@ -113,6 +113,7 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 ## [-- ALACRITTY CONFIG PATH --]
 ## [++ ALIASES ++]
 ( which jira >/dev/null 2>/dev/null ) && alias board="jira sprint list -s~Done" && alias issues="jira issue list -a$(jira me) -s~Done"
+alias aider="aider --model deepseek/deepseek-chat --architect --editor-edit-format whole"
 alias bat="batcat"
 alias blameline='~/.dotfiles/bin/git-better-blame.sh'
 alias colours='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done;'
