@@ -2,17 +2,17 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-if [ "$(id -u)" -ne 0 ] ; then
-    echo 'You must be root to run this script'
+if [[ $(id -u) -ne 0 ]] ; then
+    printf '%s\n' 'You must be root to run this script'
     exit 1
 fi
 
 SITE=${1}
 WWW=www.${SITE}
-sudo echo 0.0.0.0 "${WWW}" >> /etc/hosts
-sudo echo 0.0.0.0 "${SITE}" >> /etc/hosts
-sudo echo ::0 "${SITE}" >> /etc/hosts
-sudo echo ::0 "${WWW}" >> /etc/hosts
+printf '0.0.0.0 %s\n' "${WWW}" | sudo tee -a /etc/hosts > /dev/null
+printf '0.0.0.0 %s\n' "${SITE}" | sudo tee -a /etc/hosts > /dev/null
+printf '::0 %s\n' "${SITE}" | sudo tee -a /etc/hosts > /dev/null
+printf '::0 %s\n' "${WWW}" | sudo tee -a /etc/hosts > /dev/null
 
-echo "Blocked ${WWW} and ${SITE}"
+printf 'Blocked %s and %s\n' "${WWW}" "${SITE}"
 
