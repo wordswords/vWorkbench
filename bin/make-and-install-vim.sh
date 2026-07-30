@@ -11,9 +11,7 @@ VERSION=$1
 TMP_DIR=$(mktemp -d)
 cd "${TMP_DIR}"
 sudo dnf remove vim vim-gtk3 vim-tiny -y
-sudo dnf install -y
-sudo dnf install -y
-sudo dnf install -y
+sudo dnf install -y make gcc gcc-c++ git
 wget https://github.com/vim/vim/archive/refs/tags/v$1.tar.gz
 tar zxf v*gz
 rm ./*tar || true
@@ -26,4 +24,3 @@ make -j
 sudo make install
 cd ..
 rm -rf "${TMP_DIR}"
-
