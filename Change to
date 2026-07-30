@@ -1,0 +1,1 @@
+    read -rp "Enter AlmaLinux username for user you want to install Vimz to: " VIMZ_USERNAME
