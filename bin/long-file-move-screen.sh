@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 SOURCE=$1
 DESTINATION=$2
@@ -7,10 +9,6 @@ if [ "$(id -u)" -ne 0 ] ; then
     echo 'You must be root to run this script'
     exit 1
 fi
-
-set -x
-set -e
-
 
 if [ ! -d "$SOURCE" ] ; then
     echo "SOURCE directory does not exist"
@@ -22,5 +20,4 @@ if [ ! -d "$DESTINATION" ] ; then
 fi
 
 /bin/nohup /bin/screen -dm bash -c sudo /home/david/.dotfiles/bin/long-file-move.sh "$SOURCE" "$DESTINATION"
-
 

@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # For when you want to use osx
 # Needs 40GB or so free
-
-set -e
 
 sudo apt install qemu qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager libguestfs-tools -y
 
@@ -15,5 +15,4 @@ docker run -it --device /dev/kvm \
     -e GENERATE_UNIQUE=true \
     -e TERMS_OF_USE=i_agree \
     sickcodes/docker-osx:auto
-
 

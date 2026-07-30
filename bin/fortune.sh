@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
 # combine_and_make_fortune.sh
 # Concatenates all files in current directory into one fortune file.
 
@@ -24,5 +27,4 @@ done
 strfile "$OUTFILE" "$OUTFILE.dat"
 
 echo "Fortune file '$OUTFILE' and index '$OUTFILE.dat' created successfully."
-
 

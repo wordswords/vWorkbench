@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
-set -e
 shopt -s lastpipe
 # Read multi-line input from stdin
 read -r input;
 # Arbitrary command to run on each line of input
 command="$1"
-set -x
 
 printHelp()
 {

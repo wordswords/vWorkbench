@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
-set -e
 if [ $# -eq 0 ]; then
     >&2 echo "Usage: $0 <epub library search terms>"
     exit 1

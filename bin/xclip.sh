@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
-set -e
 source ~/.dotfiles/deploy-common.sh
 
 cur_os=$(get_os)
@@ -19,5 +20,4 @@ fi
 if [[ $cur_os == 'linux' ]] ; then
     xclip -selection clipboard "$@"
 fi
-
 

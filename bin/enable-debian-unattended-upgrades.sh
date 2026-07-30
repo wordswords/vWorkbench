@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
-set -e
-set -x
 #https://wiki.debian.org/UnattendedUpgrades
 sudo apt-get install unattended-upgrades apt-listchanges -y
 sudo echo unattended-upgrades unattended-upgrades/enable_auto_updates boolean true | sudo debconf-set-selections

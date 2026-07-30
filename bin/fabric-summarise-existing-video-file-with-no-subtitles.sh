@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -e
-set -x
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 videopath=$1
 
@@ -18,5 +17,4 @@ then
 fi
 
 fabric --transcribe-file "$videopath" --split-media-file --transcribe-model whisper-1 --pattern extract_wisdom > "$videopath".fabricsummary.md
-
 

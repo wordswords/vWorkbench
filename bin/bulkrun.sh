@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
 # bulkrun--Iterates over a directory of files, running a number of
 #   concurrent processes that will process the files in parallel
 
@@ -27,8 +30,8 @@ then
  printHelp
 fi
 
-total=$(ls $inputdir | wc -l)
-files="$(ls -Sr $inputdir)"
+total=$(ls "$inputdir" | wc -l)
+files="$(ls -Sr "$inputdir")"
 
 for k in $(seq 1 $procs $total)
 do

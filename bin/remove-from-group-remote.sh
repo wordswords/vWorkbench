@@ -1,4 +1,7 @@
-#!/bin/bash -ex
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
 shopt -s expand_aliases
 # shellcheck source=/dev/null
 source ~/.zsh_aliases

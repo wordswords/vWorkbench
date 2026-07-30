@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # How many commands: a simple script to count how many executable
 #   commands are in your current PATH
 
-
-IFS=":"
 count=0 ; nonex=0
-for directory in $PATH ;  do
+while IFS=: read -r -d '' directory; do
   if [ -d "$directory" ] ; then
     for command in "$directory"/* ; do
       if [ -x "$command" ] ; then
@@ -16,7 +16,7 @@ for directory in $PATH ;  do
       fi
     done
   fi
-done
+done < <(printf '%s\0' "$PATH")
 
 echo "$count commands, and $nonex entries that weren't executable"
 

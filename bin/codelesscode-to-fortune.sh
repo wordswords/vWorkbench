@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
-set -e
-set -x
-
-rm -rf ./codelesscode | echo ''
+rm -rf ./codelesscode || true
 git clone git@github.com:aldesantis/the-codeless-code.git ./codelesscode
 cd ./codelesscode/the-codeless-code/en-qi/
 ~/bin/fortune.sh .

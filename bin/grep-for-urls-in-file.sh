@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -x
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 filename="$1"
 
@@ -17,5 +16,5 @@ then
  printHelp
 fi
 
-cat ${filename} | grep -oE '\b(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]*[-A-Za-z0-9+&@#/%=~_|]'
+cat "${filename}" | grep -oE '\b(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]*[-A-Za-z0-9+&@#/%=~_|]'
 

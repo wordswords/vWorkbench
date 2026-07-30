@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -x
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 filename="$1"
 
@@ -17,4 +16,4 @@ then
  printHelp
 fi
 
-cat ${filename} | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' <file> | sort | uniq
+cat "${filename}" | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' | sort | uniq

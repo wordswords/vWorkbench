@@ -1,8 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
 userprompt="$1"
 pdf="$2"
 outputfile="notes-on-$pdf.md"
-rm -f "$outputfile" || ''
+rm -f "$outputfile" || true
 echo "pdf = $pdf"
 promptfile=$(mktemp)
 echo "$prompt" > "$promptfile"
@@ -28,5 +31,4 @@ do
         cat "$file" | sgpt "$prompt" >> "$outputfile"
     fi
 done
-
 

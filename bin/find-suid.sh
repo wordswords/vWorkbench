@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # findsuid--Checks all SUID files or programs to see if they're writeable,
 #   and outputs the matches in a friendly and useful format
@@ -19,16 +21,16 @@ do
 
    # Let's split file owner and permissions from the ls -ld output.
 
-   owner="$(ls -ld $match | awk '{print $3}')"
-   perms="$(ls -ld $match | cut -c5-10 | grep 'w')"
+   owner="$(ls -ld "$match" | awk '{print $3}')"
+   perms="$(ls -ld "$match" | cut -c5-10 | grep 'w')"
 
-   if [ ! -z $perms ] ; then
+   if [ -n "$perms" ] ; then
      echo "**** $match (writeable and setuid $owner)"
-   elif [ ! -z $(find $match -mtime -$mtime -print) ] ; then
+   elif [ -n "$(find "$match" -mtime -"$mtime" -print)" ] ; then
      echo "**** $match (modified within $mtime days and setuid $owner)"
    elif [ $verbose -eq 1 ] ; then
      # By default, only dangerous scripts are listed. If verbose, show all.
-     lastmod="$(ls -ld $match | awk '{print $6, $7, $8}')"
+     lastmod="$(ls -ld "$match" | awk '{print $6, $7, $8}')"
      echo "     $match (setuid $owner, last modified $lastmod)"
    fi
  fi

@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 sudo rm -rf ~/.joplin-bin
 sudo apt install libfuse2 -y

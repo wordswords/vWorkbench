@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -e
-set -x
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 websitetomd=$1
 
@@ -17,5 +16,5 @@ then
  printHelp
 fi
 
-fabric -u $websitetomd
+fabric -u "$websitetomd"
 

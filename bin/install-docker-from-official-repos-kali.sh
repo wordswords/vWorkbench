@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -e
-set -x
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # https://www.kali.org/docs/containers/installing-docker-on-kali/
 # Add the repository to Apt sources:

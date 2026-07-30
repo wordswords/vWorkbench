@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
 # imagedetails--Displays image file information and dimensions using the
 #   identify utility from ImageMagick
 

@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -x
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # Install ADOM - Ancient Domains of Mystery - my 'desert island' game
 

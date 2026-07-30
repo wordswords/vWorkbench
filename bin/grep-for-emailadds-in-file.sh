@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -x
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 filename="$1"
 
@@ -17,4 +16,4 @@ then
  printHelp
 fi
 
-cat ${filename} | grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b” file.txt
+cat "${filename}" | grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b"

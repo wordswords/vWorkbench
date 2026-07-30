@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -x
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 SDIR="/mnt/c/Users/conta/Documents/Soulseek Downloads/complete"
 

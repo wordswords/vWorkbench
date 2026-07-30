@@ -1,4 +1,7 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
 shopt -s expand_aliases
 source ~/.zsh_aliases
 if [ $# -eq 2 ]; then

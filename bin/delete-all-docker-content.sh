@@ -1,6 +1,6 @@
-#!/bin/bash
-
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 deleteAllDockerContent() {
     sudo service dockerd stop || true

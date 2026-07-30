@@ -1,10 +1,9 @@
-#!/bin/bash
-
-set -e
-set -x
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 if [ "$#" -eq 0 ]; then
-  echo "Usage: "$0" <url of base directory to download" >&2
+  echo "Usage: $0 <url of base directory to download>" >&2
   exit 1
 fi
 

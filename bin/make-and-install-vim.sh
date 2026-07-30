@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -x
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 if [ $# -eq 0 ]; then
     >&2 echo "Usage: $0 <Vim verison on https://mirrorservice.org/pub/vim/unix/>"
@@ -17,8 +16,8 @@ sudo apt install --allow-downgrades -y
 sudo apt install --allow-downgrades -y
 wget https://github.com/vim/vim/archive/refs/tags/v$1.tar.gz
 tar zxf v*gz
-rm ./*tar | true
-rm ./*bz2* | true
+rm ./*tar || true
+rm ./*bz2* || true
 cd ./vim*
 make clean dist clean
 ./configure --enable-python3interp=yes --with-python3-command=/bin/python3 --with-python3-config-dir="$(python3-config --configdir)"

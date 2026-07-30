@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -e
-set -x
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # deal with the horribleness that is Firefox under WSL2
 

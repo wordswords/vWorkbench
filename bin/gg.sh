@@ -1,6 +1,7 @@
-#!/bin/bash
-set -x
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
 args="$@"
 
 get_os () {

@@ -1,8 +1,6 @@
-#!/bin/bash
-
-set -o errexit
-set -o nounset
-set -o pipefail
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 declare sha line key value
 declare -A kv

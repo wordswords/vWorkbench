@@ -1,7 +1,6 @@
-#!/bin/bash
-
-set -e
-set -x
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # This should be all that is needed for home directories.
 
@@ -10,7 +9,4 @@ sudo chmod -R 770 "${HOME}"
 sudo chmod -R 700 "${HOME}"/.dotfiles/SECRETS
 sudo chmod -R 700 "${HOME}"/.secure
 sudo chmod -R 700 "${HOME}"/.ssh
-
-
-
 

@@ -1,4 +1,6 @@
-#!/bin/bash -ex
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # This requires a machine-alias already setup by deploy-remote-home.sh in the same directory.
 

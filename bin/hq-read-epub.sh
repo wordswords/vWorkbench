@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # Remotely connects to my home server and allows me to read an epub in the terminal.
-
-set -e
 
 if [ $# -eq 0 ]; then
     >&2 echo "Usage: $0 <search terms>"
