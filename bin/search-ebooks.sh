@@ -2,8 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-if [ $# -eq 0 ]; then
-    >&2 echo "Usage: $0 <epub library search terms>"
+if [[ $# -eq 0 ]]; then
+    printf '%s\n' "Usage: $0 <epub library search terms>" >&2
     exit 1
 fi
 

@@ -6,14 +6,14 @@ filename="$1"
 
 printHelp()
 {
- echo "Usage: $0 <file to grep ip addresses from>"
+ printf '%s\n' "Usage: $0 <file to grep ip addresses from>"
  exit 1
 }
 
-if [[ -z $filename ]]
+if [[ -z "$filename" ]]
 then
- echo "Invalid arguments"
+ printf '%s\n' "Invalid arguments"
  printHelp
 fi
 
-cat "${filename}" | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' | sort | uniq
+grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' < "${filename}" | sort | uniq

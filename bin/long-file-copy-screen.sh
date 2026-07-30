@@ -5,17 +5,17 @@ IFS=$'\n\t'
 SOURCE=$1
 DESTINATION=$2
 
-if [ "$(id -u)" -ne 0 ] ; then
-    echo 'You must be root to run this script'
+if [[ $(id -u) -ne 0 ]] ; then
+    printf '%s\n' 'You must be root to run this script'
     exit 1
 fi
 
-if [ ! -d "$SOURCE" ] ; then
-    echo "SOURCE directory does not exist"
+if [[ ! -d "$SOURCE" ]] ; then
+    printf '%s\n' "SOURCE directory does not exist"
     exit 1
 fi
-if [ ! -d "$DESTINATION" ] ; then
-    echo "DESTINATION directory does not exist"
+if [[ ! -d "$DESTINATION" ]] ; then
+    printf '%s\n' "DESTINATION directory does not exist"
     exit 1
 fi
 

@@ -5,17 +5,17 @@ IFS=$'\n\t'
 deleteAllDockerContent() {
     sudo service dockerd stop || true
     sudo /etc/init.d/docker stop || true
-    docker kill "$(docker ps -q)" || echo "No containers to stop" # stop all containers
-    for containeref in $(docker ps -q)
+    docker kill "$(docker ps -q)" || printf '%s\n' "No containers to stop" # stop all containers
+    while IFS= read -r containeref
     do
         docker stop "${containeref}"
-    done
-    for imgref in $(docker images -a | awk '{ print $3 }')
+    done < <(docker ps -q)
+    while IFS= read -r imgref
     do
-        if ! [[ "${imgref}" = "IMAGE" ]]; then
+        if [[ "${imgref}" != "IMAGE" ]]; then
             docker rmi -f "${imgref}"
         fi
-    done
+    done < <(docker images -a | awk '{ print $3 }')
     docker system prune
     docker network prune -f
     docker image prune -a -f

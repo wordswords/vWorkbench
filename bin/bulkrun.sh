@@ -7,10 +7,10 @@ IFS=$'\n\t'
 
 printHelp()
 {
- echo "Usage: $0 -p 3 -i inputDirectory/ -x \"command -to run/\""
-   echo -e "\t-p The maximum number of processes to start concurrently"
-   echo -e "\t-i The directory containing the files to run the command on"
-   echo -e "\t-x The command to run on the chosen files"
+ printf '%s\n' "Usage: $0 -p 3 -i inputDirectory/ -x \"command -to run/\""
+ printf '\t-p The maximum number of processes to start concurrently\n'
+ printf '\t-i The directory containing the files to run the command on\n'
+ printf '\t-x The command to run on the chosen files\n'
  exit 1
 }
 
@@ -26,16 +26,16 @@ done
 
 if [[ -z $procs || -z $command || -z $inputdir ]]
 then
- echo "Invalid arguments"
+ printf '%s\n' "Invalid arguments"
  printHelp
 fi
 
 total=$(ls "$inputdir" | wc -l)
 files="$(ls -Sr "$inputdir")"
 
-for k in $(seq 1 $procs $total)
+for ((k=1; k<=total; k+=procs))
 do
- for i in $(seq 0 $procs)
+ for ((i=0; i<=procs; i++))
  do
    if [[ $((i+k)) -gt $total ]]
    then
@@ -43,9 +43,9 @@ do
      exit 0
    fi
 
-   file=$(echo "$files" | sed $(expr $i + $k)"q;d")
-   echo "Running $command $inputdir/$file"
-   $command "$inputdir/$file"&
+   file=$(sed -n "$((i+k))p" <<< "$files")
+   printf 'Running %s %s/%s\n' "$command" "$inputdir" "$file"
+   $command "$inputdir/$file" &
  done
 
  wait

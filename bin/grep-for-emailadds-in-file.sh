@@ -6,14 +6,14 @@ filename="$1"
 
 printHelp()
 {
- echo "Usage: $0 <file to grep emails from>"
+ printf '%s\n' "Usage: $0 <file to grep emails from>"
  exit 1
 }
 
-if [[ -z $filename ]]
+if [[ -z "$filename" ]]
 then
- echo "Invalid arguments"
+ printf '%s\n' "Invalid arguments"
  printHelp
 fi
 
-cat "${filename}" | grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b"
+grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" < "${filename}"

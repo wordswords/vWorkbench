@@ -7,36 +7,40 @@ IFS=$'\n\t'
 shopt -s expand_aliases
 # shellcheck source=/dev/null
 source ~/.zsh_aliases
-if [ $# -eq 2 ]; then
+if [[ $# -eq 2 ]]; then
   # parameters
   MACHINE_ALIAS=$1
   USERNAME_TO_GRANT=$2
   USER=${USER}
 else
-  echo "grant-sudo-remote.sh <machine-alias> <username-on-machine-to-grant-sudo-to>"
+  printf '%s\n' "grant-sudo-remote.sh <machine-alias> <username-on-machine-to-grant-sudo-to>"
   exit 1
 fi
-rm /tmp/grant-sudo-tmp-file.txt || echo ""
+rm -f /tmp/grant-sudo-tmp-file.txt
 ${MACHINE_ALIAS} sudo -S whoami | tee /tmp/grant-sudo-tmp-file.txt
 if grep -q root /tmp/grant-sudo-tmp-file.txt ; then
-  echo We have root on "${MACHINE_ALIAS}". Finding out sudo group..
-  rm /tmp/grant-sudo-tmp-file.txt
+  printf 'We have root on %s. Finding out sudo group..\n' "${MACHINE_ALIAS}"
+  rm -f /tmp/grant-sudo-tmp-file.txt
 
   # get the sudo group
   "${MACHINE_ALIAS}" sudo -S groups "${USER}" | tee /tmp/grant-sudo-tmp-file.txt
   # remove interactive terminal stuff
-  sed -ie '/.*password for.*/d' /tmp/grant-sudo-tmp-file.txt
+  sed -i -e '/.*password for.*/d' /tmp/grant-sudo-tmp-file.txt
 
   # if the sudo group is called 'sudo'
-  grep -q sudo /tmp/grant-sudo-tmp-file.txt && "${MACHINE_ALIAS}" sudo -S usermod -aG sudo "${USERNAME_TO_GRANT}"
+  if grep -q sudo /tmp/grant-sudo-tmp-file.txt; then
+    "${MACHINE_ALIAS}" sudo -S usermod -aG sudo "${USERNAME_TO_GRANT}"
+  fi
 
   # if the sudo group is called 'wheel'
-  grep -q wheel /tmp/grant-sudo-tmp-file.txt && "${MACHINE_ALIAS}" sudo -S usermod -aG wheel "${USERNAME_TO_GRANT}"
+  if grep -q wheel /tmp/grant-sudo-tmp-file.txt; then
+    "${MACHINE_ALIAS}" sudo -S usermod -aG wheel "${USERNAME_TO_GRANT}"
+  fi
 
-  rm /tmp/grant-sudo-tmp-file.txt
+  rm -f /tmp/grant-sudo-tmp-file.txt
   exit 0
 else
-  echo We are not root on "${MACHINE_ALIAS}" exiting..
-  rm /tmp/grant-sudo-tmp-file.txt || echo ""
+  printf 'We are not root on %s exiting..\n' "${MACHINE_ALIAS}"
+  rm -f /tmp/grant-sudo-tmp-file.txt
   exit 1
 fi

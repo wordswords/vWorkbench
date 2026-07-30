@@ -12,8 +12,8 @@ sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/nodesource.gpg
 
 sudo rm -f /etc/apt/sources.list.d/nodesource.list
-sudo echo "$DEBLINE" | sudo tee /etc/apt/sources.list.d/nodesource.list
-sudo cat /etc/apt/sources.list.d/nodesource.list | sort -u | sudo tee /etc/apt/sources.list.d/nodesource.list.dedupe
+printf '%s\n' "$DEBLINE" | sudo tee /etc/apt/sources.list.d/nodesource.list > /dev/null
+sort -u < /etc/apt/sources.list.d/nodesource.list | sudo tee /etc/apt/sources.list.d/nodesource.list.dedupe > /dev/null
 sudo mv /etc/apt/sources.list.d/nodesource.list.dedupe /etc/apt/sources.list.d/nodesource.list
 
 sudo apt-get update

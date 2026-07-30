@@ -2,16 +2,16 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-if [ "$(id -u)" -ne 0 ] ; then
-    echo 'You must be root to run this script'
+if [[ $(id -u) -ne 0 ]] ; then
+    printf '%s\n' 'You must be root to run this script'
     exit 1
 fi
 
 SITE=${1}
 WWW=www.${SITE}
 
-sudo cat /etc/hosts | grep -v "${SITE}" > /etc/hosts.new
+grep -v "${SITE}" < /etc/hosts | sudo tee /etc/hosts.new > /dev/null
 sudo mv /etc/hosts.new /etc/hosts
 
-echo "Unblocked ${WWW} and ${SITE}"
+printf 'Unblocked %s and %s\n' "${WWW}" "${SITE}"
 

@@ -6,13 +6,13 @@ youtubeurl=$1
 
 printHelp()
 {
- echo "Usage: $0 <Youtube URL>"
+ printf '%s\n' "Usage: $0 <Youtube URL>"
  exit 1
 }
 
-if [[ -z $youtubeurl ]]
+if [[ -z "$youtubeurl" ]]
 then
- echo "Invalid arguments"
+ printf '%s\n' "Invalid arguments"
  printHelp
 fi
 

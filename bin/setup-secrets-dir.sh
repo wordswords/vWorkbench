@@ -7,7 +7,7 @@ cp -r ~/.dotfiles/SECRETS_TEMPLATE ~/.dotfiles/SECRETS_TEMPLATE_PROC
 cp -r ~/.dotfiles/SECRETS ~/.dotfiles/.SECRETS_BACKUP || true
 
 while :; do
-    echo "\n Building configuration..\n"
+    printf '\n Building configuration..\n'
     read -rp "Enter BORG Backup Passphrase: " VIMZ_BORG_PASSPHRASE
     read -rp "Enter Mozilla VPN Token: " VIMZ_MOZ_VPN_TOKEN
     read -rp "Enter OpenAI Access Token: " VIMZ_OPENAI_ACCESS_TOKEN
@@ -15,15 +15,15 @@ while :; do
     read -rp "Enter email address for your Github account: " VIMZ_GITHUB_EMAIL
     read -rp "Enter the Joplin Cloud sync password: " VIMZ_JOPLIN_SYNC_PASSWORD
     read -rp "Enter your OpenAPI Project API Key: " VIMZ_OPENAI_ACCESS_TOKEN
-    echo
-    echo "About to write the following configuration.."
-    echo "BORG Backup Passphrase: ${VIMZ_BORG_PASSPHRASE}"
-    echo "Mozilla VPN Token: ${VIMZ_MOZ_VPN_TOKEN}"
-    echo "OpenAI Project API Key: ${VIMZ_OPENAI_ACCESS_TOKEN}"
-    echo "Ubuntu username: ${VIMZ_USERNAME}"
-    echo "Github email address: ${VIMZ_GITHUB_EMAIL}"
-    echo "Joplin Cloud sync password:: ${VIMZ_JOPLIN_SYNC_PASSWORD}"
-    echo
+    printf '\n'
+    printf 'About to write the following configuration..\n'
+    printf 'BORG Backup Passphrase: %s\n' "${VIMZ_BORG_PASSPHRASE}"
+    printf 'Mozilla VPN Token: %s\n' "${VIMZ_MOZ_VPN_TOKEN}"
+    printf 'OpenAI Project API Key: %s\n' "${VIMZ_OPENAI_ACCESS_TOKEN}"
+    printf 'Ubuntu username: %s\n' "${VIMZ_USERNAME}"
+    printf 'Github email address: %s\n' "${VIMZ_GITHUB_EMAIL}"
+    printf 'Joplin Cloud sync password: %s\n' "${VIMZ_JOPLIN_SYNC_PASSWORD}"
+    printf '\n'
     read -rp "Write this config? (y/yes/No)" CONFIGWRITE
     case "$CONFIGWRITE" in
         Y|y|Yes|yes)
@@ -38,11 +38,11 @@ while :; do
         done
         rm -rf ~/.dotfiles/SECRETS
         mv ~/.dotfiles/SECRETS_TEMPLATE_PROC ~/.dotfiles/SECRETS
-        echo "Config saved in ~/.dotfiles/SECRETS/*"
+        printf 'Config saved in ~/.dotfiles/SECRETS/*\n'
         break;
         ;;
         *)
-        echo "OK. Trying again.."
+        printf 'OK. Trying again..\n'
         ;;
     esac
 done
