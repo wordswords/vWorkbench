@@ -1,5 +1,7 @@
-#!/bin/bash
-#
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
 #   This file echoes a bunch of 24-bit color codes
 #   to the terminal to demonstrate its functionality.
 #   The foreground escape sequence is ^[38;2;<r>;<g>;<b>m
