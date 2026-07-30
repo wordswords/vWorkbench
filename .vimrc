@@ -264,7 +264,7 @@ set modelines=5
 set modeline
 # [END] Modelines config
 # [START] vim-airline CONFIG
-g:airline_theme = 'molokai'
+g:airline_theme = 'night_owl'
 g:airline#extensions#tabline#enabled = 0
 g:airline#extensions#tabline#fnamemod = ':t' # Show just the filename
 g:airline_powerline_fonts = 1
