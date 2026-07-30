@@ -3,4 +3,3 @@ set -euo pipefail
 IFS=$'\n\t'
 
 sudo dnf install -y firefox
-
