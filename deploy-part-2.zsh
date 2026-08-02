@@ -147,13 +147,13 @@ cd -
 report_done
 
 report_progress 'Install Github CLI tool'
-(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
-&& sudo mkdir -p -m 755 /etc/apt/keyrings \
-&& wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-&& sudo apt update \
-&& sudo apt install gh -y
+(type -p wget >/dev/null || (sudo dnf update && sudo dnf install wget -y)) \
+&& sudo mkdir -p -m 755 /etc/dnf/keyrings \
+&& wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/dnf/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+&& sudo chmod go+r /etc/dnf/keyrings/githubcli-archive-keyring.gpg \
+&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/dnf/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/dnf/sources.list.d/github-cli.list > /dev/null \
+&& sudo dnf update \
+&& sudo dnf install gh -y
 report_done
 
 ## General Install
@@ -307,16 +307,16 @@ report_progress 'Running any Linux specific configuration'
 if [[ $cur_os == 'linux' ]] ; then
     # os-specific lines
     report_progress 'Installing workrave, a reminder app to take screenbreaks'
-        sudo apt-get install workrave -y || echo ''
+        sudo dnf install workrave -y || echo ''
     report_done
     report_progress 'Install zerotier for VPN'
         curl -s https://install.zerotier.com | sudo bash
     report_done
     report_progress 'Install htop for CPU/RAM/process monitoring'
-        sudo apt install htop -y
+        sudo dnf install htop -y
     report_done
     report_progress 'Install Libreoffice for opening office documents'
-        sudo apt install libreoffice -y
+        sudo dnf install libreoffice -y
     report_done
     ~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
 
@@ -340,7 +340,7 @@ if [[ $cur_os == 'linux' ]] ; then
     read -rp "Do you want to benchmark your computer with hardinfo2 (equiv to Speccy)? (y/yes/N)? " HB2INSTALL
     case "$HB2INSTALL" in
         Y|y|yes)
-            sudo apt install hardinfo -y
+            sudo dnf install hardinfo -y
         ;;
         *)
             true

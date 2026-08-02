@@ -26,12 +26,12 @@ report_progress 'Upgrade all packages/distro to latest version'
     sudo /home/${VIMZ_USER}/.dotfiles/bin/update-all-packages-locally.sh
 report_done
 
-if [[ $cur_os == 'windows' ]] ; then
-    report_progress 'Upgrading to a new LTS2 ubuntu release if available'
-        sudo apt install ubuntu-release-upgrader-core -y
-        sudo do-release-upgrade -d || echo 'There is no new LTS release available at present.'
-    report_done
-fi
+#if [[ $cur_os == 'windows' ]] ; then
+#    report_progress 'Upgrading to a new LTS2 ubuntu release if available'
+#        sudo apt install ubuntu-release-upgrader-core -y
+#        sudo do-release-upgrade -d || echo 'There is no new LTS release available at present.'
+#    report_done
+#fi
 
 report_progress 'Checking for existence of SECRETS directory'
 if [[ ! -d ~/.dotfiles/SECRETS ]] ; then
@@ -50,11 +50,11 @@ report_progress 'Ensure home directory permissions are set securely'
 report_done
 
 report_progress 'Install Git'
-    sudo apt-get install --allow-downgrades -y
+   sudo dnf install git -y
 report_done
 
 report_progress 'Install Make and g++'
-    sudo apt-get install make g++ --allow-downgrades -y
+    sudo dnf install make g++ -y
 report_done
 
 
@@ -89,74 +89,74 @@ report_done
 
 # Main lines
 report_progress 'Installing snap'
-    sudo apt install snapd --allow-downgrades -y
+    sudo dnf install snapd  -y
     sudo systemctl enable --now snapd apparmor
 report_done
 
 report_progress 'Download compile and install VIM9 on Ubuntu'
-    sudo apt install libncurses-dev --allow-downgrades -y
+    sudo dnf install libncurses-dev  -y
     ~/.dotfiles/bin/make-and-install-vim.sh 9.2.0272
 report_done
 
 report_progress 'Install Python used for vim plugins'
-    sudo apt-get install python3 --allow-downgrades -y
-    sudo apt-get install python3-pip --allow-downgrades -y
+    sudo dnf install python3  -y
+    sudo dnf install python3-pip  -y
     pip install --upgrade pip # upgrade python2 (!) pip
     pip3 install --upgrade pip # upgrade python3
 report_done
 
 report_progress 'Install latest open JDK used for LanguageTool'
-    sudo apt-get install default-jdk --allow-downgrades -y
+    sudo dnf install default-jdk  -y
 report_done
 
 report_progress 'Install Ruby, used for a few things'
-    sudo apt-get install ruby --allow-downgrades -y
+    sudo dnf install ruby  -y
 report_done
 
 report_progress 'Install zsh the best shell (so far)'
-    sudo apt-get install zsh --allow-downgrades -y
+    sudo dnf install zsh  -y
 report_done
 
 report_progress 'Install right type of Ctags used for vim plugins'
-    sudo apt-get remove exuberant-ctags --allow-downgrades -y | true
-    sudo apt-get install universal-ctags --allow-downgrades -y
+    sudo dnf remove exuberant-ctags  -y | true
+    sudo dnf install universal-ctags  -y
 report_done
 
 report_progress 'Install net-tools used for network diagnostics'
-    sudo apt-get install net-tools --allow-downgrades -y
+    sudo dnf install net-tools  -y
 report_done
 
 report_progress 'Install fortune used for fortune cookie'
-    sudo apt-get install fortune-mod --allow-downgrades -y
+    sudo dnf install fortune-mod  -y
 report_done
 
 report_progress 'Install Ripgrewp used for :CocSearch'
-    sudo apt-get install ripgrep --allow-downgrades -y
+    sudo dnf install ripgrep  -y
 report_done
 
 report_progress 'Install tree for showing directory structures'
-    sudo apt-get install tree --allow-downgrades -y
+    sudo dnf install tree  -y
 report_done
 
 report_progress 'Install w3m text browser for wikipedia2text'
-    sudo apt-get install w3m --allow-downgrades -y
+    sudo dnf install w3m  -y
 report_done
 
 report_progress 'Install bat, a cat clone with syntax highlighting and Git integration'
-    sudo apt-get install bat --allow-downgrades -y
+    sudo dnf install bat  -y
 report_done
 
 report_progress 'Install curl for downloading from the web'
-    sudo apt-get install curl --allow-downgrades -y
+    sudo dnf install curl  -y
 report_done
 
 report_progress 'Install xclip and xsel for clipboard access'
-    sudo apt-get install xclip --allow-downgrades -y
-    sudo apt-get install xsel --allow-downgrades -y
+    sudo dnf install xclip  -y
+    sudo dnf install xsel  -y
 report_done
 
 report_progress 'Install tmux terminal multiplexer'
-    sudo apt-get install tmux --allow-downgrades -y
+    sudo dnf install tmux  -y
 report_done
 
 report_progress 'Install tmux terminal multiplexer and dev session config'
@@ -166,12 +166,12 @@ report_progress 'Install tmux terminal multiplexer and dev session config'
     cp ~/.dotfiles/.tmuxinator.development.yml ~/.config/tmuxinator/development.yml
 report_done
 report_progress 'Install Elixir for Elixir development'
-    sudo apt-get install elixir --allow-downgrades -y
-    sudo apt-get install erlang --allow-downgrades -y
+    sudo dnf install elixir  -y
+    sudo dnf install erlang  -y
 report_done
 
 report_progress 'Install Nmap for Network admin'
-    sudo apt-get install nmap --allow-downgrades -y
+    sudo dnf install nmap  -y
 report_done
 
 report_progress 'Install asciicinema for screencasts'
@@ -179,11 +179,11 @@ report_progress 'Install asciicinema for screencasts'
 report_done
 
 report_progress 'Install shfmt for shell script formatting'
-    sudo apt-get install shfmt --allow-downgrades -y
+    sudo dnf install shfmt  -y
 report_done
 
 report_progress 'Install shellcheck for shell script formatting'
-    sudo apt-get install shellcheck --allow-downgrades -y
+    sudo dnf install shellcheck  -y
 report_done
 
 report_progress 'Install ChatGPT CLI client'
@@ -213,11 +213,11 @@ report_progress 'Install markdownlint-cli for markdown English betterment'
 report_done
 
 report_progress 'Install yamllint'
-    sudo apt install yamllint --allow-downgrades -y
+    sudo apt install yamllint  -y
 report_done
 
 report_progress 'Install jq'
-    sudo apt install jq --allow-downgrades -y
+    sudo apt install jq  -y
 report_done
 
 report_progress 'Install fnm node.js version manager'
@@ -242,8 +242,8 @@ report_progress 'Installing Delta, a git diff viewer'
 report_done
 
 report_progress 'Installing surfraw a command line google search client'
-    sudo apt-get install surfraw --allow-downgrades -y
-    sudo apt-get install surfraw-extra --allow-downgrades -y
+    sudo dnf install surfraw  -y
+    sudo dnf install surfraw-extra  -y
 report_done
 
 report_progress 'Installing epy a command line epub reader'
@@ -255,11 +255,11 @@ report_progress 'Installing AWS CLI'
 report_done
 
 report_progress 'Installing Rust and Cargo'
-    sudo apt-get install cargo --allow-downgrades -y
+    sudo dnf install cargo  -y
 report_done
 
 report_progress 'Installing Cmake for compiling YCM'
-    sudo apt-get install cmake --allow-downgrades -y
+    sudo dnf install cmake  -y
 report_done
 
 report_progress 'Installing aider for AI coding assistance'
@@ -267,7 +267,7 @@ report_progress 'Installing aider for AI coding assistance'
 report_done
 
 report_progress 'Install calibre for mobi to PDF conversation'
-    sudo apt-get install calibre --allow-downgrades -y
+    sudo dnf install calibre  -y
 report_done
 
 report_progress 'Install Fabric for AI unixy prompt commands'
@@ -284,11 +284,11 @@ report_progress 'Install yt-clip for downloading youtube videos'
 report_done
 
 report_progress 'Install iotop for io load monitoring'
-    sudo apt-get install iotop --allow-downgrades -y
+    sudo dnf install iotop  -y
 report_done
 
 report_progress 'We will now attempt to enable automated unattended-upgrades'
-    sudo apt-get install unattended-upgrades --allow-downgrades -y
+    sudo dnf install unattended-upgrades  -y
 report_done
 
 
