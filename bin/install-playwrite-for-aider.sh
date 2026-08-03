@@ -17,50 +17,96 @@ require_root_sudo() {
 }
 
 detect_pkg_manager() {
-  if command -v dnf >/dev/null 2>&1; then
+  if command -v apt >/dev/null 2>&1; then
+    PKG_MGR="apt"
+  elif command -v dnf >/dev/null 2>&1; then
     PKG_MGR="dnf"
   elif command -v yum >/dev/null 2>&1; then
     PKG_MGR="yum"
   else
-    echo "Error: neither dnf nor yum was found."
+    echo "Error: neither apt, dnf nor yum was found."
     exit 1
   fi
 }
 
 install_system_packages() {
   log "Installing system packages"
-  sudo "${PKG_MGR}" install -y \
-    python3 \
-    python3-pip \
-    python3-virtualenv \
-    git \
-    curl \
-    ca-certificates \
-    nss \
-    nspr \
-    atk \
-    at-spi2-atk \
-    at-spi2-core \
-    cups-libs \
-    libdrm \
-    libXcomposite \
-    libXdamage \
-    libXext \
-    libXfixes \
-    libXrandr \
-    libxkbcommon \
-    mesa-libgbm \
-    pango \
-    alsa-lib \
-    gtk3 \
-    xorg-x11-fonts-Type1 \
-    xorg-x11-xauth \
-    libatomic
+  
+  if [[ "${PKG_MGR}" == "apt" ]]; then
+    sudo apt update
+    sudo apt install -y \
+      python3 \
+      python3-pip \
+      python3-venv \
+      git \
+      curl \
+      ca-certificates \
+      libnss3 \
+      libnspr4 \
+      libatk1.0-0 \
+      libatk-bridge2.0-0 \
+      libatspi2.0-0 \
+      libcups2 \
+      libdrm2 \
+      libxcomposite1 \
+      libxdamage1 \
+      libxext6 \
+      libxfixes3 \
+      libxrandr2 \
+      libxkbcommon0 \
+      libgbm1 \
+      libpango-1.0-0 \
+      libcairo2 \
+      libasound2 \
+      libgtk-3-0 \
+      xfonts-100dpi \
+      xfonts-75dpi \
+      xauth \
+      libatomic1
+  else
+    # dnf/yum packages (existing)
+    sudo "${PKG_MGR}" install -y \
+      python3 \
+      python3-pip \
+      python3-virtualenv \
+      git \
+      curl \
+      ca-certificates \
+      nss \
+      nspr \
+      atk \
+      at-spi2-atk \
+      at-spi2-core \
+      cups-libs \
+      libdrm \
+      libXcomposite \
+      libXdamage \
+      libXext \
+      libXfixes \
+      libXrandr \
+      libxkbcommon \
+      mesa-libgbm \
+      pango \
+      alsa-lib \
+      gtk3 \
+      xorg-x11-fonts-Type1 \
+      xorg-x11-xauth \
+      libatomic
+  fi
 }
 
 create_venv() {
   log "Creating virtual environment at ${VENV_DIR}"
-  "${PYTHON_BIN}" -m venv "${VENV_DIR}"
+  if [[ "${PKG_MGR}" == "apt" ]]; then
+    "${PYTHON_BIN}" -m venv "${VENV_DIR}"
+  else
+    # For dnf/yum, use virtualenv if python3-venv isn't available
+    if ! "${PYTHON_BIN}" -m venv --help >/dev/null 2>&1; then
+      python3 -m virtualenv "${VENV_DIR}"
+    else
+      "${PYTHON_BIN}" -m venv "${VENV_DIR}"
+    fi
+  fi
   # shellcheck disable=SC1090
   source "${VENV_DIR}/bin/activate"
 }
