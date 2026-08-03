@@ -8,6 +8,7 @@ SRC_DIR="${BUILD_DIR}/fortune-mod/"
 BUILD_SUBDIR="${SRC_DIR}/fortune-mod"
 
 sudo rm -rf "$BUILD_DIR"
+mkdir -p "${BUILD_DIR}"
 
 need_root() {
   if [[ ${EUID:-$(id -u)} -ne 0 ]]; then
@@ -46,9 +47,16 @@ pkg_install \
   perl-Test-Trap \
   perl-Test-Differences \
   perl-autodie \
-  chrpath
+  chrpath \
+  perl-App-cpanminus \
+  perl-Docmake
 
-mkdir -p "${BUILD_DIR}"
+echo "==> Installing App::Docmake via CPAN"
+need_root cpanm App::Docmake || {
+  echo "Warning: Failed to install App::Docmake via cpanm. Trying with cpan..."
+  need_root cpan App::Docmake || echo "Warning: Could not install App::Docmake. Man page generation may fail."
+}
+
 cd "${BUILD_DIR}"
 
 if [[ ! -d "${SRC_DIR}" ]]; then
@@ -62,6 +70,12 @@ fi
 mkdir -p "${BUILD_SUBDIR}"
 cd "${BUILD_SUBDIR}"
 
+# Remove any conflicting 'fortune' directory that might exist from a previous build
+if [[ -d "${BUILD_SUBDIR}/fortune" && ! -x "${BUILD_SUBDIR}/fortune" ]]; then
+  echo "==> Removing conflicting 'fortune' directory"
+  rm -rf "${BUILD_SUBDIR}/fortune"
+fi
+
 echo "==> Configuring build"
 cmake . \
   -DCMAKE_BUILD_TYPE=Release \
@@ -71,7 +85,23 @@ cmake . \
   -DNO_OFFENSIVE=TRUE
 
 echo "==> Building"
-make -j"$(nproc)"
+# First try to build without man pages if docmake is unavailable
+if ! command -v docmake >/dev/null 2>&1; then
+  echo "docmake not found; attempting to build without man pages"
+  make -j"$(nproc)" || {
+    echo "Build failed. Trying to disable man page generation..."
+    cmake . \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
+      -DCOOKIEDIR="${PREFIX}/share/fortune" \
+      -DLOCALDIR="${PREFIX}/share/fortune" \
+      -DNO_OFFENSIVE=TRUE \
+      -DBUILD_MAN_PAGES=OFF
+    make -j"$(nproc)"
+  }
+else
+  make -j"$(nproc)"
+fi
 
 echo "==> Running tests if available"
 if make -q check >/dev/null 2>&1; then
@@ -117,5 +147,3 @@ else
   echo "fortune was not found on PATH. If installed under ${PREFIX}/games, add it to PATH:"
   echo 'export PATH="/usr/local/bin:/usr/local/games:$PATH"'
 fi
-
-
