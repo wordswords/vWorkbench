@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO_URL="git@github.com:wordswords/fortune-mod-almalinux-dpc.git"
+PREFIX="/usr/local"
+BUILD_DIR="${HOME}/src/fortune-mod-build"
+SRC_DIR="${BUILD_DIR}/fortune-mod/"
+BUILD_SUBDIR="${SRC_DIR}/fortune-mod"
+
+sudo rm -rf "$BUILD_DIR"
+
+need_root() {
+  if [[ ${EUID:-$(id -u)} -ne 0 ]]; then
+    if command -v sudo >/dev/null 2>&1; then
+      sudo "$@"
+    else
+      echo "This step needs root. Re-run as root or install sudo." >&2
+      exit 1
+    fi
+  else
+    "$@"
+  fi
+}
+
+pkg_install() {
+  need_root dnf install -y "$@"
+}
+
+echo "==> Installing build dependencies"
+need_root dnf groupinstall -y "Development Tools"
+pkg_install \
+  cmake \
+  git \
+  gcc \
+  gcc-c++ \
+  make \
+  pkgconf-pkg-config \
+  recode \
+  recode-devel \
+  perl \
+  perl-interpreter \
+  perl-Path-Tiny \
+  perl-File-Find-Object \
+  perl-Getopt-Long \
+  perl-Test-Harness \
+  perl-Test-Trap \
+  perl-Test-Differences \
+  perl-autodie \
+  chrpath
+
+mkdir -p "${BUILD_DIR}"
+cd "${BUILD_DIR}"
+
+if [[ ! -d "${SRC_DIR}" ]]; then
+  echo "==> Cloning source"
+  git clone "${REPO_URL}" "${SRC_DIR}"
+else
+  echo "==> Updating existing source tree"
+  git -C "${SRC_DIR}" pull --ff-only
+fi
+
+mkdir -p "${BUILD_SUBDIR}"
+cd "${BUILD_SUBDIR}"
+
+echo "==> Configuring build"
+cmake . \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
+  -DCOOKIEDIR="${PREFIX}/share/fortune" \
+  -DLOCALDIR="${PREFIX}/share/fortune" \
+  -DNO_OFFENSIVE=TRUE
+
+echo "==> Building"
+make -j"$(nproc)"
+
+echo "==> Running tests if available"
+if make -q check >/dev/null 2>&1; then
+  make check || true
+else
+  echo "No 'check' target detected; skipping tests"
+fi
+
+echo "==> Installing"
+need_root make install
+need_root ldconfig || true
+
+echo "==> Looking for installed binaries"
+FOUND_STRFILE="$(command -v strfile || true)"
+FOUND_FORTUNE="$(command -v fortune || true)"
+
+if [[ -z "${FOUND_STRFILE}" && -x "${PREFIX}/bin/strfile" ]]; then
+  FOUND_STRFILE="${PREFIX}/bin/strfile"
+fi
+if [[ -z "${FOUND_STRFILE}" && -x "${PREFIX}/games/strfile" ]]; then
+  FOUND_STRFILE="${PREFIX}/games/strfile"
+fi
+if [[ -z "${FOUND_FORTUNE}" && -x "${PREFIX}/bin/fortune" ]]; then
+  FOUND_FORTUNE="${PREFIX}/bin/fortune"
+fi
+if [[ -z "${FOUND_FORTUNE}" && -x "${PREFIX}/games/fortune" ]]; then
+  FOUND_FORTUNE="${PREFIX}/games/fortune"
+fi
+
+echo
+if [[ -n "${FOUND_STRFILE}" ]]; then
+  echo "strfile installed at: ${FOUND_STRFILE}"
+  "${FOUND_STRFILE}" -h || true
+else
+  echo "strfile was not found on PATH; search with: find ${PREFIX} /usr -name strfile 2>/dev/null"
+fi
+
+echo
+if [[ -n "${FOUND_FORTUNE}" ]]; then
+  echo "fortune installed at: ${FOUND_FORTUNE}"
+  "${FOUND_FORTUNE}" -v || true
+else
+  echo "fortune was not found on PATH. If installed under ${PREFIX}/games, add it to PATH:"
+  echo 'export PATH="/usr/local/bin:/usr/local/games:$PATH"'
+fi
+
+
