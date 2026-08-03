@@ -71,10 +71,10 @@ fi
 # Use a separate build directory to avoid conflicts with source directories
 BUILD_DIR_CMAKE="${BUILD_DIR}/cmake-build"
 mkdir -p "${BUILD_DIR_CMAKE}"
-cd "${BUILD_DIR_CMAKE}"
 
 echo "==> Configuring build"
-cmake "${SRC_DIR}/fortune-mod" \
+# Use -S and -B to specify source and build directories explicitly
+cmake -S "${SRC_DIR}/fortune-mod" -B "${BUILD_DIR_CMAKE}" \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
   -DCOOKIEDIR="${PREFIX}/share/fortune" \
@@ -85,38 +85,38 @@ echo "==> Building"
 # Check if docmake is available; if not, configure without man pages
 if ! command -v docmake >/dev/null 2>&1; then
   echo "docmake not found; configuring build without man pages"
-  cmake "${SRC_DIR}/fortune-mod" \
+  cmake -S "${SRC_DIR}/fortune-mod" -B "${BUILD_DIR_CMAKE}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
     -DCOOKIEDIR="${PREFIX}/share/fortune" \
     -DLOCALDIR="${PREFIX}/share/fortune" \
     -DNO_OFFENSIVE=TRUE \
     -DBUILD_MAN_PAGES=OFF
-  make -j"$(nproc)"
+  cmake --build "${BUILD_DIR_CMAKE}" -j"$(nproc)"
 else
   # Try building with man pages first
-  if ! make -j"$(nproc)"; then
+  if ! cmake --build "${BUILD_DIR_CMAKE}" -j"$(nproc)"; then
     echo "Build failed. Trying to disable man page generation..."
-    cmake "${SRC_DIR}/fortune-mod" \
+    cmake -S "${SRC_DIR}/fortune-mod" -B "${BUILD_DIR_CMAKE}" \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
       -DCOOKIEDIR="${PREFIX}/share/fortune" \
       -DLOCALDIR="${PREFIX}/share/fortune" \
       -DNO_OFFENSIVE=TRUE \
       -DBUILD_MAN_PAGES=OFF
-    make -j"$(nproc)"
+    cmake --build "${BUILD_DIR_CMAKE}" -j"$(nproc)"
   fi
 fi
 
 echo "==> Running tests if available"
-if make -q check >/dev/null 2>&1; then
-  make check || true
+if cmake --build "${BUILD_DIR_CMAKE}" --target check -- -q >/dev/null 2>&1; then
+  cmake --build "${BUILD_DIR_CMAKE}" --target check || true
 else
   echo "No 'check' target detected; skipping tests"
 fi
 
 echo "==> Installing"
-need_root make install
+need_root cmake --install "${BUILD_DIR_CMAKE}"
 need_root ldconfig || true
 
 echo "==> Looking for installed binaries"
