@@ -236,9 +236,7 @@ report_progress 'Installing McFly, a zsh Control-R replacement'
 report_done
 
 report_progress 'Installing Delta, a git diff viewer'
-    wget https://github.com/dandavison/delta/releases/download/0.15.1/git-delta_0.15.1_amd64.deb
-    sudo dpkg -i git-delta_0.15.1_amd64.deb
-    rm git-delta_0.15.1_amd64.deb
+    sudo dnf install git-delta -y
 report_done
 
 report_progress 'Installing surfraw a command line google search client'
