@@ -5,7 +5,6 @@ REPO_URL="git@github.com:wordswords/fortune-mod-almalinux-dpc.git"
 PREFIX="/usr/local"
 BUILD_DIR="${HOME}/src/fortune-mod-build"
 SRC_DIR="${BUILD_DIR}/fortune-mod/"
-BUILD_SUBDIR="${SRC_DIR}/fortune-mod"
 
 sudo rm -rf "$BUILD_DIR"
 mkdir -p "${BUILD_DIR}"
@@ -69,17 +68,13 @@ else
   git -C "${SRC_DIR}" pull --ff-only
 fi
 
-mkdir -p "${BUILD_SUBDIR}"
-cd "${BUILD_SUBDIR}"
-
-# Remove any conflicting 'fortune' directory that might exist from a previous build
-if [[ -d "${BUILD_SUBDIR}/fortune" && ! -x "${BUILD_SUBDIR}/fortune" ]]; then
-  echo "==> Removing conflicting 'fortune' directory"
-  rm -rf "${BUILD_SUBDIR}/fortune"
-fi
+# Use a separate build directory to avoid conflicts with source directories
+BUILD_DIR_CMAKE="${BUILD_DIR}/cmake-build"
+mkdir -p "${BUILD_DIR_CMAKE}"
+cd "${BUILD_DIR_CMAKE}"
 
 echo "==> Configuring build"
-cmake . \
+cmake "${SRC_DIR}/fortune-mod" \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
   -DCOOKIEDIR="${PREFIX}/share/fortune" \
@@ -90,7 +85,7 @@ echo "==> Building"
 # Check if docmake is available; if not, configure without man pages
 if ! command -v docmake >/dev/null 2>&1; then
   echo "docmake not found; configuring build without man pages"
-  cmake . \
+  cmake "${SRC_DIR}/fortune-mod" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
     -DCOOKIEDIR="${PREFIX}/share/fortune" \
@@ -102,7 +97,7 @@ else
   # Try building with man pages first
   if ! make -j"$(nproc)"; then
     echo "Build failed. Trying to disable man page generation..."
-    cmake . \
+    cmake "${SRC_DIR}/fortune-mod" \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
       -DCOOKIEDIR="${PREFIX}/share/fortune" \
