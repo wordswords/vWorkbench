@@ -48,14 +48,16 @@ pkg_install \
   perl-Test-Differences \
   perl-autodie \
   chrpath \
-  perl-App-cpanminus \
-  perl-Docmake
+  perl-App-cpanminus
 
 echo "==> Installing App::Docmake via CPAN"
-need_root cpanm App::Docmake || {
+if ! need_root cpanm App::Docmake 2>/dev/null; then
   echo "Warning: Failed to install App::Docmake via cpanm. Trying with cpan..."
-  need_root cpan App::Docmake || echo "Warning: Could not install App::Docmake. Man page generation may fail."
-}
+  if ! need_root cpan App::Docmake 2>/dev/null; then
+    echo "Warning: Could not install App::Docmake. Man page generation may fail."
+    echo "The build will continue without man pages."
+  fi
+fi
 
 cd "${BUILD_DIR}"
 
@@ -85,10 +87,20 @@ cmake . \
   -DNO_OFFENSIVE=TRUE
 
 echo "==> Building"
-# First try to build without man pages if docmake is unavailable
+# Check if docmake is available; if not, configure without man pages
 if ! command -v docmake >/dev/null 2>&1; then
-  echo "docmake not found; attempting to build without man pages"
-  make -j"$(nproc)" || {
+  echo "docmake not found; configuring build without man pages"
+  cmake . \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
+    -DCOOKIEDIR="${PREFIX}/share/fortune" \
+    -DLOCALDIR="${PREFIX}/share/fortune" \
+    -DNO_OFFENSIVE=TRUE \
+    -DBUILD_MAN_PAGES=OFF
+  make -j"$(nproc)"
+else
+  # Try building with man pages first
+  if ! make -j"$(nproc)"; then
     echo "Build failed. Trying to disable man page generation..."
     cmake . \
       -DCMAKE_BUILD_TYPE=Release \
@@ -98,9 +110,7 @@ if ! command -v docmake >/dev/null 2>&1; then
       -DNO_OFFENSIVE=TRUE \
       -DBUILD_MAN_PAGES=OFF
     make -j"$(nproc)"
-  }
-else
-  make -j"$(nproc)"
+  fi
 fi
 
 echo "==> Running tests if available"
