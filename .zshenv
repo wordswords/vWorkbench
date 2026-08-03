@@ -21,7 +21,7 @@ autoload -Uz updatedotfiles
 
 fortuneprint() {
     echo "\n"
-    echo -e "[-- \e[0;36m$(fortune)\e[0m --]"
+    echo -e "[-- \e[0;36m$(/usr/local/games/fortune)\e[0m --]"
     echo "\n"
 }
 autoload -Uz fortuneprint

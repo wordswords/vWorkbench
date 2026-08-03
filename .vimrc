@@ -168,20 +168,11 @@ def ToggleOffLocationList(): void
 enddef
 nnoremap <UP> :call <SID>ToggleOnLocationList()<CR>
 
-# Git Copilot toggle
-def ToggleCopilotOff(): void
-    :Copilot disable
-    :Copilot status
-    nnoremap <silent><leader>c :call <SID>ToggleCopilotOn()<CR>
+# Ollama Copilot toggle
+def ToggleOllama(): void
+    :Ollama toggle
 enddef
-nnoremap <silent><leader>c :call <SID>ToggleCopilotOff()<CR>
-
-
-def ToggleCopilotOn(): void
-    :Copilot enable
-    :Copilot status
-    nnoremap <silent><leader>c :call <SID>ToggleCopilotOff()<CR>
-enddef
+nnoremap <silent><leader>c :call <SID>ToggleOllama()<CR>
 
 # Run language tool
 nnoremap <silent><leader>l :call <SID>RunTextidoteToggle()<CR>

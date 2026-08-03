@@ -245,6 +245,10 @@ report_progress 'Changing shell to /bin/zsh.'
 sudo usermod -s /bin/zsh "$(whoami)"
 report_done
 
+report_progress 'Build and install Fortune-mod for Almalinux'
+    ~/.dotfiles/bin/build-and-install-fortune-mod-on-almalinux.sh
+report_done
+
 report_progress 'Customising Fortune random quoter'
 ~/bin/codelesscode-to-fortune.sh
 report_done
@@ -275,6 +279,10 @@ report_done
 report_progress 'Install Cloudflare CLI speedtester'
 curl -fsSL https://raw.githubusercontent.com/kavehtehrani/cloudflare-speed-cli/main/install.sh | sh
 sudo mv /home/${VIMZ_USER}/.local/bin/cloudflare-speed-cli /usr/local/bin
+report_done
+
+report_progress 'Install and setup vibe-coding env'
+~/.dotfiles/bin/deploy-vibe-coding-tools.sh
 report_done
 
 ## OS specific stuff
