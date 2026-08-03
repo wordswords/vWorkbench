@@ -262,10 +262,6 @@ report_progress 'Installing Cmake for compiling YCM'
     sudo dnf install cmake  -y
 report_done
 
-report_progress 'Installing aider for AI coding assistance'
-    curl -LsSf https://aider.chat/install.sh | sh
-report_done
-
 report_progress 'Install calibre for mobi to PDF conversation'
     sudo dnf install calibre  -y
 report_done

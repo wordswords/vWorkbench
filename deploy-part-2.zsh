@@ -277,6 +277,10 @@ curl -fsSL https://raw.githubusercontent.com/kavehtehrani/cloudflare-speed-cli/m
 sudo mv /home/${VIMZ_USER}/.local/bin/cloudflare-speed-cli /usr/local/bin
 report_done
 
+report_progress 'Install and setup vibe-coding env'
+~/.dotfiles/bin/deploy-vibe-coding-tools.sh
+report_done
+
 ## OS specific stuff
 cur_os=$(get_os)
 report_progress 'Running any Windows specific configuration'
