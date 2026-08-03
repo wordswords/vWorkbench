@@ -122,8 +122,10 @@ install_aider_and_playwright() {
 }
 
 install_browser() {
-  log "Installing Playwright Chromium and dependencies"
-  python -m playwright install --with-deps chromium
+  log "Installing Playwright Chromium"
+  # Install Chromium browser binary only
+  # System dependencies are already installed via install_system_packages()
+  python -m playwright install chromium
 }
 
 verify_install() {
