@@ -6,9 +6,11 @@ PREFIX="/usr/local"
 BUILD_DIR="${HOME}/src/fortune-mod-build"
 SRC_DIR="${BUILD_DIR}/fortune-mod/"
 
+sudo rm -rf /usr/local/share/fortune
+
 sudo rm -rf "$BUILD_DIR"
 mkdir -p "${BUILD_DIR}"
-
+sudo rm -rf  
 need_root() {
   if [[ ${EUID:-$(id -u)} -ne 0 ]]; then
     if command -v sudo >/dev/null 2>&1; then
