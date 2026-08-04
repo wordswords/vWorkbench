@@ -242,7 +242,7 @@ ln -f -s ~/.joplin-bin/bin/joplin ~/bin/joplin
 report_done
 
 report_progress 'Changing shell to /bin/zsh.'
-sudo chsh -s "$(which zsh)" "$(whoami)"
+sudo usermod -s /bin/zsh "$(whoami)"
 report_done
 
 report_progress 'Build and install Fortune-mod for Almalinux'
