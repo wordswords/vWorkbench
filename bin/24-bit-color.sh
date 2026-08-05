@@ -11,7 +11,11 @@ IFS=$'\n\t'
 
 setBackgroundColor()
 {
-    echo -en "\x1b[48;2;$1;$2;$3""m"
+    # Default missing arguments to 0 to avoid unbound variable errors
+    local r=${1:-0}
+    local g=${2:-0}
+    local b=${3:-0}
+    echo -en "\x1b[48;2;$r;$g;$b""m"
 }
 
 resetOutput()
