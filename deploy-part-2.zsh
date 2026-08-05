@@ -317,17 +317,10 @@ if [[ $cur_os == 'linux' ]] ; then
     report_progress 'Installing workrave, a reminder app to take screenbreaks'
         sudo dnf install workrave -y || echo ''
     report_done
-    report_progress 'Install zerotier for VPN'
-        curl -s https://install.zerotier.com | sudo bash
-    report_done
     report_progress 'Install htop for CPU/RAM/process monitoring'
         sudo dnf install htop -y
     report_done
-    report_progress 'Install Libreoffice for opening office documents'
-        sudo dnf install libreoffice -y
-    report_done
-    ~/.dotfiles/linux-terminal-emulators-config/install-alacritty-linux.sh
-
+   
     # disable sleep, suspend, hibernate and hybrid-sleep
     sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
@@ -335,20 +328,11 @@ if [[ $cur_os == 'linux' ]] ; then
 	echo "-- OPTIONAL EXTRAS -- "
 	echo
 
-    read -rp "Do you want to enable Unattended Upgrades on Debian - recommended for computers that will be usually on - (y/yes/N)? " UNATTENDED_UPGRADES
-    case "$UNATTENDED_UPGRADES" in
-        Y|y|yes)
-            ~/.dotfiles/bin/enable-debian-unattended-upgrades.sh
-        ;;
-        *)
-            true
-        ;;
-    esac
-
     read -rp "Do you want to benchmark your computer with hardinfo2 (equiv to Speccy)? (y/yes/N)? " HB2INSTALL
     case "$HB2INSTALL" in
         Y|y|yes)
-            sudo dnf install hardinfo -y
+            ~/.dotfiles/bin/install-hardinfo2-for-almalinux.sh
+            hardinfo2 | tee > ~/hardinfo2report.txt
         ;;
         *)
             true
@@ -368,24 +352,6 @@ if [[ $cur_os == 'linux' ]] ; then
         ;;
     esac
 
-	read -rp "Do you want to install/update the Ubuntu snap images of Morgen, Todoist, Spotify and Firefox and create Kali Linux launchers? (y/yes/N)? " SNAPINSTALL
-    case "$SNAPINSTALL" in
-        Y|y|yes)
-            sudo service snapd.apparmor start
-            sudo systemctl enable snapd.apparmor
-            sudo snap install morgen 2>/dev/null || sudo snap refresh morgen
-            sudo snap install firefox 2>/dev/null || sudo snap refresh firefox
-            sudo snap install todoist 2>/dev/null || sudo snap refresh todoist
-            sudo snap install spotify 2>/dev/null || sudo snap refresh spotify
-            cp /home/"${VIMZ_USER}"/.dotfiles/launchers.desktop.tgz ./launchers.tgz
-            cp ./launchers.tgz /home/${VIMZ_USER}/Desktop
-            cd /home/"${VIMZ_USER}"/Desktop
-            tar xzf ./launchers.tgz
-        ;;
-        *)
-            true
-        ;;
-    esac
 fi
 
 report_progress "Outputting 24-bit console colour test - there should be no banding!"
