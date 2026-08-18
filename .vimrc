@@ -289,6 +289,13 @@ var NERDTreeDirArrows = 1
 # make sure NERDTree shows hidden files/dirs
 var NERDTreeShowHidden = 1
 
+# Nerdtree speedups
+# Avoid re-reading every closed directory on refresh
+var NERDTreeLazyDirRefresh = 1
+
+# Do not display clean-file Git markers
+var NERDTreeGitStatusShowClean = 0
+
 #
 # Pressing <LEFT> cursor toggles NerdTree
 #
