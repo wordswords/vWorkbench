@@ -87,11 +87,10 @@ report_done
 # Main package installs.
 report_progress 'Installing snap'
 sudo dnf install -y snapd
-sudo systemctl enable --now snapd apparmor
 report_done
 
 report_progress 'Download compile and install VIM9 on Ubuntu'
-sudo dnf install -y libncurses-dev
+sudo dnf install -y ncurses-devel
 "${DOTFILES_DIR}/bin/make-and-install-vim.sh" 9.2.0272
 report_done
 
@@ -102,15 +101,14 @@ pip3 install --upgrade pip # upgrade python3
 report_done
 
 report_progress 'Install latest open JDK used for LanguageTool'
-sudo dnf install -y default-jdk
+sudo dnf install -y java-latest-openjdk
 report_done
 
 install_dnf_packages 'Install Ruby, used for a few things' ruby
 install_dnf_packages 'Install zsh the best shell (so far)' zsh
 
 report_progress 'Install right type of Ctags used for vim plugins'
-sudo dnf remove -y exuberant-ctags || true
-sudo dnf install -y universal-ctags
+sudo dnf install -y ctags
 report_done
 
 install_dnf_packages 'Install net-tools used for network diagnostics' net-tools
@@ -135,7 +133,8 @@ cp "${DOTFILES_DIR}/.tmuxinator.development.yml" "$HOME/.config/tmuxinator/devel
 report_done
 
 report_progress 'Install Elixir for Elixir development'
-sudo dnf install -y elixir erlang
+sudo dnf install -y erlang
+"${DOTFILES_DIR}/bin/install-elixir-almalinux.sh"
 report_done
 
 install_dnf_packages 'Install Nmap for Network admin' nmap
@@ -144,7 +143,10 @@ report_progress 'Install asciicinema for screencasts'
 pip3 install asciinema
 report_done
 
-install_dnf_packages 'Install shfmt for shell script formatting' shfmt
+report_progress 'Install shfmt for shell script formatting' shfmt
+~/.dotfiles/bin/install-shfmt-almalinux.sh
+report_done
+
 install_dnf_packages 'Install shellcheck for shell script formatting' shellcheck
 
 report_progress 'Install ChatGPT CLI client'
@@ -194,7 +196,7 @@ report_done
 install_dnf_packages 'Installing Delta, a git diff viewer' git-delta
 
 report_progress 'Installing surfraw a command line google search client'
-sudo dnf install -y surfraw surfraw-extra
+"${DOTFILES_DIR}/bin/install-surfraw-almalinux.sh"
 report_done
 
 report_progress 'Installing epy a command line epub reader'
@@ -209,7 +211,7 @@ install_dnf_packages 'Installing Rust and Cargo' cargo
 install_dnf_packages 'Installing Cmake for compiling YCM' cmake
 
 report_progress 'Install calibre for mobi to PDF conversion'
-sudo dnf install -y calibre
+"${DOTFILES_DIR}/bin/install-calibre-via-flatpak-almalinux.sh"
 report_done
 
 report_progress 'Install Fabric for AI unixy prompt commands'
@@ -226,9 +228,5 @@ report_progress 'Install yt-clip for downloading youtube videos'
 report_done
 
 install_dnf_packages 'Install iotop for io load monitoring' iotop
-
-report_progress 'Enable automated unattended-upgrades'
-sudo dnf install -y unattended-upgrades
-report_done
 
 report_finished 'Deploy Prerequisites: Part 0 Complete'

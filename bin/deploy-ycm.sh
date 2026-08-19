@@ -20,5 +20,5 @@ git clone git@github.com:ycm-core/YouCompleteMe.git "${YCM_DIR}"
 (
     cd "${YCM_DIR}"
     git submodule update --init --recursive
-    python install.py --cs-completer --ts-completer --rust-completer --java-completer
+    python3.12 install.py --cs-completer --ts-completer --rust-completer --java-completer
 )

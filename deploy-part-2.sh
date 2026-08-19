@@ -117,20 +117,11 @@ install_wikipedia2text() {
 }
 
 install_github_cli() {
-    if ! type -p wget >/dev/null; then
-        sudo dnf update && sudo dnf install wget -y
-    fi
+    sudo curl -fsSL \
+        https://cli.github.com/packages/rpm/gh-cli.repo \
+        -o /etc/yum.repos.d/gh-cli.repo
 
-    sudo mkdir -p -m 755 /etc/dnf/keyrings
-    wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg |
-        sudo tee /etc/dnf/keyrings/githubcli-archive-keyring.gpg >/dev/null
-    sudo chmod go+r /etc/dnf/keyrings/githubcli-archive-keyring.gpg
-
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/dnf/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" |
-        sudo tee /etc/dnf/sources.list.d/github-cli.list >/dev/null
-
-    sudo dnf update
-    sudo dnf install gh -y
+    sudo dnf install -y gh
 }
 
 run_vim_plugins() {
