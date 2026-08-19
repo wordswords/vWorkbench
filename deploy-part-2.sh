@@ -178,10 +178,6 @@ configure_windows() {
 }
 
 configure_linux() {
-    report_progress 'Installing workrave, a reminder app to take screenbreaks'
-    sudo dnf install workrave -y || true
-    report_done
-
     report_progress 'Install htop for CPU/RAM/process monitoring'
     sudo dnf install htop -y
     report_done
