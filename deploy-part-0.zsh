@@ -37,16 +37,16 @@ report_heading 'Deploy Prerequisites: Part 0'
 # We deliberately risk breaking system packages for newer pip tooling.
 export PIP_BREAK_SYSTEM_PACKAGES=1
 
-report_progress 'Upgrade all packages/distro to latest version'
-sudo "/home/${VIMZ_USER}/.dotfiles/bin/update-all-packages-locally.sh"
-report_done
-
 report_progress 'Checking for existence of SECRETS directory'
 if [[ ! -d "${DOTFILES_DIR}/SECRETS" ]]; then
     echo "SECRETS directory does not exist. Please create it and put your secrets in it. Running config tool:"
     "${DOTFILES_DIR}/bin/setup-secrets-dir.sh"
 fi
 source "${DOTFILES_DIR}/SECRETS/vimz_config.sh"
+report_done
+
+report_progress 'Upgrade all packages/distro to latest version'
+sudo "/home/${VIMZ_USER}/.dotfiles/bin/update-all-packages-locally.sh"
 report_done
 
 report_progress 'Creating ~/.secure directory'
@@ -111,8 +111,11 @@ report_progress 'Install right type of Ctags used for vim plugins'
 sudo dnf install -y ctags
 report_done
 
+report_progress 'Build and install fortune-mod for Almalinux 10' 
+${DOTFILES_DIR}/bin/build-and-install-fortune-mod-on-almalinux.sh 
+report_done
+
 install_dnf_packages 'Install net-tools used for network diagnostics' net-tools
-install_dnf_packages 'Install fortune used for fortune cookie' fortune-mod
 install_dnf_packages 'Install Ripgrep used for :CocSearch' ripgrep
 install_dnf_packages 'Install tree for showing directory structures' tree
 install_dnf_packages 'Install w3m text browser for wikipedia2text' w3m
@@ -133,8 +136,8 @@ cp "${DOTFILES_DIR}/.tmuxinator.development.yml" "$HOME/.config/tmuxinator/devel
 report_done
 
 report_progress 'Install Elixir for Elixir development'
-sudo dnf install -y erlang
-"${DOTFILES_DIR}/bin/install-elixir-almalinux.sh"
+sudo "${DOTFILES_DIR}/bin/install-erlang-almalinux.sh"
+sudo "${DOTFILES_DIR}/bin/install-elixir-almalinux.sh"
 report_done
 
 install_dnf_packages 'Install Nmap for Network admin' nmap
@@ -193,7 +196,9 @@ report_progress 'Installing McFly, a zsh Control-R replacement'
 curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --force --git cantino/mcfly
 report_done
 
-install_dnf_packages 'Installing Delta, a git diff viewer' git-delta
+report_progress 'Installing Delta, a git diff viewer'
+"${DOTFILES_DIR}/bin/install-git-delta-almalinux.sh"
+report_done
 
 report_progress 'Installing surfraw a command line google search client'
 "${DOTFILES_DIR}/bin/install-surfraw-almalinux.sh"

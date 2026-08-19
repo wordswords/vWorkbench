@@ -360,16 +360,16 @@ main() {
     cur_os="$(get_os)"
 
     report_progress 'Running any Windows specific configuration'
+    report_done
     if [[ "${cur_os}" == 'windows' ]]; then
         configure_windows
     fi
-    report_done
 
     report_progress 'Running any Linux specific configuration'
+    report_done
     if [[ "${cur_os}" == 'linux' ]]; then
         configure_linux
     fi
-    report_done
 
     report_progress 'Outputting 24-bit console colour test'
     "${DOTFILES_BIN}/24-bit-color.sh"
