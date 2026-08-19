@@ -1,85 +1,93 @@
 #!/usr/bin/env bash
-# Common functions for deploy scripts
+# Common functions for deploy scripts.
 
-# these have to be present in deploy scripts
+set -euo pipefail
+
+# Shared constants.
+readonly PROGRESS_DIR="/tmp/report_progress_message"
+readonly MESSAGE_FILE="${PROGRESS_DIR}/message.txt"
+readonly TIME_FILE="${PROGRESS_DIR}/starttime.txt"
+
+# Are we on a terminal able to render ANSI colour codes?
+if [[ -t 1 ]]; then
+    readonly C_RESET=$'\e[0m'
+    readonly C_RED=$'\e[0;31m'
+    readonly C_GREEN=$'\e[0;32m'
+    readonly C_CYAN=$'\e[0;36m'
+else
+    # No colour when output is redirected to a file or a pipe.
+    readonly C_RESET=''
+    readonly C_RED=''
+    readonly C_GREEN=''
+    readonly C_CYAN=''
+fi
+
+# shellcheck disable=SC2034
 export CLICOLOR=1
-git config --global http.sslVerify false
 
-report_heading () {
-    message="$1"
-    echo -e "\e[0;31m[✭] ${message} [✭]\e[0m"
+print_header() {
+    local message=$1
+    printf '%s[✭] %s [✭]%s\n' "${C_RED}" "${message}" "${C_RESET}"
 }
 
-report_finished () {
-    message="$1"
-    echo
-    echo -e "\e[0;32m[✭] ${message} [✭]\e[0m"
+print_finished() {
+    local message=$1
+    printf '\n%s[✭] %s [✭]%s\n' "${C_GREEN}" "${message}" "${C_RESET}"
 }
 
-write_message () {
-    message="$1"
-    mkdir -p /tmp/report_progress_message
-    echo "${message}" > /tmp/report_progress_message/message.txt
+progress_report() {
+    local message=$1
+    mkdir -p "${PROGRESS_DIR}"
+    printf '%s' "${message}" > "${MESSAGE_FILE}"
+    printf '%s' "$(date +%s)" > "${TIME_FILE}"
+    printf '\n%s[..] %s%s\n' "${C_CYAN}" "${message}" "${C_RESET}"
 }
 
-write_time () {
-    start_time=$1
-    mkdir -p /tmp/report_progress_message
-    echo ${start_time} > /tmp/report_progress_message/starttime.txt
+progress_done() {
+    local message start_time elapsed
+    message="$(<"${MESSAGE_FILE}")"
+    start_time="$(<"${TIME_FILE}")"
+    elapsed="$(format_duration "$start_time" "$(date +%s)")"
+    printf '%s[✔︎]%s %s[%s in %s]%s... %s[DONE]%s\n' \
+        "${C_GREEN}" "${C_RESET}" "${C_CYAN}" "${message}" "${elapsed}" "${C_RESET}" "${C_GREEN}" "${C_RESET}"
+    rm -rf "${PROGRESS_DIR}"
 }
 
+# Given a start and end epoch time, print a human readable duration.
+format_duration() {
+    local start=$1
+    local end=$2
+    local total_seconds=$((end - start))
+    local seconds=$((total_seconds % 60))
+    local minutes=$((total_seconds / 60 % 60))
+    local hours=$((total_seconds / 60 / 60 % 24))
+    local days=$((total_seconds / 60 / 60 / 24))
 
-remove_report_progress () {
-    rm -rf /tmp/report_progress_message/
+    local parts=()
+    ((days > 0)) && parts+=("${days}d")
+    ((hours > 0)) && parts+=("${hours}h")
+    ((minutes > 0)) && parts+=("${minutes}m")
+    parts+=("${seconds}s")
+
+    local IFS=' '
+    printf '%s' "${parts[*]}"
 }
 
-report_progress () {
-  message=$1
-  start_time=$(date +%s)
-  echo
-  echo -e "\e[0;36m[..] ${message}\e[0m"
-  write_message "${message}"
-  write_time ${start_time}
-}
+get_os() {
+    local kernel
+    kernel="$(uname -s)"
 
-report_done () {
-  message=$(</tmp/report_progress_message/message.txt)
-  start_time=$(</tmp/report_progress_message/starttime.txt)
-  end_time=$(date +%s)
-  echo -e "\e[0;32m[✔︎]\e[0m \e[0;36m${message} ... $(convertAndPrintRuntime ${end_time} ${start_time}) ... \e[0m\e[0;32m[DONE]\e[0m"
-  remove_report_progress
-}
-
-convertAndPrintRuntime() {
-    local totalSeconds=$(($1 - $2))
-    local seconds=$((totalSeconds%60));
-    local minutes=$((totalSeconds/60%60));
-    local hours=$((totalSeconds/60/60%24));
-    local days=$((totalSeconds/60/60/24));
-    echo -n "finished in a time of "
-    (( days > 0 )) && printf '%d days ' $days;
-    (( hours > 0 )) && printf '%d hours ' $hours;
-    (( minutes > 0 )) && printf '%d minutes ' $minutes;
-    (( days > 0 || hours > 0 || minutes > 0 )) && printf 'and ';
-    if ! [[ "${seconds}" = "1" ]]; then
-        printf '%d seconds\n' $seconds;
+    if [[ "${kernel}" == Darwin ]]; then
+        printf 'osx\n'
+    elif grep -qEi '(Microsoft|WSL)' /proc/version 2>/dev/null; then
+        printf 'windows\n'
     else
-        printf '%d second\n' $seconds;
+        printf 'linux\n'
     fi
 }
 
-get_os () {
-  uname_s="$(uname -s)"
-  if echo $uname_s | grep 'Darwin' >/dev/null
-  then
-    baseos='osx'
-  else
-        if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
-            baseos='windows'
-        else
-            baseos='linux'
-        fi
-  fi
-  echo $baseos
-}
-
+# Backwards-compatible aliases for the callers that used the old names.
+report_heading() { print_header "$@"; }
+report_finished() { print_finished "$@"; }
+report_progress() { progress_report "$@"; }
+report_done() { progress_done; }
