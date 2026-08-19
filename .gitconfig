@@ -39,8 +39,6 @@
 [user]
     name = David Craddock
     email = contact@davidcraddock.net
-[http]
-    sslVerify = false
 [pack]
     deltaCacheSize = 2047m
     packSizeLimit = 2047m

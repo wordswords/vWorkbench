@@ -1,24 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Repeatable deploy script for the latest version of vWorkbench.
+#
+# To upgrade, `git pull` the vWorkbench directory and re-run this script.
+# It avoids needless duplication (e.g. re-downloading unchanged files).
 
-set -e
+set -euo pipefail
 
-## This is a repeatable script to deploy the latest version of
-## vWorkbench. If you wish to upgrade to the latest version,
-## simply do a git pull on the vWorkbench directory and re-run
-## this deploy script.
+readonly DOTFILES_DIR="$HOME/.dotfiles"
 
-## It should do its best to avoid any unnecessary duplication
-## such as downloading files when exactly the same version of
-## the file already exists.
+# Refresh the dotfiles repository, then run each deploy stage in order.
+(
+    cd "${DOTFILES_DIR}"
+    git pull
+)
 
-cd ~/.dotfiles
-git pull
-cd -
-
-./deploy-part-0.zsh # pre requisite packages install
-./deploy-part-1.sh # oh my zsh install
-./deploy-part-2.zsh # all other customisations
+"${DOTFILES_DIR}/deploy-part-0.zsh" # prerequisite packages install
+"${DOTFILES_DIR}/deploy-part-1.sh"  # oh-my-zsh install
+"${DOTFILES_DIR}/deploy-part-2.sh"  # all other customisations
 
 echo "Done."
-
-
