@@ -29,6 +29,7 @@ install_dnf_packages() {
 backup_dotfile() {
     local src=$1
     local dst=$2
+    rm -rf "{$dst}"
     cp -RL "${src}" "${dst}" 2>/dev/null || echo "INFO: Could not backup ${src}, does it exist?"
 }
 
