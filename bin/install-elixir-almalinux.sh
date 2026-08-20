@@ -58,7 +58,9 @@ echo "Downloading https://github.com/elixir-lang/elixir/releases/download/v${ELI
 curl -fL -o elixir.zip \
     "https://github.com/elixir-lang/elixir/releases/download/v${ELIXIR_VERSION}/elixir-otp-${OTP_MAJOR}.zip"
 
-sudo unzip -q elixir.zip -d /opt/elixir
+# -o: overwrite existing files without prompting, so a re-deploy/upgrade
+# rewrites the files in place instead of prompting "replace ...? (y/n/A/N/r)".
+sudo unzip -qo elixir.zip -d /opt/elixir
 
 sudo ln -sf /opt/elixir/bin/elixir  /usr/local/bin/elixir
 sudo ln -sf /opt/elixir/bin/elixirc /usr/local/bin/elixirc
