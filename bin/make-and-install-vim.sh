@@ -10,12 +10,16 @@ VERSION=$1
 
 # Short-circuit: if the requested major.minor is already installed, skip the
 # ~1.5 minute source build. `vim --version` reports e.g. "9.2" while VERSION
-# is a full tag like "9.2.0272", so compare the major.minor only.
-WANTED_MJ="${VERSION%%.*}.${VERSION#*.}"; WANTED_MJ="${WANTED_MJ%%.*}"
-if command -v vim >/dev/null 2>&1; then
-    INSTALLED="$(vim --clean --version 2>/dev/null | head -n1 | grep -oE '[0-9]+\.[0-9]+' | head -n1)"
+# is a full tag like "9.2.0272", so compare the major.minor only. We check
+# /usr/local/bin/vim specifically because that is where `make install` puts
+# the binary we build here (the distro's /usr/bin/vim may be a different,
+# older version).
+# Strip a single trailing ".patch" component to get major.minor (9.2.0272 -> 9.2).
+WANTED_MJ="${VERSION%.*}"
+if [[ -x /usr/local/bin/vim ]]; then
+    INSTALLED="$(/usr/local/bin/vim --clean --version 2>/dev/null | head -n1 | grep -oE '[0-9]+\.[0-9]+' | head -n1)"
     if [[ "${INSTALLED}" == "${WANTED_MJ}" ]]; then
-        echo "Vim ${VERSION} already installed; skipping build."
+        echo "Vim ${WANTED_MJ} already installed at /usr/local/bin/vim; skipping build."
         exit 0
     fi
 fi
