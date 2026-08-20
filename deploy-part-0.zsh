@@ -108,6 +108,13 @@ sudo dnf install -y -q python3 python3-pip
 pip3 install --upgrade pip
 report_done
 
+# Build a Python >= 3.12, which YouCompleteMe requires. AlmaLinux 9 ships
+# Python 3.9 as `python3`, so this compiles 3.12+ to /usr/local/bin/python3.12
+# (see deploy-ycm.sh's YCM_PYTHON resolution).
+report_progress 'Build Python 3.12 for YouCompleteMe'
+"${DOTFILES_DIR}/bin/compile-python-almalinux.sh" "${PYTHON_VERSION:-3.12.0}"
+report_done
+
 report_progress 'Install latest open JDK used for LanguageTool'
 sudo dnf install -y -q java-latest-openjdk
 report_done
