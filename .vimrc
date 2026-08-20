@@ -41,7 +41,7 @@ Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin'
 Plugin 'git@github.com:ycm-core/YouCompleteMe'
 Plugin 'git@github.com:craigemery/vim-autotag'
 Plugin 'git@github.com:preservim/tagbar'
-Plugin 'git@github.com:gergap/vim-ollama'
+Plugin 'git@github.com:zighouse/zai.vim'
 # [END] Plugins CONFIG
 # [START] Vundle end CONFIG
 call vundle#end()

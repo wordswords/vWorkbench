@@ -240,6 +240,10 @@ main() {
     ctags -R ./*
     report_done
 
+    report_progress 'Installing pre-reqs for Zai Vim Plugin'
+    "${DOTFILES_DIR}"/bin/install-zai.sh
+    report_done
+
     report_progress 'Installing bash-language-server through npm'
     sudo npm install -g bash-language-server
     report_done
