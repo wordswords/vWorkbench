@@ -5,7 +5,9 @@
 
 set -Eeuo pipefail
 
-OTP_VERSION="${1:-29.0.5}"
+# OTP_VERSION can be supplied via the environment (exported by deploy.sh as
+# ERLANG_OTP_VERSION) or as the first positional argument; defaults to 29.0.5.
+OTP_VERSION="${ERLANG_OTP_VERSION:-${1:-29.0.5}}"
 PREFIX="${2:-/opt/erlang/${OTP_VERSION}}"
 ARCHIVE="otp_src_${OTP_VERSION}.tar.gz"
 SOURCE_DIR="otp_src_${OTP_VERSION}"

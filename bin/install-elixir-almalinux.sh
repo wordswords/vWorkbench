@@ -8,7 +8,9 @@
 
 set -euo pipefail
 
-ELIXIR_VERSION="1.20-latest"
+# ELIXIR_VERSION can be set via the environment (exported by deploy.sh) or as
+# the first positional argument; it defaults to the latest release channel.
+ELIXIR_VERSION="${ELIXIR_VERSION:-${1:-1.20-latest}}"
 OTP_PREFIX="${OTP_PREFIX:-}"          # optional override
 ERL_BIN="${ERL_BIN:-}"
 

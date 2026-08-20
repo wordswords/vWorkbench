@@ -199,7 +199,7 @@ configure_linux() {
     read -r -p "Install/update the JIRA-CLI Go client? (y/yes/N) " answer
     if [[ "${answer}" =~ ^[Yy] ]]; then
         sudo snap install go --classic 2>/dev/null || sudo snap refresh go
-        go install golang.org/dl/go1.19@latest
+        go install "golang.org/dl/${JIRA_CLI_GO_VERSION:-go1.19}@latest"
         go install github.com/ankitpokhrel/jira-cli/cmd/jira@latest
     else
         # Remove a previously installed Go JIRA client.

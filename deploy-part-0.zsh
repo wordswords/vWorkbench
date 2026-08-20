@@ -99,7 +99,7 @@ report_done
 
 report_progress 'Download compile and install VIM9 on AlmaLinux'
 sudo dnf install -y -q ncurses-devel
-"${DOTFILES_DIR}/bin/make-and-install-vim.sh" 9.2.0272
+"${DOTFILES_DIR}/bin/make-and-install-vim.sh" "${VIM_VERSION:-9.2.0272}"
 report_done
 
 report_progress 'Install Python used for vim plugins'
@@ -144,11 +144,11 @@ cp "${DOTFILES_DIR}/.tmuxinator.development.yml" "$HOME/.config/tmuxinator/devel
 report_done
 
 report_progress 'Install Erlang/OTP'
-sudo "${DOTFILES_DIR}/bin/install-erlang-almalinux.sh"
+sudo "${DOTFILES_DIR}/bin/install-erlang-almalinux.sh" "${ERLANG_OTP_VERSION:-29.0.5}"
 report_done
 
 report_progress 'Install Elixir for Elixir development'
-sudo "${DOTFILES_DIR}/bin/install-elixir-almalinux.sh"
+sudo "${DOTFILES_DIR}/bin/install-elixir-almalinux.sh" "${ELIXIR_VERSION:-1.20-latest}"
 report_done
 
 install_dnf_packages 'Install Nmap for Network admin' nmap
