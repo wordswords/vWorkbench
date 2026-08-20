@@ -21,12 +21,17 @@ if [[ -x "${JOPLIN_BIN}" ]]; then
     fi
 fi
 
-sudo rm -rf ~/.joplin-bin
+sudo rm -rf "${HOME}/.joplin-bin"
 sudo dnf install -y fuse-libs
-NPM_CONFIG_PREFIX=~/.joplin-bin npm install -g joplin
-cd ~/.joplin-bin/lib/node_modules/joplin/
+
+# NOTE: use ${HOME} everywhere (never a bare `~`) — tilde does NOT expand in an
+# environment-assignment position (`VAR=~/x cmd`), so `NPM_CONFIG_PREFIX=~/...`
+# would install into a literal tilde dir and break both the skip guard and the
+# symlink target.
+NPM_CONFIG_PREFIX="${HOME}/.joplin-bin" npm install -g joplin
+cd "${HOME}/.joplin-bin/lib/node_modules/joplin/"
 npm install --cpu=x64 --platform=linux sharp
-cd ~/.joplin-bin/lib/node_modules/joplin/node_modules/@joplin/tools
+cd "${HOME}/.joplin-bin/lib/node_modules/joplin/node_modules/@joplin/tools"
 npm install --cpu=x64 --platform=linux sharp
-ln -sf ~/.joplin-bin/bin/joplin ~/bin/joplin
+ln -sf "${HOME}/.joplin-bin/bin/joplin" "${HOME}/bin/joplin"
 
