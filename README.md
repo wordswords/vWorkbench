@@ -1,6 +1,6 @@
 # My Development Environment (Dotfiles)
 
-Welcome to my customized development environment setup, crafted to enhance productivity and streamline workflows for software development. This setup is primarily tested on Kali Linux rolling and the latest version of Ubuntu under WSL2 on Windows 11. Compatibility with other platforms may require significant modifications.
+Welcome to my customized development environment setup, crafted to enhance productivity and streamline workflows for software development. This setup is primarily tested on AlmaLinux (RHEL family). Compatibility with other platforms may require significant modifications.
 
 ![Workbench](workbench.jpg "Picture of a woodworker's workbench")
 
@@ -47,7 +47,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
   * [VIM Regex](#vim-regex)
   * [Wildcards for Searching and Editing](#wildcards-for-searching-and-editing)
   * [Processing Files with `:argdo`](#processing-files-with-argdo)
-  * [GitHub Copilot](#github-copilot)
+  * [Ollama](#ollama)
   * [Tagbar Plugin](#tagbar-plugin)
 - [Additional Notes](#additional-notes)
   * [Tmux](#tmux-1)
@@ -58,12 +58,12 @@ Welcome to my customized development environment setup, crafted to enhance produ
   * [Regular Expressions](#regular-expressions)
   * [Docker/Docker Compose](#dockerdocker-compose)
   * [Troubleshooting](#troubleshooting)
-  * [Ubuntu Package Management](#ubuntu-package-management)
+  * [Package Management (dnf)](#package-management-dnf)
   * [Profiling VIM for speed problems](#profiling-vim-for-speed-problems)
   * [Joplin CLI](#joplin-cli)
   * [JIRA Go Client](#jira-go-client)
   * [NIX Internals Books](#nix-internals-books)
-  * [Printing on Ubuntu](#printing-on-ubuntu)
+  * [Printing](#printing)
   * [System load](#system-load)
   * [fzf](#fzf)
   * [GNU Parallel](#gnu-parallel)
@@ -130,18 +130,18 @@ There are many other dotfiles that are located in `~/.*` which you will find ins
 
 ### Installation Steps
 
-1. Clone the repository: `git clone git@github.com:/wordswords/vWorkbench ~/.dotfiles`
-2. OPTIONALLY - Prepare configuration in `~/.dotfiles/SECRETS` using templates from `~/.dotfiles/SECRETS_TEMPLATES`. Otherwise the setup will interactively set this up for you.
+1. Clone the repository: `git clone git@github.com:wordswords/vWorkbench.git ~/.dotfiles`
+2. OPTIONALLY - Prepare configuration in `~/.dotfiles/SECRETS` using templates from `~/.dotfiles/SECRETS_TEMPLATE`. Otherwise the setup will interactively set this up for you.
 3. Run the deployment script: `cd ~/.dotfiles && ~/.dotfiles/deploy.sh`
 
 ### What It Installs
 
-- Customized VIM9 with numerous plugins, including GitHub Copilot.
+- Customized VIM9 with numerous plugins, including Ollama.
 - Oh-my-ZSH with ZSH as the default shell.
 - Joplin CLI for note-taking (requires personal credentials).
-- Optional applications like Morgen calendar and Golang JIRA CLI.
+- Optional applications like the Golang JIRA CLI.
 - Elixir development environment.
-- Aider with ChatGPT for AI assistance.
+- Aider with DeepSeek for AI assistance.
 - Fortune with Software Engineering Koan quotes.
 
 Note: Customization may be required for full functionality. Consider using a Docker container or VM for testing.
@@ -152,32 +152,31 @@ Note: Customization may be required for full functionality. Consider using a Doc
 
 - `<CTRL>-<R>`: Search previous commands with McFly.
 - `z <directory>`: Change to a directory without typing `cd`.
-- `l`: Long-style `ls`.
+- `l`: List files with type indicators (`ls -CF`).
 - `delta <file1> <file2>`: Two-way diff interface.
 - `<tab>`: Activate oh-my-zsh autocomplete.
 - `repos.sh`: Check branch names of all git repositories.
-- `vi`: Load minimal VIM config.
+- `vi`: Load minimal VIM config (`vim -u NONE`).
 - `notes`: Launch Joplin CLI.
 - `please`: Repeat last command with `sudo`.
 - `ports`: List open ports.
 - `tree`: Display directory tree.
-- `ref <jira issue>`: Open JIRA issue in Firefox.
-- `lookup <jira issue>`: Print JIRA CLI ticket summary.
+- `board`: List active JIRA sprint issues.
+- `issues`: List JIRA issues assigned to you.
 - `bat <file>`: Syntax-highlighted `cat`.
 - `gg <query>`: Google search in Firefox.
 - `so <query>`: Stack Overflow search in Firefox.
 - `pstree`: Display process tree.
 - `<CTRL-X> <CTRL-E>`: Open text editor in shell.
-- `ai <query>`: Query ChatGPT and copy result to clipboard.
-- `todo`: Open Todoist list.
+- `ai <query>`: Query the configured GenAI model and copy the result to clipboard.
+- `todo`: List your "Important" Todoist tasks (`tod list view --project Important`).
 
 ### VIM9 Shortcuts
 
-- `<leader> h`: Open this help document.
 - `<TAB>`: Activate autocomplete plugins.
 - `,`: Leader key for shortcuts.
 - `<LEFT>`: Toggle NERDTree.
-- `<RIGHT>`: Toggle Vista.
+- `<RIGHT>`: Toggle Tagbar.
 - `<DOWN>`: Open Quickfix list.
 - `<UP>`: Open Location list.
 - `>>`/`<<`: Adjust indentation.
@@ -202,7 +201,7 @@ Note: Customization may be required for full functionality. Consider using a Doc
 - `>i{`: Indent code block.
 - `:map`: Show key mappings.
 
-For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfiles/blob/master/notes/VIMCHEATSHEET.md).
+For more details, see the [VIM Cheatsheet](https://github.com/wordswords/vWorkbench/blob/master/notes/VIMCHEATSHEET.md).
 
 ## Clipboard Management
 
@@ -217,8 +216,8 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 
 ## Command line GenAI Stuff
 
-- `aisesh` - this opens an interactive prompt with the default model
-- `ai '<prompt>'` - asks ChatGPT a question
+- `aisesh` - this opens an interactive prompt with the default model (Shell-GPT)
+- `ai '<prompt>'` - asks the configured GenAI model a question
 - `fabric` - an advanced way of interacting with preset prompts
 
 ## Fabric
@@ -230,7 +229,7 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 ## Aider
 
 1.
-- `aider`: Start interactive ChatGPT AI code assistant.
+- `aider`: Start interactive DeepSeek AI code assistant.
 - When typing `hack <dir>` from the shell, Aider will watch the project directory for changes and provide assistance.
 
 2.
@@ -244,7 +243,7 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 
 #### Preconfigured Tmuxinator 'Hack' session
 
-- `hack <github project root directory>` will start up my default tmux configuration with Vim9 and Aider running in seperate panes.
+- `hack <github project root directory>` will start up the default tmuxinator configuration with Vim9 and Aider running in separate panes.
 
 #### Tmux Shortcuts
 
@@ -267,10 +266,6 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 
 ## VIM Spellchecking and Grammar Checking
 
-- `<LEFT>`: Toggle NERDTree.
-- `<RIGHT>`: Toggle Vista.
-- `<DOWN>`: Open Quickfix list.
-- `<UP>`: Open Location list.
 - `zg`: Mark word as correct.
 - `zw`: Mark word as incorrect.
 - `zug`: Unmark correct word.
@@ -290,7 +285,7 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - `<leader> p`: Save file as Reddit post.
 - `<leader> y`: Copy file to clipboard.
 - `<leader> l`: Run LanguageToolCheck.
-- `<leader> c`: Toggle Copilot.
+- `<leader> c`: Toggle Ollama.
 
 ### Visual Mode
 
@@ -357,9 +352,9 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - `:argdo`: Execute command on arglist.
 - `:args`: Describe arglist.
 
-## GitHub Copilot
+## Ollama
 
-- `<leader> c`: Toggle Copilot.
+- `<leader> c`: Toggle Ollama.
 - `<TAB>`: Accept autocomplete.
 
 ## Tagbar Plugin
@@ -388,7 +383,7 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/dotfile
 - `git checkout -- <file>`: Discard changes.
 - `git checkout <hash> -- <file>`: Restore file from commit.
 
-For more, see the [Git Book](https://git-scm.com/book/en/v2) and [Git Workflow](https://github.com/wordswords/dotfiles/blob/master/notes/GITWORKFLOW.md).
+For more, see the [Git Book](https://git-scm.com/book/en/v2) and [Git Workflow](https://github.com/wordswords/vWorkbench/blob/master/notes/GITWORKFLOW.md).
 
 ## GNU Diff/Patch
 
@@ -423,7 +418,7 @@ For more, see the [Git Book](https://git-scm.com/book/en/v2) and [Git Workflow](
 - `docker-compose up -d`: Start containers in background.
 - `docker-compose logs -f <container>`: Tail logs.
 
-For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/notes/DOCKERNOTES.md).
+For more, see [Docker Notes](https://github.com/wordswords/vWorkbench/blob/master/notes/DOCKERNOTES.md).
 
 ## Troubleshooting
 
@@ -433,13 +428,13 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 - `ports`- List open ports in sorted order.
 - `sudo ufw status`- Check firewall status.
 
-## Ubuntu Package Management
+## Package Management (dnf)
 
-- `sudo apt install <package>`: Install package.
-- `sudo apt remove <package>`: Remove package.
-- `sudo apt-cache search <package>`: Search packages.
-- `dpkg -i <deb>`: Install deb file.
-- `dpkg-query -L <package>`: List package files.
+- `sudo dnf install <package>`: Install package.
+- `sudo dnf remove <package>`: Remove package.
+- `sudo dnf search <package>`: Search packages.
+- `sudo dnf install <rpm>`: Install an rpm file.
+- `rpm -ql <package>`: List package files.
 
 ## Profiling VIM for speed problems
 
@@ -452,10 +447,7 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 ## Joplin CLI
 
 - Open Joplin: `notes`
-- Toggle console: `tc`
 - Navigate with `<TAB>`
-- Create note: `mn`
-- Toggle metadata: `tm`
 
 ## JIRA Go Client
 
@@ -465,15 +457,15 @@ For more, see [Docker Notes](https://github.com/wordswords/dotfiles/blob/master/
 
 ## NIX Internals Books
 
-- [Lets Learn Tcpdump](https://github.com/wordswords/dotfiles/blob/master/notes/Lets%20Learn%20Tcpdump%20-%20Unknown.pdf)
-- [Linux Debugging Tools](https://github.com/wordswords/dotfiles/blob/master/notes/Linux%20Debugging%20Tools%20-%20Unknown.pdf)
-- [Networking ACK](https://github.com/wordswords/dotfiles/blob/master/notes/Networking%20Ack%20-%20Unknown.pdf)
-- [Strace Book](https://github.com/wordswords/dotfiles/blob/master/notes/Spying%20Programs%20Strace%20-%20Unknown.pdf)
-- [Profiling Tracing Perf](https://github.com/wordswords/dotfiles/blob/master/notes/Profiling%20Tracing%20Perf%20-%20Unknown.pdf)
-- [So You Want To Be A Wizard](https://github.com/wordswords/dotfiles/blob/master/notes/So%20You%20Want%20To%20Be%20A%20Wizard%20-%20Unknown.pdf)
-- [Bite Size Linux](https://github.com/wordswords/dotfiles/blob/master/notes/Bite%20Size%20Linux%20-%20Unknown.pdf)
+- [Lets Learn Tcpdump](https://github.com/wordswords/vWorkbench/blob/master/notes/Lets%20Learn%20Tcpdump%20-%20Unknown.pdf)
+- [Linux Debugging Tools](https://github.com/wordswords/vWorkbench/blob/master/notes/Linux%20Debugging%20Tools%20-%20Unknown.pdf)
+- [Networking ACK](https://github.com/wordswords/vWorkbench/blob/master/notes/Networking%20Ack%20-%20Unknown.pdf)
+- [Strace Book](https://github.com/wordswords/vWorkbench/blob/master/notes/Spying%20Programs%20Strace%20-%20Unknown.pdf)
+- [Profiling Tracing Perf](https://github.com/wordswords/vWorkbench/blob/master/notes/Profiling%20Tracing%20Perf%20-%20Unknown.pdf)
+- [So You Want To Be A Wizard](https://github.com/wordswords/vWorkbench/blob/master/notes/So%20You%20Want%20To%20Be%20A%20Wizard%20-%20Unknown.pdf)
+- [Bite Size Linux](https://github.com/wordswords/vWorkbench/blob/master/notes/Bite%20Size%20Linux%20-%20Unknown.pdf)
 
-## Printing on Ubuntu
+## Printing
 
 - Print file: `lp <file>`.
 - Print from pipe: `echo <text> | lp --`.
@@ -498,7 +490,7 @@ There are a bunch of scripts that take the hard work out of converting documents
 
 In the `~/.dotfiles/bin/` directory:
 
-- `ocr.sh` - OCRs text in an image file and outputs the text on the pipe
+- `imageocr.sh` - OCRs text in an image file and outputs the text on the pipe
 - `convert-epub-to-pdf.sh`
 - `convert-mobi-to-pdf.sh`
 - `convert-pdf-to-text.sh`
@@ -532,7 +524,7 @@ Scripts for common content you will want to grep from files:
 
 These are installed in `~/bin`:
 
-- `gg.sh`, `so.sh`, `ai.sh`, `re.sh`: Search scripts for Google, Stack Overflow, Reddit, ChatGPT.
+- `gg.sh`, `so.sh`, `re.sh`, `ai.sh`: Search scripts for Google, Stack Overflow, Reddit, and GenAI (Shell-GPT).
 - `search-ebooks.sh`: Search EPUB books.
 - `clean-git-checkout.sh`: Remove `.git` directories.
 - `install-node.sh`: Install Node.js.
@@ -543,9 +535,9 @@ These are installed in `~/bin`:
 - `secure-home-dir-perms.sh`: Secure home directory permissions.
 - `hq-read-epub.sh`: Read EPUB books.
 - `delete-all-docker-content.sh`: Clean Docker content.
-- `ai-files-purpose.zsh`: Guess file purposes.
-- `ai-dir-purpose.zsh`: Guess directory purpose.
-- `osx.zsh`: Setup virtualized OSX.
+- `ai-files-purpose.sh`: Guess file purposes.
+- `ai-dir-purpose.sh`: Guess directory purpose.
+- `osx.sh`: Setup virtualized OSX.
 - `repos.sh`: Show Git branches.
 - `blameline`: Line-by-line git blame.
 - `git logline`: Compact commit summary.
