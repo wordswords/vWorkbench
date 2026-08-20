@@ -6,11 +6,17 @@ PREFIX="/usr/local"
 BUILD_DIR="${HOME}/src/fortune-mod-build"
 SRC_DIR="${BUILD_DIR}/fortune-mod/"
 
+# Short-circuit: if fortune and strfile are already installed, there is no
+# need to re-clone and recompile from source.
+if command -v fortune >/dev/null 2>&1 && command -v strfile >/dev/null 2>&1; then
+  echo "==> fortune and strfile already installed; skipping source build"
+  exit 0
+fi
+
 sudo rm -rf /usr/local/share/fortune
 
 sudo rm -rf "$BUILD_DIR"
 mkdir -p "${BUILD_DIR}"
-sudo rm -rf  
 need_root() {
   if [[ ${EUID:-$(id -u)} -ne 0 ]]; then
     if command -v sudo >/dev/null 2>&1; then
@@ -141,7 +147,6 @@ fi
 echo
 if [[ -n "${FOUND_STRFILE}" ]]; then
   echo "strfile installed at: ${FOUND_STRFILE}"
-  "${FOUND_STRFILE}" -h || true
 else
   echo "strfile was not found on PATH; search with: find ${PREFIX} /usr -name strfile 2>/dev/null"
 fi

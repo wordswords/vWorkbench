@@ -3,11 +3,6 @@
 
 set -euo pipefail
 
-# Shared constants.
-readonly PROGRESS_DIR="/tmp/report_progress_message"
-readonly MESSAGE_FILE="${PROGRESS_DIR}/message.txt"
-readonly TIME_FILE="${PROGRESS_DIR}/starttime.txt"
-
 # Are we on a terminal able to render ANSI colour codes?
 if [[ -t 1 ]]; then
     readonly C_RESET=$'\e[0m'
@@ -35,25 +30,7 @@ print_finished() {
     printf '\n%s[✭] %s [✭]%s\n' "${C_GREEN}" "${message}" "${C_RESET}"
 }
 
-progress_report() {
-    local message=$1
-    mkdir -p "${PROGRESS_DIR}"
-    printf '%s' "${message}" > "${MESSAGE_FILE}"
-    printf '%s' "$(date +%s)" > "${TIME_FILE}"
-    printf '\n%s[..] %s%s\n' "${C_CYAN}" "${message}" "${C_RESET}"
-}
-
-progress_done() {
-    local message start_time elapsed
-    message="$(<"${MESSAGE_FILE}")"
-    start_time="$(<"${TIME_FILE}")"
-    elapsed="$(format_duration "$start_time" "$(date +%s)")"
-    printf '%s[✔︎]%s %s[%s in %s]%s... %s[DONE]%s\n' \
-        "${C_GREEN}" "${C_RESET}" "${C_CYAN}" "${message}" "${elapsed}" "${C_RESET}" "${C_GREEN}" "${C_RESET}"
-    rm -rf "${PROGRESS_DIR}"
-}
-
-# Given a start and end epoch time, print a human readable duration.
+# Format an epoch duration, given a start and end in seconds.
 format_duration() {
     local start=$1
     local end=$2
@@ -86,8 +63,49 @@ get_os() {
     fi
 }
 
-# Backwards-compatible aliases for the callers that used the old names.
+# The label and start time of the in-progress step. Kept as process-local
+# globals rather than shared temp files, so nested/subshell steps can't leak
+# state into one another.
+__PROGRESS_LABEL=''
+__PROGRESS_START=''
+
+report_progress() {
+    local message=$1
+    __PROGRESS_LABEL="${message}"
+    __PROGRESS_START="$(date +%s)"
+    printf '\n%s[..] %s%s\n' "${C_CYAN}" "${message}" "${C_RESET}"
+}
+
+report_done() {
+    local message="${__PROGRESS_LABEL}"
+    local start_time="${__PROGRESS_START}"
+
+    if [[ -z "${message}" ]]; then
+        printf '%s[✗]%s [report_done called without a matching report_progress]%s\n' \
+            "${C_RED}" "${C_RESET}" "${C_RESET}"
+        return 1
+    fi
+
+    local elapsed
+    elapsed="$(format_duration "${start_time}" "$(date +%s)")"
+    printf '%s[✔︎]%s %s[%s in %s]%s... %s[DONE]%s\n' \
+        "${C_GREEN}" "${C_RESET}" "${C_CYAN}" "${message}" "${elapsed}" "${C_RESET}" \
+        "${C_GREEN}" "${C_RESET}"
+
+    __PROGRESS_LABEL=''
+    __PROGRESS_START=''
+}
+
+# Run a single command under a labelled, timed progress section.
+# Usage: step 'Doing the thing' some-command --with args
+step() {
+    local message=$1
+    shift
+    report_progress "${message}"
+    "$@"
+    report_done
+}
+
+# Backwards-compatible aliases for callers that used the old names.
 report_heading() { print_header "$@"; }
 report_finished() { print_finished "$@"; }
-report_progress() { progress_report "$@"; }
-report_done() { progress_done; }

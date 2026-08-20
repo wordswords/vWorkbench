@@ -89,7 +89,7 @@ report_progress 'Installing snap'
 sudo dnf install -y snapd
 report_done
 
-report_progress 'Download compile and install VIM9 on Ubuntu'
+report_progress 'Download compile and install VIM9 on AlmaLinux'
 sudo dnf install -y ncurses-devel
 "${DOTFILES_DIR}/bin/make-and-install-vim.sh" 9.2.0272
 report_done
@@ -135,8 +135,11 @@ mkdir -p "$HOME/.config/tmuxinator"
 cp "${DOTFILES_DIR}/.tmuxinator.development.yml" "$HOME/.config/tmuxinator/development.yml"
 report_done
 
-report_progress 'Install Elixir for Elixir development'
+report_progress 'Install Erlang/OTP'
 sudo "${DOTFILES_DIR}/bin/install-erlang-almalinux.sh"
+report_done
+
+report_progress 'Install Elixir for Elixir development'
 sudo "${DOTFILES_DIR}/bin/install-elixir-almalinux.sh"
 report_done
 
@@ -146,8 +149,8 @@ report_progress 'Install asciicinema for screencasts'
 pip3 install asciinema
 report_done
 
-report_progress 'Install shfmt for shell script formatting' shfmt
-~/.dotfiles/bin/install-shfmt-almalinux.sh
+report_progress 'Install shfmt for shell script formatting'
+"${DOTFILES_DIR}/bin/install-shfmt-almalinux.sh"
 report_done
 
 install_dnf_packages 'Install shellcheck for shell script formatting' shellcheck

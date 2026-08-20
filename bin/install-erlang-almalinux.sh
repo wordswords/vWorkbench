@@ -49,7 +49,10 @@ echo "Configuring Erlang/OTP for ${PREFIX}..."
 ./configure \
   --prefix="${PREFIX}" \
   --enable-jit \
-  --enable-dirty-schedulers
+  --enable-dirty-schedulers \
+  --disable-jinterface \
+  --without-odbc \
+  --without-wx
 
 echo "Building Erlang/OTP..."
 make -j"$(nproc)"

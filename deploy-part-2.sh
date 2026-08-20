@@ -316,10 +316,6 @@ main() {
     sudo usermod -s /bin/zsh "$(whoami)"
     report_done
 
-    report_progress 'Build and install Fortune-mod for Almalinux'
-    "${DOTFILES_BIN}/build-and-install-fortune-mod-on-almalinux.sh"
-    report_done
-
     report_progress 'Customising Fortune random quoter'
     "$HOME/bin/codelesscode-to-fortune.sh"
     report_done
