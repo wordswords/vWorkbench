@@ -47,7 +47,7 @@ Welcome to my customized development environment setup, crafted to enhance produ
   * [VIM Regex](#vim-regex)
   * [Wildcards for Searching and Editing](#wildcards-for-searching-and-editing)
   * [Processing Files with `:argdo`](#processing-files-with-argdo)
-  * [Ollama](#ollama)
+  * [Zai](#zai)
   * [Tagbar Plugin](#tagbar-plugin)
 - [Additional Notes](#additional-notes)
   * [Tmux](#tmux-1)
@@ -136,7 +136,7 @@ There are many other dotfiles that are located in `~/.*` which you will find ins
 
 ### What It Installs
 
-- Customized VIM9 with numerous plugins, including Ollama.
+- Customized VIM9 with numerous plugins, including Zai.
 - Oh-my-ZSH with ZSH as the default shell.
 - Joplin CLI for note-taking (requires personal credentials).
 - Optional applications like the Golang JIRA CLI.
@@ -285,7 +285,7 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/vWorkbe
 - `<leader> p`: Save file as Reddit post.
 - `<leader> y`: Copy file to clipboard.
 - `<leader> l`: Run LanguageToolCheck.
-- `<leader> c`: Toggle Ollama.
+- `<leader> z`: Toggle the Zai AI assistant.
 
 ### Visual Mode
 
@@ -352,9 +352,9 @@ For more details, see the [VIM Cheatsheet](https://github.com/wordswords/vWorkbe
 - `:argdo`: Execute command on arglist.
 - `:args`: Describe arglist.
 
-## Ollama
+## Zai
 
-- `<leader> c`: Toggle Ollama.
+- `<leader> z`: Toggle the Zai AI assistant (opens/closes the interface).
 - `<TAB>`: Accept autocomplete.
 
 ## Tagbar Plugin

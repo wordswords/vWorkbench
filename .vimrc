@@ -168,11 +168,18 @@ def ToggleOffLocationList(): void
 enddef
 nnoremap <UP> :call <SID>ToggleOnLocationList()<CR>
 
-# Ollama Copilot toggle
-def ToggleOllama(): void
-    :Ollama toggle
+# Zai AI assistant toggle
+var zai_open = false
+def ToggleZai(): void
+    if zai_open
+        :ZaiClose
+        zai_open = false
+    else
+        :Zai
+        zai_open = true
+    endif
 enddef
-nnoremap <silent><leader>c :call <SID>ToggleOllama()<CR>
+nnoremap <silent><leader>z :call <SID>ToggleZai()<CR>
 
 # Run language tool
 nnoremap <silent><leader>l :call <SID>RunTextidoteToggle()<CR>
