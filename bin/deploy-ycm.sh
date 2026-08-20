@@ -21,6 +21,17 @@ fi
 sudo dnf install -y mono-complete golang
 sudo dnf install -y java-latest-openjdk java-latest-openjdk-devel
 
+# Prerequisites for building ycmd's optional C extensions (the `regex` module
+# used for faster fuzzy matching, and the `watchdog` module). Without these,
+# build.py silently falls back to the slower pure-Python `re` builtin:
+#   - gcc + make: compile the .c sources via setup.py build
+#   - python3-devel: provides Python.h and matching headers for the same
+#     interpreter that runs install.py
+#   - python3-devel: provides Python.h and matching headers for the same
+#     interpreter that runs install.py
+#   - python3-setuptools: imported by build.py to drive the C extension build
+sudo dnf install -y gcc make python3-devel python3-setuptools
+
 # Fetch a fresh copy of YouCompleteMe.
 rm -rf "${YCM_DIR}"
 mkdir -p "${YCM_DIR}"
@@ -30,5 +41,5 @@ git clone git@github.com:ycm-core/YouCompleteMe.git "${YCM_DIR}"
 (
     cd "${YCM_DIR}"
     git submodule update --init --recursive
-    python3.12 install.py --cs-completer --ts-completer --rust-completer --java-completer
+    python3 install.py --cs-completer --ts-completer --rust-completer --java-completer
 )
