@@ -2,5 +2,5 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-sudo dnf update -y
-sudo dnf upgrade -y
+# `dnf update` and `dnf upgrade` are aliases for the same operation; run one.
+sudo dnf upgrade -y -q

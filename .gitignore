@@ -1,6 +1,7 @@
 *.swo
 *.swp
 *.zip
+*.log
 .bash_aliases
 .jira-cli/**
 .vim/**

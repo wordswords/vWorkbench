@@ -16,12 +16,13 @@ source ./deploy-common.sh
 cur_os="$(get_os)"
 
 # Install a set of system packages with a single progress "step".
-# Each argument is a package name.
+# Each argument is a package name. Uses -q to suppress the repetitive
+# "already installed / nothing to do" output that otherwise floods the log.
 install_dnf_packages() {
     local title=$1
     shift
     report_progress "${title}"
-    sudo dnf install -y "$@"
+    sudo dnf install -y -q "$@"
     report_done
 }
 
@@ -35,6 +36,12 @@ backup_dotfile() {
 
 report_heading 'Deploy Prerequisites: Part 0'
 
+# Cache sudo credentials once up front, and refresh the dnf metadata a single
+# time, so the dozens of subsequent `dnf install` calls don't each re-prompt
+# for sudo or re-check metadata.
+sudo -v
+sudo dnf -q makecache
+
 # We deliberately risk breaking system packages for newer pip tooling.
 export PIP_BREAK_SYSTEM_PACKAGES=1
 
@@ -47,7 +54,7 @@ source "${DOTFILES_DIR}/SECRETS/vimz_config.sh"
 report_done
 
 report_progress 'Upgrade all packages/distro to latest version'
-sudo "/home/${VIMZ_USER}/.dotfiles/bin/update-all-packages-locally.sh"
+sudo "${HOME}/.dotfiles/bin/update-all-packages-locally.sh"
 report_done
 
 report_progress 'Creating ~/.secure directory'
@@ -87,29 +94,29 @@ report_done
 
 # Main package installs.
 report_progress 'Installing snap'
-sudo dnf install -y snapd
+sudo dnf install -y -q snapd
 report_done
 
 report_progress 'Download compile and install VIM9 on AlmaLinux'
-sudo dnf install -y ncurses-devel
+sudo dnf install -y -q ncurses-devel
 "${DOTFILES_DIR}/bin/make-and-install-vim.sh" 9.2.0272
 report_done
 
 report_progress 'Install Python used for vim plugins'
-sudo dnf install -y python3 python3-pip
+sudo dnf install -y -q python3 python3-pip
 pip install --upgrade pip # upgrade python2 (!) pip
 pip3 install --upgrade pip # upgrade python3
 report_done
 
 report_progress 'Install latest open JDK used for LanguageTool'
-sudo dnf install -y java-latest-openjdk
+sudo dnf install -y -q java-latest-openjdk
 report_done
 
 install_dnf_packages 'Install Ruby, used for a few things' ruby
 install_dnf_packages 'Install zsh the best shell (so far)' zsh
 
 report_progress 'Install right type of Ctags used for vim plugins'
-sudo dnf install -y ctags
+sudo dnf install -y -q ctags
 report_done
 
 report_progress 'Build and install fortune-mod for Almalinux 10' 
@@ -124,7 +131,7 @@ install_dnf_packages 'Install bat, a cat clone with syntax highlighting' bat
 install_dnf_packages 'Install curl for downloading from the web' curl
 
 report_progress 'Install xclip and xsel for clipboard access'
-sudo dnf install -y xclip xsel
+sudo dnf install -y -q xclip xsel
 report_done
 
 install_dnf_packages 'Install tmux terminal multiplexer' tmux
@@ -179,11 +186,11 @@ sudo npm install -g markdownlint-cli
 report_done
 
 report_progress 'Install yamllint'
-sudo dnf install -y yamllint
+sudo dnf install -y -q yamllint
 report_done
 
 report_progress 'Install jq'
-sudo dnf install -y jq
+sudo dnf install -y -q jq
 report_done
 
 report_progress 'Install fnm node.js version manager'
@@ -229,7 +236,7 @@ report_done
 
 report_progress 'Install mass rename tool'
 go install github.com/laurent22/massren@latest
-massren --config editor vim
+"$(go env GOPATH)/bin/massren" --config editor vim
 report_done
 
 report_progress 'Install yt-clip for downloading youtube videos'

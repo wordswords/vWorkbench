@@ -26,6 +26,17 @@ if [[ ! -f /etc/almalinux-release ]]; then
   echo "Warning: this script is intended for AlmaLinux." >&2
 fi
 
+# Short-circuit: if this exact OTP version is already installed, skip the
+# (lengthy) source build. This turns the ~4.5 minute build into a no-op on
+# every subsequent deploy.
+if [[ -x "${PREFIX}/bin/erl" ]]; then
+  INSTALLED="$("${PREFIX}/bin/erl" -noshell -eval 'io:format("~s", [erlang:system_info(otp_release)]), halt().' 2>/dev/null || true)"
+  if [[ "${INSTALLED}" == "${OTP_VERSION%%.*}" ]]; then
+    echo "Erlang/OTP ${OTP_VERSION} already installed at ${PREFIX}; skipping build."
+    exit 0
+  fi
+fi
+
 if ! command -v dnf >/dev/null 2>&1; then
   echo "Error: dnf was not found. AlmaLinux 10 is required." >&2
   exit 1

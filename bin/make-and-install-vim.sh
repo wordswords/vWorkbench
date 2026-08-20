@@ -8,13 +8,22 @@ if [ $# -eq 0 ]; then
 fi
 VERSION=$1
 
+# Short-circuit: if the requested major.minor is already installed, skip the
+# ~1.5 minute source build. `vim --version` reports e.g. "9.2" while VERSION
+# is a full tag like "9.2.0272", so compare the major.minor only.
+WANTED_MJ="${VERSION%%.*}.${VERSION#*.}"; WANTED_MJ="${WANTED_MJ%%.*}"
+if command -v vim >/dev/null 2>&1; then
+    INSTALLED="$(vim --clean --version 2>/dev/null | head -n1 | grep -oE '[0-9]+\.[0-9]+' | head -n1)"
+    if [[ "${INSTALLED}" == "${WANTED_MJ}" ]]; then
+        echo "Vim ${VERSION} already installed; skipping build."
+        exit 0
+    fi
+fi
+
 TMP_DIR=$(mktemp -d)
 trap 'rm -rf "${TMP_DIR}"' EXIT
 
 cd "${TMP_DIR}"
-
-# Remove any pre-existing packaged vim so it does not shadow our build.
-sudo dnf remove -y vim-enhanced vim-minimal 2>/dev/null || true
 
 sudo dnf install -y make gcc gcc-c++ git python3-devel ncurses-devel
 
