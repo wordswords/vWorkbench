@@ -18,10 +18,14 @@ fi
 
 sudo dnf install -y -q gcc make wget tar \
     openssl-devel bzip2-devel libffi-devel zlib-devel sqlite-devel \
-    readline-devel ncurses-devel xz-devel tk-devel gdbm-devel
+    readline-devel ncurses-devel xz-devel tk-devel gdbm-devel \
+    libuuid-devel libnsl-devel
 
 TMP_DIR="$(mktemp -d)"
-trap 'rm -rf "${TMP_DIR}"' EXIT
+# `sudo make altinstall` generates root-owned .pyc files in the source tree,
+# so the cleanup must also run as root to avoid a flood of "Permission denied"
+# and a non-zero exit with `set -e`.
+trap 'sudo rm -rf "${TMP_DIR}"' EXIT
 cd "${TMP_DIR}"
 
 wget "https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz"
