@@ -336,7 +336,7 @@ main() {
 
     report_progress 'Configuring tmuxinator'
     mkdir -p "$HOME/.config/tmuxinator"
-    ln --force -s "${DOTFILES_DIR}/development.yml" "$HOME/.config/tmuxinator/development.yml"
+    ln --force -s "${DOTFILES_DIR}/.tmuxinator.development.yml" "$HOME/.config/tmuxinator/development.yml"
     report_done
 
     report_progress 'Installing pandoc'
