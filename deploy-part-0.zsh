@@ -30,7 +30,8 @@ install_dnf_packages() {
 backup_dotfile() {
     local src=$1
     local dst=$2
-    rm -rf "{$dst}"
+    # Remove any previous backup so stale files don't linger, then copy.
+    rm -rf "${dst}"
     cp -RL "${src}" "${dst}" 2>/dev/null || echo "INFO: Could not backup ${src}, does it exist?"
 }
 
@@ -104,8 +105,7 @@ report_done
 
 report_progress 'Install Python used for vim plugins'
 sudo dnf install -y -q python3 python3-pip
-pip install --upgrade pip # upgrade python2 (!) pip
-pip3 install --upgrade pip # upgrade python3
+pip3 install --upgrade pip
 report_done
 
 report_progress 'Install latest open JDK used for LanguageTool'
