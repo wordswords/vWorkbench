@@ -7,8 +7,7 @@ readonly HUGO_ARCHIVE="/tmp/hugo.tar.gz"
 
 sudo dnf install -y curl tar
 
-readonly HUGO_VERSION
-HUGO_VERSION="$(curl -fsSL "${GITHUB_API_URL}" \
+readonly HUGO_VERSION="$(curl -fsSL "${GITHUB_API_URL}" \
   | grep -Po '"tag_name":\s*"\Kv[^"]+' \
   | sed 's/^v//')"
 

@@ -10,8 +10,7 @@ sudo dnf install -y curl tar
 DETECTED_VERSION=$(curl -fsSL "${GITHUB_API_URL}" \
   | grep -Po '"tag_name":\s*"\K[^"]+')
 
-readonly TMP_DIR
-TMP_DIR=$(mktemp -d)
+readonly TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "${TMP_DIR}"' EXIT
 cd "${TMP_DIR}"
 
