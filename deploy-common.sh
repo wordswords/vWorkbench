@@ -20,14 +20,23 @@ fi
 # shellcheck disable=SC2034
 export CLICOLOR=1
 
-print_header() {
+# Open a named deploy section (shown prominently in red).
+report_heading() {
     local message=$1
     printf '%s[✭] %s [✭]%s\n' "${C_RED}" "${message}" "${C_RESET}"
 }
 
-print_finished() {
+# Close a named deploy section (shown prominently in green).
+report_finished() {
     local message=$1
     printf '\n%s[✭] %s [✭]%s\n' "${C_GREEN}" "${message}" "${C_RESET}"
+}
+
+# Answer "yes" when the user replies y/yes (case-insensitive); false otherwise.
+# Replaces the repeated `[[ x =~ ^[Yy] ]]` idiom for interactive prompts.
+matches_yes() {
+    local answer=$1
+    [[ "${answer}" =~ ^[Yy]([Ee][Ss])?$ ]]
 }
 
 # Format an epoch duration, given a start and end in seconds.
@@ -96,16 +105,4 @@ report_done() {
     __PROGRESS_START=''
 }
 
-# Run a single command under a labelled, timed progress section.
-# Usage: step 'Doing the thing' some-command --with args
-step() {
-    local message=$1
-    shift
-    report_progress "${message}"
-    "$@"
-    report_done
-}
 
-# Backwards-compatible aliases for callers that used the old names.
-report_heading() { print_header "$@"; }
-report_finished() { print_finished "$@"; }

@@ -2,22 +2,23 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# How many commands: a simple script to count how many executable
-#   commands are in your current PATH
+# Counts how many executable commands are in the current PATH, and how many
+# entries are not executable.
 
-count=0 ; nonex=0
+executable_count=0
+non_executable_count=0
 while IFS=: read -r -d '' directory; do
-  if [ -d "$directory" ] ; then
-    for command in "$directory"/* ; do
-      if [ -x "$command" ] ; then
-        count="$(( $count + 1 ))"
-      else
-        nonex="$(( $nonex + 1 ))"
-      fi
-    done
-  fi
+    if [[ -d "$directory" ]]; then
+        for command in "$directory"/*; do
+            if [[ -x "$command" ]]; then
+                ((executable_count++))
+            else
+                ((non_executable_count++))
+            fi
+        done
+    fi
 done < <(printf '%s\0' "$PATH")
 
-echo "$count commands, and $nonex entries that weren't executable"
+echo "$executable_count commands, and $non_executable_count entries that weren't executable"
 
 exit 0

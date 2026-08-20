@@ -1,29 +1,50 @@
 #!/usr/bin/env bash
+#
+# List the groups a given user belongs to on a remote machine.
+# Requires a machine alias and sudo access (via the sudo group) on the target.
+
 set -euo pipefail
 IFS=$'\n\t'
 
 shopt -s expand_aliases
+# shellcheck source=/dev/null
 source ~/.zsh_aliases
-if [ $# -eq 2 ]; then
-  # parameters passed on command line
-  MACHINE_ALIAS=$1
-  USERNAME=$2
-  USER=${USER}
-else
-  echo "add-to-group.sh <machine-alias> <username>"
-  exit 1
+
+TMP_FILE=/tmp/grant-sudo-tmp-file.txt
+
+cleanup_tmp_file() {
+    rm -f "${TMP_FILE}"
+}
+
+has_root() {
+    grep -q root "${TMP_FILE}"
+}
+
+print_usage() {
+    echo "groups-remote.sh <machine-alias> <username>"
+}
+
+if [[ "$#" -ne 2 ]]; then
+    print_usage
+    exit 1
 fi
-rm /tmp/grant-sudo-tmp-file.txt || echo ""
-${MACHINE_ALIAS} sudo -S whoami | tee /tmp/grant-sudo-tmp-file.txt
-if grep -q root /tmp/grant-sudo-tmp-file.txt ; then
-  echo "We have root on ${MACHINE_ALIAS}."
-  rm /tmp/grant-sudo-tmp-file.txt
 
-  ${MACHINE_ALIAS} sudo -S groups ${USERNAME}
+# parameters passed on command line
+machine_alias=$1
+username=$2
 
-  exit 0
+cleanup_tmp_file
+"${machine_alias}" sudo -S whoami | tee "${TMP_FILE}"
+
+if has_root; then
+    echo "We have root on ${machine_alias}."
+    cleanup_tmp_file
+
+    "${machine_alias}" sudo -S groups "${username}"
+
+    exit 0
 else
-  rm /tmp/grant-sudo-tmp-file.txt || echo ""
-  echo "We are not root on ${MACHINE_ALIAS}. exiting.."
-  exit 1
+    cleanup_tmp_file
+    echo "We are not root on ${machine_alias}. exiting.."
+    exit 1
 fi

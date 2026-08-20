@@ -2,24 +2,21 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-filename="$1"
-numberoflinesperfile="$2"
+# Split a file into numbered chunks of a given size.
+input_file="$1"
+lines_per_file="$2"
 
 printHelp()
 {
- echo "Usage: $0 <filename to split> <number of lines per file>"
- exit 1
+    echo "Usage: $0 <filename to split> <number of lines per file>"
+    exit 1
 }
 
-if [[ -z $filename || -z $numberoflinesperfile ]]
-then
- echo "Invalid arguments"
- printHelp
+if [[ -z "$input_file" || -z "$lines_per_file" ]]; then
+    echo "Invalid arguments"
+    printHelp
 fi
 
-TOTAL_LINES=$(wc -l < "$filename")
-(( LINES_PER_FILE = (TOTAL_LINES + numberoflinesperfile - 1) / numberoflinesperfile ))
+split -d -l "$lines_per_file" "$input_file" "${input_file}_part_"
 
-split -d -l "$numberoflinesperfile" "$filename" "${filename}_part_"
-
-echo "Split $filename into $numberoflinesperfile parts."
+echo "Split ${input_file} into ${lines_per_file}-line chunks."

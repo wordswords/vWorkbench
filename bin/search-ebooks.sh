@@ -2,16 +2,18 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# Search the epub library on /mnt/ebooks and open a match in the epy terminal reader.
+
 if [[ $# -eq 0 ]]; then
     printf '%s\n' "Usage: $0 <epub library search terms>" >&2
     exit 1
 fi
 
-BOOKPATHROOT=/mnt/ebooks
-PARAMS="*$**.epub"
+EBOOKS_DIRECTORY="/mnt/ebooks"
+book_name_glob="*${*}*.epub"
+epy_binary="${HOME}/.local/bin/epy"
 
-EPY_PATH="/home/${USER}/.local/bin/epy"
-cd "${BOOKPATHROOT}"
-bookpath=$(find . -type f -iname "${PARAMS}" 2>/dev/null | sort -r | fzf --disabled)
-"${EPY_PATH}" "${bookpath}"
+cd "${EBOOKS_DIRECTORY}"
+selected_epub=$(find . -type f -iname "${book_name_glob}" 2>/dev/null | sort -r | fzf --disabled)
+"${epy_binary}" "${selected_epub}"
 cd -

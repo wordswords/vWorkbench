@@ -1,31 +1,51 @@
 #!/usr/bin/env bash
+#
+# Remove an existing user on a remote machine from a supplementary group.
+# Requires a machine alias and sudo access (via the sudo group) on the target.
+
 set -euo pipefail
 IFS=$'\n\t'
 
 shopt -s expand_aliases
 # shellcheck source=/dev/null
 source ~/.zsh_aliases
-if [ $# -eq 3 ]; then
-  # parameters passed on command line
-  MACHINE_ALIAS=$1
-  USERNAME_TO_PROCESS=$2
-  GROUP_TO_REMOVE=$3
-  USER=${USER}
-else
-  echo "remove-from-group-remote.sh <machine-alias> <username-to-process> <group-to-remove>"
-  exit 1
+
+TMP_FILE=/tmp/grant-sudo-tmp-file.txt
+
+cleanup_tmp_file() {
+    rm -f "${TMP_FILE}"
+}
+
+has_root() {
+    grep -q root "${TMP_FILE}"
+}
+
+print_usage() {
+    echo "remove-from-group-remote.sh <machine-alias> <username-to-process> <group-to-remove>"
+}
+
+if [[ "$#" -ne 3 ]]; then
+    print_usage
+    exit 1
 fi
-rm /tmp/grant-sudo-tmp-file.txt || echo ""
-${MACHINE_ALIAS} sudo -S whoami | tee /tmp/grant-sudo-tmp-file.txt
-if grep -q root /tmp/grant-sudo-tmp-file.txt ; then
-  echo "We have root on ${MACHINE_ALIAS}."
-  rm /tmp/grant-sudo-tmp-file.txt
 
-  ${MACHINE_ALIAS} sudo -S  gpasswd -d "${USERNAME_TO_PROCESS}" "${GROUP_TO_REMOVE}"
+# parameters passed on command line
+machine_alias=$1
+username_to_process=$2
+group_to_remove=$3
 
-  exit 0
+cleanup_tmp_file
+"${machine_alias}" sudo -S whoami | tee "${TMP_FILE}"
+
+if has_root; then
+    echo "We have root on ${machine_alias}."
+    cleanup_tmp_file
+
+    "${machine_alias}" sudo -S gpasswd -d "${username_to_process}" "${group_to_remove}"
+
+    exit 0
 else
-  rm /tmp/grant-sudo-tmp-file.txt || echo ""
-  echo "We are not root on ${MACHINE_ALIAS}. exiting.."
-  exit 1
+    cleanup_tmp_file
+    echo "We are not root on ${machine_alias}. exiting.."
+    exit 1
 fi

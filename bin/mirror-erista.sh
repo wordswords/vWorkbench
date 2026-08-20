@@ -2,6 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# Mirror a directory tree with wget, skipping index pages.
 if [ "$#" -eq 0 ]; then
   echo "Usage: $0 <url of base directory to download>" >&2
   exit 1

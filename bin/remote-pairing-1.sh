@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# Prepare the local machine for a remote screen-sharing/training session:
+# install openssh-server and screen, enable multiuser screen sharing, and
+# report the VPN IP address to hand off to a trainer.
+
 set -euo pipefail
 IFS=$'\n\t'
 
@@ -14,7 +19,7 @@ echo ""
 echo "Discovering VPN IP address.."
 ifconfig tun0 || ( echo "You are not connected to the VPN!" && exit 1 )
 my_ip=$(ifconfig tun0 | grep -o -E 'inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'  | cut -d' ' -f2)
-echo ""
+echo "" # keep the guard above: set -e must not mask the VPN-not-connected failure
 
 echo "Your VPN IP address is: ${my_ip}, stop now and send this address to the trainer"
 echo ""

@@ -3,10 +3,13 @@
 
 set -euo pipefail
 
+readonly DOTFILES_DIR="${HOME}/.dotfiles"
+
 # Install aider.
 curl -LsSf https://aider.chat/install.sh | sh
 
 # Install Playwright for aider's browser automation.
-"$HOME/.dotfiles/bin/install-playwrite-for-aider.sh"
+"${DOTFILES_DIR}/bin/install-playwrite-for-aider.sh"
 
-export aider="$HOME/.dotfiles/bin/aider-wrapper.sh"
+# Expose the aider wrapper so `aider` resolves to the keyboard-driven front-end.
+export aider="${DOTFILES_DIR}/bin/aider-wrapper.sh"

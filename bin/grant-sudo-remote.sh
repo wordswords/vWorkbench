@@ -1,46 +1,65 @@
 #!/usr/bin/env bash
+#
+# Grant sudo access to an existing user on a remote machine by adding them
+# to the target system's sudo group (either 'sudo' or 'wheel').
+# Requires a machine-alias already set up by deploy-remote-home.sh in the same directory.
+
 set -euo pipefail
 IFS=$'\n\t'
-
-# This requires a machine-alias already setup by deploy-remote-home.sh in the same directory.
 
 shopt -s expand_aliases
 # shellcheck source=/dev/null
 source ~/.zsh_aliases
-if [[ $# -eq 2 ]]; then
-  # parameters
-  MACHINE_ALIAS=$1
-  USERNAME_TO_GRANT=$2
-  USER=${USER}
-else
-  printf '%s\n' "grant-sudo-remote.sh <machine-alias> <username-on-machine-to-grant-sudo-to>"
-  exit 1
+
+TMP_FILE=/tmp/grant-sudo-tmp-file.txt
+
+cleanup_tmp_file() {
+    rm -f "${TMP_FILE}"
+}
+
+has_root() {
+    grep -q root "${TMP_FILE}"
+}
+
+print_usage() {
+    printf '%s\n' "grant-sudo-remote.sh <machine-alias> <username-on-machine-to-grant-sudo-to>"
+}
+
+if [[ "$#" -ne 2 ]]; then
+    print_usage
+    exit 1
 fi
-rm -f /tmp/grant-sudo-tmp-file.txt
-${MACHINE_ALIAS} sudo -S whoami | tee /tmp/grant-sudo-tmp-file.txt
-if grep -q root /tmp/grant-sudo-tmp-file.txt ; then
-  printf 'We have root on %s. Finding out sudo group..\n' "${MACHINE_ALIAS}"
-  rm -f /tmp/grant-sudo-tmp-file.txt
 
-  # get the sudo group
-  "${MACHINE_ALIAS}" sudo -S groups "${USER}" | tee /tmp/grant-sudo-tmp-file.txt
-  # remove interactive terminal stuff
-  sed -i -e '/.*password for.*/d' /tmp/grant-sudo-tmp-file.txt
+# parameters
+machine_alias=$1
+username_to_grant=$2
 
-  # if the sudo group is called 'sudo'
-  if grep -q sudo /tmp/grant-sudo-tmp-file.txt; then
-    "${MACHINE_ALIAS}" sudo -S usermod -aG sudo "${USERNAME_TO_GRANT}"
-  fi
+cleanup_tmp_file
+"${machine_alias}" sudo -S whoami | tee "${TMP_FILE}"
 
-  # if the sudo group is called 'wheel'
-  if grep -q wheel /tmp/grant-sudo-tmp-file.txt; then
-    "${MACHINE_ALIAS}" sudo -S usermod -aG wheel "${USERNAME_TO_GRANT}"
-  fi
+if has_root; then
+    printf 'We have root on %s. Finding out sudo group..\n' "${machine_alias}"
+    cleanup_tmp_file
 
-  rm -f /tmp/grant-sudo-tmp-file.txt
-  exit 0
+    # get the sudo group
+    "${machine_alias}" sudo -S groups "${USER}" | tee "${TMP_FILE}"
+    # remove interactive terminal stuff
+    sed -i -e '/.*password for.*/d' "${TMP_FILE}"
+
+    # if the sudo group is called 'sudo'
+    if grep -q sudo "${TMP_FILE}"; then
+        "${machine_alias}" sudo -S usermod -aG sudo "${username_to_grant}"
+    fi
+
+    # if the sudo group is called 'wheel'
+    if grep -q wheel "${TMP_FILE}"; then
+        "${machine_alias}" sudo -S usermod -aG wheel "${username_to_grant}"
+    fi
+
+    cleanup_tmp_file
+    exit 0
 else
-  printf 'We are not root on %s exiting..\n' "${MACHINE_ALIAS}"
-  rm -f /tmp/grant-sudo-tmp-file.txt
-  exit 1
+    printf 'We are not root on %s exiting..\n' "${machine_alias}"
+    cleanup_tmp_file
+    exit 1
 fi

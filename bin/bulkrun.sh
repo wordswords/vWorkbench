@@ -2,51 +2,52 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# bulkrun--Iterates over a directory of files, running a number of
-#   concurrent processes that will process the files in parallel
+# Iterates over a directory of files, running a number of concurrent processes
+# that process the files in parallel. The command, input directory, and
+# maximum concurrency are supplied via flags.
 
-printHelp()
+print_help()
 {
- printf '%s\n' "Usage: $0 -p 3 -i inputDirectory/ -x \"command -to run/\""
- printf '\t-p The maximum number of processes to start concurrently\n'
- printf '\t-i The directory containing the files to run the command on\n'
- printf '\t-x The command to run on the chosen files\n'
- exit 1
+    printf '%s\n' "Usage: $0 -p 3 -i inputDirectory/ -x \"command -to run/\""
+    printf '\t-p The maximum number of processes to start concurrently\n'
+    printf '\t-i The directory containing the files to run the command on\n'
+    printf '\t-x The command to run on the chosen files\n'
+    exit 1
 }
 
- while getopts "p:x:i:" opt
+while getopts "p:x:i:" opt
 do
- case "$opt" in
-   p ) procs="$OPTARG"    ;;
-   x ) command="$OPTARG"  ;;
-   i ) inputdir="$OPTARG" ;;
-   ? ) printHelp          ;;
- esac
+    case "$opt" in
+        p ) max_processes="$OPTARG" ;;
+        x ) command_to_run="$OPTARG" ;;
+        i ) input_dir="$OPTARG"    ;;
+        ? ) print_help             ;;
+    esac
 done
 
-if [[ -z $procs || -z $command || -z $inputdir ]]
+if [[ -z "$max_processes" || -z "$command_to_run" || -z "$input_dir" ]]
 then
- printf '%s\n' "Invalid arguments"
- printHelp
+    printf '%s\n' "Invalid arguments"
+    print_help
 fi
 
-total=$(ls "$inputdir" | wc -l)
-files="$(ls -Sr "$inputdir")"
+total="$(ls "$input_dir" | wc -l)"
+files="$(ls -Sr "$input_dir")"
 
-for ((k=1; k<=total; k+=procs))
+for ((k = 1; k <= total; k += max_processes))
 do
- for ((i=0; i<=procs; i++))
- do
-   if [[ $((i+k)) -gt $total ]]
-   then
-     wait
-     exit 0
-   fi
+    for ((i = 0; i <= max_processes; i++))
+    do
+        if [[ $((i + k)) -gt $total ]]
+        then
+            wait
+            exit 0
+        fi
 
-   file=$(sed -n "$((i+k))p" <<< "$files")
-   printf 'Running %s %s/%s\n' "$command" "$inputdir" "$file"
-   $command "$inputdir/$file" &
- done
+        file="$(sed -n "$((i + k))p" <<< "$files")"
+        printf 'Running %s %s/%s\n' "$command_to_run" "$input_dir" "$file"
+        $command_to_run "$input_dir/$file" &
+    done
 
- wait
+    wait
 done

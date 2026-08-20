@@ -2,7 +2,9 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-shopt -s lastpipe
-read -r input;
-~/bin/gg.sh "inurl:stackoverflow.com ${input}"
+# Reads a query from stdin and opens a Google search restricted to
+# stackoverflow.com.
 
+shopt -s lastpipe
+read -r query
+~/bin/gg.sh "inurl:stackoverflow.com ${query}"

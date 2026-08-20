@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# Enable multiuser screen sharing for an existing screen session so a trainer
+# can attach to it. Queries the running training_screen session and grants the
+# given trainer username access to it.
+
 set -euo pipefail
 IFS=$'\n\t'
 

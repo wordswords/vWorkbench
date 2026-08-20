@@ -2,29 +2,29 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# combine_and_make_fortune.sh
-# Concatenates all files in current directory into one fortune file.
+# Concatenates all files in the current directory into a single fortune file,
+# then generates the corresponding `.dat` index used by the `fortune` command.
 
-OUTFILE="combined_fortunes"
+output_file="combined_fortunes"
 
 # Step 1: Concatenate all files into one, separated by '%'
 # This adds a '%' line between each file for fortune formatting
-first=true
+is_first_file=true
 for file in *; do
-    [ -f "$file" ] || continue
-    if [ "$file" != "$OUTFILE" ] && [ "$file" != "$OUTFILE.dat" ]; then
-        if [ "$first" = true ]; then
-            first=false
+    [[ -f "$file" ]] || continue
+    if [[ "$file" != "$output_file" ]] && [[ "$file" != "$output_file.dat" ]]; then
+        if [[ "$is_first_file" == true ]]; then
+            is_first_file=false
         else
-            echo "%" >> "$OUTFILE"
+            printf '%%\n' >> "$output_file"
         fi
-        cat "$file" >> "$OUTFILE"
-        echo "" >> "$OUTFILE"
+        cat "$file" >> "$output_file"
+        printf '\n' >> "$output_file"
     fi
 done
 
 # Step 2: Generate the .dat index file for fortune
-strfile "$OUTFILE" "$OUTFILE.dat"
+strfile "$output_file" "$output_file.dat"
 
-echo "Fortune file '$OUTFILE' and index '$OUTFILE.dat' created successfully."
+echo "Fortune file '$output_file' and index '$output_file.dat' created successfully."
 

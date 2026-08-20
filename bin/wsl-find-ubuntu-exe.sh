@@ -2,6 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# Locate the WSL Ubuntu launcher under the Windows drive.
 sudo find /mnt/c -name 'ubuntu*.exe' -type f 2>/dev/null
 printf '%s\n' "Now open an admin console and run this file to change settings"
 

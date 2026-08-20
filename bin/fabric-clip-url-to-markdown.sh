@@ -2,19 +2,19 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-websitetomd=$1
+# Convert a URL to markdown using fabric.
+url="$1"
 
 printHelp()
 {
- echo "Usage: $0 <URL to convert to markdown>"
- exit 1
+    echo "Usage: $0 <URL to convert to markdown>"
+    exit 1
 }
 
-if [[ -z $websitetomd ]]
-then
- echo "Invalid arguments"
- printHelp
+if [[ -z "$url" ]]; then
+    echo "Invalid arguments"
+    printHelp
 fi
 
-fabric -u "$websitetomd"
+fabric -u "$url"
 

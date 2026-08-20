@@ -2,7 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# Feed a single line read from stdin to sgpt (vim/Textomate helper).
 shopt -s lastpipe
-read -r input;
-sgpt "${input}" 2>/dev/null
+read -r prompt
+sgpt "${prompt}" 2>/dev/null
 

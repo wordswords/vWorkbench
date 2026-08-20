@@ -2,22 +2,23 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-shopt -s lastpipe
-# Read multi-line input from stdin
-read -r input
-# Arbitrary command to run on each line of input
-command="$1"
+# Reads multi-line input from stdin and runs a command on each line in
+# parallel using GNU Parallel. The command is supplied as the first argument.
 
-printHelp()
+shopt -s lastpipe
+read -r input
+command_to_run="$1"
+
+print_help()
 {
- printf '%s\n' "Usage: echo "Example data" | $0 <${command}>"
- exit 1
+    printf '%s\n' 'Usage: echo "Example data" | '"$0"' <command>'
+    exit 1
 }
 
-if [[ -z $input || -z $command ]]
+if [[ -z "$input" || -z "$command_to_run" ]]
 then
- printf '%s\n' "Invalid arguments"
- printHelp
+    printf '%s\n' "Invalid arguments"
+    print_help
 fi
 
 # Check if GNU Parallel is installed
@@ -27,10 +28,10 @@ if ! command -v parallel &> /dev/null; then
 fi
 
 # Number of workers
-workers=4
+max_processes=4
 
 # Export command for parallel execution
-export command
+export command_to_run
 
 # Use GNU Parallel to run the command on each line with the specified number of workers
-printf '%s\n' "$input" | parallel -j "$workers" "$command" {}
+printf '%s\n' "$input" | parallel -j "$max_processes" "$command_to_run" {}

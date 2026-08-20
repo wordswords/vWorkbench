@@ -124,15 +124,21 @@ install_github_cli() {
     sudo dnf install -y gh
 }
 
-run_vim_plugins() {
+# Write one Ex command per line to a temp file and run them via `vim -s`.
+# This avoids re-implementing the write/run/cleanup dance at each call site.
+run_vim_commands() {
     local script_file="${DOTFILES_DIR}/vimscript.vs"
-    printf '%s\n' \
+    printf '%s\n' "$@" >"${script_file}"
+    vim -s "${script_file}"
+    rm "${script_file}"
+}
+
+run_vim_plugins() {
+    run_vim_commands \
         ':PluginClean' \
         ':PluginInstall' \
         ':helptags ALL' \
-        ':qa' >"${script_file}"
-    vim -s "${script_file}"
-    rm "${script_file}"
+        ':qa'
 }
 
 install_vim_colorscheme() {
@@ -189,15 +195,12 @@ configure_linux() {
     echo "-- OPTIONAL EXTRAS -- "
     echo
 
-    local answer
-    read -r -p "Benchmark your computer with hardinfo2 (equiv to Speccy)? (y/yes/N) " answer
-    if [[ "${answer}" =~ ^[Yy] ]]; then
+    if ask "Benchmark your computer with hardinfo2 (equiv to Speccy)?"; then
         "${DOTFILES_BIN}/install-hardinfo2-for-almalinux.sh"
         hardinfo2 | tee "$HOME/hardinfo2report.txt"
     fi
 
-    read -r -p "Install/update the JIRA-CLI Go client? (y/yes/N) " answer
-    if [[ "${answer}" =~ ^[Yy] ]]; then
+    if ask "Install/update the JIRA-CLI Go client?"; then
         sudo snap install go --classic 2>/dev/null || sudo snap refresh go
         go install "golang.org/dl/${JIRA_CLI_GO_VERSION:-go1.19}@latest"
         go install github.com/ankitpokhrel/jira-cli/cmd/jira@latest
@@ -205,6 +208,13 @@ configure_linux() {
         # Remove a previously installed Go JIRA client.
         rm -f "$HOME/go/bin/jira"
     fi
+}
+
+ask() {
+    local prompt=$1
+    local answer
+    read -r -p "${prompt} (y/yes/N) " answer
+    matches_yes "${answer}"
 }
 
 main() {
@@ -275,18 +285,14 @@ main() {
     run_vim_plugins
     report_done
 
-    local ycm_answer
-    read -r -p "Install/update YouCompleteMe for VIM9 (slow on older systems)? (y/yes/N) " ycm_answer
-    if [[ "${ycm_answer}" =~ ^[Yy] ]]; then
+    if ask "Install/update YouCompleteMe for VIM9 (slow on older systems)?"; then
         report_progress 'Download, install and compile YouCompleteMe for VIM9'
         "${DOTFILES_BIN}/deploy-ycm.sh"
         report_done
     fi
 
     report_progress 'Register YCM Plugin Install for Vim9'
-    printf '%s\n' ':PluginInstall' ':qa' >"${DOTFILES_DIR}/vimscript.vs"
-    vim -s "${DOTFILES_DIR}/vimscript.vs"
-    rm "${DOTFILES_DIR}/vimscript.vs"
+    run_vim_commands ':PluginInstall' ':qa'
     report_done
 
     report_progress 'Installing vim colorscheme'
@@ -355,14 +361,10 @@ main() {
     local cur_os
     cur_os="$(get_os)"
 
-    report_progress 'Running any Windows specific configuration'
-    report_done
     if [[ "${cur_os}" == 'windows' ]]; then
         configure_windows
     fi
 
-    report_progress 'Running any Linux specific configuration'
-    report_done
     if [[ "${cur_os}" == 'linux' ]]; then
         configure_linux
     fi

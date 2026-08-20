@@ -2,8 +2,9 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-SOURCE="$1"
-DESTINATION="$2"
+# Recursively copy a directory tree with rsync, showing progress.
+source_path="$1"
+destination_path="$2"
 
-sudo rsync -avzh --progress "${SOURCE}" "${DESTINATION}"
+sudo rsync -avzh --progress "${source_path}" "${destination_path}"
 

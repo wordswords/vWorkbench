@@ -2,19 +2,19 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-youtubeurl=$1
+# Summarise a YouTube video by streaming its transcript through fabric agents.
+youtube_url="$1"
 
 printHelp()
 {
- echo "Usage: $0 <Youtube URL>"
- exit 1
+    echo "Usage: $0 <YouTube URL>"
+    exit 1
 }
 
-if [[ -z $youtubeurl ]]
-then
- echo "Invalid arguments"
- printHelp
+if [[ -z "$youtube_url" ]]; then
+    echo "Invalid arguments"
+    printHelp
 fi
 
-fabric -y "${youtubeurl}" --stream --pattern extract_wisdom_agents
+fabric -y "${youtube_url}" --stream --pattern extract_wisdom_agents
 

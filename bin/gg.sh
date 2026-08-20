@@ -2,29 +2,35 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-args="$@"
+# Opens a Google search for the given query in the system's default Firefox
+# install. Allows queries to be supplied on the command line or via a temp
+# file written by the editor.
+
+query="$*"
 
 get_os () {
-    uname_s="$(uname -s)"
-    if echo "$uname_s" | grep 'Darwin' >/dev/null
-    then
-      baseos='osx'
-    else
-      if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
-          baseos='windows'
-      else
-          baseos='linux'
-      fi
-    fi
-    echo $baseos
+    kernel_name="$(uname -s)"
+    case "$kernel_name" in
+        Darwin)
+            os_family='osx'
+            ;;
+        *)
+            if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null; then
+                os_family='windows'
+            else
+                os_family='linux'
+            fi
+            ;;
+    esac
+    printf '%s\n' "$os_family"
 }
 
 gsearchstart () {
-    if [ -f '/tmp/googlesearchvim' ] ; then
+    if [[ -f '/tmp/googlesearchvim' ]]; then
         gsearchmain "/tmp/googlesearchvim"
         rm -f /tmp/googlesearchvim
     else
-        echo "$@" > /tmp/googlesearchcmdline
+        echo "$*" > /tmp/googlesearchcmdline
         gsearchmain "/tmp/googlesearchcmdline"
         rm -f /tmp/googlesearchcmdline
     fi
@@ -32,30 +38,30 @@ gsearchstart () {
 }
 
 gsearchmain () {
-    filetoencode="$1"
+    input_file="$1"
     echo "File to Encode $1"
     echo "Contents: "
-    cat "${filetoencode}"
+    cat "${input_file}"
     TLD=".co.uk"
-    encoded=""
-    os="$(get_os)"
+    encoded_query=""
+    os_family="$(get_os)"
     FIREFOX_BIN=""
-    if [ "$os" == "windows" ]; then
-        FIREFOX_BIN="/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe"
-    elif [ "$os" == "linux" ]; then
+    if [[ "$os_family" == "windows" ]]; then
+        FIREFOX_BIN="/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
+    elif [[ "$os_family" == "linux" ]]; then
         FIREFOX_BIN="/snap/bin/firefox"
-    elif [ "$os" == "osx" ]; then
+    elif [[ "$os_family" == "osx" ]]; then
         FIREFOX_BIN="/Applications/Firefox.app/Contents/MacOS/firefox"
     else
         echo "Unknown OS"
         exit 1
     fi
-    ~/bin/urlencode.py "${filetoencode}"
-    encoded=$(head -c 1000 /tmp/googlesearchencoded)
-    url="https://www.google${TLD}/search?q=${encoded}"
+    ~/bin/urlencode.py "${input_file}"
+    encoded_query="$(head -c 1000 /tmp/googlesearchencoded)"
+    search_url="https://www.google${TLD}/search?q=${encoded_query}"
     sleep 1
-    eval "${FIREFOX_BIN}" "${url}"
+    eval "${FIREFOX_BIN}" "${search_url}"
 }
 
-gsearchstart "${args}"
+gsearchstart "${query}"
 

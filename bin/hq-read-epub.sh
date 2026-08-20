@@ -9,6 +9,6 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-QUERY="$*"
-ssh -p608 david@hq.local -t "/bin/bash /home/david/.dotfiles/bin/search-ebooks.sh ${QUERY}"
+search_terms="$*"
+ssh -p608 david@hq.local -t "/bin/bash /home/david/.dotfiles/bin/search-ebooks.sh ${search_terms}"
 

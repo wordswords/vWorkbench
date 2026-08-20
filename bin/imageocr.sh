@@ -2,9 +2,11 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-imagepath=$1
+# Run OCR on an image using pytesseract (installing tesseract if needed).
+image_path="${1:?Usage: $0 <image>}"
 
 sudo dnf install -y tesseract &> /dev/null
-pip install --break-system-packages pytesseract &> /dev/null
-python3 ~/.dotfiles/bin/ocr.py "${imagepath}"
+# Pillow provides the PIL.Image module that imageocr.py calls Image.open on.
+pip install --break-system-packages pytesseract Pillow &> /dev/null
+python3 "${HOME}/.dotfiles/bin/imageocr.py" "${image_path}"
 

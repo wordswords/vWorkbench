@@ -2,6 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# Enable automatic updates on AlmaLinux
+# Enables automatic package updates on AlmaLinux by installing `dnf-automatic`
+# and starting its timer.
+
 sudo dnf install -y dnf-automatic
 sudo systemctl enable --now dnf-automatic.timer
