@@ -112,8 +112,11 @@ create_venv() {
 }
 
 upgrade_packaging_tools() {
-  log "Upgrading pip/setuptools/wheel"
-  python -m pip install --upgrade pip setuptools wheel
+  log "Upgrading setuptools/wheel"
+  # Upgrade setuptools and wheel, but NOT pip: aider pins a specific pip
+  # version (e.g. pip==25.1.1), and force-upgrading it to the latest causes a
+  # resolver conflict on every run. Let aider resolve pip itself.
+  python -m pip install --upgrade setuptools wheel
 }
 
 install_aider_and_playwright() {

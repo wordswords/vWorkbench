@@ -4,9 +4,14 @@ IFS=$'\n\t'
 
 # Short-circuit: query the latest published Joplin version and skip the full
 # npm reinstall if the installed version already matches. `npm view` is a
-# cheap metadata call versus the ~3 minute npm install of a deep dependency
+# cheap metadata call versus the ~2 minute npm install of a deep dependency
 # tree.
-JOPLIN_BIN="${HOME}/bin/joplin"
+#
+# Check the REAL npm-installed binary (~/.joplin-bin/bin/joplin), NOT the
+# ~/bin/joplin symlink. The symlink is created by deploy-part-2.sh after this
+# script runs, so on a fresh (or re-run) box it may not exist yet, which made
+# the previous guard always skip and triggered a full reinstall every time.
+JOPLIN_BIN="${HOME}/.joplin-bin/bin/joplin"
 if [[ -x "${JOPLIN_BIN}" ]]; then
     INSTALLED="$("${JOPLIN_BIN}" version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n1 || true)"
     LATEST="$(npm view joplin version 2>/dev/null || true)"
