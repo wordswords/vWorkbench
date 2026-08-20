@@ -46,11 +46,16 @@ for b in "${HOME}/.joplin-bin/bin/joplin" "${HOME}/bin/joplin"; do
 done
 
 echo
-echo "-- Parsed INSTALLED (grep -oE '[0-9]+\\.[0-9]+\\.[0-9]+' | head -n1) --"
-INSTALLED="$("${HOME}/.joplin-bin/bin/joplin" version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n1 || true)"
+echo "-- Parsed INSTALLED (from package.json, matching the guard) --"
+JOPLIN_PKG_JSON="${HOME}/.joplin-bin/lib/node_modules/joplin/package.json"
+if [[ -f "${JOPLIN_PKG_JSON}" ]]; then
+    echo "package.json exists     : yes (${JOPLIN_PKG_JSON})"
+    INSTALLED="$(grep -m1 '"version"' "${JOPLIN_PKG_JSON}" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n1 || true)"
+else
+    echo "package.json exists     : NO"
+    INSTALLED=''
+fi
 echo "INSTALLED = '${INSTALLED}'"
-# Show the literal command used, in case the binary path is empty.
-echo "(raw \$HOME expansion check) HOME=.joplin-bin present? $([[ -d "${HOME}/.joplin-bin" ]] && echo yes || echo no)"
 
 echo
 echo "-- npm availability & 'npm view joplin version' --"

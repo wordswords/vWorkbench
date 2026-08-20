@@ -3,17 +3,16 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # Short-circuit: query the latest published Joplin version and skip the full
-# npm reinstall if the installed version already matches. `npm view` is a
-# cheap metadata call versus the ~2 minute npm install of a deep dependency
-# tree.
+# npm reinstall if the installed version already matches.
 #
-# Check the REAL npm-installed binary (~/.joplin-bin/bin/joplin), NOT the
-# ~/bin/joplin symlink. The symlink is created by deploy-part-2.sh after this
-# script runs, so on a fresh (or re-run) box it may not exist yet, which made
-# the previous guard always skip and triggered a full reinstall every time.
-JOPLIN_BIN="${HOME}/.joplin-bin/bin/joplin"
-if [[ -x "${JOPLIN_BIN}" ]]; then
-    INSTALLED="$("${JOPLIN_BIN}" version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n1 || true)"
+# We read the version from the npm-installed package.json rather than running
+# the joplin binary: the binary (a symlink/path to main.js) has historically
+# failed with "Cannot find module '../package.json'" and doesn't expose a
+# reliable --version flag, which made the guard unreliable.
+JOPLIN_PKG_JSON="${HOME}/.joplin-bin/lib/node_modules/joplin/package.json"
+if [[ -f "${JOPLIN_PKG_JSON}" ]]; then
+    INSTALLED="$(grep -m1 '"version"' "${JOPLIN_PKG_JSON}" 2>/dev/null \
+        | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n1 || true)"
     LATEST="$(npm view joplin version 2>/dev/null || true)"
     if [[ -n "${INSTALLED}" && -n "${LATEST}" && "${INSTALLED}" == "${LATEST}" ]]; then
         echo "Joplin CLI ${INSTALLED} already current (latest ${LATEST}); skipping install."
