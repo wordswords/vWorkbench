@@ -222,10 +222,6 @@ report_progress 'Installing Delta, a git diff viewer'
 "${DOTFILES_DIR}/bin/install-git-delta-almalinux.sh"
 report_done
 
-report_progress 'Installing surfraw a command line google search client'
-"${DOTFILES_DIR}/bin/install-surfraw-almalinux.sh"
-report_done
-
 report_progress 'Installing epy a command line epub reader'
 pip3 install git+https://github.com/wustho/epy
 report_done

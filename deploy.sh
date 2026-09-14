@@ -17,7 +17,7 @@ readonly DOTFILES_DIR="$HOME/.dotfiles"
 # ---------------------------------------------------------------------------
 export VIM_VERSION="9.2.0272"
 export ERLANG_OTP_VERSION="29.0.5"
-export ELIXIR_VERSION="1.20-latest"
+export ELIXIR_VERSION="1.20.4"
 export PYTHON_VERSION="3.12.0"
 export TEXIDOTE_VERSION="0.8.3"
 export ADOM_VERSION="3.3.3"
