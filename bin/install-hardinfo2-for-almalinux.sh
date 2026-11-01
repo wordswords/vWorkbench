@@ -80,7 +80,7 @@ if [[ -z "${PKG}" ]]; then
   die "No hardinfo2-*.rpm package found after build. Check the build log above for errors."
 fi
 
-sudo dnf install -fq "./${PKG}"
+sudo dnf install -yq "./${PKG}"
 
 log "Installing recommended runtime dependencies"
 sudo dnf install -yq \
