@@ -179,3 +179,10 @@ alias python=python3.12
 alias python3=python3.12
 alias pip=pip3.12
 alias pip3=pip3.12
+export PATH=/usr/lib/wsl/lib:$PATH
+export CUDA_HOME=/usr/local/cuda-13.4
+export PATH="$CUDA_HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$CUDA_HOME/lib64${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+# opencode
+export PATH=/home/david/.opencode/bin:$PATH
