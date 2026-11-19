@@ -121,6 +121,7 @@ alias externalip="curl https://ifconfig.co/json ; echo"
 alias firefox="/snap/bin/firefox"
 alias grep="grep --color"
 alias hq="ssh -p22 david@hq.davidcraddock.net"
+alias backerupper="ssh -i ~/.ssh/backerupper david@192.168.1.135"
 alias iostat="pcp iostat"
 alias l='ls -CF'
 alias la='ls -A'
